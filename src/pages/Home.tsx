@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DictionaryTooltip } from "@/components/Tooltip";
 import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
-import { Rocket, Lightbulb, Users, TrendingUp, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
+import { Rocket, Lightbulb, Users, TrendingUp, MapPin, Calendar, Coffee, Presentation, Award, ArrowDown } from "lucide-react";
+import heroBackground from "@/assets/hero-background.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Home = () => {
@@ -38,43 +39,58 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5" />
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16">
+        {/* Background Image with Dark Gradient */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroBackground} 
+            alt="Startup Weekend" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-grey/80 via-dark-grey/70 to-dark-grey/90" />
+        </div>
         
-        <ArrowDoodle className="top-1/4 right-10 animate-float" />
-        <CircleDoodle className="bottom-1/4 left-10 animate-wiggle" />
-        <StarDoodle className="top-1/3 left-1/4 animate-float" />
+        {/* Gradient Blend at Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background z-10" />
         
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            <span className="block mb-2">Startup Weekend</span>
-            <span className="text-gradient">Bucharest</span>
-          </h1>
-          
-          <div className="flex flex-col items-center gap-4 mb-8">
-            <div className="flex items-center gap-2 text-xl md:text-2xl font-semibold">
-              <Calendar className="w-6 h-6 text-primary" />
-              <span>10-12 October</span>
-            </div>
-            <div className="flex items-center gap-2 text-lg md:text-xl text-muted-foreground">
-              <MapPin className="w-5 h-5 text-primary" />
-              <a href="https://maps.app.goo.gl/DWoupMfrzjf1dEh1A" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                Builders House
-              </a>
+        <div className="container mx-auto px-4 md:px-8 relative z-10 flex items-center justify-between gap-12">
+          {/* Left Side - Title and Info */}
+          <div className="flex-1 max-w-2xl">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in text-white uppercase tracking-tight">
+              Startup Weekend Bucharest
+            </h1>
+            
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
+                <Calendar className="w-6 h-6 text-primary" />
+                <span>10-12 October</span>
+              </div>
+              <div className="flex items-center gap-3 text-lg md:text-xl text-off-white/90">
+                <MapPin className="w-5 h-5 text-primary" />
+                <a href="https://maps.app.goo.gl/DWoupMfrzjf1dEh1A" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  Builders House
+                </a>
+              </div>
+              <p className="text-lg md:text-xl text-off-white/80 mt-4">
+                powered by <span className="font-bold text-primary">Stripe</span>
+              </p>
             </div>
           </div>
           
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            powered by <span className="font-bold text-primary">Stripe</span>
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8">
-              Get your ticket
-            </Button>
-            <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary/10 font-bold text-lg px-8">
-              Learn more
-            </Button>
+          {/* Right Side - Vertical Line with Arrow */}
+          <div className="hidden md:flex flex-col items-center gap-4 min-h-[400px]">
+            <div className="flex-1 w-0.5 bg-white/30 relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 animate-[slide-down_2s_ease-in-out_infinite]">
+                <ArrowDown className="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <a 
+              href="#about" 
+              className="text-white font-semibold text-lg hover:text-primary transition-colors cursor-pointer uppercase tracking-wide"
+            >
+              Learn More
+            </a>
           </div>
         </div>
       </section>
