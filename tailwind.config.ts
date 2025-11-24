@@ -57,6 +57,8 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "off-white": "hsl(var(--off-white))",
+        "dark-grey": "hsl(var(--dark-grey))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -121,6 +123,14 @@ export default {
           "50%": {
             transform: "translate(10px, -10px) rotate(5deg)"
           }
+        },
+        "slide-down": {
+          "0%, 100%": {
+            transform: "translateY(0)"
+          },
+          "50%": {
+            transform: "translateY(20px)"
+          }
         }
       },
       animation: {
@@ -130,7 +140,8 @@ export default {
         "float": "float 3s ease-in-out infinite",
         "wiggle": "wiggle 1s ease-in-out infinite",
         "doodle-draw": "doodle-draw 2s ease-in-out",
-        "rocket-float": "rocket-float 4s ease-in-out infinite"
+        "rocket-float": "rocket-float 4s ease-in-out infinite",
+        "slide-down": "slide-down 2s ease-in-out infinite"
       },
     },
   },
