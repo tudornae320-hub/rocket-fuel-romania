@@ -131,6 +131,14 @@ export default {
           "50%": {
             transform: "translateY(20px)"
           }
+        },
+        "bob-horizontal": {
+          "0%, 100%": {
+            transform: "translateX(0)"
+          },
+          "50%": {
+            transform: "translateX(8px)"
+          }
         }
       },
       animation: {
@@ -141,7 +149,8 @@ export default {
         "wiggle": "wiggle 1s ease-in-out infinite",
         "doodle-draw": "doodle-draw 2s ease-in-out",
         "rocket-float": "rocket-float 4s ease-in-out infinite",
-        "slide-down": "slide-down 2s ease-in-out infinite"
+        "slide-down": "slide-down 2s ease-in-out infinite",
+        "bob-horizontal": "bob-horizontal 1.5s ease-in-out infinite"
       },
     },
   },
