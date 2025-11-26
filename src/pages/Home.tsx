@@ -54,19 +54,20 @@ const Home = () => {
           </div>
           
           {/* Right Side - Vertical Line with Arrow */}
-          <div className="hidden md:flex flex-col items-center gap-4 min-h-[400px]">
-            <div className="flex-1 w-0.5 bg-white/30 relative flex items-center justify-center">
+          <div className="hidden md:flex flex-row items-center gap-4 min-w-[100px]">
+            <a 
+              href="#about" 
+              className="text-white font-semibold text-lg hover:text-primary transition-colors cursor-pointer uppercase tracking-wide"
+              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+            >
+              Learn More
+            </a>
+            <div className="h-[400px] w-0.5 bg-white/30 relative flex items-center justify-center">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
               <div className="px-4">
                 <img src={arrowRight} alt="Arrow" className="w-8 h-8 opacity-80" />
               </div>
             </div>
-            <a 
-              href="#about" 
-              className="text-white font-semibold text-lg hover:text-primary transition-colors cursor-pointer uppercase tracking-wide"
-            >
-              Learn More
-            </a>
           </div>
         </div>
       </section>
