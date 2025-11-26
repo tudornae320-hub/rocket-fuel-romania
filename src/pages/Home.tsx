@@ -3,8 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DictionaryTooltip } from "@/components/Tooltip";
 import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
-import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award, ArrowDown } from "lucide-react";
+import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
+import arrowRight from "@/assets/arrow-right.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Home = () => {
@@ -54,10 +55,10 @@ const Home = () => {
           
           {/* Right Side - Vertical Line with Arrow */}
           <div className="hidden md:flex flex-col items-center gap-4 min-h-[400px]">
-            <div className="flex-1 w-0.5 bg-white/30 relative">
+            <div className="flex-1 w-0.5 bg-white/30 relative flex items-center justify-center">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 animate-[slide-down_2s_ease-in-out_infinite]">
-                <ArrowDown className="w-6 h-6 text-white" />
+              <div className="px-4">
+                <img src={arrowRight} alt="Arrow" className="w-8 h-8 opacity-80" />
               </div>
             </div>
             <a 
