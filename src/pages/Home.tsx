@@ -1,42 +1,17 @@
-import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DictionaryTooltip } from "@/components/Tooltip";
 import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
-import { Rocket, Lightbulb, Users, TrendingUp, MapPin, Calendar, Coffee, Presentation, Award, ArrowDown } from "lucide-react";
+import { RocketFollower } from "@/components/RocketFollower";
+import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award, ArrowDown } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Home = () => {
-  const rocketRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (rocketRef.current) {
-        const scrollY = window.scrollY;
-        const maxScroll = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = scrollY / maxScroll;
-        
-        const xPos = scrollPercent * 80;
-        const yPos = Math.sin(scrollPercent * Math.PI * 2) * 30;
-        
-        rocketRef.current.style.transform = `translate(${xPos}vw, ${yPos}vh) rotate(${scrollPercent * 360}deg)`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen">
-      {/* Animated Rocket */}
-      <div
-        ref={rocketRef}
-        className="fixed top-20 left-0 z-40 pointer-events-none transition-transform duration-100 ease-out"
-      >
-        <Rocket className="w-12 h-12 text-primary animate-rocket-float" />
-      </div>
+      {/* Animated Rocket Follower */}
+      <RocketFollower />
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16">
