@@ -34,7 +34,7 @@ export const ScrollableMentors = () => {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+    const walk = (x - startX) * 0.5; // Slower scrolling
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -64,8 +64,8 @@ export const ScrollableMentors = () => {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div className="flex gap-6 animate-scroll-left" style={{ width: 'max-content' }}>
-          {/* Duplicate the array twice for seamless loop */}
-          {[...Array(2)].map((_, groupIndex) => (
+          {/* Duplicate the array 3 times for truly seamless infinite loop */}
+          {[...Array(3)].map((_, groupIndex) => (
             <div key={groupIndex} className="flex gap-6 shrink-0">
               {mentors.map((mentor, index) => (
                 <Card key={`${groupIndex}-${index}`} className="text-center shrink-0 w-[280px]">
