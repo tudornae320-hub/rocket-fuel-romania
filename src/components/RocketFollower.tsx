@@ -35,15 +35,10 @@ export const RocketFollower = () => {
   const stateRef = useRef({
     currentX: window.innerWidth * 0.1,
     currentY: window.innerHeight * 0.3,
-    targetX: window.innerWidth * 0.1,
-    targetY: window.innerHeight * 0.3,
-    baseMouseY: window.innerHeight * 0.3,
-    lastScrollY: 0,
-    rotation: 45,
     mouseX: window.innerWidth * 0.1,
     mouseY: window.innerHeight * 0.3,
-    lastMouseX: window.innerWidth * 0.1,
-    lastMouseY: window.innerHeight * 0.3,
+    lastScrollY: 0,
+    rotation: 45,
   });
 
   useEffect(() => {
@@ -78,39 +73,22 @@ export const RocketFollower = () => {
       const scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
       const extraScrollOffset = scrollProgress * MAX_SCROLL_DISTANCE;
 
-      // Get cursor direction
-      const cursorDeltaX = state.mouseX - state.lastMouseX;
-      const cursorDeltaY = state.mouseY - state.lastMouseY;
+      // Calculate angle from rocket to cursor
+      const deltaX = state.mouseX - state.currentX;
+      const deltaY = (state.mouseY + extraScrollOffset) - state.currentY;
+      const angleToMouse = Math.atan2(deltaY, deltaX);
       
-      // Calculate angle from cursor movement
-      const movementAngle = Math.atan2(cursorDeltaY, cursorDeltaX);
-      
-      // Position rocket behind the cursor based on movement direction
-      const offsetX = -Math.cos(movementAngle) * TRAIL_DISTANCE;
-      const offsetY = -Math.sin(movementAngle) * TRAIL_DISTANCE;
-      
-      // Set target position behind cursor
-      state.targetX = state.mouseX + offsetX;
-      state.baseMouseY = state.mouseY + offsetY;
-      
-      // Update last mouse position
-      state.lastMouseX = state.mouseX;
-      state.lastMouseY = state.mouseY;
-
-      // Calculate final target Y combining mouse and scroll
-      const finalTargetY = state.baseMouseY + extraScrollOffset;
+      // Position rocket behind the cursor at TRAIL_DISTANCE
+      const targetX = state.mouseX - Math.cos(angleToMouse) * TRAIL_DISTANCE;
+      const targetY = state.mouseY + extraScrollOffset - Math.sin(angleToMouse) * TRAIL_DISTANCE;
 
       // Ease current position toward target
-      state.currentX += (state.targetX - state.currentX) * EASING_FACTOR;
-      state.currentY += (finalTargetY - state.currentY) * EASING_FACTOR;
+      state.currentX += (targetX - state.currentX) * EASING_FACTOR;
+      state.currentY += (targetY - state.currentY) * EASING_FACTOR;
       
       // Calculate rotation to point toward the cursor
-      const deltaX = state.mouseX - state.currentX;
-      const deltaY = state.mouseY - state.currentY;
-      
-      // Calculate angle from rocket to cursor in degrees
       // Add 45 to account for the rocket icon's default orientation
-      const targetRotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI) + 45;
+      const targetRotation = angleToMouse * (180 / Math.PI) + 45;
       
       // Smooth rotation transition
       state.rotation += (targetRotation - state.rotation) * ROTATION_EASING;
