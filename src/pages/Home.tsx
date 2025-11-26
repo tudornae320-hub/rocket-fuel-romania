@@ -66,7 +66,7 @@ const Home = () => {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
               <div className="absolute left-1/2 translate-x-1 flex items-center justify-center">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" transform="rotate(90 12 12)"/>
+                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
                 </svg>
               </div>
             </div>
