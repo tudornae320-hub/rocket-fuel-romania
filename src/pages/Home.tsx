@@ -7,7 +7,7 @@ import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 import arrowRight from "@/assets/arrow-right.png";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Home = () => {
   return (
@@ -212,223 +212,226 @@ const Home = () => {
             </p>
           </div>
           
-          <Tabs defaultValue="friday" className="max-w-5xl mx-auto">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="friday">Friday</TabsTrigger>
-              <TabsTrigger value="saturday">Saturday</TabsTrigger>
-              <TabsTrigger value="sunday">Sunday</TabsTrigger>
-            </TabsList>
+          <Accordion type="single" collapsible className="max-w-5xl mx-auto">
+            <AccordionItem value="friday">
+              <AccordionTrigger className="text-2xl font-bold hover:no-underline">Friday</AccordionTrigger>
+              <AccordionContent>
+                <Card>
+                  <CardContent className="p-6 space-y-6">
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">18:00 – 18:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Registration</h4>
+                          <p className="text-muted-foreground">Welcome to Startup Weekend! Check in, grab your badge, and meet the crew. The weekend starts now.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">18:30 – 19:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Dinner & networking</h4>
+                          <p className="text-muted-foreground">Fuel up and mingle! Share ideas, chat with potential teammates, and get into the startup mindset over good food.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">19:00 – 19:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Welcome</h4>
+                          <p className="text-muted-foreground">Our Techstars facilitator will walk you through what to expect this weekend. Spoiler: it's going to be intense, fun, and unforgettable.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">19:30 – 20:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Pitches</h4>
+                          <p className="text-muted-foreground">Here's your shot! The facilitator explains the rules, then it's pitch time. You've got 60 seconds to share your idea and rally a team.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">20:00 – 20:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Vote for top pitches and form teams</h4>
+                          <p className="text-muted-foreground">Everyone votes on their favorite ideas. The top pitches move forward — and the real game begins. Join a team or recruit your own.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">20:30 – 21:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Startup Ideation Workshop</h4>
+                          <p className="text-muted-foreground">A hands-on session with Alex Dascalu (Founder Institute), designed to help aspiring entrepreneurs shape great startup ideas using expert feedback, powerful AI tools, and a proven step-by-step process.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">21:30 – Late</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Start building!</h4>
+                          <p className="text-muted-foreground">Claim your workspace, meet your new teammates, and dive into brainstorming, planning, and MVP madness.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
             
-            <TabsContent value="friday" className="space-y-4">
-              <Card>
-                <CardContent className="p-6 space-y-6">
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">18:00 – 18:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Registration</h4>
-                        <p className="text-muted-foreground">Welcome to Startup Weekend! Check in, grab your badge, and meet the crew. The weekend starts now.</p>
+            <AccordionItem value="saturday">
+              <AccordionTrigger className="text-2xl font-bold hover:no-underline">Saturday</AccordionTrigger>
+              <AccordionContent>
+                <Card>
+                  <CardContent className="p-6 space-y-6">
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">09:00 – 09:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Breakfast</h4>
+                          <p className="text-muted-foreground">Start strong with breakfast at the venue. You've got a big day ahead.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">18:30 – 19:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Dinner & networking</h4>
-                        <p className="text-muted-foreground">Fuel up and mingle! Share ideas, chat with potential teammates, and get into the startup mindset over good food.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">10:30 – 11:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Workshop: GTM Strategy</h4>
+                          <p className="text-muted-foreground">Join Alex Gavril, CEO ▲ promocrat, for a hands-on session on how to take your startup from idea to first customers. Learn how to craft a sharp go-to-market plan, validate your audience, and position your product for real traction.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">19:00 – 19:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Welcome</h4>
-                        <p className="text-muted-foreground">Our Techstars facilitator will walk you through what to expect this weekend. Spoiler: it's going to be intense, fun, and unforgettable.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">13:00 – 14:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Lunch</h4>
+                          <p className="text-muted-foreground">Take a well-earned break and recharge with some good food.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">19:30 – 20:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Pitches</h4>
-                        <p className="text-muted-foreground">Here's your shot! The facilitator explains the rules, then it's pitch time. You've got 60 seconds to share your idea and rally a team.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">14:00 – 17:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Mentoring sessions</h4>
+                          <p className="text-muted-foreground">Meet one-on-one with mentors to get feedback, ideas, and support. Ask anything — they're here to help you move faster and smarter.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">20:00 – 20:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Vote for top pitches and form teams</h4>
-                        <p className="text-muted-foreground">Everyone votes on their favorite ideas. The top pitches move forward — and the real game begins. Join a team or recruit your own.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">18:00 – 18:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Talk: The story of Planable</h4>
+                          <p className="text-muted-foreground">A behind-the-scenes look at building a startup that scaled, from early hustle to real traction, with Nicolae Gudumac (Founder & CTO)</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">20:30 – 21:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Startup Ideation Workshop</h4>
-                        <p className="text-muted-foreground">A hands-on session with Alex Dascalu (Founder Institute), designed to help aspiring entrepreneurs shape great startup ideas using expert feedback, powerful AI tools, and a proven step-by-step process.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">19:00 – 19:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Dinner</h4>
+                          <p className="text-muted-foreground">Refuel, chat with other teams, and get ready for the evening grind.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">21:30 – Late</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Start building!</h4>
-                        <p className="text-muted-foreground">Claim your workspace, meet your new teammates, and dive into brainstorming, planning, and MVP madness.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">21:00 – Late</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Night Sprint: Build, Iterate, Repeat</h4>
+                          <p className="text-muted-foreground">Check in with your team, ask for help if needed, and keep pushing forward. The venue stays open late — stay as long as your energy (or caffeine) lasts.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
             
-            <TabsContent value="saturday" className="space-y-4">
-              <Card>
-                <CardContent className="p-6 space-y-6">
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">09:00 – 09:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Breakfast</h4>
-                        <p className="text-muted-foreground">Start strong with breakfast at the venue. You've got a big day ahead.</p>
+            <AccordionItem value="sunday">
+              <AccordionTrigger className="text-2xl font-bold hover:no-underline">Sunday</AccordionTrigger>
+              <AccordionContent>
+                <Card>
+                  <CardContent className="p-6 space-y-6">
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">09:30 – 10:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Breakfast</h4>
+                          <p className="text-muted-foreground">Grab some breakfast, check in with your team, and get ready for the final sprint!</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">10:30 – 11:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Workshop: GTM Strategy</h4>
-                        <p className="text-muted-foreground">Join Alex Gavril, CEO ▲ promocrat, for a hands-on session on how to take your startup from idea to first customers. Learn how to craft a sharp go-to-market plan, validate your audience, and position your product for real traction.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">10:30 – 11:30</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Pitching Workshop</h4>
+                          <p className="text-muted-foreground">Learn how to craft a clear, compelling pitch that gets attention fast. In this hands-on session, Cosmin Pirvu from Veridion will walk you through practical frameworks for storytelling, structuring your message, and delivering it with confidence.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">13:00 – 14:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Lunch</h4>
-                        <p className="text-muted-foreground">Take a well-earned break and recharge with some good food.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">12:00 – 13:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Pitch Practice</h4>
+                          <p className="text-muted-foreground">Test your pitch in a safe space. Get feedback, tweak your story, and boost your confidence before showtime.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">14:00 – 17:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Mentoring sessions</h4>
-                        <p className="text-muted-foreground">Meet one-on-one with mentors to get feedback, ideas, and support. Ask anything — they're here to help you move faster and smarter.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">13:00 – 14:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Lunch</h4>
+                          <p className="text-muted-foreground">Fuel up one last time before the big moment.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">18:00 – 18:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Talk: The story of Planable</h4>
-                        <p className="text-muted-foreground">A behind-the-scenes look at building a startup that scaled, from early hustle to real traction, with Nicolae Gudumac (Founder & CTO)</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">14:00 – 15:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Pitch Prep & Rehearsal, Tech Check</h4>
+                          <p className="text-muted-foreground">Final polish for your slides and delivery. Make sure everything works and your team's ready to shine.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">19:00 – 19:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Dinner</h4>
-                        <p className="text-muted-foreground">Refuel, chat with other teams, and get ready for the evening grind.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">15:00 – 17:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Final presentations</h4>
+                          <p className="text-muted-foreground">Time to pitch like a pro! Each team gets 5 minutes to present their startup and 5 minutes for Q&A with the jury. Show what you've built, why it matters, and leave it all on stage.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">21:00 – Late</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Night Sprint: Build, Iterate, Repeat</h4>
-                        <p className="text-muted-foreground">Check in with your team, ask for help if needed, and keep pushing forward. The venue stays open late — stay as long as your energy (or caffeine) lasts.</p>
+                    <div>
+                      <div className="flex items-start gap-4">
+                        <div className="min-w-[100px] font-semibold text-primary">17:00 – 19:00</div>
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">Dinner, awards, wrap up and after party!</h4>
+                          <p className="text-muted-foreground">Celebrate everything you've built — the ideas, the teamwork, the late nights, and the breakthroughs. Enjoy a well-earned meal, cheer each other on, and close out an unforgettable weekend together.</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            
-            <TabsContent value="sunday" className="space-y-4">
-              <Card>
-                <CardContent className="p-6 space-y-6">
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">09:30 – 10:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Breakfast</h4>
-                        <p className="text-muted-foreground">Grab some breakfast, check in with your team, and get ready for the final sprint!</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">10:30 – 11:30</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Pitching Workshop</h4>
-                        <p className="text-muted-foreground">Learn how to craft a clear, compelling pitch that gets attention fast. In this hands-on session, Cosmin Pirvu from Veridion will walk you through practical frameworks for storytelling, structuring your message, and delivering it with confidence.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">12:00 – 13:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Pitch Practice</h4>
-                        <p className="text-muted-foreground">Test your pitch in a safe space. Get feedback, tweak your story, and boost your confidence before showtime.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">13:00 – 14:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Lunch</h4>
-                        <p className="text-muted-foreground">Fuel up one last time before the big moment.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">14:00 – 15:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Pitch Prep & Rehearsal, Tech Check</h4>
-                        <p className="text-muted-foreground">Final polish for your slides and delivery. Make sure everything works and your team's ready to shine.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">15:00 – 17:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Final presentations</h4>
-                        <p className="text-muted-foreground">Time to pitch like a pro! Each team gets 5 minutes to present their startup and 5 minutes for Q&A with the jury. Show what you've built, why it matters, and leave it all on stage.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-start gap-4">
-                      <div className="min-w-[100px] font-semibold text-primary">17:00 – 19:00</div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-2">Dinner, awards, wrap up and after party!</h4>
-                        <p className="text-muted-foreground">Celebrate everything you've built — the ideas, the teamwork, the late nights, and the breakthroughs. Enjoy a well-earned meal, cheer each other on, and close out an unforgettable weekend together.</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+                  </CardContent>
+                </Card>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
