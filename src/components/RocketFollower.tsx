@@ -3,8 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 // Configuration constants
 const EASING_FACTOR = 0.1;
 const MAX_SCROLL_DISTANCE = 600;
-const MOUSE_OFFSET_X = 15;
-const MOUSE_OFFSET_Y = -15;
+const TRAIL_DISTANCE = 60; // Distance to stay behind cursor
 const SCROLL_TIMEOUT = 200;
 const ROTATION_EASING = 0.15;
 
@@ -41,15 +40,17 @@ export const RocketFollower = () => {
     baseMouseY: window.innerHeight * 0.3,
     lastScrollY: 0,
     rotation: 45,
-    prevX: window.innerWidth * 0.1,
-    prevY: window.innerHeight * 0.3,
+    mouseX: window.innerWidth * 0.1,
+    mouseY: window.innerHeight * 0.3,
+    lastMouseX: window.innerWidth * 0.1,
+    lastMouseY: window.innerHeight * 0.3,
   });
 
   useEffect(() => {
     // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
-      stateRef.current.targetX = e.clientX + MOUSE_OFFSET_X;
-      stateRef.current.baseMouseY = e.clientY + MOUSE_OFFSET_Y;
+      stateRef.current.mouseX = e.clientX;
+      stateRef.current.mouseY = e.clientY;
     };
 
     // Scroll handler
@@ -77,6 +78,25 @@ export const RocketFollower = () => {
       const scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
       const extraScrollOffset = scrollProgress * MAX_SCROLL_DISTANCE;
 
+      // Get cursor direction
+      const cursorDeltaX = state.mouseX - state.lastMouseX;
+      const cursorDeltaY = state.mouseY - state.lastMouseY;
+      
+      // Calculate angle from cursor movement
+      const movementAngle = Math.atan2(cursorDeltaY, cursorDeltaX);
+      
+      // Position rocket behind the cursor based on movement direction
+      const offsetX = -Math.cos(movementAngle) * TRAIL_DISTANCE;
+      const offsetY = -Math.sin(movementAngle) * TRAIL_DISTANCE;
+      
+      // Set target position behind cursor
+      state.targetX = state.mouseX + offsetX;
+      state.baseMouseY = state.mouseY + offsetY;
+      
+      // Update last mouse position
+      state.lastMouseX = state.mouseX;
+      state.lastMouseY = state.mouseY;
+
       // Calculate final target Y combining mouse and scroll
       const finalTargetY = state.baseMouseY + extraScrollOffset;
 
@@ -84,9 +104,9 @@ export const RocketFollower = () => {
       state.currentX += (state.targetX - state.currentX) * EASING_FACTOR;
       state.currentY += (finalTargetY - state.currentY) * EASING_FACTOR;
       
-      // Calculate rotation to point toward the target (cursor)
-      const deltaX = state.targetX - state.currentX;
-      const deltaY = finalTargetY - state.currentY;
+      // Calculate rotation to point toward the cursor
+      const deltaX = state.mouseX - state.currentX;
+      const deltaY = state.mouseY - state.currentY;
       
       // Calculate angle from rocket to cursor in degrees
       // Add 45 to account for the rocket icon's default orientation
