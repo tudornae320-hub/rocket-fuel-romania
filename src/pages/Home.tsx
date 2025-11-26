@@ -64,8 +64,13 @@ const Home = () => {
             </a>
             <div className="h-[400px] w-0.5 bg-white/30 relative flex items-center justify-center">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
-              <div className="px-4">
-                <img src={arrowRight} alt="Arrow" className="w-8 h-8 opacity-80" />
+              <div className="absolute left-1/2 -translate-x-1/2 bg-white/10 p-3 rounded">
+                <img 
+                  src={arrowRight} 
+                  alt="Arrow" 
+                  className="w-6 h-6 brightness-0 invert"
+                  style={{ transform: 'rotate(90deg)' }}
+                />
               </div>
             </div>
           </div>
