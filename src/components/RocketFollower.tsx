@@ -43,6 +43,8 @@ export const RocketFollower = () => {
     mouseY: window.innerHeight * 0.3,
     rotation: 45,
     lastMouseMoveTime: Date.now(),
+    stolenTargetX: 0,
+    stolenTargetY: 0,
   });
 
   useEffect(() => {
@@ -64,6 +66,11 @@ export const RocketFollower = () => {
       
       // Set new idle timeout
       idleTimeoutRef.current = window.setTimeout(() => {
+        // Generate random position on screen
+        const randomX = Math.random() * (window.innerWidth - 100) + 50;
+        const randomY = Math.random() * (window.innerHeight - 100) + 50;
+        stateRef.current.stolenTargetX = randomX;
+        stateRef.current.stolenTargetY = randomY;
         setIsStealingCursor(true);
       }, IDLE_TIMEOUT);
     };
@@ -87,9 +94,19 @@ export const RocketFollower = () => {
     const animate = () => {
       const state = stateRef.current;
 
-      // Calculate angle from rocket current position to cursor
-      const deltaX = state.mouseX - state.currentX;
-      const deltaY = state.mouseY - state.currentY;
+      // Determine target position based on stealing state
+      let targetMouseX = state.mouseX;
+      let targetMouseY = state.mouseY;
+      
+      if (isStealingCursor) {
+        // When stealing, target the random stolen position
+        targetMouseX = state.stolenTargetX;
+        targetMouseY = state.stolenTargetY;
+      }
+
+      // Calculate angle from rocket current position to target
+      const deltaX = targetMouseX - state.currentX;
+      const deltaY = targetMouseY - state.currentY;
       const angleToMouse = Math.atan2(deltaY, deltaX);
       const distanceToCursor = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
       
@@ -100,9 +117,9 @@ export const RocketFollower = () => {
       // Calculate target position: stay behind cursor at TRAIL_DISTANCE (unless stealing)
       let targetX, targetY;
       if (isStealingCursor) {
-        // Move directly to cursor when stealing
-        targetX = state.mouseX;
-        targetY = state.mouseY;
+        // Move directly to stolen target when stealing
+        targetX = targetMouseX;
+        targetY = targetMouseY;
       } else {
         // Normal behavior - stay behind cursor
         targetX = state.mouseX - Math.cos(angleToMouse) * TRAIL_DISTANCE;
@@ -113,9 +130,9 @@ export const RocketFollower = () => {
       state.currentX += (targetX - state.currentX) * currentEasing;
       state.currentY += (targetY - state.currentY) * currentEasing;
       
-      // Calculate rotation to point toward the cursor (add 45 for icon orientation)
-      const finalDeltaX = state.mouseX - state.currentX;
-      const finalDeltaY = state.mouseY - state.currentY;
+      // Calculate rotation to point toward the target
+      const finalDeltaX = targetMouseX - state.currentX;
+      const finalDeltaY = targetMouseY - state.currentY;
       const targetRotation = Math.atan2(finalDeltaY, finalDeltaX) * (180 / Math.PI) + 45;
       
       // Smooth rotation transition
@@ -135,6 +152,11 @@ export const RocketFollower = () => {
 
     // Start idle timer
     idleTimeoutRef.current = window.setTimeout(() => {
+      // Generate random position on screen
+      const randomX = Math.random() * (window.innerWidth - 100) + 50;
+      const randomY = Math.random() * (window.innerHeight - 100) + 50;
+      stateRef.current.stolenTargetX = randomX;
+      stateRef.current.stolenTargetY = randomY;
       setIsStealingCursor(true);
     }, IDLE_TIMEOUT);
 
