@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DictionaryTooltip } from "@/components/Tooltip";
 import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
+import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 import arrowRight from "@/assets/arrow-right.png";
@@ -172,47 +173,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="relative">
-            {/* Left gradient fade */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            
-            {/* Right gradient fade */}
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-            
-            <div className="overflow-x-auto scrollbar-hide mb-16 cursor-grab active:cursor-grabbing" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              <div className="flex animate-scroll-left hover:[animation-play-state:paused]" style={{ width: 'max-content' }}>
-                {/* Duplicate the array twice for seamless loop */}
-                {[...Array(2)].map((_, groupIndex) => (
-                  <div key={groupIndex} className="flex gap-6 shrink-0">
-                    {[
-                      { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable" },
-                      { name: "Bogdan Iordache", role: "GP", company: "Underline VC" },
-                      { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender" },
-                      { name: "Alex Gavril", role: "CEO", company: "▲ promocrat" },
-                      { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE" },
-                      { name: "Alexandru Anghel", role: "Co-founder", company: "Solo" },
-                      { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL" },
-                      { name: "AnaMaria Onică", role: "CEO", company: "VOXivers" },
-                      { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion" },
-                      { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers" },
-                      { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion" },
-                      { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai" },
-                      { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier" },
-                    ].map((mentor, index) => (
-                      <Card key={`${groupIndex}-${index}`} className="text-center shrink-0 w-[280px]">
-                        <CardContent className="p-6">
-                          <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4" />
-                          <h3 className="font-bold text-lg mb-1">{mentor.name}</h3>
-                          <p className="text-sm text-muted-foreground">{mentor.role}</p>
-                          <p className="text-sm font-medium text-primary">{mentor.company}</p>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ScrollableMentors />
 
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold mb-8">Jury</h3>

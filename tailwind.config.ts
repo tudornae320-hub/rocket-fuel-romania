@@ -159,7 +159,7 @@ export default {
         "rocket-float": "rocket-float 4s ease-in-out infinite",
         "slide-down": "slide-down 2s ease-in-out infinite",
         "bob-horizontal": "bob-horizontal 1.5s ease-in-out infinite",
-        "scroll-left": "scroll-left 40s linear infinite"
+        "scroll-left": "scroll-left 60s linear infinite"
       },
     },
   },
