@@ -172,31 +172,38 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
-            {[
-              { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable" },
-              { name: "Bogdan Iordache", role: "GP", company: "Underline VC" },
-              { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender" },
-              { name: "Alex Gavril", role: "CEO", company: "▲ promocrat" },
-              { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE" },
-              { name: "Alexandru Anghel", role: "Co-founder", company: "Solo" },
-              { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL" },
-              { name: "AnaMaria Onică", role: "CEO", company: "VOXivers" },
-              { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion" },
-              { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers" },
-              { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion" },
-              { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai" },
-              { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier" },
-            ].map((mentor, index) => (
-              <Card key={index} className="hover-lift text-center">
-                <CardContent className="p-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4" />
-                  <h3 className="font-bold text-lg mb-1">{mentor.name}</h3>
-                  <p className="text-sm text-muted-foreground">{mentor.role}</p>
-                  <p className="text-sm font-medium text-primary">{mentor.company}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="overflow-hidden mb-16">
+            <div className="flex animate-scroll-left">
+              {/* Duplicate the array twice for seamless loop */}
+              {[...Array(2)].map((_, groupIndex) => (
+                <div key={groupIndex} className="flex gap-6 shrink-0">
+                  {[
+                    { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable" },
+                    { name: "Bogdan Iordache", role: "GP", company: "Underline VC" },
+                    { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender" },
+                    { name: "Alex Gavril", role: "CEO", company: "▲ promocrat" },
+                    { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE" },
+                    { name: "Alexandru Anghel", role: "Co-founder", company: "Solo" },
+                    { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL" },
+                    { name: "AnaMaria Onică", role: "CEO", company: "VOXivers" },
+                    { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion" },
+                    { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers" },
+                    { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion" },
+                    { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai" },
+                    { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier" },
+                  ].map((mentor, index) => (
+                    <Card key={`${groupIndex}-${index}`} className="text-center shrink-0 w-[280px]">
+                      <CardContent className="p-6">
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-4" />
+                        <h3 className="font-bold text-lg mb-1">{mentor.name}</h3>
+                        <p className="text-sm text-muted-foreground">{mentor.role}</p>
+                        <p className="text-sm font-medium text-primary">{mentor.company}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="text-center mb-8">
