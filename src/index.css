@@ -134,4 +134,74 @@ All colors MUST be HSL.
     @apply bg-clip-text text-transparent;
     background: var(--gradient-primary);
   }
+
+  /* Rocket Animation Styles */
+  .rocket-container {
+    position: relative;
+    width: 48px;
+    height: 48px;
+  }
+
+  .rocket-body {
+    width: 48px;
+    height: 48px;
+    color: hsl(var(--primary));
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.4));
+  }
+
+  .rocket-flame {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 20px;
+    background: linear-gradient(to bottom, #ff6b35, #f7931e);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .rocket--active .rocket-body {
+    animation: rocket-shake 0.15s ease-in-out infinite;
+  }
+
+  .rocket--active .rocket-flame {
+    opacity: 1;
+    animation: flame-flicker 0.12s ease-in-out infinite;
+  }
+
+  @keyframes rocket-shake {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-2px, 1px);
+    }
+    50% {
+      transform: translate(2px, -1px);
+    }
+    75% {
+      transform: translate(-1px, 2px);
+    }
+  }
+
+  @keyframes flame-flicker {
+    0%, 100% {
+      transform: translateX(-50%) scale(1) translateY(0);
+      opacity: 1;
+    }
+    25% {
+      transform: translateX(-50%) scale(0.9, 1.1) translateY(2px);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateX(-50%) scale(1.1, 0.9) translateY(-2px);
+      opacity: 1;
+    }
+    75% {
+      transform: translateX(-50%) scale(0.95, 1.05) translateY(1px);
+      opacity: 0.9;
+    }
+  }
 }
