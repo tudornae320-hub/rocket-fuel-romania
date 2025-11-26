@@ -63,7 +63,7 @@ export const ScrollableMentors = () => {
         className="overflow-x-auto scrollbar-hide mb-16 cursor-grab active:cursor-grabbing select-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div className="flex animate-scroll-left hover:[animation-play-state:paused]" style={{ width: 'max-content' }}>
+        <div className="flex gap-6 animate-scroll-left" style={{ width: 'max-content' }}>
           {/* Duplicate the array twice for seamless loop */}
           {[...Array(2)].map((_, groupIndex) => (
             <div key={groupIndex} className="flex gap-6 shrink-0">
