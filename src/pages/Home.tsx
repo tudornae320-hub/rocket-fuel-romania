@@ -63,7 +63,7 @@ const Home = () => {
               Learn More
             </a>
             <div className="h-[400px] w-1 bg-white/30 relative flex items-center justify-center">
-              <div className="absolute left-1/2 translate-x-1 flex items-center justify-center animate-[bounce_2s_ease-in-out_infinite]">
+              <div className="absolute left-1/2 translate-x-1 flex items-center justify-center animate-bob-horizontal">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
                 </svg>
