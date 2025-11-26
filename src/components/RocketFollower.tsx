@@ -148,8 +148,8 @@ export const RocketFollower = () => {
       <div className="rocket-container">
         <div className="rocket-body">
           <RocketIcon />
+          <div className="rocket-flame" />
         </div>
-        <div className="rocket-flame" style={{ transform: `translateX(-50%) rotate(${-stateRef.current.rotation}deg)` }} />
       </div>
     </div>
   );

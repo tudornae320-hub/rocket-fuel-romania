@@ -143,6 +143,7 @@ All colors MUST be HSL.
   }
 
   .rocket-body {
+    position: relative;
     width: 48px;
     height: 48px;
     color: hsl(var(--primary));
@@ -154,16 +155,16 @@ All colors MUST be HSL.
 
   .rocket-flame {
     position: absolute;
-    bottom: -16px;
+    bottom: -18px;
     left: 50%;
+    transform: translateX(-50%);
     width: 18px;
-    height: 24px;
-    background: linear-gradient(to bottom, #ff6b35, #f7931e, transparent);
+    height: 26px;
+    background: linear-gradient(to bottom, #ff6b35 0%, #f7931e 50%, #ff6b35 70%, transparent 100%);
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
     opacity: 0;
     transition: opacity 0.2s ease-out;
-    filter: blur(1px);
-    transform-origin: center top;
+    filter: blur(1.5px);
   }
 
   .rocket--active .rocket-body {
@@ -193,11 +194,11 @@ All colors MUST be HSL.
   @keyframes flame-flicker {
     0%, 100% {
       opacity: 1;
-      height: 24px;
+      transform: translateX(-50%) scaleY(1);
     }
     50% {
       opacity: 0.85;
-      height: 20px;
+      transform: translateX(-50%) scaleY(0.85);
     }
   }
 }
