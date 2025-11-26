@@ -154,9 +154,8 @@ All colors MUST be HSL.
 
   .rocket-flame {
     position: absolute;
-    bottom: -12px;
+    bottom: -16px;
     left: 50%;
-    transform: translateX(-50%);
     width: 18px;
     height: 24px;
     background: linear-gradient(to bottom, #ff6b35, #f7931e, transparent);
@@ -164,11 +163,16 @@ All colors MUST be HSL.
     opacity: 0;
     transition: opacity 0.2s ease-out;
     filter: blur(1px);
+    transform-origin: center top;
+  }
+
+  .rocket--active .rocket-body {
+    animation: rocket-shake 0.2s ease-in-out infinite;
   }
 
   .rocket--active .rocket-flame {
     opacity: 1;
-    animation: flame-flicker 0.12s ease-in-out infinite;
+    animation: flame-flicker 0.15s ease-in-out infinite;
   }
 
   @keyframes rocket-shake {
@@ -176,32 +180,24 @@ All colors MUST be HSL.
       transform: translate(0, 0);
     }
     25% {
-      transform: translate(-2px, 1px);
+      transform: translate(-1px, 0.5px);
     }
     50% {
-      transform: translate(2px, -1px);
+      transform: translate(1px, -0.5px);
     }
     75% {
-      transform: translate(-1px, 2px);
+      transform: translate(-0.5px, 1px);
     }
   }
 
   @keyframes flame-flicker {
     0%, 100% {
-      transform: translateX(-50%) scale(1) translateY(0);
       opacity: 1;
-    }
-    25% {
-      transform: translateX(-50%) scale(0.9, 1.1) translateY(2px);
-      opacity: 0.8;
+      height: 24px;
     }
     50% {
-      transform: translateX(-50%) scale(1.1, 0.9) translateY(-2px);
-      opacity: 1;
-    }
-    75% {
-      transform: translateX(-50%) scale(0.95, 1.05) translateY(1px);
-      opacity: 0.9;
+      opacity: 0.85;
+      height: 20px;
     }
   }
 }
