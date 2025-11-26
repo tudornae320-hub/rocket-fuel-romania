@@ -80,24 +80,20 @@ export const RocketFollower = () => {
       // Calculate final target Y combining mouse and scroll
       const finalTargetY = state.baseMouseY + extraScrollOffset;
 
-      // Store previous position for rotation calculation
-      const oldX = state.currentX;
-      const oldY = state.currentY;
-
       // Ease current position toward target
       state.currentX += (state.targetX - state.currentX) * EASING_FACTOR;
       state.currentY += (finalTargetY - state.currentY) * EASING_FACTOR;
       
-      // Calculate rotation based on direction of movement
-      const deltaX = state.currentX - oldX;
-      const deltaY = state.currentY - oldY;
+      // Calculate rotation to point toward the target (cursor)
+      const deltaX = state.targetX - state.currentX;
+      const deltaY = finalTargetY - state.currentY;
       
-      // Only update rotation if there's significant movement
-      if (Math.abs(deltaX) > 0.1 || Math.abs(deltaY) > 0.1) {
-        // Calculate angle in degrees (0 degrees = pointing right, 90 = down)
-        const targetRotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI) + 45;
-        state.rotation += (targetRotation - state.rotation) * ROTATION_EASING;
-      }
+      // Calculate angle from rocket to cursor in degrees
+      // Add 45 to account for the rocket icon's default orientation
+      const targetRotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI) + 45;
+      
+      // Smooth rotation transition
+      state.rotation += (targetRotation - state.rotation) * ROTATION_EASING;
 
       // Clamp positions to keep rocket mostly in viewport
       const clampedX = Math.max(-50, Math.min(window.innerWidth + 50, state.currentX));
