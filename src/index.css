@@ -147,23 +147,23 @@ All colors MUST be HSL.
     height: 48px;
     color: hsl(var(--primary));
     filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .rocket-flame {
     position: absolute;
-    bottom: -8px;
+    bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 16px;
-    height: 20px;
-    background: linear-gradient(to bottom, #ff6b35, #f7931e);
+    width: 18px;
+    height: 24px;
+    background: linear-gradient(to bottom, #ff6b35, #f7931e, transparent);
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
     opacity: 0;
     transition: opacity 0.2s ease-out;
-  }
-
-  .rocket--active .rocket-body {
-    animation: rocket-shake 0.15s ease-in-out infinite;
+    filter: blur(1px);
   }
 
   .rocket--active .rocket-flame {

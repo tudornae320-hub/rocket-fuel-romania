@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Rocket } from 'lucide-react';
 
 // Configuration constants
 const EASING_FACTOR = 0.1;
@@ -7,6 +6,26 @@ const MAX_SCROLL_DISTANCE = 600;
 const MOUSE_OFFSET_X = 40;
 const MOUSE_OFFSET_Y = -40;
 const SCROLL_TIMEOUT = 200;
+const ROTATION_EASING = 0.15;
+
+// Custom Rocket SVG without flame
+const RocketIcon = () => (
+  <svg
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  </svg>
+);
 
 export const RocketFollower = () => {
   const rocketWrapperRef = useRef<HTMLDivElement>(null);
@@ -22,8 +41,9 @@ export const RocketFollower = () => {
     targetY: window.innerHeight * 0.3,
     baseMouseY: window.innerHeight * 0.3,
     lastScrollY: 0,
-    rotation: 0,
-    targetRotation: 0,
+    rotation: 45,
+    prevX: window.innerWidth * 0.1,
+    prevY: window.innerHeight * 0.3,
   });
 
   useEffect(() => {
@@ -37,14 +57,7 @@ export const RocketFollower = () => {
     const handleScroll = () => {
       setIsScrolling(true);
       
-      // Detect scroll direction
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > stateRef.current.lastScrollY) {
-        stateRef.current.targetRotation = -12;
-      } else {
-        stateRef.current.targetRotation = 0;
-      }
-      stateRef.current.lastScrollY = currentScrollY;
+      stateRef.current.lastScrollY = window.scrollY;
 
       // Clear existing timeout
       if (scrollTimeoutRef.current) {
@@ -54,7 +67,6 @@ export const RocketFollower = () => {
       // Set timeout to stop scrolling state
       scrollTimeoutRef.current = window.setTimeout(() => {
         setIsScrolling(false);
-        stateRef.current.targetRotation = 0;
       }, SCROLL_TIMEOUT);
     };
 
@@ -69,12 +81,24 @@ export const RocketFollower = () => {
       // Calculate final target Y combining mouse and scroll
       const finalTargetY = state.baseMouseY + extraScrollOffset;
 
+      // Store previous position for rotation calculation
+      const oldX = state.currentX;
+      const oldY = state.currentY;
+
       // Ease current position toward target
       state.currentX += (state.targetX - state.currentX) * EASING_FACTOR;
       state.currentY += (finalTargetY - state.currentY) * EASING_FACTOR;
       
-      // Ease rotation
-      state.rotation += (state.targetRotation - state.rotation) * EASING_FACTOR;
+      // Calculate rotation based on direction of movement
+      const deltaX = state.currentX - oldX;
+      const deltaY = state.currentY - oldY;
+      
+      // Only update rotation if there's significant movement
+      if (Math.abs(deltaX) > 0.1 || Math.abs(deltaY) > 0.1) {
+        // Calculate angle in degrees (0 degrees = pointing right, 90 = down)
+        const targetRotation = Math.atan2(deltaY, deltaX) * (180 / Math.PI) + 45;
+        state.rotation += (targetRotation - state.rotation) * ROTATION_EASING;
+      }
 
       // Clamp positions to keep rocket mostly in viewport
       const clampedX = Math.max(-50, Math.min(window.innerWidth + 50, state.currentX));
@@ -123,7 +147,9 @@ export const RocketFollower = () => {
       }}
     >
       <div className="rocket-container">
-        <Rocket className="rocket-body" />
+        <div className="rocket-body">
+          <RocketIcon />
+        </div>
         <div className="rocket-flame" />
       </div>
     </div>
