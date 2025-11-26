@@ -64,13 +64,10 @@ const Home = () => {
             </a>
             <div className="h-[400px] w-0.5 bg-white/30 relative flex items-center justify-center">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
-              <div className="absolute left-1/2 -translate-x-1/2 bg-white/10 p-3 rounded">
-                <img 
-                  src={arrowRight} 
-                  alt="Arrow" 
-                  className="w-6 h-6 brightness-0 invert"
-                  style={{ transform: 'rotate(90deg)' }}
-                />
+              <div className="absolute left-1/2 translate-x-1 flex items-center justify-center">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" transform="rotate(90 12 12)"/>
+                </svg>
               </div>
             </div>
           </div>
