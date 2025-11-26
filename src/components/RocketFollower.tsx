@@ -7,7 +7,8 @@ const MAX_DISTANCE_FROM_CURSOR = 150; // Max distance before snapping back
 const SCROLL_TIMEOUT = 200;
 const ROTATION_EASING = 0.15;
 const IDLE_TIMEOUT = 5000; // 5 seconds
-const STEAL_SPEED = 0.3; // Faster movement when stealing cursor
+const STEAL_INTERVAL = 5000; // Steal every 5 seconds
+const STEAL_SPEED = 0.05; // Slower movement when stealing cursor
 
 // Custom Rocket SVG without flame
 const RocketIcon = () => (
@@ -32,6 +33,7 @@ export const RocketFollower = () => {
   const animationFrameRef = useRef<number>();
   const scrollTimeoutRef = useRef<number>();
   const idleTimeoutRef = useRef<number>();
+  const stealIntervalRef = useRef<number>();
   
   // State
   const [isScrolling, setIsScrolling] = useState(false);
@@ -48,6 +50,13 @@ export const RocketFollower = () => {
   });
 
   useEffect(() => {
+    const generateRandomTarget = () => {
+      const randomX = Math.random() * (window.innerWidth - 100) + 50;
+      const randomY = Math.random() * (window.innerHeight - 100) + 50;
+      stateRef.current.stolenTargetX = randomX;
+      stateRef.current.stolenTargetY = randomY;
+    };
+
     // Mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
       stateRef.current.mouseX = e.clientX;
@@ -59,19 +68,23 @@ export const RocketFollower = () => {
         setIsStealingCursor(false);
       }
       
-      // Reset idle timeout
+      // Clear timeouts and intervals
       if (idleTimeoutRef.current) {
         window.clearTimeout(idleTimeoutRef.current);
+      }
+      if (stealIntervalRef.current) {
+        window.clearInterval(stealIntervalRef.current);
       }
       
       // Set new idle timeout
       idleTimeoutRef.current = window.setTimeout(() => {
-        // Generate random position on screen
-        const randomX = Math.random() * (window.innerWidth - 100) + 50;
-        const randomY = Math.random() * (window.innerHeight - 100) + 50;
-        stateRef.current.stolenTargetX = randomX;
-        stateRef.current.stolenTargetY = randomY;
+        generateRandomTarget();
         setIsStealingCursor(true);
+        
+        // Start continuous stealing every 5 seconds
+        stealIntervalRef.current = window.setInterval(() => {
+          generateRandomTarget();
+        }, STEAL_INTERVAL);
       }, IDLE_TIMEOUT);
     };
 
@@ -152,12 +165,13 @@ export const RocketFollower = () => {
 
     // Start idle timer
     idleTimeoutRef.current = window.setTimeout(() => {
-      // Generate random position on screen
-      const randomX = Math.random() * (window.innerWidth - 100) + 50;
-      const randomY = Math.random() * (window.innerHeight - 100) + 50;
-      stateRef.current.stolenTargetX = randomX;
-      stateRef.current.stolenTargetY = randomY;
+      generateRandomTarget();
       setIsStealingCursor(true);
+      
+      // Start continuous stealing every 5 seconds
+      stealIntervalRef.current = window.setInterval(() => {
+        generateRandomTarget();
+      }, STEAL_INTERVAL);
     }, IDLE_TIMEOUT);
 
     // Add event listeners
@@ -175,6 +189,9 @@ export const RocketFollower = () => {
       if (idleTimeoutRef.current) {
         window.clearTimeout(idleTimeoutRef.current);
       }
+      if (stealIntervalRef.current) {
+        window.clearInterval(stealIntervalRef.current);
+      }
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
@@ -183,7 +200,7 @@ export const RocketFollower = () => {
   return (
     <div
       ref={rocketWrapperRef}
-      className={`rocket-wrapper ${isScrolling ? 'rocket--active' : ''}`}
+      className={`rocket-wrapper ${isScrolling || isStealingCursor ? 'rocket--active' : ''}`}
       style={{
         position: 'fixed',
         top: 0,
