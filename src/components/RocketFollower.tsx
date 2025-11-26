@@ -73,34 +73,34 @@ export const RocketFollower = () => {
       const scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
       const extraScrollOffset = scrollProgress * MAX_SCROLL_DISTANCE;
 
-      // Calculate angle from rocket to cursor
+      // Add scroll offset to mouse Y position
+      const adjustedMouseY = state.mouseY + extraScrollOffset;
+
+      // Calculate angle from rocket current position to cursor
       const deltaX = state.mouseX - state.currentX;
-      const deltaY = (state.mouseY + extraScrollOffset) - state.currentY;
+      const deltaY = adjustedMouseY - state.currentY;
       const angleToMouse = Math.atan2(deltaY, deltaX);
       
-      // Position rocket behind the cursor at TRAIL_DISTANCE
+      // Calculate target position: stay behind cursor at TRAIL_DISTANCE
       const targetX = state.mouseX - Math.cos(angleToMouse) * TRAIL_DISTANCE;
-      const targetY = state.mouseY + extraScrollOffset - Math.sin(angleToMouse) * TRAIL_DISTANCE;
+      const targetY = adjustedMouseY - Math.sin(angleToMouse) * TRAIL_DISTANCE;
 
       // Ease current position toward target
       state.currentX += (targetX - state.currentX) * EASING_FACTOR;
       state.currentY += (targetY - state.currentY) * EASING_FACTOR;
       
-      // Calculate rotation to point toward the cursor
-      // Add 45 to account for the rocket icon's default orientation
-      const targetRotation = angleToMouse * (180 / Math.PI) + 45;
+      // Calculate rotation to point toward the cursor (add 45 for icon orientation)
+      const finalDeltaX = state.mouseX - state.currentX;
+      const finalDeltaY = adjustedMouseY - state.currentY;
+      const targetRotation = Math.atan2(finalDeltaY, finalDeltaX) * (180 / Math.PI) + 45;
       
       // Smooth rotation transition
       state.rotation += (targetRotation - state.rotation) * ROTATION_EASING;
 
-      // Clamp positions to keep rocket mostly in viewport
-      const clampedX = Math.max(-50, Math.min(window.innerWidth + 50, state.currentX));
-      const clampedY = Math.max(-50, Math.min(window.innerHeight + 100, state.currentY));
-
-      // Apply transform
+      // Apply transform (no clamping to allow full movement)
       if (rocketWrapperRef.current) {
         rocketWrapperRef.current.style.transform = 
-          `translate3d(${clampedX}px, ${clampedY}px, 0) rotate(${state.rotation}deg)`;
+          `translate3d(${state.currentX}px, ${state.currentY}px, 0) rotate(${state.rotation}deg)`;
       }
 
       animationFrameRef.current = requestAnimationFrame(animate);
