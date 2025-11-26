@@ -22,28 +22,79 @@ export const ScrollableMentors = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const velocityRef = useRef(0);
+  const lastXRef = useRef(0);
+  const lastTimeRef = useRef(0);
+  const momentumRef = useRef<number>();
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
     setIsDragging(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
+    lastXRef.current = e.pageX;
+    lastTimeRef.current = Date.now();
+    velocityRef.current = 0;
+    
+    // Cancel any ongoing momentum
+    if (momentumRef.current) {
+      cancelAnimationFrame(momentumRef.current);
+    }
   };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
+    
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 0.5; // Slower scrolling
+    const walk = (x - startX) * 0.5;
     scrollRef.current.scrollLeft = scrollLeft - walk;
+    
+    // Calculate velocity
+    const now = Date.now();
+    const timeDiff = now - lastTimeRef.current;
+    if (timeDiff > 0) {
+      const distance = e.pageX - lastXRef.current;
+      velocityRef.current = distance / timeDiff * 16; // Scale to 60fps
+    }
+    
+    lastXRef.current = e.pageX;
+    lastTimeRef.current = now;
+  };
+
+  const applyMomentum = () => {
+    if (!scrollRef.current) return;
+    
+    // Apply velocity to scroll position
+    scrollRef.current.scrollLeft -= velocityRef.current;
+    
+    // Apply friction (deceleration)
+    velocityRef.current *= 0.95;
+    
+    // Continue momentum if velocity is significant
+    if (Math.abs(velocityRef.current) > 0.5) {
+      momentumRef.current = requestAnimationFrame(applyMomentum);
+    }
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    
+    // Start momentum animation if there's significant velocity
+    if (Math.abs(velocityRef.current) > 1) {
+      applyMomentum();
+    }
   };
 
   const handleMouseLeave = () => {
-    setIsDragging(false);
+    if (isDragging) {
+      setIsDragging(false);
+      
+      // Start momentum animation if there's significant velocity
+      if (Math.abs(velocityRef.current) > 1) {
+        applyMomentum();
+      }
+    }
   };
 
   return (
