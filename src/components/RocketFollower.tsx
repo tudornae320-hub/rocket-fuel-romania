@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 // Configuration constants
 const EASING_FACTOR = 0.1;
-const MAX_SCROLL_DISTANCE = 600;
 const TRAIL_DISTANCE = 60; // Distance to stay behind cursor
+const MAX_DISTANCE_FROM_CURSOR = 150; // Max distance before snapping back
 const SCROLL_TIMEOUT = 200;
 const ROTATION_EASING = 0.15;
+const IDLE_TIMEOUT = 5000; // 5 seconds
+const STEAL_SPEED = 0.3; // Faster movement when stealing cursor
 
 // Custom Rocket SVG without flame
 const RocketIcon = () => (
@@ -29,16 +31,18 @@ export const RocketFollower = () => {
   const rocketWrapperRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
   const scrollTimeoutRef = useRef<number>();
+  const idleTimeoutRef = useRef<number>();
   
   // State
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isStealingCursor, setIsStealingCursor] = useState(false);
   const stateRef = useRef({
     currentX: window.innerWidth * 0.1,
     currentY: window.innerHeight * 0.3,
     mouseX: window.innerWidth * 0.1,
     mouseY: window.innerHeight * 0.3,
-    lastScrollY: 0,
     rotation: 45,
+    lastMouseMoveTime: Date.now(),
   });
 
   useEffect(() => {
@@ -46,13 +50,27 @@ export const RocketFollower = () => {
     const handleMouseMove = (e: MouseEvent) => {
       stateRef.current.mouseX = e.clientX;
       stateRef.current.mouseY = e.clientY;
+      stateRef.current.lastMouseMoveTime = Date.now();
+      
+      // Reset idle state when mouse moves
+      if (isStealingCursor) {
+        setIsStealingCursor(false);
+      }
+      
+      // Reset idle timeout
+      if (idleTimeoutRef.current) {
+        window.clearTimeout(idleTimeoutRef.current);
+      }
+      
+      // Set new idle timeout
+      idleTimeoutRef.current = window.setTimeout(() => {
+        setIsStealingCursor(true);
+      }, IDLE_TIMEOUT);
     };
 
     // Scroll handler
     const handleScroll = () => {
       setIsScrolling(true);
-      
-      stateRef.current.lastScrollY = window.scrollY;
 
       // Clear existing timeout
       if (scrollTimeoutRef.current) {
@@ -69,35 +87,41 @@ export const RocketFollower = () => {
     const animate = () => {
       const state = stateRef.current;
 
-      // Calculate scroll progress and extra offset
-      const scrollProgress = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      const extraScrollOffset = scrollProgress * MAX_SCROLL_DISTANCE;
-
-      // Add scroll offset to mouse Y position
-      const adjustedMouseY = state.mouseY + extraScrollOffset;
-
       // Calculate angle from rocket current position to cursor
       const deltaX = state.mouseX - state.currentX;
-      const deltaY = adjustedMouseY - state.currentY;
+      const deltaY = state.mouseY - state.currentY;
       const angleToMouse = Math.atan2(deltaY, deltaX);
+      const distanceToCursor = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
       
-      // Calculate target position: stay behind cursor at TRAIL_DISTANCE
-      const targetX = state.mouseX - Math.cos(angleToMouse) * TRAIL_DISTANCE;
-      const targetY = adjustedMouseY - Math.sin(angleToMouse) * TRAIL_DISTANCE;
+      // Determine if rocket should snap back to cursor
+      const shouldSnapBack = distanceToCursor > MAX_DISTANCE_FROM_CURSOR || isStealingCursor;
+      const currentEasing = shouldSnapBack || isStealingCursor ? STEAL_SPEED : EASING_FACTOR;
+      
+      // Calculate target position: stay behind cursor at TRAIL_DISTANCE (unless stealing)
+      let targetX, targetY;
+      if (isStealingCursor) {
+        // Move directly to cursor when stealing
+        targetX = state.mouseX;
+        targetY = state.mouseY;
+      } else {
+        // Normal behavior - stay behind cursor
+        targetX = state.mouseX - Math.cos(angleToMouse) * TRAIL_DISTANCE;
+        targetY = state.mouseY - Math.sin(angleToMouse) * TRAIL_DISTANCE;
+      }
 
       // Ease current position toward target
-      state.currentX += (targetX - state.currentX) * EASING_FACTOR;
-      state.currentY += (targetY - state.currentY) * EASING_FACTOR;
+      state.currentX += (targetX - state.currentX) * currentEasing;
+      state.currentY += (targetY - state.currentY) * currentEasing;
       
       // Calculate rotation to point toward the cursor (add 45 for icon orientation)
       const finalDeltaX = state.mouseX - state.currentX;
-      const finalDeltaY = adjustedMouseY - state.currentY;
+      const finalDeltaY = state.mouseY - state.currentY;
       const targetRotation = Math.atan2(finalDeltaY, finalDeltaX) * (180 / Math.PI) + 45;
       
       // Smooth rotation transition
       state.rotation += (targetRotation - state.rotation) * ROTATION_EASING;
 
-      // Apply transform (no clamping to allow full movement)
+      // Apply transform
       if (rocketWrapperRef.current) {
         rocketWrapperRef.current.style.transform = 
           `translate3d(${state.currentX}px, ${state.currentY}px, 0) rotate(${state.rotation}deg)`;
@@ -108,6 +132,11 @@ export const RocketFollower = () => {
 
     // Start animation loop
     animationFrameRef.current = requestAnimationFrame(animate);
+
+    // Start idle timer
+    idleTimeoutRef.current = window.setTimeout(() => {
+      setIsStealingCursor(true);
+    }, IDLE_TIMEOUT);
 
     // Add event listeners
     window.addEventListener('mousemove', handleMouseMove);
@@ -121,10 +150,13 @@ export const RocketFollower = () => {
       if (scrollTimeoutRef.current) {
         window.clearTimeout(scrollTimeoutRef.current);
       }
+      if (idleTimeoutRef.current) {
+        window.clearTimeout(idleTimeoutRef.current);
+      }
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isStealingCursor]);
 
   return (
     <div
@@ -148,4 +180,3 @@ export const RocketFollower = () => {
     </div>
   );
 };
-
