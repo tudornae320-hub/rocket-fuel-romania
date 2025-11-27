@@ -20,7 +20,7 @@ const Home = () => {
       <RocketFollower />
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16">
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16 no-pattern">
         {/* Background Image with Dark Gradient */}
         <div className="absolute inset-0">
           <img 
@@ -142,7 +142,7 @@ const Home = () => {
       </section>
 
       {/* 54 Hours to Build */}
-      <section className="py-20 bg-muted/50 relative">
+      <section className="py-20 bg-muted/50 relative no-pattern">
         <CircleDoodle className="top-20 left-10 opacity-20" />
         <StarDoodle className="bottom-20 right-10 opacity-20" />
         
@@ -203,7 +203,7 @@ const Home = () => {
       </section>
 
       {/* Agenda */}
-      <section id="agenda" className="py-20 bg-muted/50 relative">
+      <section id="agenda" className="py-20 bg-muted/50 relative no-pattern">
         <SquiggleDoodle className="bottom-10 left-20 opacity-20" />
         
         <div className="container mx-auto px-4">
@@ -483,7 +483,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
+      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 no-pattern">
         <div className="absolute inset-0 opacity-10" />
         <ArrowDoodle className="top-10 left-20 animate-float" />
         <ArrowDoodle className="bottom-10 right-20 animate-float" />
