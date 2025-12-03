@@ -103,38 +103,43 @@ export const AgendaPills = () => {
         >
           {/* Day Tabs */}
           <div className="py-6 px-6 flex justify-center border-b border-border bg-muted/30">
-            <div className="flex items-center gap-3">
-              {days.map((day) => {
-                const isSelected = selectedDay === day;
+            <div className="relative flex items-center">
+              {/* Render buttons in visual order based on selection */}
+              {(() => {
                 const selectedIndex = days.indexOf(selectedDay);
-                const dayIndex = days.indexOf(day);
+                const leftDays = days.filter((_, i) => i < selectedIndex);
+                const rightDays = days.filter((_, i) => i > selectedIndex);
+                const orderedDays = [...leftDays, selectedDay, ...rightDays];
 
-                return (
-                  <button
-                    key={day}
-                    onClick={() => setSelectedDay(day)}
-                    className={`
-                      rounded-xl font-bold transition-all duration-500 ease-out transform
-                      ${isSelected 
-                        ? "px-10 py-4 bg-primary text-primary-foreground text-lg min-w-[160px] scale-105 shadow-lg" 
-                        : "w-14 h-14 bg-card border-2 border-border text-muted-foreground hover:border-primary hover:text-primary hover:scale-110 text-xl"
-                      }
-                      ${dayIndex < selectedIndex ? "order-first" : ""}
-                      ${dayIndex > selectedIndex ? "order-last" : ""}
-                      active:scale-95
-                    `}
-                  >
-                    <span 
+                return orderedDays.map((day, visualIndex) => {
+                  const isSelected = selectedDay === day;
+                  const isFirst = visualIndex === 0;
+                  const isLast = visualIndex === orderedDays.length - 1;
+
+                  return (
+                    <button
+                      key={day}
+                      onClick={() => setSelectedDay(day)}
                       className={`
-                        inline-block transition-all duration-300
-                        ${isSelected ? "animate-fade-in" : ""}
+                        relative rounded-xl font-bold transition-all duration-500 ease-out transform
+                        ${isSelected 
+                          ? "px-10 py-4 bg-primary text-primary-foreground text-lg min-w-[160px] shadow-lg z-10" 
+                          : "w-14 h-14 bg-card border-2 border-border text-muted-foreground hover:border-primary hover:text-primary hover:scale-110 text-xl"
+                        }
+                        ${!isFirst && !isSelected ? "ml-3" : ""}
+                        ${!isLast && isSelected ? "mx-3" : ""}
+                        ${isFirst && isSelected ? "mr-3" : ""}
+                        ${isLast && isSelected ? "ml-3" : ""}
+                        active:scale-95
                       `}
                     >
-                      {isSelected ? agendaData[day].label : agendaData[day].initial}
-                    </span>
-                  </button>
-                );
-              })}
+                      <span className="inline-block transition-all duration-300">
+                        {isSelected ? agendaData[day].label : agendaData[day].initial}
+                      </span>
+                    </button>
+                  );
+                });
+              })()}
             </div>
           </div>
 
