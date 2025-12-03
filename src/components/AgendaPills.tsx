@@ -47,7 +47,7 @@ type DayKey = keyof typeof agendaData;
 export const AgendaPills = () => {
   const [selectedDay, setSelectedDay] = useState<DayKey>("friday");
   const [isVisible, setIsVisible] = useState(false);
-  const [showTabs, setShowTabs] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -55,8 +55,7 @@ export const AgendaPills = () => {
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
-          // Delay the tabs dropdown animation
-          setTimeout(() => setShowTabs(true), 400);
+          setTimeout(() => setShowDropdown(true), 500);
         }
       },
       { threshold: 0.3 }
@@ -71,87 +70,111 @@ export const AgendaPills = () => {
 
   const days: DayKey[] = ["friday", "saturday", "sunday"];
 
-  const renderDayButton = (day: DayKey) => {
-    const isSelected = selectedDay === day;
-    const selectedIndex = days.indexOf(selectedDay);
-    const dayIndex = days.indexOf(day);
-    
-    // Determine position relative to selected
-    const isLeft = dayIndex < selectedIndex;
-    const isRight = dayIndex > selectedIndex;
-
-    return (
-      <button
-        key={day}
-        onClick={() => setSelectedDay(day)}
-        className={`
-          rounded-xl font-bold text-lg transition-all duration-500 ease-out
-          ${isSelected 
-            ? "px-8 py-4 bg-dark-grey text-white min-w-[140px]" 
-            : "w-14 h-14 bg-card border-2 border-border hover:border-primary"
-          }
-          ${isLeft ? "order-first" : ""}
-          ${isRight ? "order-last" : ""}
-        `}
-      >
-        {isSelected ? agendaData[day].label : agendaData[day].initial}
-      </button>
-    );
-  };
-
   return (
     <div ref={sectionRef} className="max-w-3xl mx-auto">
-      {/* Agenda Header */}
-      <div 
-        className={`
-          bg-primary py-4 px-6 rounded-t-xl transition-all duration-700
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-        `}
-      >
-        <h3 className="text-white text-xl font-bold uppercase tracking-wider text-center">
-          Agenda
-        </h3>
-      </div>
-
-      {/* Day Tabs - drops down from header */}
-      <div 
-        className={`
-          flex justify-center gap-3 py-4 bg-muted/50 border-x border-border
-          transition-all duration-500 ease-out overflow-hidden
-          ${showTabs ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}
-        `}
-      >
-        <div className="flex items-center gap-3">
-          {days.map(renderDayButton)}
-        </div>
-      </div>
-
-      {/* Events List */}
-      <div 
-        className={`
-          bg-card border border-t-0 border-border rounded-b-xl overflow-hidden
-          transition-all duration-700 delay-200
-          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-        `}
-      >
-        {agendaData[selectedDay].events.map((event, idx) => (
-          <div 
-            key={`${selectedDay}-${idx}`}
+      {/* Header Text - on top of blue bar */}
+      <div className="relative z-10">
+        <div 
+          className={`
+            text-center pb-6 transition-colors duration-500
+            ${showDropdown ? "text-white" : "text-foreground"}
+          `}
+        >
+          <h2 
             className={`
-              flex gap-6 p-5 transition-all duration-300
-              ${idx !== agendaData[selectedDay].events.length - 1 ? "border-b border-border" : ""}
+              text-4xl md:text-5xl font-bold mb-4 transition-all duration-700
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
-            style={{ animationDelay: `${idx * 50}ms` }}
           >
-            <div className="min-w-[110px] text-sm text-muted-foreground font-medium pt-0.5">
-              {event.time}
-            </div>
-            <div className="flex-1">
-              <h4 className="font-bold text-foreground mb-1">{event.title}</h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">{event.desc}</p>
-            </div>
+            Agenda
+          </h2>
+          <p 
+            className={`
+              text-lg transition-all duration-700 delay-100
+              ${showDropdown ? "text-white/80" : "text-muted-foreground"}
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+            `}
+          >
+            Your 54-hour journey
+          </p>
+        </div>
+
+        {/* Blue Bar Background - slides up behind text */}
+        <div 
+          className={`
+            absolute inset-0 bg-primary rounded-t-xl -z-10 transition-all duration-700 ease-out
+            ${showDropdown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}
+          `}
+          style={{ top: '-1rem', bottom: '-1rem', left: '-1.5rem', right: '-1.5rem' }}
+        />
+      </div>
+
+      {/* Dropdown Container */}
+      <div 
+        className={`
+          overflow-hidden transition-all duration-700 ease-out
+          ${showDropdown ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}
+        `}
+      >
+        {/* Day Tabs */}
+        <div className="bg-primary py-6 px-6 flex justify-center">
+          <div className="flex items-center gap-3">
+            {days.map((day) => {
+              const isSelected = selectedDay === day;
+              const selectedIndex = days.indexOf(selectedDay);
+              const dayIndex = days.indexOf(day);
+
+              return (
+                <button
+                  key={day}
+                  onClick={() => setSelectedDay(day)}
+                  className={`
+                    rounded-xl font-bold transition-all duration-500 ease-out
+                    ${isSelected 
+                      ? "px-10 py-4 bg-dark-grey text-white text-lg min-w-[160px]" 
+                      : "w-14 h-14 bg-white/20 text-white hover:bg-white/30 text-xl"
+                    }
+                    ${dayIndex < selectedIndex ? "order-first" : ""}
+                    ${dayIndex > selectedIndex ? "order-last" : ""}
+                  `}
+                >
+                  <span className={`transition-all duration-300 ${isSelected ? "inline" : "inline"}`}>
+                    {isSelected ? agendaData[day].label : agendaData[day].initial}
+                  </span>
+                </button>
+              );
+            })}
           </div>
-        ))}
+        </div>
+
+        {/* Events List with slide animation */}
+        <div className="bg-card border border-t-0 border-border rounded-b-xl overflow-hidden">
+          <div 
+            key={selectedDay}
+            className="animate-fade-in"
+          >
+            {agendaData[selectedDay].events.map((event, idx) => (
+              <div 
+                key={`${selectedDay}-${idx}`}
+                className={`
+                  flex gap-6 p-5 transition-all duration-300
+                  ${idx !== agendaData[selectedDay].events.length - 1 ? "border-b border-border" : ""}
+                `}
+                style={{ 
+                  animation: `fade-in 0.4s ease-out ${idx * 50}ms both`
+                }}
+              >
+                <div className="min-w-[110px] text-sm text-muted-foreground font-medium pt-0.5">
+                  {event.time}
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-foreground mb-1">{event.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{event.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -189,15 +189,6 @@ const Home = () => {
         <SquiggleDoodle className="bottom-10 left-20 opacity-20" />
         
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Agenda
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Your 54-hour journey
-            </p>
-          </div>
-          
           <AgendaPills />
         </div>
       </section>
