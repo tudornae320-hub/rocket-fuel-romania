@@ -121,14 +121,8 @@ export const ScrollableMentors = () => {
               {mentors.map((mentor, index) => (
                 <Card key={`${groupIndex}-${index}`} className="shrink-0 w-[220px] rounded-2xl border-2 border-border overflow-hidden bg-card">
                   <CardContent className="p-0">
-                    {/* Location badge */}
-                    <div className="relative">
-                      <span className="absolute top-3 left-3 px-3 py-1 bg-secondary text-secondary-foreground text-xs font-bold rounded-full">
-                        București
-                      </span>
-                      {/* Photo placeholder */}
-                      <div className="w-full h-[180px] bg-muted" />
-                    </div>
+                    {/* Photo placeholder */}
+                    <div className="w-full h-[180px] bg-muted" />
                     {/* Name and company */}
                     <div className="p-4 border-t border-border">
                       <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
