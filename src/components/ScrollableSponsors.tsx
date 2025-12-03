@@ -1,0 +1,154 @@
+import { useRef, useState, MouseEvent } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+
+interface SponsorTier {
+  title: string;
+  titleColor: string;
+  sponsors: { name: string }[];
+  cardSize: 'large' | 'small';
+}
+
+interface ScrollableSponsorsProps {
+  tier: SponsorTier;
+}
+
+export const ScrollableSponsors = ({ tier }: ScrollableSponsorsProps) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const velocityRef = useRef(0);
+  const lastXRef = useRef(0);
+  const lastTimeRef = useRef(0);
+  const momentumRef = useRef<number>();
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+    lastXRef.current = e.pageX;
+    lastTimeRef.current = Date.now();
+    velocityRef.current = 0;
+    
+    if (momentumRef.current) {
+      cancelAnimationFrame(momentumRef.current);
+    }
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 0.5;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+    
+    const now = Date.now();
+    const timeDiff = now - lastTimeRef.current;
+    if (timeDiff > 0) {
+      const distance = e.pageX - lastXRef.current;
+      velocityRef.current = distance / timeDiff * 16;
+    }
+    
+    lastXRef.current = e.pageX;
+    lastTimeRef.current = now;
+  };
+
+  const applyMomentum = () => {
+    if (!scrollRef.current) return;
+    
+    scrollRef.current.scrollLeft -= velocityRef.current;
+    velocityRef.current *= 0.95;
+    
+    if (Math.abs(velocityRef.current) > 0.5) {
+      momentumRef.current = requestAnimationFrame(applyMomentum);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (Math.abs(velocityRef.current) > 1) {
+      applyMomentum();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      if (Math.abs(velocityRef.current) > 1) {
+        applyMomentum();
+      }
+    }
+    setHoveredKey(null);
+  };
+
+  const cardWidth = tier.cardSize === 'large' ? 'w-[200px]' : 'w-[140px]';
+  const cardHeight = tier.cardSize === 'large' ? 'h-32' : 'h-24';
+
+  return (
+    <div className="mb-12">
+      <h3 className={`text-2xl font-bold mb-6 text-center ${tier.titleColor}`}>
+        {tier.title}
+      </h3>
+      
+      <div className="relative">
+        {/* Left gradient fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        
+        {/* Right gradient fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        
+        <div
+          ref={scrollRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <div 
+            className={`flex gap-6 items-center justify-center py-4 ${hoveredKey ? '' : 'animate-scroll-left'}`} 
+            style={{ 
+              width: 'max-content',
+              animationPlayState: hoveredKey ? 'paused' : 'running'
+            }}
+          >
+            {/* Duplicate 3 times for infinite loop */}
+            {[...Array(3)].map((_, groupIndex) => (
+              <div key={groupIndex} className="flex gap-6 shrink-0 items-center">
+                {tier.sponsors.map((sponsor, index) => {
+                  const cardKey = `${groupIndex}-${index}`;
+                  const isHovered = hoveredKey === cardKey;
+                  const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
+
+                  return (
+                    <Card 
+                      key={cardKey} 
+                      onMouseEnter={() => setHoveredKey(cardKey)}
+                      onMouseLeave={() => setHoveredKey(null)}
+                      className={`
+                        shrink-0 ${cardWidth} rounded-2xl border-2 overflow-hidden bg-card
+                        transition-all duration-500 ease-out border-border
+                        ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-4' : ''}
+                        ${isOtherHovered ? 'scale-90 opacity-70' : ''}
+                      `}
+                    >
+                      <CardContent className={`p-6 flex items-center justify-center ${cardHeight}`}>
+                        <div className="text-center text-muted-foreground font-semibold text-sm">
+                          {sponsor.name}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
