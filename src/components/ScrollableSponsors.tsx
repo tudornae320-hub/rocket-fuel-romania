@@ -25,7 +25,6 @@ export const ScrollableSponsors = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
@@ -89,7 +88,6 @@ export const ScrollableSponsors = () => {
         applyMomentum();
       }
     }
-    setHoveredKey(null);
   };
 
   return (
@@ -110,37 +108,22 @@ export const ScrollableSponsors = () => {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div 
-          className={`flex gap-6 items-center ${hoveredKey ? '' : 'animate-scroll-right'}`} 
-          style={{ 
-            width: 'max-content',
-            animationPlayState: hoveredKey ? 'paused' : 'running'
-          }}
+          className="flex gap-6 items-center animate-scroll-right"
+          style={{ width: 'max-content' }}
         >
           {/* Duplicate sponsors 3 times for seamless infinite loop */}
-          {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => {
-            const isHovered = hoveredKey === String(index);
-            const isOtherHovered = hoveredKey !== null && hoveredKey !== String(index);
-
-            return (
-              <Card 
-                key={index} 
-                onMouseEnter={() => setHoveredKey(String(index))}
-                onMouseLeave={() => setHoveredKey(null)}
-                className={`
-                  shrink-0 w-[180px] h-[100px] rounded-2xl border-2 overflow-hidden bg-card
-                  transition-all duration-500 ease-out border-border
-                  ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-4' : ''}
-                  ${isOtherHovered ? 'scale-90 opacity-70' : ''}
-                `}
-              >
-                <CardContent className="p-6 flex items-center justify-center h-full">
-                  <div className="text-center text-muted-foreground font-semibold">
-                    {sponsor.name}
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+          {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
+            <Card 
+              key={index} 
+              className="shrink-0 w-[180px] h-[100px] rounded-2xl border-2 overflow-hidden bg-card border-border"
+            >
+              <CardContent className="p-6 flex items-center justify-center h-full">
+                <div className="text-center text-muted-foreground font-semibold">
+                  {sponsor.name}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
