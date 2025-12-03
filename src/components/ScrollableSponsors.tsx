@@ -1,18 +1,20 @@
 import { useRef, useState, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
-interface SponsorTier {
-  title: string;
-  titleColor: string;
-  sponsors: { name: string }[];
-  cardSize: 'large' | 'small';
-}
+const sponsors = [
+  { name: "Partner 1" },
+  { name: "Partner 2" },
+  { name: "Partner 3" },
+  { name: "Partner 4" },
+  { name: "Partner 5" },
+  { name: "Partner 6" },
+  { name: "Partner 7" },
+  { name: "Partner 8" },
+  { name: "Partner 9" },
+  { name: "Partner 10" },
+];
 
-interface ScrollableSponsorsProps {
-  tier: SponsorTier;
-}
-
-export const ScrollableSponsors = ({ tier }: ScrollableSponsorsProps) => {
+export const ScrollableSponsors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -84,69 +86,60 @@ export const ScrollableSponsors = ({ tier }: ScrollableSponsorsProps) => {
     setHoveredKey(null);
   };
 
-  const cardWidth = tier.cardSize === 'large' ? 'w-[200px]' : 'w-[140px]';
-  const cardHeight = tier.cardSize === 'large' ? 'h-32' : 'h-24';
-
   return (
-    <div className="mb-12">
-      <h3 className={`text-2xl font-bold mb-6 text-center ${tier.titleColor}`}>
-        {tier.title}
-      </h3>
+    <div className="relative">
+      {/* Left gradient fade */}
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
       
-      <div className="relative">
-        {/* Left gradient fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        
-        {/* Right gradient fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-        
-        <div
-          ref={scrollRef}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
-          className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      {/* Right gradient fade */}
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      
+      <div
+        ref={scrollRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none py-8"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        <div 
+          className={`flex gap-6 items-center ${hoveredKey ? '' : 'animate-scroll-right'}`} 
+          style={{ 
+            width: 'max-content',
+            animationPlayState: hoveredKey ? 'paused' : 'running'
+          }}
         >
-          <div 
-            className={`flex gap-6 items-center py-4 ${hoveredKey ? '' : 'animate-scroll-right'}`} 
-            style={{ 
-              width: 'max-content',
-              animationPlayState: hoveredKey ? 'paused' : 'running'
-            }}
-          >
-            {/* Duplicate 3 times for infinite loop */}
-            {[...Array(3)].map((_, groupIndex) => (
-              <div key={groupIndex} className="flex gap-6 shrink-0 items-center">
-                {tier.sponsors.map((sponsor, index) => {
-                  const cardKey = `${groupIndex}-${index}`;
-                  const isHovered = hoveredKey === cardKey;
-                  const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
+          {/* Duplicate 3 times for infinite loop */}
+          {[...Array(3)].map((_, groupIndex) => (
+            <div key={groupIndex} className="flex gap-6 shrink-0 items-center">
+              {sponsors.map((sponsor, index) => {
+                const cardKey = `${groupIndex}-${index}`;
+                const isHovered = hoveredKey === cardKey;
+                const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
 
-                  return (
-                    <Card 
-                      key={cardKey} 
-                      onMouseEnter={() => setHoveredKey(cardKey)}
-                      onMouseLeave={() => setHoveredKey(null)}
-                      className={`
-                        shrink-0 ${cardWidth} rounded-2xl border-2 overflow-hidden bg-card
-                        transition-all duration-500 ease-out border-border
-                        ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-4' : ''}
-                        ${isOtherHovered ? 'scale-90 opacity-70' : ''}
-                      `}
-                    >
-                      <CardContent className={`p-6 flex items-center justify-center ${cardHeight}`}>
-                        <div className="text-center text-muted-foreground font-semibold text-sm">
-                          {sponsor.name}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+                return (
+                  <Card 
+                    key={cardKey} 
+                    onMouseEnter={() => setHoveredKey(cardKey)}
+                    onMouseLeave={() => setHoveredKey(null)}
+                    className={`
+                      shrink-0 w-[180px] h-[100px] rounded-2xl border-2 overflow-hidden bg-card
+                      transition-all duration-500 ease-out border-border
+                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-4' : ''}
+                      ${isOtherHovered ? 'scale-90 opacity-70' : ''}
+                    `}
+                  >
+                    <CardContent className="p-6 flex items-center justify-center h-full">
+                      <div className="text-center text-muted-foreground font-semibold">
+                        {sponsor.name}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </div>
