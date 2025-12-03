@@ -72,17 +72,13 @@ export const AgendaPills = () => {
 
   return (
     <div ref={sectionRef} className="max-w-3xl mx-auto">
-      {/* Header Text - on top of blue bar */}
-      <div className="relative z-10">
-        <div 
-          className={`
-            text-center pb-6 transition-colors duration-500
-            ${showDropdown ? "text-white" : "text-foreground"}
-          `}
-        >
+      {/* Unified Card Container */}
+      <div className="bg-card rounded-xl border border-border shadow-lg overflow-hidden">
+        {/* Header */}
+        <div className="text-center py-8 px-6 border-b border-border">
           <h2 
             className={`
-              text-4xl md:text-5xl font-bold mb-4 transition-all duration-700
+              text-4xl md:text-5xl font-bold mb-2 transition-all duration-700
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
           >
@@ -90,8 +86,7 @@ export const AgendaPills = () => {
           </h2>
           <p 
             className={`
-              text-lg transition-all duration-700 delay-100
-              ${showDropdown ? "text-white/80" : "text-muted-foreground"}
+              text-lg text-muted-foreground transition-all duration-700 delay-100
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
           >
@@ -99,56 +94,51 @@ export const AgendaPills = () => {
           </p>
         </div>
 
-        {/* Blue Bar Background - slides up behind text */}
+        {/* Dropdown Content */}
         <div 
           className={`
-            absolute inset-0 bg-primary rounded-t-xl -z-10 transition-all duration-700 ease-out
-            ${showDropdown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"}
+            transition-all duration-700 ease-out
+            ${showDropdown ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}
           `}
-          style={{ top: '-1rem', bottom: '-1rem', left: '-1.5rem', right: '-1.5rem' }}
-        />
-      </div>
+        >
+          {/* Day Tabs */}
+          <div className="py-6 px-6 flex justify-center border-b border-border bg-muted/30">
+            <div className="flex items-center gap-3">
+              {days.map((day) => {
+                const isSelected = selectedDay === day;
+                const selectedIndex = days.indexOf(selectedDay);
+                const dayIndex = days.indexOf(day);
 
-      {/* Dropdown Container */}
-      <div 
-        className={`
-          overflow-hidden transition-all duration-700 ease-out
-          ${showDropdown ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}
-        `}
-      >
-        {/* Day Tabs */}
-        <div className="bg-primary py-6 px-6 flex justify-center">
-          <div className="flex items-center gap-3">
-            {days.map((day) => {
-              const isSelected = selectedDay === day;
-              const selectedIndex = days.indexOf(selectedDay);
-              const dayIndex = days.indexOf(day);
-
-              return (
-                <button
-                  key={day}
-                  onClick={() => setSelectedDay(day)}
-                  className={`
-                    rounded-xl font-bold transition-all duration-500 ease-out
-                    ${isSelected 
-                      ? "px-10 py-4 bg-dark-grey text-white text-lg min-w-[160px]" 
-                      : "w-14 h-14 bg-white/20 text-white hover:bg-white/30 text-xl"
-                    }
-                    ${dayIndex < selectedIndex ? "order-first" : ""}
-                    ${dayIndex > selectedIndex ? "order-last" : ""}
-                  `}
-                >
-                  <span className={`transition-all duration-300 ${isSelected ? "inline" : "inline"}`}>
-                    {isSelected ? agendaData[day].label : agendaData[day].initial}
-                  </span>
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={day}
+                    onClick={() => setSelectedDay(day)}
+                    className={`
+                      rounded-xl font-bold transition-all duration-500 ease-out transform
+                      ${isSelected 
+                        ? "px-10 py-4 bg-primary text-primary-foreground text-lg min-w-[160px] scale-105 shadow-lg" 
+                        : "w-14 h-14 bg-card border-2 border-border text-muted-foreground hover:border-primary hover:text-primary hover:scale-110 text-xl"
+                      }
+                      ${dayIndex < selectedIndex ? "order-first" : ""}
+                      ${dayIndex > selectedIndex ? "order-last" : ""}
+                      active:scale-95
+                    `}
+                  >
+                    <span 
+                      className={`
+                        inline-block transition-all duration-300
+                        ${isSelected ? "animate-fade-in" : ""}
+                      `}
+                    >
+                      {isSelected ? agendaData[day].label : agendaData[day].initial}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Events List with slide animation */}
-        <div className="bg-card border border-t-0 border-border rounded-b-xl overflow-hidden">
+          {/* Events List */}
           <div 
             key={selectedDay}
             className="animate-fade-in"
