@@ -32,7 +32,7 @@ export const ScrollableSponsors = () => {
   useEffect(() => {
     const autoScroll = () => {
       if (scrollRef.current && !isDragging) {
-        scrollRef.current.scrollLeft += scrollSpeedRef.current;
+        scrollRef.current.scrollLeft -= scrollSpeedRef.current;
         
         // Reset to beginning for infinite loop
         const maxScroll = scrollRef.current.scrollWidth / 3;
