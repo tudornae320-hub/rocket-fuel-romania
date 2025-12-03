@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const agendaData = {
   friday: {
     label: "Friday",
+    initial: "F",
     events: [
       { time: "18:00 - 18:30", title: "Registration", desc: "Arrive at the venue and get checked in" },
       { time: "18:30 - 19:00", title: "Dinner & networking", desc: "Eat food, share ideas, practice pitches, and get to know your fellow participants" },
@@ -15,6 +16,7 @@ const agendaData = {
   },
   saturday: {
     label: "Saturday",
+    initial: "S",
     events: [
       { time: "09:00 - 09:30", title: "Breakfast", desc: "Start strong with breakfast at the venue" },
       { time: "10:30 - 11:30", title: "Workshop: GTM Strategy", desc: "Learn go-to-market strategy with Alex Gavril, CEO ▲ promocrat" },
@@ -27,6 +29,7 @@ const agendaData = {
   },
   sunday: {
     label: "Sunday",
+    initial: "S",
     events: [
       { time: "09:30 - 10:00", title: "Breakfast", desc: "Grab breakfast and prep for the final sprint" },
       { time: "10:30 - 11:30", title: "Pitching Workshop", desc: "Craft a compelling pitch with Cosmin Pirvu from Veridion" },
@@ -43,60 +46,112 @@ type DayKey = keyof typeof agendaData;
 
 export const AgendaPills = () => {
   const [selectedDay, setSelectedDay] = useState<DayKey>("friday");
+  const [isVisible, setIsVisible] = useState(false);
+  const [showTabs, setShowTabs] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          // Delay the tabs dropdown animation
+          setTimeout(() => setShowTabs(true), 400);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
   const days: DayKey[] = ["friday", "saturday", "sunday"];
 
+  const renderDayButton = (day: DayKey) => {
+    const isSelected = selectedDay === day;
+    const selectedIndex = days.indexOf(selectedDay);
+    const dayIndex = days.indexOf(day);
+    
+    // Determine position relative to selected
+    const isLeft = dayIndex < selectedIndex;
+    const isRight = dayIndex > selectedIndex;
+
+    return (
+      <button
+        key={day}
+        onClick={() => setSelectedDay(day)}
+        className={`
+          rounded-xl font-bold text-lg transition-all duration-500 ease-out
+          ${isSelected 
+            ? "px-8 py-4 bg-dark-grey text-white min-w-[140px]" 
+            : "w-14 h-14 bg-card border-2 border-border hover:border-primary"
+          }
+          ${isLeft ? "order-first" : ""}
+          ${isRight ? "order-last" : ""}
+        `}
+      >
+        {isSelected ? agendaData[day].label : agendaData[day].initial}
+      </button>
+    );
+  };
+
   return (
-    <div className="max-w-3xl mx-auto">
-      {/* Day Tabs */}
-      <div className="flex justify-center mb-8">
-        <div className="inline-flex bg-card border border-border rounded-full p-1">
-          {days.map((day) => (
-            <button
-              key={day}
-              onClick={() => setSelectedDay(day)}
-              className={`
-                px-6 py-2 rounded-full font-medium text-sm transition-all duration-300
-                ${selectedDay === day 
-                  ? "bg-dark-grey text-white" 
-                  : "text-muted-foreground hover:text-foreground"
-                }
-              `}
-            >
-              {agendaData[day].label}
-            </button>
-          ))}
+    <div ref={sectionRef} className="max-w-3xl mx-auto">
+      {/* Agenda Header */}
+      <div 
+        className={`
+          bg-primary py-4 px-6 rounded-t-xl transition-all duration-700
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+        `}
+      >
+        <h3 className="text-white text-xl font-bold uppercase tracking-wider text-center">
+          Agenda
+        </h3>
+      </div>
+
+      {/* Day Tabs - drops down from header */}
+      <div 
+        className={`
+          flex justify-center gap-3 py-4 bg-muted/50 border-x border-border
+          transition-all duration-500 ease-out overflow-hidden
+          ${showTabs ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}
+        `}
+      >
+        <div className="flex items-center gap-3">
+          {days.map(renderDayButton)}
         </div>
       </div>
 
-      {/* Agenda Card */}
-      <div className="rounded-xl overflow-hidden border border-border shadow-lg">
-        {/* Header */}
-        <div className="bg-primary py-4 px-6">
-          <h3 className="text-white text-xl font-bold uppercase tracking-wider text-center">
-            Agenda
-          </h3>
-        </div>
-
-        {/* Events List */}
-        <div className="bg-card">
-          {agendaData[selectedDay].events.map((event, idx) => (
-            <div 
-              key={idx}
-              className={`
-                flex gap-6 p-5 
-                ${idx !== agendaData[selectedDay].events.length - 1 ? "border-b border-border" : ""}
-              `}
-            >
-              <div className="min-w-[110px] text-sm text-muted-foreground font-medium pt-0.5">
-                {event.time}
-              </div>
-              <div className="flex-1">
-                <h4 className="font-bold text-foreground mb-1">{event.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{event.desc}</p>
-              </div>
+      {/* Events List */}
+      <div 
+        className={`
+          bg-card border border-t-0 border-border rounded-b-xl overflow-hidden
+          transition-all duration-700 delay-200
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+        `}
+      >
+        {agendaData[selectedDay].events.map((event, idx) => (
+          <div 
+            key={`${selectedDay}-${idx}`}
+            className={`
+              flex gap-6 p-5 transition-all duration-300
+              ${idx !== agendaData[selectedDay].events.length - 1 ? "border-b border-border" : ""}
+            `}
+            style={{ animationDelay: `${idx * 50}ms` }}
+          >
+            <div className="min-w-[110px] text-sm text-muted-foreground font-medium pt-0.5">
+              {event.time}
             </div>
-          ))}
-        </div>
+            <div className="flex-1">
+              <h4 className="font-bold text-foreground mb-1">{event.title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{event.desc}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
