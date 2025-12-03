@@ -37,7 +37,7 @@ export const ScrollableSponsors = () => {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 4;
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
