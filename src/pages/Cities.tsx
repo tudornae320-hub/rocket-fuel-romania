@@ -147,7 +147,7 @@ const Cities = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-muted/50 py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Gata să începi?

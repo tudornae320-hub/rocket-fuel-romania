@@ -102,7 +102,7 @@ export const AgendaPills = () => {
           `}
         >
           {/* Day Tabs */}
-          <div className="py-6 px-6 flex justify-center border-b border-border bg-muted/30">
+          <div className="py-6 px-6 flex justify-center border-b border-border">
             <div className="relative flex items-center">
               {/* Render buttons in visual order based on selection */}
               {(() => {
