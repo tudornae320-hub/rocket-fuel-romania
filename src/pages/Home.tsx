@@ -4,6 +4,7 @@ import { DictionaryTooltip } from "@/components/Tooltip";
 import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
+import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
 import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
@@ -207,14 +208,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
-            {["Stripe", "Veridion", "Adobe", "Techstars", "VSFA", "BOS Romania", "PROW", "Entrepreneurship Academy", 
-              "AmplifyONG", "Brewtifi", "VIP Romania", "V7 Capital", "DevMind", "Best Bucharest", "RAU", "Launch.ro"].map((partner, index) => (
-              <div key={index} className="w-32 h-32 bg-background border border-border rounded-lg flex items-center justify-center hover-lift">
-                <span className="text-sm font-semibold text-center px-4">{partner}</span>
-              </div>
-            ))}
-          </div>
+          <ScrollableSponsors />
           
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/10">

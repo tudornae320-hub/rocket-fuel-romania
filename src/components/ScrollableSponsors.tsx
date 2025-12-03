@@ -2,16 +2,22 @@ import { useRef, useState, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const sponsors = [
-  { name: "Partner 1" },
-  { name: "Partner 2" },
-  { name: "Partner 3" },
-  { name: "Partner 4" },
-  { name: "Partner 5" },
-  { name: "Partner 6" },
-  { name: "Partner 7" },
-  { name: "Partner 8" },
-  { name: "Partner 9" },
-  { name: "Partner 10" },
+  { name: "Stripe" },
+  { name: "Veridion" },
+  { name: "Adobe" },
+  { name: "Techstars" },
+  { name: "VSFA" },
+  { name: "BOS Romania" },
+  { name: "PROW" },
+  { name: "Entrepreneurship Academy" },
+  { name: "AmplifyONG" },
+  { name: "Brewtifi" },
+  { name: "VIP Romania" },
+  { name: "V7 Capital" },
+  { name: "DevMind" },
+  { name: "Best Bucharest" },
+  { name: "RAU" },
+  { name: "Launch.ro" },
 ];
 
 export const ScrollableSponsors = () => {
