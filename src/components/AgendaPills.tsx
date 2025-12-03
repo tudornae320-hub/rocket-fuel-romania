@@ -64,9 +64,9 @@ export const AgendaPills = () => {
     // Sat clicked → Fri left, Sun right
     // Sun clicked → Fri & Sat left
     if (currentIndex < selectedIndex) {
-      return "-translate-x-[150%] opacity-0";
+      return "-translate-x-8";
     } else {
-      return "translate-x-[150%] opacity-0";
+      return "translate-x-8";
     }
   };
 
@@ -79,7 +79,7 @@ export const AgendaPills = () => {
             key={day}
             onClick={() => handleDayClick(day)}
             className={`
-              w-14 h-14 rounded-full font-bold text-xl
+              px-8 py-4 rounded-xl font-bold text-xl
               transition-all duration-500 ease-out
               ${getSlideClass(day)}
               ${selectedDay === day 
