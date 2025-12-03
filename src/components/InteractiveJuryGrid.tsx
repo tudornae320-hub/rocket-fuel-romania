@@ -38,12 +38,10 @@ export const InteractiveJuryGrid = () => {
             onMouseLeave={() => setHoveredIndex(null)}
             className={`
               relative rounded-2xl border-2 overflow-hidden bg-card cursor-pointer
-              transition-all duration-500 ease-out
+              transition-all duration-500 ease-out w-[220px]
               ${isHovered 
-                ? 'w-[280px] scale-105 border-primary shadow-xl z-10' 
-                : isOtherHovered 
-                  ? 'w-[200px] scale-95 opacity-60 border-border' 
-                  : 'w-[220px] scale-100 border-border'
+                ? 'scale-105 border-primary shadow-xl z-10' 
+                : 'scale-100 border-border'
               }
             `}
           >
