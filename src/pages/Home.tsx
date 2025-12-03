@@ -4,6 +4,7 @@ import { DictionaryTooltip } from "@/components/Tooltip";
 import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
+import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
 import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 import arrowRight from "@/assets/arrow-right.png";
@@ -183,23 +184,7 @@ const Home = () => {
             <h3 className="text-3xl font-bold mb-8">Jury</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {[
-              { name: "Aleodor Tabarcea", role: "Engineering Manager", company: "Stripe" },
-              { name: "Eduard Burghelia", role: "Venture Partner", company: "V7 Capital" },
-              { name: "Florin Visa", role: "Partner", company: "Early Game Ventures" },
-            ].map((jury, index) => (
-              <Card key={index} className="hover-lift w-[220px] mx-auto rounded-2xl border-2 border-border overflow-hidden bg-card">
-                <CardContent className="p-0">
-                  <div className="w-full h-[180px] bg-muted" />
-                  <div className="p-4 border-t border-border">
-                    <h3 className="font-bold text-base text-foreground">{jury.name}</h3>
-                    <p className="text-sm text-secondary font-medium">{jury.company}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <InteractiveJuryGrid />
         </div>
       </section>
 
