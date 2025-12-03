@@ -30,7 +30,7 @@ export const ScrollableSponsors = () => {
       
       <div className="py-8">
         <div 
-          className="flex gap-6 items-center animate-scroll-left hover:[animation-play-state:paused]"
+          className="flex gap-6 items-center animate-scroll-right"
           style={{ width: 'max-content' }}
         >
           {/* Duplicate sponsors 3 times for seamless infinite loop */}
