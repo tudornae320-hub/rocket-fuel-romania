@@ -1,4 +1,4 @@
-import { useRef, useState, MouseEvent } from 'react';
+import { useRef, useState, useEffect, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const sponsors = [
@@ -23,27 +23,42 @@ const sponsors = [
 export const ScrollableSponsors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [isInteracting, setIsInteracting] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const velocityRef = useRef(0);
-  const lastXRef = useRef(0);
-  const lastTimeRef = useRef(0);
-  const momentumRef = useRef<number>();
+  const autoScrollRef = useRef<number>();
+  const scrollSpeedRef = useRef(0.5); // pixels per frame
+
+  // Auto-scroll effect
+  useEffect(() => {
+    const autoScroll = () => {
+      if (scrollRef.current && !isDragging) {
+        scrollRef.current.scrollLeft += scrollSpeedRef.current;
+        
+        // Reset to beginning for infinite loop
+        const maxScroll = scrollRef.current.scrollWidth / 3;
+        if (scrollRef.current.scrollLeft >= maxScroll * 2) {
+          scrollRef.current.scrollLeft = maxScroll;
+        } else if (scrollRef.current.scrollLeft <= 0) {
+          scrollRef.current.scrollLeft = maxScroll;
+        }
+      }
+      autoScrollRef.current = requestAnimationFrame(autoScroll);
+    };
+    
+    autoScrollRef.current = requestAnimationFrame(autoScroll);
+    
+    return () => {
+      if (autoScrollRef.current) {
+        cancelAnimationFrame(autoScrollRef.current);
+      }
+    };
+  }, [isDragging]);
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
     setIsDragging(true);
-    setIsInteracting(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
-    lastXRef.current = e.pageX;
-    lastTimeRef.current = Date.now();
-    velocityRef.current = 0;
-    
-    if (momentumRef.current) {
-      cancelAnimationFrame(momentumRef.current);
-    }
   };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -51,51 +66,16 @@ export const ScrollableSponsors = () => {
     e.preventDefault();
     
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
+    const walk = (x - startX) * 2;
     scrollRef.current.scrollLeft = scrollLeft - walk;
-    
-    const now = Date.now();
-    const timeDiff = now - lastTimeRef.current;
-    if (timeDiff > 0) {
-      const distance = e.pageX - lastXRef.current;
-      velocityRef.current = distance / timeDiff * 16;
-    }
-    
-    lastXRef.current = e.pageX;
-    lastTimeRef.current = now;
-  };
-
-  const applyMomentum = () => {
-    if (!scrollRef.current) return;
-    
-    scrollRef.current.scrollLeft -= velocityRef.current;
-    velocityRef.current *= 0.95;
-    
-    if (Math.abs(velocityRef.current) > 0.5) {
-      momentumRef.current = requestAnimationFrame(applyMomentum);
-    } else {
-      setIsInteracting(false);
-    }
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    if (Math.abs(velocityRef.current) > 1) {
-      applyMomentum();
-    } else {
-      setIsInteracting(false);
-    }
   };
 
   const handleMouseLeave = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      if (Math.abs(velocityRef.current) > 1) {
-        applyMomentum();
-      } else {
-        setIsInteracting(false);
-      }
-    }
+    setIsDragging(false);
   };
 
   return (
@@ -116,11 +96,8 @@ export const ScrollableSponsors = () => {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div 
-          className={`flex gap-6 items-center ${isInteracting ? '' : 'animate-scroll-right'}`}
-          style={{ 
-            width: 'max-content',
-            animationPlayState: isInteracting ? 'paused' : 'running'
-          }}
+          className="flex gap-6 items-center"
+          style={{ width: 'max-content' }}
         >
           {/* Duplicate sponsors 3 times for seamless infinite loop */}
           {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
