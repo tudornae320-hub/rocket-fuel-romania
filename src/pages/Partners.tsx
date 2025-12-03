@@ -4,37 +4,6 @@ import { SquiggleDoodle, ArrowDoodle } from "@/components/Doodles";
 import { Handshake, Zap, Award } from "lucide-react";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 
-const sponsorTiers = [
-  {
-    title: "Main Partners",
-    titleColor: "text-primary",
-    cardSize: "large" as const,
-    sponsors: [
-      { name: "Partner Logo 1" },
-      { name: "Partner Logo 2" },
-      { name: "Partner Logo 3" },
-      { name: "Partner Logo 4" },
-      { name: "Partner Logo 5" },
-      { name: "Partner Logo 6" },
-    ],
-  },
-  {
-    title: "Community Partners",
-    titleColor: "text-secondary",
-    cardSize: "small" as const,
-    sponsors: [
-      { name: "Logo 1" },
-      { name: "Logo 2" },
-      { name: "Logo 3" },
-      { name: "Logo 4" },
-      { name: "Logo 5" },
-      { name: "Logo 6" },
-      { name: "Logo 7" },
-      { name: "Logo 8" },
-    ],
-  },
-];
-
 const Partners = () => {
   return (
     <div className="min-h-screen pt-24">
@@ -106,15 +75,12 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Partners Grid - Scrollable */}
+      {/* Sponsors - Scrollable */}
       <section className="mb-20">
-        <h2 className="text-4xl font-bold mb-12 text-center">
+        <h2 className="text-4xl font-bold mb-8 text-center">
           Partenerii noștri
         </h2>
-        
-        {sponsorTiers.map((tier, index) => (
-          <ScrollableSponsors key={index} tier={tier} />
-        ))}
+        <ScrollableSponsors />
       </section>
 
       {/* CTA Section */}
