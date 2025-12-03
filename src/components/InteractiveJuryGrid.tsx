@@ -26,10 +26,9 @@ export const InteractiveJuryGrid = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+    <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto items-start">
       {juryMembers.map((jury, index) => {
         const isHovered = hoveredIndex === index;
-        const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
 
         return (
           <Card
@@ -38,56 +37,34 @@ export const InteractiveJuryGrid = () => {
             onMouseLeave={() => setHoveredIndex(null)}
             className={`
               relative rounded-2xl border-2 overflow-hidden bg-card cursor-pointer
-              transition-all duration-500 ease-out w-[220px]
-              ${isHovered 
-                ? 'scale-105 border-primary shadow-xl z-10' 
-                : 'scale-100 border-border'
-              }
+              transition-all duration-500 ease-out w-[220px] border-border
+              ${isHovered ? 'shadow-xl z-10 border-primary' : ''}
             `}
           >
             <CardContent className="p-0">
-              {/* Photo placeholder with overlay on hover */}
-              <div className={`
-                relative w-full overflow-hidden transition-all duration-500
-                ${isHovered ? 'h-[200px]' : 'h-[180px]'}
-              `}>
+              {/* Photo placeholder */}
+              <div className="relative w-full h-[180px] overflow-hidden">
                 <div className="w-full h-full bg-muted" />
-                <div className={`
-                  absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent
-                  transition-opacity duration-500
-                  ${isHovered ? 'opacity-100' : 'opacity-0'}
-                `} />
+                {isHovered && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent animate-fade-in" />
+                )}
               </div>
               
               {/* Content area */}
-              <div className={`
-                border-t border-border transition-all duration-500
-                ${isHovered ? 'p-5' : 'p-4'}
-              `}>
-                <h3 className={`
-                  font-bold text-foreground transition-all duration-300
-                  ${isHovered ? 'text-lg mb-1' : 'text-base'}
-                `}>
+              <div className="border-t border-border p-4">
+                <h3 className="font-bold text-base text-foreground">
                   {jury.name}
                 </h3>
-                <p className={`
-                  text-secondary font-medium transition-all duration-300
-                  ${isHovered ? 'text-base' : 'text-sm'}
-                `}>
+                <p className="text-sm text-secondary font-medium">
                   {jury.company}
                 </p>
-                <p className={`
-                  text-muted-foreground text-sm transition-all duration-300
-                  ${isHovered ? 'opacity-100' : 'opacity-0 h-0'}
-                `}>
-                  {jury.role}
-                </p>
                 
-                {/* Expandable bio */}
+                {/* Expandable content on hover only */}
                 <div className={`
                   overflow-hidden transition-all duration-500 ease-out
-                  ${isHovered ? 'max-h-24 opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'}
+                  ${isHovered ? 'max-h-32 opacity-100 mt-2' : 'max-h-0 opacity-0'}
                 `}>
+                  <p className="text-sm text-muted-foreground mb-1">{jury.role}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {jury.bio}
                   </p>
