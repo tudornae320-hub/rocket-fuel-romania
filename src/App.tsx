@@ -11,8 +11,28 @@ import Partners from "./pages/Partners";
 import Mentors from "./pages/Mentors";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { useSmoothScroll } from "./hooks/use-smooth-scroll";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  useSmoothScroll();
+  
+  return (
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cities" element={<Cities />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/mentors" element={<Mentors />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -20,16 +40,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cities" element={<Cities />} />
-          <Route path="/partners" element={<Partners />} />
-          <Route path="/mentors" element={<Mentors />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
