@@ -1,3 +1,4 @@
+import { useRef, useState, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const sponsors = [
@@ -20,6 +21,34 @@ const sponsors = [
 ];
 
 export const ScrollableSponsors = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
   return (
     <div className="relative overflow-hidden">
       {/* Left gradient fade */}
@@ -28,7 +57,15 @@ export const ScrollableSponsors = () => {
       {/* Right gradient fade */}
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
       
-      <div className="py-8">
+      <div
+        ref={scrollRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing select-none py-8"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         <div 
           className="flex gap-6 items-center animate-scroll-right"
           style={{ width: 'max-content' }}
