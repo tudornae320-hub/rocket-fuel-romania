@@ -2,6 +2,38 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SquiggleDoodle, ArrowDoodle } from "@/components/Doodles";
 import { Handshake, Zap, Award } from "lucide-react";
+import { ScrollableSponsors } from "@/components/ScrollableSponsors";
+
+const sponsorTiers = [
+  {
+    title: "Main Partners",
+    titleColor: "text-primary",
+    cardSize: "large" as const,
+    sponsors: [
+      { name: "Partner Logo 1" },
+      { name: "Partner Logo 2" },
+      { name: "Partner Logo 3" },
+      { name: "Partner Logo 4" },
+      { name: "Partner Logo 5" },
+      { name: "Partner Logo 6" },
+    ],
+  },
+  {
+    title: "Community Partners",
+    titleColor: "text-secondary",
+    cardSize: "small" as const,
+    sponsors: [
+      { name: "Logo 1" },
+      { name: "Logo 2" },
+      { name: "Logo 3" },
+      { name: "Logo 4" },
+      { name: "Logo 5" },
+      { name: "Logo 6" },
+      { name: "Logo 7" },
+      { name: "Logo 8" },
+    ],
+  },
+];
 
 const Partners = () => {
   return (
@@ -74,43 +106,15 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Partners Grid */}
-      <section className="container mx-auto px-4 mb-20">
+      {/* Partners Grid - Scrollable */}
+      <section className="mb-20">
         <h2 className="text-4xl font-bold mb-12 text-center">
           Partenerii noștri
         </h2>
         
-        <div className="space-y-16">
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-center text-primary">Main Partners</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
-                <Card key={i} className="hover-lift">
-                  <CardContent className="p-8 flex items-center justify-center h-32">
-                    <div className="text-center text-muted-foreground font-semibold">
-                      Partner Logo {i}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-center text-secondary">Community Partners</h3>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <Card key={i} className="hover-lift">
-                  <CardContent className="p-6 flex items-center justify-center h-24">
-                    <div className="text-xs text-muted-foreground font-semibold">
-                      Logo {i}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
+        {sponsorTiers.map((tier, index) => (
+          <ScrollableSponsors key={index} tier={tier} />
+        ))}
       </section>
 
       {/* CTA Section */}
