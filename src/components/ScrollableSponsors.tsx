@@ -23,6 +23,7 @@ const sponsors = [
 export const ScrollableSponsors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const velocityRef = useRef(0);
@@ -33,6 +34,7 @@ export const ScrollableSponsors = () => {
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
     setIsDragging(true);
+    setIsInteracting(true);
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
     lastXRef.current = e.pageX;
@@ -49,7 +51,7 @@ export const ScrollableSponsors = () => {
     e.preventDefault();
     
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 0.5;
+    const walk = (x - startX) * 1.5;
     scrollRef.current.scrollLeft = scrollLeft - walk;
     
     const now = Date.now();
@@ -71,6 +73,8 @@ export const ScrollableSponsors = () => {
     
     if (Math.abs(velocityRef.current) > 0.5) {
       momentumRef.current = requestAnimationFrame(applyMomentum);
+    } else {
+      setIsInteracting(false);
     }
   };
 
@@ -78,6 +82,8 @@ export const ScrollableSponsors = () => {
     setIsDragging(false);
     if (Math.abs(velocityRef.current) > 1) {
       applyMomentum();
+    } else {
+      setIsInteracting(false);
     }
   };
 
@@ -86,6 +92,8 @@ export const ScrollableSponsors = () => {
       setIsDragging(false);
       if (Math.abs(velocityRef.current) > 1) {
         applyMomentum();
+      } else {
+        setIsInteracting(false);
       }
     }
   };
@@ -108,8 +116,11 @@ export const ScrollableSponsors = () => {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div 
-          className="flex gap-6 items-center animate-scroll-right"
-          style={{ width: 'max-content' }}
+          className={`flex gap-6 items-center ${isInteracting ? '' : 'animate-scroll-right'}`}
+          style={{ 
+            width: 'max-content',
+            animationPlayState: isInteracting ? 'paused' : 'running'
+          }}
         >
           {/* Duplicate sponsors 3 times for seamless infinite loop */}
           {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
