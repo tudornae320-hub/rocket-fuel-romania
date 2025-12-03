@@ -110,36 +110,31 @@ export const ScrollableSponsors = () => {
             animationPlayState: hoveredKey ? 'paused' : 'running'
           }}
         >
-          {/* Duplicate 3 times for infinite loop */}
-          {[...Array(3)].map((_, groupIndex) => (
-            <div key={groupIndex} className="flex gap-6 shrink-0 items-center">
-              {sponsors.map((sponsor, index) => {
-                const cardKey = `${groupIndex}-${index}`;
-                const isHovered = hoveredKey === cardKey;
-                const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
+          {/* Duplicate sponsors 3 times for seamless infinite loop */}
+          {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => {
+            const isHovered = hoveredKey === String(index);
+            const isOtherHovered = hoveredKey !== null && hoveredKey !== String(index);
 
-                return (
-                  <Card 
-                    key={cardKey} 
-                    onMouseEnter={() => setHoveredKey(cardKey)}
-                    onMouseLeave={() => setHoveredKey(null)}
-                    className={`
-                      shrink-0 w-[180px] h-[100px] rounded-2xl border-2 overflow-hidden bg-card
-                      transition-all duration-500 ease-out border-border
-                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-4' : ''}
-                      ${isOtherHovered ? 'scale-90 opacity-70' : ''}
-                    `}
-                  >
-                    <CardContent className="p-6 flex items-center justify-center h-full">
-                      <div className="text-center text-muted-foreground font-semibold">
-                        {sponsor.name}
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          ))}
+            return (
+              <Card 
+                key={index} 
+                onMouseEnter={() => setHoveredKey(String(index))}
+                onMouseLeave={() => setHoveredKey(null)}
+                className={`
+                  shrink-0 w-[180px] h-[100px] rounded-2xl border-2 overflow-hidden bg-card
+                  transition-all duration-500 ease-out border-border
+                  ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-4' : ''}
+                  ${isOtherHovered ? 'scale-90 opacity-70' : ''}
+                `}
+              >
+                <CardContent className="p-6 flex items-center justify-center h-full">
+                  <div className="text-center text-muted-foreground font-semibold">
+                    {sponsor.name}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>
