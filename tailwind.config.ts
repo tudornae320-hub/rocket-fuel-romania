@@ -145,7 +145,15 @@ export default {
             transform: "translateX(0)"
           },
           "100%": {
-            transform: "translateX(-50%)"
+            transform: "translateX(-33.33%)"
+          }
+        },
+        "scroll-right": {
+          "0%": {
+            transform: "translateX(-33.33%)"
+          },
+          "100%": {
+            transform: "translateX(0)"
           }
         }
       },
@@ -159,7 +167,8 @@ export default {
         "rocket-float": "rocket-float 4s ease-in-out infinite",
         "slide-down": "slide-down 2s ease-in-out infinite",
         "bob-horizontal": "bob-horizontal 1.5s ease-in-out infinite",
-        "scroll-left": "scroll-left 60s linear infinite"
+        "scroll-left": "scroll-left 30s linear infinite",
+        "scroll-right": "scroll-right 30s linear infinite"
       },
     },
   },

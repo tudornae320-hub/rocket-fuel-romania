@@ -110,7 +110,7 @@ export const ScrollableSponsors = ({ tier }: ScrollableSponsorsProps) => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <div 
-            className={`flex gap-6 items-center justify-center py-4 ${hoveredKey ? '' : 'animate-scroll-left'}`} 
+            className={`flex gap-6 items-center py-4 ${hoveredKey ? '' : 'animate-scroll-right'}`} 
             style={{ 
               width: 'max-content',
               animationPlayState: hoveredKey ? 'paused' : 'running'
