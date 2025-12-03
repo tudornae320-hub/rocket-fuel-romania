@@ -29,6 +29,7 @@ export const InteractiveJuryGrid = () => {
     <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto items-start">
       {juryMembers.map((jury, index) => {
         const isHovered = hoveredIndex === index;
+        const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
 
         return (
           <Card
@@ -38,7 +39,8 @@ export const InteractiveJuryGrid = () => {
             className={`
               relative rounded-2xl border-2 overflow-hidden bg-card cursor-pointer
               transition-all duration-500 ease-out w-[220px] border-border
-              ${isHovered ? 'shadow-xl z-10 border-primary' : ''}
+              ${isHovered ? 'scale-110 shadow-xl z-10 border-primary' : ''}
+              ${isOtherHovered ? 'scale-90 opacity-70' : ''}
             `}
           >
             <CardContent className="p-0">
