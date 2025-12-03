@@ -23,18 +23,26 @@ const sponsors = [
 export const ScrollableSponsors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const lastXRef = useRef(0);
+  const dragVelocityRef = useRef(0);
   const autoScrollRef = useRef<number>();
-  const scrollSpeedRef = useRef(0.5); // pixels per frame
+  const baseSpeed = 0.5; // base auto-scroll speed
 
-  // Auto-scroll effect
+  // Auto-scroll effect with drag velocity
   useEffect(() => {
     const autoScroll = () => {
-      if (scrollRef.current && !isDragging) {
-        scrollRef.current.scrollLeft -= scrollSpeedRef.current;
+      if (scrollRef.current) {
+        // Combine base auto-scroll (left) with drag velocity
+        const totalSpeed = -baseSpeed + dragVelocityRef.current;
+        scrollRef.current.scrollLeft += totalSpeed;
         
-        // Reset to beginning for infinite loop
+        // Decay drag velocity over time
+        dragVelocityRef.current *= 0.98;
+        if (Math.abs(dragVelocityRef.current) < 0.01) {
+          dragVelocityRef.current = 0;
+        }
+        
+        // Reset for infinite loop
         const maxScroll = scrollRef.current.scrollWidth / 3;
         if (scrollRef.current.scrollLeft >= maxScroll * 2) {
           scrollRef.current.scrollLeft = maxScroll;
@@ -52,22 +60,21 @@ export const ScrollableSponsors = () => {
         cancelAnimationFrame(autoScrollRef.current);
       }
     };
-  }, [isDragging]);
+  }, []);
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
     setIsDragging(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
+    lastXRef.current = e.pageX;
   };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !scrollRef.current) return;
     e.preventDefault();
     
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
+    const deltaX = lastXRef.current - e.pageX;
+    dragVelocityRef.current = deltaX * 0.3; // Add velocity based on drag
+    lastXRef.current = e.pageX;
   };
 
   const handleMouseUp = () => {
