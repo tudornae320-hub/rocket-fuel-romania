@@ -189,12 +189,13 @@ const Home = () => {
               { name: "Eduard Burghelia", role: "Venture Partner", company: "V7 Capital" },
               { name: "Florin Visa", role: "Partner", company: "Early Game Ventures" },
             ].map((jury, index) => (
-              <Card key={index} className="hover-lift text-center">
-                <CardContent className="p-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-secondary to-primary rounded-full mx-auto mb-4" />
-                  <h3 className="font-bold text-xl mb-2">{jury.name}</h3>
-                  <p className="text-sm text-muted-foreground">{jury.role}</p>
-                  <p className="text-sm font-medium text-secondary">{jury.company}</p>
+              <Card key={index} className="hover-lift w-[220px] mx-auto rounded-2xl border-2 border-border overflow-hidden bg-card">
+                <CardContent className="p-0">
+                  <div className="w-full h-[180px] bg-muted" />
+                  <div className="p-4 border-t border-border">
+                    <h3 className="font-bold text-base text-foreground">{jury.name}</h3>
+                    <p className="text-sm text-secondary font-medium">{jury.company}</p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
