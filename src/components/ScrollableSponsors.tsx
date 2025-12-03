@@ -53,6 +53,18 @@ export const ScrollableSponsors = () => {
     const walk = (x - startX) * 0.5;
     scrollRef.current.scrollLeft = scrollLeft - walk;
     
+    // Infinite loop logic
+    const maxScroll = scrollRef.current.scrollWidth / 3;
+    if (scrollRef.current.scrollLeft >= maxScroll * 2) {
+      scrollRef.current.scrollLeft = maxScroll;
+      setScrollLeft(scrollRef.current.scrollLeft);
+      setStartX(x);
+    } else if (scrollRef.current.scrollLeft <= 0) {
+      scrollRef.current.scrollLeft = maxScroll;
+      setScrollLeft(scrollRef.current.scrollLeft);
+      setStartX(x);
+    }
+    
     // Calculate velocity
     const now = Date.now();
     const timeDiff = now - lastTimeRef.current;
@@ -70,6 +82,14 @@ export const ScrollableSponsors = () => {
     
     // Apply velocity to scroll position
     scrollRef.current.scrollLeft -= velocityRef.current;
+    
+    // Infinite loop logic during momentum
+    const maxScroll = scrollRef.current.scrollWidth / 3;
+    if (scrollRef.current.scrollLeft >= maxScroll * 2) {
+      scrollRef.current.scrollLeft = maxScroll;
+    } else if (scrollRef.current.scrollLeft <= 0) {
+      scrollRef.current.scrollLeft = maxScroll;
+    }
     
     // Apply friction (deceleration)
     velocityRef.current *= 0.95;
