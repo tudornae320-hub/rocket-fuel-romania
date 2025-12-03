@@ -2,19 +2,19 @@ import { useRef, useState, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const mentors = [
-  { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable" },
-  { name: "Bogdan Iordache", role: "GP", company: "Underline VC" },
-  { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender" },
-  { name: "Alex Gavril", role: "CEO", company: "▲ promocrat" },
-  { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE" },
-  { name: "Alexandru Anghel", role: "Co-founder", company: "Solo" },
-  { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL" },
-  { name: "AnaMaria Onică", role: "CEO", company: "VOXivers" },
-  { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion" },
-  { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers" },
-  { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion" },
-  { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai" },
-  { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier" },
+  { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable", bio: "Building the collaboration platform for marketing teams." },
+  { name: "Bogdan Iordache", role: "GP", company: "Underline VC", bio: "Investing in ambitious founders across Europe." },
+  { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender", bio: "Crafting security products that protect millions." },
+  { name: "Alex Gavril", role: "CEO", company: "▲ promocrat", bio: "Helping brands grow through innovative marketing." },
+  { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE", bio: "Empowering entrepreneurs across Central and Eastern Europe." },
+  { name: "Alexandru Anghel", role: "Co-founder", company: "Solo", bio: "Building tools for the future of work." },
+  { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL", bio: "Strategic financial leadership for growth companies." },
+  { name: "AnaMaria Onică", role: "CEO", company: "VOXivers", bio: "Revolutionizing voice technology solutions." },
+  { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion", bio: "Driving sustainable growth through data-driven strategies." },
+  { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers", bio: "Scaling tech companies through strategic marketing." },
+  { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion", bio: "Building scalable systems and mentoring developers." },
+  { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai", bio: "Creating AI-powered content experiences." },
+  { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", bio: "Making complex things simple for businesses." },
 ];
 
 export const ScrollableMentors = () => {
@@ -22,6 +22,7 @@ export const ScrollableMentors = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
@@ -95,6 +96,7 @@ export const ScrollableMentors = () => {
         applyMomentum();
       }
     }
+    setHoveredKey(null);
   };
 
   return (
@@ -114,23 +116,55 @@ export const ScrollableMentors = () => {
         className="overflow-x-auto scrollbar-hide mb-16 cursor-grab active:cursor-grabbing select-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div className="flex gap-6 animate-scroll-left" style={{ width: 'max-content' }}>
+        <div className="flex gap-6 animate-scroll-left items-start" style={{ width: 'max-content' }}>
           {/* Duplicate the array 3 times for truly seamless infinite loop */}
           {[...Array(3)].map((_, groupIndex) => (
-            <div key={groupIndex} className="flex gap-6 shrink-0">
-              {mentors.map((mentor, index) => (
-                <Card key={`${groupIndex}-${index}`} className="shrink-0 w-[220px] rounded-2xl border-2 border-border overflow-hidden bg-card">
-                  <CardContent className="p-0">
-                    {/* Photo placeholder */}
-                    <div className="w-full h-[180px] bg-muted" />
-                    {/* Name and company */}
-                    <div className="p-4 border-t border-border">
-                      <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
-                      <p className="text-sm text-secondary font-medium">{mentor.company}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+            <div key={groupIndex} className="flex gap-6 shrink-0 items-start">
+              {mentors.map((mentor, index) => {
+                const cardKey = `${groupIndex}-${index}`;
+                const isHovered = hoveredKey === cardKey;
+                const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
+
+                return (
+                  <Card 
+                    key={cardKey} 
+                    onMouseEnter={() => setHoveredKey(cardKey)}
+                    onMouseLeave={() => setHoveredKey(null)}
+                    className={`
+                      shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card
+                      transition-all duration-500 ease-out border-border
+                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary' : ''}
+                      ${isOtherHovered ? 'scale-90 opacity-70' : ''}
+                    `}
+                  >
+                    <CardContent className="p-0">
+                      {/* Photo placeholder */}
+                      <div className="relative w-full h-[180px] overflow-hidden">
+                        <div className="w-full h-full bg-muted" />
+                        {isHovered && (
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent animate-fade-in" />
+                        )}
+                      </div>
+                      {/* Name and company */}
+                      <div className="p-4 border-t border-border">
+                        <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
+                        <p className="text-sm text-secondary font-medium">{mentor.company}</p>
+                        
+                        {/* Expandable content on hover only */}
+                        <div className={`
+                          overflow-hidden transition-all duration-500 ease-out
+                          ${isHovered ? 'max-h-32 opacity-100 mt-2' : 'max-h-0 opacity-0'}
+                        `}>
+                          <p className="text-sm text-muted-foreground mb-1">{mentor.role}</p>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {mentor.bio}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           ))}
         </div>
