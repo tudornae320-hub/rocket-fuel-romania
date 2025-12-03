@@ -139,7 +139,7 @@ export const ScrollableMentors = () => {
                     className={`
                       shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card
                       transition-all duration-500 ease-out border-border
-                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary' : ''}
+                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-6' : ''}
                       ${isOtherHovered ? 'scale-90 opacity-70' : ''}
                     `}
                   >
