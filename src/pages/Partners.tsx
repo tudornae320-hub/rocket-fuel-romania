@@ -84,7 +84,7 @@ const Partners = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-muted/50 py-16 relative">
+      <section className="py-16 relative">
         <ArrowDoodle className="top-10 left-10 opacity-20" />
         <ArrowDoodle className="bottom-10 right-10 opacity-20 rotate-180" />
         

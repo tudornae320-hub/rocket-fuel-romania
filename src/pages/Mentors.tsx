@@ -79,7 +79,7 @@ const Mentors = () => {
       </section>
 
       {/* Why Mentors Matter */}
-      <section className="bg-muted/50 py-16 mb-20">
+      <section className="py-16 mb-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">
             De ce sunt importanți mentorii?
