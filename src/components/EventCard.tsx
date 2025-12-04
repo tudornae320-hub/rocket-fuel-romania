@@ -12,7 +12,7 @@ interface EventCardProps {
 
 export const EventCard = ({ city, dates, location, spotsLeft }: EventCardProps) => {
   return (
-    <Card className="relative overflow-hidden hover-lift hover:shadow-lg transition-all duration-300 border-2 border-border hover:border-primary group">
+    <Card className="relative overflow-hidden hover-lift hover:shadow-lg transition-all duration-300 hover:border-primary group">
       <ArrowDoodle className="top-2 right-2 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
       <CardContent className="p-6">
