@@ -10,7 +10,7 @@ const TikTokIcon = () => (
 export const Footer = () => {
   return (
     <footer className="mx-4 mb-4">
-      <div className="bg-background border border-border rounded-2xl">
+      <div className="bg-background border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000]">
         {/* Main Footer Content */}
         <div className="container mx-auto px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -93,7 +93,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border">
+        <div className="border-t border-[#000000]">
           <div className="container mx-auto px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-sm text-muted-foreground">

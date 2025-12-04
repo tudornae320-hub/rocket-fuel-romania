@@ -73,9 +73,9 @@ export const AgendaPills = () => {
   return (
     <div ref={sectionRef} className="max-w-3xl mx-auto">
       {/* Unified Card Container */}
-      <div className="bg-card rounded-xl border border-border shadow-lg overflow-hidden">
+      <div className="bg-card rounded-2xl border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] overflow-hidden">
         {/* Header */}
-        <div className="text-center py-8 px-6 border-b border-border">
+        <div className="text-center py-8 px-6 border-b border-[#000000]">
           <h2 
             className={`
               text-4xl md:text-5xl font-bold mb-2 transition-all duration-700
@@ -102,7 +102,7 @@ export const AgendaPills = () => {
           `}
         >
           {/* Day Tabs */}
-          <div className="py-6 px-6 flex justify-center border-b border-border">
+          <div className="py-6 px-6 flex justify-center border-b border-[#000000]">
             <div className="relative flex items-center">
               {/* Render buttons in visual order based on selection */}
               {(() => {
@@ -124,7 +124,7 @@ export const AgendaPills = () => {
                         relative rounded-xl font-bold transition-all duration-500 ease-out transform
                         ${isSelected 
                           ? "px-10 py-4 bg-primary text-primary-foreground text-lg min-w-[160px] shadow-lg z-10" 
-                          : "w-14 h-14 bg-card border-2 border-border text-muted-foreground hover:border-primary hover:text-primary hover:scale-110 text-xl"
+                          : "w-14 h-14 bg-card border-2 border-[#000000] text-muted-foreground hover:border-primary hover:text-primary hover:scale-110 text-xl"
                         }
                         ${!isFirst && !isSelected ? "ml-3" : ""}
                         ${!isLast && isSelected ? "mx-3" : ""}
@@ -153,7 +153,7 @@ export const AgendaPills = () => {
                 key={`${selectedDay}-${idx}`}
                 className={`
                   flex gap-6 p-5 transition-all duration-300
-                  ${idx !== agendaData[selectedDay].events.length - 1 ? "border-b border-border" : ""}
+                  ${idx !== agendaData[selectedDay].events.length - 1 ? "border-b border-[#000000]" : ""}
                 `}
                 style={{ 
                   animation: `fade-in 0.4s ease-out ${idx * 50}ms both`

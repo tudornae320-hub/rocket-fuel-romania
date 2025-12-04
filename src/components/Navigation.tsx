@@ -23,7 +23,7 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed top-4 left-4 right-4 z-50">
-      <div className="container mx-auto px-6 bg-background border border-border rounded-2xl shadow-sm">
+      <div className="container mx-auto px-6 bg-background border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000]">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <button onClick={() => scrollToSection("home")} className="flex flex-col items-start">
@@ -60,7 +60,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 animate-fade-in border-t border-border">
+          <div className="md:hidden py-4 animate-fade-in border-t border-[#000000]">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <button
