@@ -27,7 +27,6 @@ export const ScrollableMentors = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [pendingHoverKey, setPendingHoverKey] = useState<string | null>(null);
-  const [isSlowingDown, setIsSlowingDown] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
@@ -37,24 +36,20 @@ export const ScrollableMentors = () => {
   const hoverExitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const slowDownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Handle smooth scroll deceleration when hovering
+  // Handle smooth scroll pause when hovering
   useEffect(() => {
     if (hoveredKey) {
-      // Start slowing down immediately
-      setIsSlowingDown(true);
-      // After the slow-down transition, fully stop
+      // Pause after a short delay for smoother transition
       slowDownTimeoutRef.current = setTimeout(() => {
         setIsStopped(true);
-        setIsSlowingDown(false);
-      }, 500);
+      }, 300);
     } else {
       // Clear any pending stop
       if (slowDownTimeoutRef.current) {
         clearTimeout(slowDownTimeoutRef.current);
       }
-      // Resume immediately
+      // Resume
       setIsStopped(false);
-      setIsSlowingDown(false);
     }
     
     return () => {
@@ -245,8 +240,6 @@ export const ScrollableMentors = () => {
           style={{ 
             width: 'max-content',
             animationPlayState: isStopped ? 'paused' : 'running',
-            animationDuration: isSlowingDown ? '120s' : '30s',
-            transition: 'animation-duration 0.5s ease-out',
           }}
         >
           {/* Duplicate the array 3 times for truly seamless infinite loop */}
