@@ -37,9 +37,9 @@ export const InteractiveJuryGrid = () => {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             className={`
-              relative rounded-2xl border-2 overflow-hidden bg-card cursor-pointer
-              transition-all duration-500 ease-out w-[220px] border-border
-              ${isHovered ? 'scale-110 shadow-xl z-10 border-primary' : ''}
+              relative overflow-hidden cursor-pointer
+              transition-all duration-500 ease-out w-[220px]
+              ${isHovered ? 'scale-110 shadow-xl z-10 !border-primary' : ''}
               ${isOtherHovered ? 'scale-90 opacity-70' : ''}
             `}
           >
@@ -53,7 +53,7 @@ export const InteractiveJuryGrid = () => {
               </div>
               
               {/* Content area */}
-              <div className="border-t border-border p-4">
+              <div className="border-t border-[#000000] p-4">
                 <h3 className="font-bold text-base text-foreground">
                   {jury.name}
                 </h3>
