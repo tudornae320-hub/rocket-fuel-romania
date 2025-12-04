@@ -31,6 +31,7 @@ export const ScrollableMentors = () => {
   const [pendingHoverKey, setPendingHoverKey] = useState<string | null>(null);
   const [isStopped, setIsStopped] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isInCarousel, setIsInCarousel] = useState(false);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
@@ -248,8 +249,10 @@ export const ScrollableMentors = () => {
       {/* Scrolling Carousel - shown when not expanded */}
       {!isExpanded && (
         <div 
-          className="relative transition-[min-height] duration-[1400ms] ease-out"
-          style={{ minHeight: hoveredKey ? '320px' : '240px' }}
+          className="relative"
+          style={{ minHeight: isInCarousel && hoveredKey ? '320px' : '240px', transition: isInCarousel ? 'min-height 700ms ease-out' : 'min-height 0ms' }}
+          onMouseEnter={() => setIsInCarousel(true)}
+          onMouseLeave={() => setIsInCarousel(false)}
         >
           {/* Left gradient fade */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
