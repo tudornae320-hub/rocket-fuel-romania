@@ -1,4 +1,4 @@
-import { useRef, useState, MouseEvent } from 'react';
+import { useRef, useState, MouseEvent, useCallback } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const mentors = [
@@ -17,16 +17,22 @@ const mentors = [
   { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", bio: "Making complex things simple for businesses." },
 ];
 
+const HOVER_ENTER_DELAY = 400; // ms before hover animation starts
+const HOVER_EXIT_DELAY = 800; // ms before hover animation ends
+
 export const ScrollableMentors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const [pendingHoverKey, setPendingHoverKey] = useState<string | null>(null);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const momentumRef = useRef<number>();
+  const hoverEnterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hoverExitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
@@ -116,8 +122,55 @@ export const ScrollableMentors = () => {
         applyMomentum();
       }
     }
-    setHoveredKey(null);
+    // Clear any pending hover enter
+    if (hoverEnterTimeoutRef.current) {
+      clearTimeout(hoverEnterTimeoutRef.current);
+      hoverEnterTimeoutRef.current = null;
+    }
+    setPendingHoverKey(null);
+    
+    // Delayed hover exit
+    hoverExitTimeoutRef.current = setTimeout(() => {
+      setHoveredKey(null);
+    }, HOVER_EXIT_DELAY);
   };
+
+  const handleCardMouseEnter = useCallback((cardKey: string) => {
+    // Clear any pending exit timeout
+    if (hoverExitTimeoutRef.current) {
+      clearTimeout(hoverExitTimeoutRef.current);
+      hoverExitTimeoutRef.current = null;
+    }
+    
+    // Clear any existing enter timeout
+    if (hoverEnterTimeoutRef.current) {
+      clearTimeout(hoverEnterTimeoutRef.current);
+    }
+    
+    setPendingHoverKey(cardKey);
+    
+    // Delayed hover enter
+    hoverEnterTimeoutRef.current = setTimeout(() => {
+      setHoveredKey(cardKey);
+    }, HOVER_ENTER_DELAY);
+  }, []);
+
+  const handleCardMouseLeave = useCallback(() => {
+    // Clear any pending enter timeout
+    if (hoverEnterTimeoutRef.current) {
+      clearTimeout(hoverEnterTimeoutRef.current);
+      hoverEnterTimeoutRef.current = null;
+    }
+    setPendingHoverKey(null);
+    
+    // Delayed hover exit
+    if (hoverExitTimeoutRef.current) {
+      clearTimeout(hoverExitTimeoutRef.current);
+    }
+    hoverExitTimeoutRef.current = setTimeout(() => {
+      setHoveredKey(null);
+    }, HOVER_EXIT_DELAY);
+  }, []);
 
   return (
     <div className="relative">
@@ -154,14 +207,17 @@ export const ScrollableMentors = () => {
                 return (
                   <Card 
                     key={cardKey} 
-                    onMouseEnter={() => setHoveredKey(cardKey)}
-                    onMouseLeave={() => setHoveredKey(null)}
+                    onMouseEnter={() => handleCardMouseEnter(cardKey)}
+                    onMouseLeave={handleCardMouseLeave}
                     className={`
-                      shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card
-                      transition-all duration-500 ease-out border-border
-                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-8 my-12' : ''}
-                      ${isOtherHovered ? 'scale-90 opacity-70' : ''}
+                      shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card border-border
+                      transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-8 my-12' : 'mx-0 my-0'}
+                      ${isOtherHovered ? 'scale-90 opacity-70' : 'scale-100 opacity-100'}
                     `}
+                    style={{
+                      transitionProperty: 'transform, opacity, margin, box-shadow, border-color',
+                    }}
                   >
                     <CardContent className="p-0">
                       {/* Photo placeholder */}
@@ -177,10 +233,15 @@ export const ScrollableMentors = () => {
                         <p className="text-sm text-secondary font-medium">{mentor.company}</p>
                         
                         {/* Expandable content on hover only */}
-                        <div className={`
-                          overflow-hidden transition-all duration-500 ease-out
-                          ${isHovered ? 'max-h-32 opacity-100 mt-2' : 'max-h-0 opacity-0'}
-                        `}>
+                        <div 
+                          className="overflow-hidden"
+                          style={{
+                            maxHeight: isHovered ? '128px' : '0px',
+                            opacity: isHovered ? 1 : 0,
+                            marginTop: isHovered ? '8px' : '0px',
+                            transition: 'max-height 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 500ms ease-out, margin-top 500ms ease-out',
+                          }}
+                        >
                           <p className="text-sm text-muted-foreground mb-1">{mentor.role}</p>
                           <p className="text-sm text-muted-foreground leading-relaxed">
                             {mentor.bio}
