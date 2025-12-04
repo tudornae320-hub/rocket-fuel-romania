@@ -248,7 +248,7 @@ export const ScrollableMentors = () => {
       {/* Scrolling Carousel - shown when not expanded */}
       {!isExpanded && (
         <div 
-          className="relative transition-[min-height] duration-700 ease-out"
+          className="relative transition-[min-height] duration-[1400ms] ease-out"
           style={{ minHeight: hoveredKey ? '320px' : '240px' }}
         >
           {/* Left gradient fade */}
