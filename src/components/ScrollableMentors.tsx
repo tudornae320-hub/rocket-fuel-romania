@@ -223,9 +223,31 @@ export const ScrollableMentors = () => {
 
   return (
     <div className="relative">
+      {/* View All Button with Line - at the top */}
+      <div className="flex flex-col items-center gap-4 mb-8">
+        <Button
+          variant="ghost"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex items-center gap-2 text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold"
+        >
+          {isExpanded ? (
+            <>
+              Show Less
+              <ChevronUp className="w-5 h-5" />
+            </>
+          ) : (
+            <>
+              View All Mentors
+              <ChevronDown className="w-5 h-5" />
+            </>
+          )}
+        </Button>
+        <div className="w-full max-w-md h-px bg-border" />
+      </div>
+
       {/* Scrolling Carousel - shown when not expanded */}
       {!isExpanded && (
-        <>
+        <div className="relative">
           {/* Left gradient fade */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           
@@ -308,7 +330,7 @@ export const ScrollableMentors = () => {
               ))}
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {/* Expanded Grid View */}
@@ -338,28 +360,6 @@ export const ScrollableMentors = () => {
           ))}
         </div>
       )}
-
-      {/* View All Button with Line */}
-      <div className="flex flex-col items-center gap-4 mb-8">
-        <Button
-          variant="ghost"
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center gap-2 text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold"
-        >
-          {isExpanded ? (
-            <>
-              Show Less
-              <ChevronUp className="w-5 h-5" />
-            </>
-          ) : (
-            <>
-              View All Mentors
-              <ChevronDown className="w-5 h-5" />
-            </>
-          )}
-        </Button>
-        <div className="w-full max-w-md h-px bg-border" />
-      </div>
     </div>
   );
 };
