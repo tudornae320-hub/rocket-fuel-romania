@@ -290,9 +290,9 @@ export const ScrollableMentors = () => {
                         onMouseEnter={() => handleCardMouseEnter(cardKey)}
                         onMouseLeave={() => handleCardMouseLeave(cardKey)}
                         className={`
-                          shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card border-border
+                          shrink-0 w-[220px] overflow-hidden
                           transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
-                          ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-8 my-12' : 'mx-0 my-0'}
+                          ${isHovered ? 'scale-110 shadow-xl z-20 !border-primary mx-8 my-12' : 'mx-0 my-0'}
                           ${isOtherHovered ? 'scale-90 opacity-70' : 'scale-100 opacity-100'}
                         `}
                         style={{
@@ -308,7 +308,7 @@ export const ScrollableMentors = () => {
                             )}
                           </div>
                           {/* Name and company */}
-                          <div className="p-4 border-t border-border">
+                          <div className="p-4 border-t border-[#000000]">
                             <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
                             <p className="text-sm text-secondary font-medium">{mentor.company}</p>
                             
@@ -345,7 +345,7 @@ export const ScrollableMentors = () => {
           {mentors.map((mentor, index) => (
             <Card 
               key={index}
-              className="rounded-2xl border-2 overflow-hidden bg-card border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+              className="overflow-hidden hover:!border-primary hover:shadow-lg transition-all duration-300"
             >
               <CardContent className="p-0">
                 {/* Photo placeholder */}
@@ -353,7 +353,7 @@ export const ScrollableMentors = () => {
                   <div className="w-full h-full bg-muted" />
                 </div>
                 {/* Name and company */}
-                <div className="p-4 border-t border-border">
+                <div className="p-4 border-t border-[#000000]">
                   <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
                   <p className="text-sm text-secondary font-medium">{mentor.company}</p>
                   <p className="text-sm text-muted-foreground mt-2">{mentor.role}</p>
