@@ -232,7 +232,7 @@ export const ScrollableMentors = () => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
-        className="overflow-x-auto scrollbar-hide mb-16 cursor-grab active:cursor-grabbing select-none"
+        className="overflow-hidden mb-16 cursor-grab active:cursor-grabbing select-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div 
