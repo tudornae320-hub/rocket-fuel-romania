@@ -1,4 +1,4 @@
-import { useRef, useState, MouseEvent, useCallback } from 'react';
+import { useRef, useState, MouseEvent, useCallback, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const mentors = [
@@ -27,12 +27,42 @@ export const ScrollableMentors = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [pendingHoverKey, setPendingHoverKey] = useState<string | null>(null);
+  const [isSlowingDown, setIsSlowingDown] = useState(false);
+  const [isStopped, setIsStopped] = useState(false);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const momentumRef = useRef<number>();
   const hoverEnterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hoverExitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const slowDownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Handle smooth scroll deceleration when hovering
+  useEffect(() => {
+    if (hoveredKey) {
+      // Start slowing down immediately
+      setIsSlowingDown(true);
+      // After the slow-down transition, fully stop
+      slowDownTimeoutRef.current = setTimeout(() => {
+        setIsStopped(true);
+        setIsSlowingDown(false);
+      }, 500);
+    } else {
+      // Clear any pending stop
+      if (slowDownTimeoutRef.current) {
+        clearTimeout(slowDownTimeoutRef.current);
+      }
+      // Resume immediately
+      setIsStopped(false);
+      setIsSlowingDown(false);
+    }
+    
+    return () => {
+      if (slowDownTimeoutRef.current) {
+        clearTimeout(slowDownTimeoutRef.current);
+      }
+    };
+  }, [hoveredKey]);
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
@@ -190,10 +220,12 @@ export const ScrollableMentors = () => {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div 
-          className={`flex gap-6 items-start ${hoveredKey ? '' : 'animate-scroll-left'}`} 
+          className="flex gap-6 items-start animate-scroll-left"
           style={{ 
             width: 'max-content',
-            animationPlayState: hoveredKey ? 'paused' : 'running'
+            animationPlayState: isStopped ? 'paused' : 'running',
+            animationDuration: isSlowingDown ? '120s' : '30s',
+            transition: 'animation-duration 0.5s ease-out',
           }}
         >
           {/* Duplicate the array 3 times for truly seamless infinite loop */}
