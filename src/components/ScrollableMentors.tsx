@@ -166,10 +166,22 @@ export const ScrollableMentors = () => {
   };
 
   const handleCardMouseEnter = useCallback((cardKey: string) => {
-    // Clear any pending exit timeout
+    // Clear any pending exit timeout - we're still in a card
     if (hoverExitTimeoutRef.current) {
       clearTimeout(hoverExitTimeoutRef.current);
       hoverExitTimeoutRef.current = null;
+    }
+    
+    // If already hovering a card, switch immediately to avoid jumpiness
+    if (hoveredKey !== null) {
+      // Clear any pending enter timeout
+      if (hoverEnterTimeoutRef.current) {
+        clearTimeout(hoverEnterTimeoutRef.current);
+        hoverEnterTimeoutRef.current = null;
+      }
+      setPendingHoverKey(cardKey);
+      setHoveredKey(cardKey);
+      return;
     }
     
     // Clear any existing enter timeout
@@ -179,28 +191,37 @@ export const ScrollableMentors = () => {
     
     setPendingHoverKey(cardKey);
     
-    // Delayed hover enter
+    // Delayed hover enter only for first card
     hoverEnterTimeoutRef.current = setTimeout(() => {
       setHoveredKey(cardKey);
     }, HOVER_ENTER_DELAY);
-  }, []);
+  }, [hoveredKey]);
 
-  const handleCardMouseLeave = useCallback(() => {
+  const handleCardMouseLeave = useCallback((cardKey: string) => {
+    // Only process if this is the currently hovered or pending card
+    if (hoveredKey !== cardKey && pendingHoverKey !== cardKey) {
+      return;
+    }
+    
     // Clear any pending enter timeout
     if (hoverEnterTimeoutRef.current) {
       clearTimeout(hoverEnterTimeoutRef.current);
       hoverEnterTimeoutRef.current = null;
     }
-    setPendingHoverKey(null);
     
-    // Delayed hover exit
+    if (pendingHoverKey === cardKey) {
+      setPendingHoverKey(null);
+    }
+    
+    // Delayed hover exit - give time to move to another card
     if (hoverExitTimeoutRef.current) {
       clearTimeout(hoverExitTimeoutRef.current);
     }
     hoverExitTimeoutRef.current = setTimeout(() => {
-      setHoveredKey(null);
+      // Only clear if still on the same card (not moved to a new one)
+      setHoveredKey((current) => current === cardKey ? null : current);
     }, HOVER_EXIT_DELAY);
-  }, []);
+  }, [hoveredKey, pendingHoverKey]);
 
   return (
     <div className="relative">
@@ -240,7 +261,7 @@ export const ScrollableMentors = () => {
                   <Card 
                     key={cardKey} 
                     onMouseEnter={() => handleCardMouseEnter(cardKey)}
-                    onMouseLeave={handleCardMouseLeave}
+                    onMouseLeave={() => handleCardMouseLeave(cardKey)}
                     className={`
                       shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card border-border
                       transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
