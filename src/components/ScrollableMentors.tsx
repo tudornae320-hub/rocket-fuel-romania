@@ -1,5 +1,7 @@
 import { useRef, useState, MouseEvent, useCallback, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const mentors = [
   { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable", bio: "Building the collaboration platform for marketing teams." },
@@ -28,6 +30,7 @@ export const ScrollableMentors = () => {
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [pendingHoverKey, setPendingHoverKey] = useState<string | null>(null);
   const [isStopped, setIsStopped] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
@@ -220,87 +223,142 @@ export const ScrollableMentors = () => {
 
   return (
     <div className="relative">
-      {/* Left gradient fade */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-      
-      {/* Right gradient fade */}
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-      
-      <div
-        ref={scrollRef}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        className="overflow-hidden mb-16 cursor-grab active:cursor-grabbing select-none"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        <div 
-          className="flex gap-6 items-start animate-scroll-left"
-          style={{ 
-            width: 'max-content',
-            animationPlayState: isStopped ? 'paused' : 'running',
-          }}
-        >
-          {/* Duplicate the array 3 times for truly seamless infinite loop */}
-          {[...Array(3)].map((_, groupIndex) => (
-            <div key={groupIndex} className="flex gap-6 shrink-0 items-start">
-              {mentors.map((mentor, index) => {
-                const cardKey = `${groupIndex}-${index}`;
-                const isHovered = hoveredKey === cardKey;
-                const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
+      {/* Scrolling Carousel - shown when not expanded */}
+      {!isExpanded && (
+        <>
+          {/* Left gradient fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          
+          {/* Right gradient fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          
+          <div
+            ref={scrollRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            className="overflow-hidden mb-8 cursor-grab active:cursor-grabbing select-none"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            <div 
+              className="flex gap-6 items-start animate-scroll-left"
+              style={{ 
+                width: 'max-content',
+                animationPlayState: isStopped ? 'paused' : 'running',
+              }}
+            >
+              {/* Duplicate the array 3 times for truly seamless infinite loop */}
+              {[...Array(3)].map((_, groupIndex) => (
+                <div key={groupIndex} className="flex gap-6 shrink-0 items-start">
+                  {mentors.map((mentor, index) => {
+                    const cardKey = `${groupIndex}-${index}`;
+                    const isHovered = hoveredKey === cardKey;
+                    const isOtherHovered = hoveredKey !== null && hoveredKey !== cardKey;
 
-                return (
-                  <Card 
-                    key={cardKey} 
-                    onMouseEnter={() => handleCardMouseEnter(cardKey)}
-                    onMouseLeave={() => handleCardMouseLeave(cardKey)}
-                    className={`
-                      shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card border-border
-                      transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
-                      ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-8 my-12' : 'mx-0 my-0'}
-                      ${isOtherHovered ? 'scale-90 opacity-70' : 'scale-100 opacity-100'}
-                    `}
-                    style={{
-                      transitionProperty: 'transform, opacity, margin, box-shadow, border-color',
-                    }}
-                  >
-                    <CardContent className="p-0">
-                      {/* Photo placeholder */}
-                      <div className="relative w-full h-[180px] overflow-hidden">
-                        <div className="w-full h-full bg-muted" />
-                        {isHovered && (
-                          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent animate-fade-in" />
-                        )}
-                      </div>
-                      {/* Name and company */}
-                      <div className="p-4 border-t border-border">
-                        <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
-                        <p className="text-sm text-secondary font-medium">{mentor.company}</p>
-                        
-                        {/* Expandable content on hover only */}
-                        <div 
-                          className="overflow-hidden"
-                          style={{
-                            maxHeight: isHovered ? '128px' : '0px',
-                            opacity: isHovered ? 1 : 0,
-                            marginTop: isHovered ? '8px' : '0px',
-                            transition: 'max-height 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 500ms ease-out, margin-top 500ms ease-out',
-                          }}
-                        >
-                          <p className="text-sm text-muted-foreground mb-1">{mentor.role}</p>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {mentor.bio}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+                    return (
+                      <Card 
+                        key={cardKey} 
+                        onMouseEnter={() => handleCardMouseEnter(cardKey)}
+                        onMouseLeave={() => handleCardMouseLeave(cardKey)}
+                        className={`
+                          shrink-0 w-[220px] rounded-2xl border-2 overflow-hidden bg-card border-border
+                          transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+                          ${isHovered ? 'scale-110 shadow-xl z-20 border-primary mx-8 my-12' : 'mx-0 my-0'}
+                          ${isOtherHovered ? 'scale-90 opacity-70' : 'scale-100 opacity-100'}
+                        `}
+                        style={{
+                          transitionProperty: 'transform, opacity, margin, box-shadow, border-color',
+                        }}
+                      >
+                        <CardContent className="p-0">
+                          {/* Photo placeholder */}
+                          <div className="relative w-full h-[180px] overflow-hidden">
+                            <div className="w-full h-full bg-muted" />
+                            {isHovered && (
+                              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent animate-fade-in" />
+                            )}
+                          </div>
+                          {/* Name and company */}
+                          <div className="p-4 border-t border-border">
+                            <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
+                            <p className="text-sm text-secondary font-medium">{mentor.company}</p>
+                            
+                            {/* Expandable content on hover only */}
+                            <div 
+                              className="overflow-hidden"
+                              style={{
+                                maxHeight: isHovered ? '128px' : '0px',
+                                opacity: isHovered ? 1 : 0,
+                                marginTop: isHovered ? '8px' : '0px',
+                                transition: 'max-height 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 500ms ease-out, margin-top 500ms ease-out',
+                              }}
+                            >
+                              <p className="text-sm text-muted-foreground mb-1">{mentor.role}</p>
+                              <p className="text-sm text-muted-foreground leading-relaxed">
+                                {mentor.bio}
+                              </p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              ))}
             </div>
+          </div>
+        </>
+      )}
+
+      {/* Expanded Grid View */}
+      {isExpanded && (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-8 animate-fade-in">
+          {mentors.map((mentor, index) => (
+            <Card 
+              key={index}
+              className="rounded-2xl border-2 overflow-hidden bg-card border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+            >
+              <CardContent className="p-0">
+                {/* Photo placeholder */}
+                <div className="relative w-full h-[180px] overflow-hidden">
+                  <div className="w-full h-full bg-muted" />
+                </div>
+                {/* Name and company */}
+                <div className="p-4 border-t border-border">
+                  <h3 className="font-bold text-base text-foreground">{mentor.name}</h3>
+                  <p className="text-sm text-secondary font-medium">{mentor.company}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{mentor.role}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                    {mentor.bio}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
+      )}
+
+      {/* View All Button with Line */}
+      <div className="flex flex-col items-center gap-4 mb-8">
+        <Button
+          variant="ghost"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex items-center gap-2 text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold"
+        >
+          {isExpanded ? (
+            <>
+              Show Less
+              <ChevronUp className="w-5 h-5" />
+            </>
+          ) : (
+            <>
+              View All Mentors
+              <ChevronDown className="w-5 h-5" />
+            </>
+          )}
+        </Button>
+        <div className="w-full max-w-md h-px bg-border" />
       </div>
     </div>
   );
