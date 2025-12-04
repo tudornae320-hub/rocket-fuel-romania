@@ -17,8 +17,8 @@ const mentors = [
   { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", bio: "Making complex things simple for businesses." },
 ];
 
-const HOVER_ENTER_DELAY = 200; // ms before hover animation starts
-const HOVER_EXIT_DELAY = 400; // ms before hover animation ends
+const HOVER_ENTER_DELAY = 100; // ms before hover animation starts
+const HOVER_EXIT_DELAY = 200; // ms before hover animation ends
 
 export const ScrollableMentors = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
