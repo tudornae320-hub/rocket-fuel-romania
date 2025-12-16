@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Startup Weekend Romania Colors */
+    --sky-blue: 196 96% 67%;
+    --majorelle-blue: 245 70% 58%;
+    --off-white: 40 43% 97%;
+    --dark-grey: 0 2% 16%;
+    
+    /* Base tokens */
+    --background: 0 0% 100%;
+    --foreground: 0 2% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 2% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 2% 16%;
+
+    /* Primary = Sky Blue */
+    --primary: 196 96% 67%;
+    --primary-foreground: 0 2% 16%;
+
+    /* Secondary = Majorelle Blue */
+    --secondary: 245 70% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 100%;
+    --muted-foreground: 0 2% 40%;
+
+    --accent: 196 96% 67%;
+    --accent-foreground: 0 2% 16%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 2% 85%;
+    --input: 0 2% 85%;
+    --ring: 196 96% 67%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(196 96% 67%), hsl(245 70% 58%));
+    --gradient-hero: linear-gradient(180deg, hsl(40 43% 97%), hsl(196 96% 95%));
+    
+    /* Shadows */
+    --shadow-doodle: 0 4px 20px hsl(196 96% 67% / 0.15);
+    --shadow-card: 0 2px 8px hsl(0 2% 16% / 0.08);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 0 2% 16%;
+    --foreground: 40 43% 97%;
+
+    --card: 0 2% 20%;
+    --card-foreground: 40 43% 97%;
+
+    --popover: 0 2% 20%;
+    --popover-foreground: 40 43% 97%;
+
+    --primary: 196 96% 67%;
+    --primary-foreground: 0 2% 16%;
+
+    --secondary: 245 70% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 2% 25%;
+    --muted-foreground: 40 20% 70%;
+
+    --accent: 196 96% 67%;
+    --accent-foreground: 0 2% 16%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 2% 30%;
+    --input: 0 2% 30%;
+    --ring: 196 96% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+  @layer utilities {
+    .no-pattern {
+      background-image: none !important;
+    }
+  .doodle-underline {
+    @apply relative inline-block;
+  }
+  
+  .doodle-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 w-full h-[3px] bg-primary;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .doodle-underline:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: var(--gradient-primary);
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Rocket Animation Styles */
+  .rocket-container {
+    position: relative;
+    width: 48px;
+    height: 48px;
+  }
+
+  .rocket-body {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    color: hsl(var(--primary));
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rocket-flame {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 26px;
+    background: linear-gradient(to bottom, #ff6b35 0%, #f7931e 50%, #ff6b35 70%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    filter: blur(1.5px);
+  }
+
+  .rocket--active .rocket-body {
+    animation: rocket-shake 0.2s ease-in-out infinite;
+  }
+
+  .rocket--active .rocket-flame {
+    opacity: 1;
+    animation: flame-flicker 0.15s ease-in-out infinite;
+  }
+
+  @keyframes rocket-shake {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-1px, 0.5px);
+    }
+    50% {
+      transform: translate(1px, -0.5px);
+    }
+    75% {
+      transform: translate(-0.5px, 1px);
+    }
+  }
+
+  @keyframes flame-flicker {
+    0%, 100% {
+      opacity: 1;
+      transform: translateX(-50%) scaleY(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: translateX(-50%) scaleY(0.85);
+    }
+  }
+
+  @keyframes draw-path {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .animate-draw-path {
+    animation: draw-path 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes draw-arrow {
+    from {
+      stroke-dashoffset: 1000;
+      opacity: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  .animate-draw-arrow {
+    stroke-dashoffset: 1000;
+    opacity: 1;
+    animation: draw-arrow 1.2s ease-out forwards;
+  }
+
+  .animate-draw-arrow-delay-1 {
+    animation-delay: 0.5s;
+  }
+
+  .animate-draw-arrow-delay-2 {
+    animation-delay: 1.5s;
+  }
+
+  .animate-draw-arrow-delay-3 {
+    animation-delay: 2.5s;
+  }
+}
