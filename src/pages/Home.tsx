@@ -14,6 +14,7 @@ import vectorSvg from "@/assets/Vector.svg";
 import linieSvg from "@/assets/linie.svg";
 import cercMentoriSvg from "@/assets/cerc_mentori.svg";
 import rotundSvg from "@/assets/rotund.svg";
+import sageterSvg from "@/assets/sageter.svg";
 import { AgendaPills } from "@/components/AgendaPills";
 
 const Home = () => {
@@ -30,6 +31,7 @@ const Home = () => {
   const readyPathLength = useRef(1);
   const [readyProgress, setReadyProgress] = useState(0);
   const [isCtaHighlighted, setIsCtaHighlighted] = useState(false);
+  
 
   useEffect(() => {
     const path = circlePathRef.current;
@@ -99,6 +101,7 @@ const Home = () => {
     if (ctaSectionRef.current) {
       ctaObserver.observe(ctaSectionRef.current);
     }
+
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -265,77 +268,77 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-28 md:mt-32">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-28 md:mt-32">
             {/* Arrow 1: Below Card 1 */}
-            <svg
-              className="absolute left-[12.5%] top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-0"
-              viewBox="0 0 226 400"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              style={{ 
+                left: '5.5%'
+              }}
             >
-              <g>
-                <path
-                  d="M165.023 252.154C145.185 291.211 104.889 311.669 63.9721 320.348C-37.7001 342.046 -130.072 276.952 -173.468 188.919C-175.948 183.96 -169.129 180.241 -166.029 184.581C-115.813 263.933 -39.5599 323.448 59.6324 306.709C152.004 290.591 173.083 210.618 173.703 128.786C173.703 120.106 187.341 120.106 187.341 128.786C187.961 170.941 184.241 214.337 165.023 252.154Z"
-                  fill="#5ad1fc"
-                  fillOpacity="0.9"
+              <div
+                style={{ 
+                  transform: 'rotate(80deg) translateX(-5%)',
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <img 
+                  src={sageterSvg} 
+                  alt="Arrow" 
+                  className="w-full h-full object-contain"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)' }}
                 />
-                <path
-                  d="M49.7135 283.771C4.45746 289.351 -40.1786 270.132 -78.6163 247.814C-100.934 234.795 -146.81 205.658 -144.331 174.662C-144.331 172.182 -141.231 171.561 -139.371 173.421C-99.0746 230.456 -30.8805 273.232 41.6542 271.372C122.248 268.893 132.167 193.879 132.167 129.405C132.167 120.105 146.425 120.105 146.425 129.405C146.424 201.318 133.406 273.232 49.7135 283.771Z"
-                  fill="#5ad1fc"
-                />
-                <path
-                  d="M211.519 157.922C205.32 144.283 185.481 87.8682 163.783 90.9679C153.864 92.2078 143.945 101.506 136.505 107.705C123.486 117.625 110.468 128.164 96.8282 137.463C92.4896 140.564 87.529 133.743 91.2487 130.024C110.467 112.665 138.365 77.3271 166.882 75.4683C196.64 74.2284 215.858 130.644 225.157 149.862C229.498 159.162 215.858 166.602 211.519 157.922Z"
-                  fill="#5ad1fc"
-                />
-              </g>
-            </svg>
+              </div>
+            </div>
 
-            {/* Arrow 2: Above Card 2 */}
-            <svg
-              className="absolute left-[37.5%] top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-0"
-              viewBox="0 0 226 400"
-              xmlns="http://www.w3.org/2000/svg"
+            {/* Arrow 2: Above Card 2 - Flipped */}
+            <div
+              className="hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              style={{ 
+                left: '30%'
+              }}
             >
-              <g transform="scale(1,-1) translate(0,-400)">
-                <path
-                  d="M165.023 252.154C145.185 291.211 104.889 311.669 63.9721 320.348C-37.7001 342.046 -130.072 276.952 -173.468 188.919C-175.948 183.96 -169.129 180.241 -166.029 184.581C-115.813 263.933 -39.5599 323.448 59.6324 306.709C152.004 290.591 173.083 210.618 173.703 128.786C173.703 120.106 187.341 120.106 187.341 128.786C187.961 170.941 184.241 214.337 165.023 252.154Z"
-                  fill="#5ad1fc"
-                  fillOpacity="0.9"
+              <div
+                style={{ 
+                  transform: 'rotate(-80deg) scaleY(-1) translateX(+25%)',
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <img 
+                  src={sageterSvg} 
+                  alt="Arrow" 
+                  className="w-full h-full object-contain"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)' }}
                 />
-                <path
-                  d="M49.7135 283.771C4.45746 289.351 -40.1786 270.132 -78.6163 247.814C-100.934 234.795 -146.81 205.658 -144.331 174.662C-144.331 172.182 -141.231 171.561 -139.371 173.421C-99.0746 230.456 -30.8805 273.232 41.6542 271.372C122.248 268.893 132.167 193.879 132.167 129.405C132.167 120.105 146.425 120.105 146.425 129.405C146.424 201.318 133.406 273.232 49.7135 283.771Z"
-                  fill="#5ad1fc"
-                />
-                <path
-                  d="M211.519 157.922C205.32 144.283 185.481 87.8682 163.783 90.9679C153.864 92.2078 143.945 101.506 136.505 107.705C123.486 117.625 110.468 128.164 96.8282 137.463C92.4896 140.564 87.529 133.743 91.2487 130.024C110.467 112.665 138.365 77.3271 166.882 75.4683C196.64 74.2284 215.858 130.644 225.157 149.862C229.498 159.162 215.858 166.602 211.519 157.922Z"
-                  fill="#5ad1fc"
-                />
-              </g>
-            </svg>
+              </div>
+            </div>
 
             {/* Arrow 3: Below Card 3 */}
-            <svg
-              className="absolute left-[62.5%] top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-0"
-              viewBox="0 0 226 400"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              style={{ 
+                left: '57%'
+              }}
             >
-              <g>
-                <path
-                  d="M165.023 252.154C145.185 291.211 104.889 311.669 63.9721 320.348C-37.7001 342.046 -130.072 276.952 -173.468 188.919C-175.948 183.96 -169.129 180.241 -166.029 184.581C-115.813 263.933 -39.5599 323.448 59.6324 306.709C152.004 290.591 173.083 210.618 173.703 128.786C173.703 120.106 187.341 120.106 187.341 128.786C187.961 170.941 184.241 214.337 165.023 252.154Z"
-                  fill="#5ad1fc"
-                  fillOpacity="0.9"
+              <div
+                style={{ 
+                  transform: 'rotate(80deg) translateX(-5%)',
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <img 
+                  src={sageterSvg} 
+                  alt="Arrow" 
+                  className="w-full h-full object-contain"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)' }}
                 />
-                <path
-                  d="M49.7135 283.771C4.45746 289.351 -40.1786 270.132 -78.6163 247.814C-100.934 234.795 -146.81 205.658 -144.331 174.662C-144.331 172.182 -141.231 171.561 -139.371 173.421C-99.0746 230.456 -30.8805 273.232 41.6542 271.372C122.248 268.893 132.167 193.879 132.167 129.405C132.167 120.105 146.425 120.105 146.425 129.405C146.424 201.318 133.406 273.232 49.7135 283.771Z"
-                  fill="#5ad1fc"
-                />
-                <path
-                  d="M211.519 157.922C205.32 144.283 185.481 87.8682 163.783 90.9679C153.864 92.2078 143.945 101.506 136.505 107.705C123.486 117.625 110.468 128.164 96.8282 137.463C92.4896 140.564 87.529 133.743 91.2487 130.024C110.467 112.665 138.365 77.3271 166.882 75.4683C196.64 74.2284 215.858 130.644 225.157 149.862C229.498 159.162 215.858 166.602 211.519 157.922Z"
-                  fill="#5ad1fc"
-                />
-              </g>
-            </svg>
+              </div>
+            </div>
 
-            <Card className="text-center space-y-4 -translate-y-24 relative z-10">
+            <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Lightbulb className="w-8 h-8 text-primary" />
@@ -349,7 +352,7 @@ const Home = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center space-y-4 translate-y-24 relative z-10">
+            <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
                   <Presentation className="w-8 h-8 text-secondary" />
@@ -363,7 +366,7 @@ const Home = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center space-y-4 -translate-y-24 relative z-10">
+            <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Award className="w-8 h-8 text-primary" />
@@ -377,7 +380,7 @@ const Home = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center space-y-4 translate-y-24 relative z-10">
+            <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
                   <Coffee className="w-8 h-8 text-secondary" />
