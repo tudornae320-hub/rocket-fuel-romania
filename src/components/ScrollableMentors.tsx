@@ -2,20 +2,52 @@ import { useRef, useState, MouseEvent, useCallback, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
+// Import mentor images
+import nicolaeGudumac from "@/assets/mentors/nicolae-gudumac.jpg";
+import bogdanIordache from "@/assets/mentors/bogdan-iordache.jpeg";
+import ancaBerca from "@/assets/mentors/anca-berca.jpg";
+import alexGavril from "@/assets/mentors/alex-gavril.jpg";
+import alexDascalu from "@/assets/mentors/alex-dascalu.jpg";
+import alexandruAnghel from "@/assets/mentors/alexandru-anghel.jpg";
+import ancaMarcu from "@/assets/mentors/anca-marcu.jpg";
+import anamariaOnica from "@/assets/mentors/anamaria-onica.jpeg";
+import aurasTanase from "@/assets/mentors/auras-tanase.jpg";
+import ioanaSerban from "@/assets/mentors/ioana-serban.jpg";
+import tudorPetracovici from "@/assets/mentors/tudor-petracovici.jpg";
+import alexNicoara from "@/assets/mentors/alex-nicoara.jpg";
+import danielDeaconu from "@/assets/mentors/daniel-deaconu.jpg";
+
+// Image mapping
+const mentorImages: { [key: string]: string | null } = {
+  'nicolae-gudumac': nicolaeGudumac,
+  'bogdan-iordache': bogdanIordache,
+  'anca-berca': ancaBerca,
+  'alex-gavril': alexGavril,
+  'alex-dascalu': alexDascalu,
+  'alexandru-anghel': alexandruAnghel,
+  'anca-marcu': ancaMarcu,
+  'anamaria-onica': anamariaOnica,
+  'auras-tanase': aurasTanase,
+  'ioana-serban': ioanaSerban,
+  'tudor-petracovici': tudorPetracovici,
+  'alex-nicoara': alexNicoara,
+  'daniel-deaconu': danielDeaconu,
+};
+
 const mentors = [
-  { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable", bio: "Building the collaboration platform for marketing teams." },
-  { name: "Bogdan Iordache", role: "GP", company: "Underline VC", bio: "Investing in ambitious founders across Europe." },
-  { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender", bio: "Crafting security products that protect millions." },
-  { name: "Alex Gavril", role: "CEO", company: "▲ promocrat", bio: "Helping brands grow through innovative marketing." },
-  { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE", bio: "Empowering entrepreneurs across Central and Eastern Europe." },
-  { name: "Alexandru Anghel", role: "Co-founder", company: "Solo", bio: "Building tools for the future of work." },
-  { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL", bio: "Strategic financial leadership for growth companies." },
-  { name: "AnaMaria Onică", role: "CEO", company: "VOXivers", bio: "Revolutionizing voice technology solutions." },
-  { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion", bio: "Driving sustainable growth through data-driven strategies." },
-  { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers", bio: "Scaling tech companies through strategic marketing." },
-  { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion", bio: "Building scalable systems and mentoring developers." },
-  { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai", bio: "Creating AI-powered content experiences." },
-  { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", bio: "Making complex things simple for businesses." },
+  { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable", bio: "Building the collaboration platform for marketing teams.", image: mentorImages['nicolae-gudumac'] },
+  { name: "Bogdan Iordache", role: "GP", company: "Underline VC", bio: "Investing in ambitious founders across Europe.", image: mentorImages['bogdan-iordache'] },
+  { name: "Anca Bercă", role: "Product Manager", company: "Bitdefender", bio: "Crafting security products that protect millions.", image: mentorImages['anca-berca'] },
+  { name: "Alex Gavril", role: "CEO", company: "▲ promocrat", bio: "Helping brands grow through innovative marketing.", image: mentorImages['alex-gavril'] },
+  { name: "Alex Dascalu", role: "Lead Director", company: "Founder Institute CEE", bio: "Empowering entrepreneurs across Central and Eastern Europe.", image: mentorImages['alex-dascalu'] },
+  { name: "Alexandru Anghel", role: "Co-founder", company: "Solo", bio: "Building tools for the future of work.", image: mentorImages['alexandru-anghel'] },
+  { name: "Anca Marcu", role: "CFO", company: "AMSIMCEL", bio: "Strategic financial leadership for growth companies.", image: mentorImages['anca-marcu'] },
+  { name: "AnaMaria Onică", role: "CEO", company: "VOXivers", bio: "Revolutionizing voice technology solutions.", image: mentorImages['anamaria-onica'] },
+  { name: "Auras Tanase", role: "Growth Marketeer", company: "Veridion", bio: "Driving sustainable growth through data-driven strategies.", image: mentorImages['auras-tanase'] },
+  { name: "Ioana Serban", role: "Fractional CMO", company: "TechMarketers", bio: "Scaling tech companies through strategic marketing.", image: mentorImages['ioana-serban'] },
+  { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion", bio: "Building scalable systems and mentoring developers.", image: mentorImages['tudor-petracovici'] },
+  { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai", bio: "Creating AI-powered content experiences.", image: mentorImages['alex-nicoara'] },
+  { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", bio: "Making complex things simple for businesses.", image: mentorImages['daniel-deaconu'] },
 ];
 
 const HOVER_ENTER_DELAY = 80; // ms before hover animation starts
@@ -297,9 +329,17 @@ export const ScrollableMentors = () => {
                         }}
                       >
                         <CardContent className="p-0">
-                          {/* Photo placeholder */}
+                          {/* Photo */}
                           <div className="relative w-full h-[180px] overflow-hidden">
-                            <div className="w-full h-full bg-muted" />
+                            {mentor.image ? (
+                              <img 
+                                src={mentor.image} 
+                                alt={mentor.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-muted" />
+                            )}
                             {isHovered && (
                               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent animate-fade-in" />
                             )}
@@ -345,9 +385,17 @@ export const ScrollableMentors = () => {
               className="overflow-hidden hover:!border-primary hover:shadow-lg transition-all duration-300"
             >
               <CardContent className="p-0">
-                {/* Photo placeholder */}
+                {/* Photo */}
                 <div className="relative w-full h-[180px] overflow-hidden">
-                  <div className="w-full h-full bg-muted" />
+                  {mentor.image ? (
+                    <img 
+                      src={mentor.image} 
+                      alt={mentor.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted" />
+                  )}
                 </div>
                 {/* Name and company */}
                 <div className="p-4 border-t border-[#000000]">
