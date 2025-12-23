@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DictionaryTooltip } from "@/components/Tooltip";
-import { ArrowDoodle, CircleDoodle, StarDoodle, SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
@@ -208,8 +207,6 @@ const Home = () => {
 
       {/* No talk. All Action! */}
       <section id="about" className="pt-16 pb-56 md:pt-20 md:pb-72 relative">
-        <SquiggleDoodle className="top-10 right-20 opacity-30" />
-        
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start max-w-6xl mx-auto">
             {/* Left Column - Icon and Headlines */}
@@ -399,9 +396,6 @@ const Home = () => {
 
       {/* 54 Hours to Build */}
       <section ref={hoursSectionRef} className="py-20 relative no-pattern">
-        <CircleDoodle className="top-20 left-10 opacity-20" />
-        <StarDoodle className="bottom-20 right-10 opacity-20" />
-        
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center max-w-6xl mx-auto">
             {/* Left Side - Header */}
@@ -457,8 +451,6 @@ const Home = () => {
 
       {/* Mentors & Speakers */}
       <section id="mentors" className="py-20 relative">
-        <ArrowDoodle className="top-10 left-20 opacity-30" />
-        
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-12">
             {/* Left - Photo Card */}
@@ -520,10 +512,6 @@ const Home = () => {
           </div>
           
           <ScrollableMentors />
-
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-8">Jury</h3>
-          </div>
           
           <InteractiveJuryGrid />
         </div>
@@ -531,8 +519,6 @@ const Home = () => {
 
       {/* Agenda */}
       <section id="agenda" className="py-20 relative no-pattern">
-        <SquiggleDoodle className="bottom-10 left-20 opacity-20" />
-        
         <div className="container mx-auto px-4">
           <AgendaPills />
         </div>
@@ -540,8 +526,6 @@ const Home = () => {
 
       {/* Sponsors & Partners */}
       <section id="partners" className="py-20 relative">
-        <CircleDoodle className="top-10 right-20 opacity-20" />
-        
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -565,8 +549,6 @@ const Home = () => {
       {/* CTA Section */}
       <section ref={ctaSectionRef} className="py-20 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 no-pattern">
         <div className="absolute inset-0 opacity-10" />
-        <ArrowDoodle className="top-10 left-20 animate-float" />
-        <ArrowDoodle className="bottom-10 right-20 animate-float" />
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
