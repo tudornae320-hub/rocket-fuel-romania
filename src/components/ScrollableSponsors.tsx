@@ -192,14 +192,16 @@ export const ScrollableSponsors = () => {
           {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
             <Card 
               key={index} 
-              className="shrink-0 w-[180px] h-[100px] rounded-2xl border-2 overflow-hidden bg-card border-border"
+              className="shrink-0 w-[240px] h-[140px] rounded-2xl border-0 overflow-hidden bg-transparent shadow-none"
             >
-              <CardContent className="p-6 flex items-center justify-center h-full">
+              <CardContent className="p-4 flex items-center justify-center h-full">
                 {sponsor.image ? (
                   <img 
                     src={sponsor.image} 
                     alt={sponsor.name}
-                    className="max-w-full max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain select-none pointer-events-none"
+                    draggable={false}
+                    onDragStart={(e) => e.preventDefault()}
                   />
                 ) : (
                   <div className="text-center text-muted-foreground font-semibold">
