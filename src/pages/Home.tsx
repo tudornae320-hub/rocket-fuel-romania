@@ -31,6 +31,27 @@ const Home = () => {
   const [readyProgress, setReadyProgress] = useState(0);
   const [isCtaHighlighted, setIsCtaHighlighted] = useState(false);
   
+  // Emoji animation state
+  const ticketButtonRef = useRef<HTMLButtonElement>(null);
+  const ticketButtonContainerRef = useRef<HTMLDivElement>(null);
+  const [emojiProgress, setEmojiProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Confetti animation state
+  const [confettiParticles, setConfettiParticles] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    rotation: number;
+    rotationSpeed: number;
+    color: string;
+    size: number;
+    shape: 'rect' | 'circle';
+  }>>([]);
+  const animationFrameRef = useRef<number | null>(null);
+  
 
   useEffect(() => {
     const path = circlePathRef.current;
@@ -101,14 +122,199 @@ const Home = () => {
       ctaObserver.observe(ctaSectionRef.current);
     }
 
+    // Detect mobile device
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
+      return isMobileDevice;
+    };
+    
+    const mobile = checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    // Mobile: IntersectionObserver for scroll-based emoji animation
+    // Set up in separate effect when ref is available
+
+    // Desktop: Mouse tracking for emoji animation
+    let handleMouseMove: ((e: MouseEvent) => void) | null = null;
+    if (!mobile) {
+      handleMouseMove = (e: MouseEvent) => {
+        if (!ticketButtonRef.current) return;
+        
+        const buttonRect = ticketButtonRef.current.getBoundingClientRect();
+        const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+        const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+        
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Calculate distance from cursor to button center
+        const distance = Math.sqrt(
+          Math.pow(mouseX - buttonCenterX, 2) + Math.pow(mouseY - buttonCenterY, 2)
+        );
+        
+        // Max distance for activation (smaller range for closer proximity)
+        const maxDistance = 150;
+        // Calculate progress: 1 when cursor is at button, 0 when far away
+        const progress = Math.max(0, Math.min(1, 1 - distance / maxDistance));
+        
+        setEmojiProgress(progress);
+      };
+
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+      if (handleMouseMove) {
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
       hoursObserver.disconnect();
       ctaObserver.disconnect();
     };
   }, []);
+
+  // Mobile: Track button distance from center of screen for smooth emoji animation
+  useEffect(() => {
+    if (!isMobile || !ticketButtonRef.current) return;
+
+    let ticking = false;
+    const calculateProgress = () => {
+      if (!ticketButtonRef.current) return;
+      
+      const buttonRect = ticketButtonRef.current.getBoundingClientRect();
+      const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+      const viewportCenterY = window.innerHeight / 2;
+      
+      // Calculate distance from button center to viewport center
+      const distance = Math.abs(buttonCenterY - viewportCenterY);
+      
+      // Max distance for activation (e.g., 300px from center)
+      const maxDistance = 300;
+      
+      // Calculate progress: 1 when button is at center, 0 when far away
+      // Use smooth easing function for better animation
+      const rawProgress = Math.max(0, Math.min(1, 1 - distance / maxDistance));
+      
+      // Apply smooth easing (ease-out cubic)
+      const progress = rawProgress < 1 ? 1 - Math.pow(1 - rawProgress, 3) : rawProgress;
+      
+      setEmojiProgress(progress);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(calculateProgress);
+        ticking = true;
+      }
+    };
+
+    // Initial calculation
+    calculateProgress();
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [isMobile]);
+
+  // Confetti animation effect
+  useEffect(() => {
+    if (confettiParticles.length === 0) {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      return;
+    }
+
+    const animate = () => {
+      setConfettiParticles(prev => {
+        if (prev.length === 0) {
+          if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+            animationFrameRef.current = null;
+          }
+          return prev;
+        }
+        
+        const updated = prev.map(particle => ({
+          ...particle,
+          x: particle.x + particle.vx,
+          y: particle.y + particle.vy,
+          vy: particle.vy + 0.3, // gravity
+          rotation: particle.rotation + particle.rotationSpeed,
+        })).filter(particle => {
+          // Remove particles that are off screen or fallen too far
+          return particle.y < window.innerHeight + 200 && particle.x > -100 && particle.x < window.innerWidth + 100;
+        });
+        
+        if (updated.length > 0) {
+          animationFrameRef.current = requestAnimationFrame(animate);
+        } else {
+          animationFrameRef.current = null;
+        }
+        
+        return updated;
+      });
+    };
+    
+    animationFrameRef.current = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+    };
+  }, [confettiParticles.length]);
+
+  // Confetti creation function
+  const createConfetti = () => {
+    if (!ticketButtonRef.current) return;
+    
+    const buttonRect = ticketButtonRef.current.getBoundingClientRect();
+    const startX = buttonRect.left + buttonRect.width / 2;
+    const startY = buttonRect.top + buttonRect.height / 2;
+    
+    const colors = ['#5ad1fc', '#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ffd93d', '#6c5ce7', '#fd79a8'];
+    const particleCount = 60;
+    const particles = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.6;
+      const speed = 4 + Math.random() * 6;
+      particles.push({
+        id: Date.now() + i,
+        x: startX,
+        y: startY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 2,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 12,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: 8 + Math.random() * 10,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle',
+      });
+    }
+    
+    setConfettiParticles(particles);
+    
+    // Clean up after animation
+    setTimeout(() => {
+      setConfettiParticles([]);
+    }, 3000);
+  };
+
+  const handleButtonClick = () => {
+    createConfetti();
+  };
 
   return (
     <div className="min-h-screen">
@@ -547,7 +753,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaSectionRef} className="py-20 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 no-pattern">
+      <section ref={ctaSectionRef} className="pt-20 pb-32 md:pb-40 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 no-pattern">
         <div className="absolute inset-0 opacity-10" />
         
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -608,9 +814,72 @@ const Home = () => {
           <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
             Join us for 54 hours of intense building, learning, and networking. Limited spots available!
           </p>
-          <button className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98]">
-            Get your ticket now
-          </button>
+          <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
+            <button 
+              ref={ticketButtonRef}
+              onClick={handleButtonClick}
+              className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] relative z-10"
+            >
+              Get your ticket now
+            </button>
+            
+            {/* Confetti particles */}
+            {confettiParticles.length > 0 && (
+              <div className="fixed inset-0 pointer-events-none z-50">
+                {confettiParticles.map(particle => (
+                  <div
+                    key={particle.id}
+                    style={{
+                      position: 'absolute',
+                      left: `${particle.x}px`,
+                      top: `${particle.y}px`,
+                      width: `${particle.size}px`,
+                      height: `${particle.size}px`,
+                      backgroundColor: particle.color,
+                      borderRadius: particle.shape === 'circle' ? '50%' : '2px',
+                      transform: `rotate(${particle.rotation}deg)`,
+                      pointerEvents: 'none',
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+            
+            {/* Animated party emojis - positioned below the button */}
+            <div 
+              className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-0"
+              style={{
+                top: `calc(100% + ${isMobile ? 60 : 20}px - ${emojiProgress * (isMobile ? 100 : 120)}px)`, // More space on mobile to avoid intersection
+                transition: isMobile ? 'top 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none', // Smooth transition on mobile
+              }}
+            >
+              {/* Left emoji */}
+              <span
+                className="absolute text-6xl md:text-7xl"
+                style={{
+                  left: '-80px',
+                  transform: `translateX(${-emojiProgress * 15}px) scale(${0.5 + emojiProgress * 0.5})`,
+                  opacity: emojiProgress * 0.9,
+                  transition: isMobile ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none', // Smooth transition on mobile
+                }}
+              >
+                🎉
+              </span>
+              
+              {/* Right emoji (mirrored) */}
+              <span
+                className="absolute text-6xl md:text-7xl"
+                style={{
+                  right: '-80px',
+                  transform: `translateX(${emojiProgress * 15}px) scaleX(-1) scale(${0.5 + emojiProgress * 0.5})`,
+                  opacity: emojiProgress * 0.9,
+                  transition: isMobile ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none', // Smooth transition on mobile
+                }}
+              >
+                🎉
+              </span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

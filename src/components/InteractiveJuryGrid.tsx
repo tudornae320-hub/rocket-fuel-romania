@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import sageterSvg from "@/assets/sageter.svg";
 import linieSvg from "@/assets/linie.svg";
+import threeLinesSvg from "@/assets/3_lines.svg";
 
 // Import jury images
 import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
@@ -104,9 +105,18 @@ export const InteractiveJuryGrid = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-6xl mx-auto px-4 pt-20 md:pt-24">
       {/* Left side: Text, placeholder, and arrow */}
-      <div className="flex flex-col items-center justify-center flex-shrink-0 order-1 md:order-1 gap-4">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+      <div className="flex flex-col items-center justify-center flex-shrink-0 order-1 md:order-1 gap-4 relative">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center relative">
           Meet the jury
+          {/* 3_lines.svg to the right of the heading */}
+          <div className="absolute -top-10 md:-top-12 -right-16 md:-right-20 w-14 h-18 md:w-18 md:h-22">
+            <img 
+              src={threeLinesSvg} 
+              alt="Three lines decoration" 
+              className="w-full h-full object-contain"
+              style={{ transform: 'rotate(280deg)' }}
+            />
+          </div>
         </h2>
         <div className="w-full max-w-xs">
           <img 
