@@ -10,6 +10,7 @@ import Cities from "./pages/Cities";
 import Partners from "./pages/Partners";
 import Mentors from "./pages/Mentors";
 import Contact from "./pages/Contact";
+import PastEditions from "./pages/PastEditions";
 import NotFound from "./pages/NotFound";
 import { useSmoothScroll } from "./hooks/use-smooth-scroll";
 
@@ -27,6 +28,7 @@ const AppContent = () => {
         <Route path="/partners" element={<Partners />} />
         <Route path="/mentors" element={<Mentors />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/past-editions" element={<PastEditions />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

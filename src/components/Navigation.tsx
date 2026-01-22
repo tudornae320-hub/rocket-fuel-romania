@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 
 export const Navigation = () => {
@@ -43,6 +44,12 @@ export const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            <Link
+              to="/past-editions"
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Past Editions
+            </Link>
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 rounded-full">
               Get your ticket
             </Button>
@@ -71,6 +78,13 @@ export const Navigation = () => {
                   {item.label}
                 </button>
               ))}
+              <Link
+                to="/past-editions"
+                onClick={() => setIsOpen(false)}
+                className="text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+              >
+                Past Editions
+              </Link>
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full w-full">
                 Get your ticket
               </Button>
