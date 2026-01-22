@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { SquiggleDoodle, ArrowDoodle } from "@/components/Doodles";
+import { RocketFollower } from "@/components/RocketFollower";
 import { Calendar, Trophy, Users, MapPin } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 import polaroidSvg from "@/assets/polaroid.svg";
@@ -9,6 +11,9 @@ const PastEditions = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
     <div className="min-h-screen">
+      {/* Animated Rocket Follower */}
+      <RocketFollower />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-16 no-pattern">
         {/* Background Image with Dark Gradient */}
@@ -106,8 +111,9 @@ const PastEditions = () => {
               </div>
               
               {/* Main polaroid - raises on hover */}
-              <div 
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out ${
+              <Link 
+                to="/past-editions/2025"
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out cursor-pointer ${
                   hoveredIndex === 0 
                     ? 'translate-y-[-40px] z-30' 
                     : 'translate-y-0 z-10'
@@ -117,12 +123,12 @@ const PastEditions = () => {
                   <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden"></div>
                   <div className="h-8 bg-white"></div>
                 </div>
-              </div>
+              </Link>
             </div>
             <Card className="hover-lift w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
               <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  Placeholder text for past edition card
+                <p className="text-center font-bold text-black text-2xl">
+                  2025
                 </p>
               </CardContent>
             </Card>
@@ -164,10 +170,11 @@ const PastEditions = () => {
               </div>
               
               {/* Main polaroid - raises on hover */}
-              <div 
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out ${
+              <Link 
+                to="/past-editions/2024"
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out cursor-pointer ${
                   hoveredIndex === 1 
-                    ? 'translate-y-[-40px] z-10' 
+                    ? 'translate-y-[-40px] z-30' 
                     : 'translate-y-0 z-10'
                 }`}
               >
@@ -175,12 +182,12 @@ const PastEditions = () => {
                   <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden"></div>
                   <div className="h-8 bg-white"></div>
                 </div>
-              </div>
+              </Link>
             </div>
             <Card className="hover-lift w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
               <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  Placeholder text for past edition card
+                <p className="text-center font-bold text-black text-2xl">
+                  2024
                 </p>
               </CardContent>
             </Card>
@@ -224,10 +231,11 @@ const PastEditions = () => {
             </div>
             
             {/* Main polaroid - raises on hover */}
-            <div 
-              className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out ${
+            <Link 
+              to="/past-editions/2023"
+              className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out cursor-pointer ${
                 hoveredIndex === 2 
-                  ? 'translate-y-[-40px] z-10' 
+                  ? 'translate-y-[-40px] z-30' 
                   : 'translate-y-0 z-10'
               }`}
             >
@@ -235,12 +243,12 @@ const PastEditions = () => {
                 <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden"></div>
                 <div className="h-8 bg-white"></div>
               </div>
-            </div>
+            </Link>
           </div>
           <Card className="hover-lift w-full mt-[120px] md:mt-[140px]">
             <CardContent className="p-6">
-              <p className="text-muted-foreground">
-                Placeholder text for past edition card
+              <p className="text-center font-bold text-black text-2xl">
+                2023
               </p>
             </CardContent>
           </Card>

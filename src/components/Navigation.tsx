@@ -14,6 +14,11 @@ export const Navigation = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setIsOpen(false);
+  };
+
   const navItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
@@ -27,15 +32,28 @@ export const Navigation = () => {
       <div className="container mx-auto px-6 bg-background border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000]">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <button onClick={() => scrollToSection("home")} className="flex flex-col items-start">
+          <Link to="/" onClick={scrollToTop} className="flex flex-col items-start">
             <span className="text-xs font-bold text-foreground leading-tight">techstars_</span>
             <span className="text-xs font-bold text-foreground leading-tight">Startup Weekend</span>
             <span className="text-xs font-bold text-primary leading-tight">Romania</span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+            {navItems.map((item) => {
+              if (item.id === "home") {
+                return (
+                  <Link
+                    key={item.id}
+                    to="/"
+                    onClick={scrollToTop}
+                    className="text-foreground hover:text-primary transition-colors font-medium"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+              return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -43,9 +61,11 @@ export const Navigation = () => {
               >
                 {item.label}
               </button>
-            ))}
+              );
+            })}
             <Link
               to="/past-editions"
+              onClick={scrollToTop}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Past Editions
@@ -69,7 +89,20 @@ export const Navigation = () => {
         {isOpen && (
           <div className="md:hidden py-4 animate-fade-in border-t border-[#000000]">
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
+              {navItems.map((item) => {
+                if (item.id === "home") {
+                  return (
+                    <Link
+                      key={item.id}
+                      to="/"
+                      onClick={scrollToTop}
+                      className="text-left text-foreground hover:text-primary transition-colors font-medium py-2"
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                }
+                return (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -77,10 +110,11 @@ export const Navigation = () => {
                 >
                   {item.label}
                 </button>
-              ))}
+                );
+              })}
               <Link
                 to="/past-editions"
-                onClick={() => setIsOpen(false)}
+                onClick={scrollToTop}
                 className="text-left text-foreground hover:text-primary transition-colors font-medium py-2"
               >
                 Past Editions
