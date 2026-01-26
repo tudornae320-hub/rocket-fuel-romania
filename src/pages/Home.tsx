@@ -448,24 +448,16 @@ const Home = () => {
               {/* Top Section - Startup Weekend */}
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                  Startup Weekend
+                Build a startup in a weekend
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  is a 54-hour event where developers, designers, marketers, and idea people come together to launch something real. Pitch on Friday, <strong>build all weekend</strong>, and demo your startup on Sunday.
-                </p>
-              </div>
-
-              {/* Middle Section */}
-              <div>
-                <p className="text-lg text-muted-foreground">
-                  Whether you have an <strong>idea</strong> or just want to <strong>join a team</strong>, you're welcome.
-                </p>
+                Startup Weekend is the place where creatives, coders, hustlers, thinkers, and dreamers come together to build real stuff in just 54 hours. Whether you have a wild idea or you just wanna join a team and create something new — this weekend’s for you.                </p>
               </div>
 
               {/* Bottom Section */}
               <div>
                 <p className="text-lg text-muted-foreground">
-                  Learn new <strong>skills</strong>. Meet your future team. Build something that matters.
+                  Learn new <strong>skills</strong>, meet your future team and build something that matters.
                 </p>
               </div>
             </div>
@@ -550,7 +542,7 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Get feedback on your business idea, from launch strategy to pricing models and pitching skills from our Mentors and Experts during dedicated mentorship hours!
+                Get real feedback from mentors who’ve built things before — from shaping your idea and business model to pricing, strategy, and pitching.
                 </p>
               </CardContent>
             </Card>
@@ -564,8 +556,8 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  If you have an idea for a startup, you can pitch it on Friday, and convince your peers to join the ride! Don't worry if you don't have an idea, you can join any of the ideas pitched!
-                </p>
+                Have an idea? Pitch it on Friday and see who wants to build it with you.
+                No idea? No problem. You can join any team and help bring someone else’s concept to life.                </p>
               </CardContent>
             </Card>
             
@@ -578,8 +570,7 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  During the weekend you will validate your idea, build an MVP, define the business model, train your pitch and present in front of our expert jury to win awesome prizes!
-                </p>
+                Over the weekend, you’ll validate your idea, build an MVP, shape your business model, and practice your pitch. On Sunday, you’ll present in front of an expert jury and compete for awesome prizes.                </p>
               </CardContent>
             </Card>
             
@@ -592,8 +583,7 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We make sure that you have unlimited coffee, 7 meals, snacks and other goodies during the weekend, so you have the energy to build something great!
-                </p>
+                We’ve got you covered with unlimited coffee, meals, snacks, and other goodies — so you can focus on building instead of worrying about food or energy.                </p>
               </CardContent>
             </Card>
           </div>

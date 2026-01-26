@@ -259,4 +259,34 @@ All colors MUST be HSL.
   .animate-draw-arrow-delay-3 {
     animation-delay: 2.5s;
   }
+
+  @keyframes float-in-left {
+    from {
+      transform: translateX(-300px) translateY(var(--translate-y, 0)) rotate(-35deg);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0)) rotate(var(--rotate, 0deg));
+      opacity: var(--opacity, 1);
+    }
+  }
+
+  @keyframes float-in-right {
+    from {
+      transform: translateX(300px) translateY(var(--translate-y, 0)) rotate(35deg);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0)) rotate(var(--rotate, 0deg));
+      opacity: var(--opacity, 1);
+    }
+  }
+
+  .animate-float-in-left {
+    animation: float-in-left 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-float-in-right {
+    animation: float-in-right 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
 }
