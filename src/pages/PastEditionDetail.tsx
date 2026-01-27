@@ -344,7 +344,7 @@ const PastEditionDetail = () => {
                 is2024Open ? "max-w-6xl" : "max-w-md"
               }`}
             >
-              <CardContent className={`transition-all duration-500 ${is2024Open ? "p-5" : "p-6"}`}>
+              <CardContent className={`transition-all duration-500 ${is2024Open ? "p-8" : "p-6"}`}>
                 <p
                   className={`text-center font-bold text-black transition-all duration-500 ${
                     is2024Open ? "text-3xl md:text-4xl mb-8" : "text-2xl"
