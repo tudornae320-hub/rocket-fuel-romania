@@ -596,7 +596,7 @@ const PastEditionDetail = () => {
   const mainSectionRef = useRef<HTMLDivElement>(null);
   const bottomSectionRef = useRef<HTMLDivElement>(null);
 
-  const handleMayClick = () => {
+  const handleMayClick = (fromBottom: boolean = false) => {
     if (isMayOpen) {
       // Close May
       setIsMayOpen(false);
@@ -609,11 +609,14 @@ const PastEditionDetail = () => {
       }, 300);
     } else {
       // Open May
+      if (fromBottom) {
+        mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
       setIsMayOpen(true);
     }
   };
 
-  const handleOctoberClick = () => {
+  const handleOctoberClick = (fromBottom: boolean = false) => {
     if (isOctoberOpen) {
       // Close October
       setIsOctoberOpen(false);
@@ -626,6 +629,9 @@ const PastEditionDetail = () => {
       }, 300);
     } else {
       // Open October
+      if (fromBottom) {
+        mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
       setIsOctoberOpen(true);
     }
   };
@@ -702,7 +708,7 @@ const PastEditionDetail = () => {
                       ? '-translate-y-[calc(50%+40px)] z-30' 
                       : '-translate-y-1/2 z-10'
                   }`}
-                  onClick={handleMayClick}
+                  onClick={() => handleMayClick(false)}
                 >
                   <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
                     <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
@@ -759,7 +765,7 @@ const PastEditionDetail = () => {
                       ? '-translate-y-[calc(50%+40px)] z-30' 
                       : '-translate-y-1/2 z-10'
                   }`}
-                  onClick={handleOctoberClick}
+                  onClick={() => handleOctoberClick(false)}
                 >
                   <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
                     <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
@@ -885,7 +891,7 @@ const PastEditionDetail = () => {
                     ? '-translate-y-[calc(50%+40px)] z-30' 
                     : '-translate-y-1/2 z-10'
                 }`}
-                onClick={handleMayClick}
+                onClick={() => handleMayClick(false)}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
                   <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
@@ -895,17 +901,37 @@ const PastEditionDetail = () => {
             </div>
 
             {/* May expanded card with gallery */}
-            <Card className="hover-lift w-full max-w-6xl mx-auto mt-8 relative z-20">
-              <CardContent className="p-8">
-                <p className="text-center font-bold text-black text-3xl md:text-4xl mb-8">May</p>
-                
-                {/* Photo Gallery */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Card
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                isMayOpen ? "max-w-6xl" : "max-w-md"
+              }`}
+            >
+              <CardContent className={`transition-all duration-500 ${isMayOpen ? "p-8" : "p-6"}`}>
+                <p
+                  className={`text-center font-bold text-black transition-all duration-500 ${
+                    isMayOpen ? "text-3xl md:text-4xl mb-8" : "text-2xl"
+                  }`}
+                >
+                  May
+                </p>
+
+                {/* Photo Gallery - expands on click */}
+                <div
+                  className={`grid transition-all duration-500 ease-out overflow-hidden ${
+                    isMayOpen 
+                      ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[2000px] opacity-100 mt-4" 
+                      : "grid-cols-1 max-h-0 opacity-0"
+                  }`}
+                >
                   {Array.from({ length: 12 }).map((_, idx) => (
                     <div
                       key={idx}
-                      className="aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500"
-                      style={{ transitionDelay: `${idx * 30}ms` }}
+                      className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ${
+                        isMayOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: isMayOpen ? `${idx * 30}ms` : "0ms",
+                      }}
                     >
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
                         Photo {idx + 1}
@@ -922,7 +948,7 @@ const PastEditionDetail = () => {
                 className="relative w-48 md:w-56 h-[200px] md:h-[220px] cursor-pointer"
                 onMouseEnter={() => setHoveredIndex(1)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                onClick={handleOctoberClick}
+                onClick={() => handleOctoberClick(true)}
               >
                 {/* Left tilted polaroid */}
                 <div 
@@ -1084,7 +1110,7 @@ const PastEditionDetail = () => {
                     ? '-translate-y-[calc(50%+40px)] z-30' 
                     : '-translate-y-1/2 z-10'
                 }`}
-                onClick={handleOctoberClick}
+                onClick={() => handleOctoberClick(false)}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
                   <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
@@ -1094,17 +1120,37 @@ const PastEditionDetail = () => {
             </div>
 
             {/* October expanded card with gallery */}
-            <Card className="hover-lift w-full max-w-6xl mx-auto mt-8 relative z-20">
-              <CardContent className="p-8">
-                <p className="text-center font-bold text-black text-3xl md:text-4xl mb-8">October</p>
-                
-                {/* Photo Gallery */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Card
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                isOctoberOpen ? "max-w-6xl" : "max-w-md"
+              }`}
+            >
+              <CardContent className={`transition-all duration-500 ${isOctoberOpen ? "p-8" : "p-6"}`}>
+                <p
+                  className={`text-center font-bold text-black transition-all duration-500 ${
+                    isOctoberOpen ? "text-3xl md:text-4xl mb-8" : "text-2xl"
+                  }`}
+                >
+                  October
+                </p>
+
+                {/* Photo Gallery - expands on click */}
+                <div
+                  className={`grid transition-all duration-500 ease-out overflow-hidden ${
+                    isOctoberOpen 
+                      ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[2000px] opacity-100 mt-4" 
+                      : "grid-cols-1 max-h-0 opacity-0"
+                  }`}
+                >
                   {Array.from({ length: 12 }).map((_, idx) => (
                     <div
                       key={idx}
-                      className="aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500"
-                      style={{ transitionDelay: `${idx * 30}ms` }}
+                      className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ${
+                        isOctoberOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: isOctoberOpen ? `${idx * 30}ms` : "0ms",
+                      }}
                     >
                       <div className="w-full h-full flex items-center justify-center text-gray-400">
                         Photo {idx + 1}
@@ -1121,7 +1167,7 @@ const PastEditionDetail = () => {
                 className="relative w-48 md:w-56 h-[200px] md:h-[220px] cursor-pointer"
                 onMouseEnter={() => setHoveredIndex(0)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                onClick={handleMayClick}
+                onClick={() => handleMayClick(true)}
               >
                 {/* Left tilted polaroid */}
                 <div 
