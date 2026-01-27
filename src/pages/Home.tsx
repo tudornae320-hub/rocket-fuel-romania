@@ -14,6 +14,7 @@ import linieSvg from "@/assets/linie.svg";
 import cercMentoriSvg from "@/assets/cerc_mentori.svg";
 import rotundSvg from "@/assets/rotund.svg";
 import sageterSvg from "@/assets/sageter.svg";
+import mentorsSectionPhoto from "@/assets/mentors-section-photo.webp";
 import { AgendaPills } from "@/components/AgendaPills";
 
 const Home = () => {
@@ -650,11 +651,13 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-12">
             {/* Left - Photo Card */}
-            <Card className="w-full md:w-1/2 max-w-xl">
+            <Card className="w-full md:w-1/2 max-w-xl overflow-hidden">
               <CardContent className="p-4">
-                <div className="aspect-[4/3] w-full rounded-2xl border border-border bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-muted-foreground">
-                  Photo coming soon
-                </div>
+                <img 
+                  src={mentorsSectionPhoto} 
+                  alt="Mentors working with participants" 
+                  className="aspect-[4/3] w-full rounded-2xl object-cover"
+                />
               </CardContent>
             </Card>
 
