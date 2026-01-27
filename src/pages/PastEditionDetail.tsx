@@ -325,12 +325,14 @@ const PastEditionDetail = () => {
                   </div>
                 </div>
 
-                {/* Main polaroid */}
+                {/* Main polaroid - raises on hover */}
                 <div
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer"
+                  className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out cursor-pointer ${
+                    hoveredIndex === 0 ? "translate-y-[-40px] z-30" : "translate-y-0 z-10"
+                  }`}
                 >
                   <div
-                    className={`bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm transition-[width,max-width] duration-700 ease-out ${
+                    className={`bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm transition-all duration-700 ${
                       is2024Open ? "w-full max-w-2xl" : "w-64 md:w-80"
                     }`}
                   >
