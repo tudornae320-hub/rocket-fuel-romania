@@ -375,6 +375,209 @@ const PastEditionDetail = () => {
     );
   }
 
+  const [is2023Open, setIs2023Open] = useState(false);
+
+  if (year === "2023") {
+    return (
+      <div className="min-h-screen bg-white relative">
+        <RocketFollower />
+
+        {/* Hero Section */}
+        <section className="relative h-[60vh] flex items-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${heroBackground})`,
+              filter: "brightness(0.7)",
+            }}
+          />
+
+          <div className="container mx-auto px-4 md:px-8 relative z-10">
+            <div className="flex items-center gap-4 md:gap-8">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tight">
+                2023
+              </h1>
+            </div>
+          </div>
+        </section>
+
+        {/* Single Polaroid Section */}
+        <section className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
+          <div className="flex flex-col items-center">
+            {/* Polaroid group with hover animation */}
+            <div 
+              className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
+              onMouseEnter={() => setHoveredIndex(2)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Left tilted polaroid */}
+              <div 
+                className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
+                  hoveredIndex === 2 
+                    ? 'opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10' 
+                    : 'opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0'
+                }`}
+              >
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <div className="h-8 bg-white"></div>
+                </div>
+              </div>
+              
+              {/* Right tilted polaroid */}
+              <div 
+                className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
+                  hoveredIndex === 2 
+                    ? 'opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10' 
+                    : 'opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0'
+                }`}
+              >
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <div className="h-8 bg-white"></div>
+                </div>
+              </div>
+              
+              {/* Main polaroid - raises on hover */}
+              <div
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
+                  hoveredIndex === 2 
+                    ? '-translate-y-[calc(50%+40px)] z-30' 
+                    : '-translate-y-1/2 z-10'
+                }`}
+                onClick={() => setIs2023Open((v) => !v)}
+              >
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <div className="h-8 bg-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* Floating side polaroids - only visible when opened */}
+            <div className={`absolute inset-0 pointer-events-none overflow-hidden transition-opacity duration-500 ${is2023Open ? 'opacity-100' : 'opacity-0'}`}>
+              {/* Left side polaroids */}
+              <div 
+                className={`absolute top-[100px] left-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                  is2023Open ? 'translate-x-[-20%] opacity-70' : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transform: is2023Open ? 'translateX(-20%) rotate(-15deg)' : 'translateX(-100%) rotate(-15deg)', transitionDelay: '100ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[350px] left-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                  is2023Open ? 'translate-x-[10%] opacity-60' : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transform: is2023Open ? 'translateX(10%) rotate(8deg)' : 'translateX(-100%) rotate(8deg)', transitionDelay: '250ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[550px] left-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                  is2023Open ? 'translate-x-[-10%] opacity-50' : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transform: is2023Open ? 'translateX(-10%) rotate(-5deg)' : 'translateX(-100%) rotate(-5deg)', transitionDelay: '400ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              {/* Right side polaroids */}
+              <div 
+                className={`absolute top-[150px] right-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                  is2023Open ? 'translate-x-[20%] opacity-70' : 'translate-x-[100%] opacity-0'
+                }`}
+                style={{ transform: is2023Open ? 'translateX(20%) rotate(12deg)' : 'translateX(100%) rotate(12deg)', transitionDelay: '150ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[400px] right-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                  is2023Open ? 'translate-x-[-5%] opacity-60' : 'translate-x-[100%] opacity-0'
+                }`}
+                style={{ transform: is2023Open ? 'translateX(-5%) rotate(-10deg)' : 'translateX(100%) rotate(-10deg)', transitionDelay: '300ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[600px] right-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                  is2023Open ? 'translate-x-[15%] opacity-50' : 'translate-x-[100%] opacity-0'
+                }`}
+                style={{ transform: is2023Open ? 'translateX(15%) rotate(6deg)' : 'translateX(100%) rotate(6deg)', transitionDelay: '450ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Expandable Card with Photo Gallery */}
+            <Card
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                is2023Open ? "max-w-6xl" : "max-w-md"
+              }`}
+            >
+              <CardContent className={`transition-all duration-500 ${is2023Open ? "p-8" : "p-6"}`}>
+                <p
+                  className={`text-center font-bold text-black transition-all duration-500 ${
+                    is2023Open ? "text-3xl md:text-4xl mb-8" : "text-2xl"
+                  }`}
+                >
+                  2023
+                </p>
+
+                {/* Photo Gallery - expands on click */}
+                <div
+                  className={`grid transition-all duration-500 ease-out overflow-hidden ${
+                    is2023Open 
+                      ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[2000px] opacity-100 mt-4" 
+                      : "grid-cols-1 max-h-0 opacity-0"
+                  }`}
+                >
+                  {Array.from({ length: 12 }).map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ${
+                        is2023Open ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: is2023Open ? `${idx * 30}ms` : "0ms",
+                      }}
+                    >
+                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        Photo {idx + 1}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   if (year !== "2025") {
     return (
       <div className="min-h-screen pt-24">
