@@ -330,13 +330,13 @@ const PastEditionDetail = () => {
 
             {/* Expandable Card with Photo Gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
-                is2024Open ? "max-w-6xl" : "max-w-md"
+              className={`hover-lift w-full mx-auto transition-all duration-700 ease-out relative z-20 ${
+                is2024Open ? "max-w-6xl mt-[60px] md:mt-[80px]" : "max-w-md mt-[120px] md:mt-[140px]"
               }`}
             >
-              <CardContent className={`transition-all duration-500 ${is2024Open ? "p-8" : "p-6"}`}>
+              <CardContent className={`transition-all duration-700 ${is2024Open ? "p-8" : "p-6"}`}>
                 <p
-                  className={`text-center font-bold text-black transition-all duration-500 ${
+                  className={`text-center font-bold text-black transition-all duration-700 ${
                     is2024Open ? "text-3xl md:text-4xl mb-8" : "text-2xl"
                   }`}
                 >
@@ -345,27 +345,27 @@ const PastEditionDetail = () => {
 
                 {/* Photo Gallery - expands on click */}
                 <div
-                  className={`grid transition-all duration-500 ease-out overflow-hidden ${
-                    is2024Open 
-                      ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[2000px] opacity-100 mt-4" 
-                      : "grid-cols-1 max-h-0 opacity-0"
+                  className={`overflow-hidden transition-all duration-700 ${
+                    is2024Open ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  {Array.from({ length: 12 }).map((_, idx) => (
-                    <div
-                      key={idx}
-                      className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ${
-                        is2024Open ? "scale-100 opacity-100" : "scale-95 opacity-0"
-                      }`}
-                      style={{
-                        transitionDelay: is2024Open ? `${idx * 30}ms` : "0ms",
-                      }}
-                    >
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        Photo {idx + 1}
+                  <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-700 ${
+                    is2024Open ? "translate-y-0 scale-100" : "translate-y-[-20px] scale-95"
+                  }`}>
+                    {Array.from({ length: 12 }).map((_, idx) => (
+                      <div
+                        key={idx}
+                        className="aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500"
+                        style={{
+                          transitionDelay: is2024Open ? `${idx * 30}ms` : "0ms",
+                        }}
+                      >
+                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                          Photo {idx + 1}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>
