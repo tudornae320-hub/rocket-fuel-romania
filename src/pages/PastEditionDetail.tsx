@@ -730,7 +730,7 @@ const PastEditionDetail = () => {
                   </div>
                 </div>
               </div>
-              <Card className="hover-lift w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
+              <Card className="hover-lift w-full max-w-md mx-auto mt-8">
                 <CardContent className="p-6">
                   <p className="text-center font-bold text-black text-2xl">May</p>
                 </CardContent>
@@ -787,7 +787,7 @@ const PastEditionDetail = () => {
                   </div>
                 </div>
               </div>
-              <Card className="hover-lift w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
+              <Card className="hover-lift w-full max-w-md mx-auto mt-8">
                 <CardContent className="p-6">
                   <p className="text-center font-bold text-black text-2xl">October</p>
                 </CardContent>
@@ -916,8 +916,8 @@ const PastEditionDetail = () => {
 
             {/* May expanded card with gallery */}
             <Card
-              className={`hover-lift w-full mx-auto transition-all duration-500 ease-out relative z-20 ${
-                isMayOpen ? "max-w-6xl mt-8" : "max-w-md mt-[120px] md:mt-[140px]"
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                isMayOpen ? "max-w-6xl" : "max-w-md"
               }`}
             >
               <CardContent className={`transition-all duration-500 ${isMayOpen ? "p-8" : "p-6"}`}>
@@ -1135,8 +1135,8 @@ const PastEditionDetail = () => {
 
             {/* October expanded card with gallery */}
             <Card
-              className={`hover-lift w-full mx-auto transition-all duration-500 ease-out relative z-20 ${
-                isOctoberOpen ? "max-w-6xl mt-8" : "max-w-md mt-[120px] md:mt-[140px]"
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                isOctoberOpen ? "max-w-6xl" : "max-w-md"
               }`}
             >
               <CardContent className={`transition-all duration-500 ${isOctoberOpen ? "p-8" : "p-6"}`}>
