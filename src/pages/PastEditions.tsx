@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SquiggleDoodle, ArrowDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
 import { Calendar, Trophy, Users, MapPin } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpg";
+import heroBackground from "@/assets/video_hero_2.gif";
 
 const PastEditions = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
