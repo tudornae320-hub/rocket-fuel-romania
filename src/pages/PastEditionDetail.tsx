@@ -198,36 +198,48 @@ const PastEditionDetail = () => {
         {/* Single Polaroid Section */}
         <section className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
           <div className="flex flex-col items-center">
-            {/* Polaroid Stack */}
-            <div className="relative w-64 md:w-80 h-[280px] md:h-[320px]">
-              {/* Background polaroid - left tilted (2025) */}
+            {/* Polaroid group with hover animation */}
+            <div 
+              className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
+              onMouseEnter={() => setHoveredIndex(0)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Left tilted polaroid */}
               <div 
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 -translate-x-[20px] z-0"
+                className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
+                  hoveredIndex === 0 
+                    ? 'opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10' 
+                    : 'opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0'
+                }`}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-56 md:w-72 opacity-60">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-300"></div>
-                  <div className="h-8 bg-white flex items-center justify-center">
-                    <span className="text-gray-400 text-sm font-medium">2025</span>
-                  </div>
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <div className="h-8 bg-white"></div>
                 </div>
               </div>
               
-              {/* Background polaroid - right tilted (2023) */}
+              {/* Right tilted polaroid */}
               <div 
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 translate-x-[20px] z-0"
+                className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
+                  hoveredIndex === 0 
+                    ? 'opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10' 
+                    : 'opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0'
+                }`}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-56 md:w-72 opacity-60">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-300"></div>
-                  <div className="h-8 bg-white flex items-center justify-center">
-                    <span className="text-gray-400 text-sm font-medium">2023</span>
-                  </div>
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <div className="h-8 bg-white"></div>
                 </div>
               </div>
               
-              {/* Main polaroid */}
+              {/* Main polaroid - raises on hover */}
               <div
                 ref={polaroid2024Ref}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover-lift z-10"
+                className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
+                  hoveredIndex === 0 
+                    ? '-translate-y-[calc(50%+40px)] z-30' 
+                    : '-translate-y-1/2 z-10'
+                }`}
                 onClick={() => setIs2024Open((v) => !v)}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
