@@ -595,8 +595,6 @@ const PastEditionDetail = () => {
   const [isOctoberOpen, setIsOctoberOpen] = useState(false);
   const mainSectionRef = useRef<HTMLDivElement>(null);
   const bottomSectionRef = useRef<HTMLDivElement>(null);
-  const mayCardRef = useRef<HTMLDivElement>(null);
-  const octoberCardRef = useRef<HTMLDivElement>(null);
 
   const handleMayClick = (fromBottom: boolean = false) => {
     if (isMayOpen) {
@@ -611,10 +609,6 @@ const PastEditionDetail = () => {
       setTimeout(() => {
         setIsOctoberOpen(false);
         setIsMayOpen(true);
-        // Scroll to the card after opening
-        setTimeout(() => {
-          mayCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 400);
       }, 300);
     } else {
       // Open May
@@ -622,17 +616,9 @@ const PastEditionDetail = () => {
         mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(() => {
           setIsMayOpen(true);
-          // Scroll to the card after opening
-          setTimeout(() => {
-            mayCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }, 400);
         }, 300);
       } else {
         setIsMayOpen(true);
-        // Scroll to the card after opening
-        setTimeout(() => {
-          mayCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
       }
     }
   };
@@ -650,10 +636,6 @@ const PastEditionDetail = () => {
       setTimeout(() => {
         setIsMayOpen(false);
         setIsOctoberOpen(true);
-        // Scroll to the card after opening
-        setTimeout(() => {
-          octoberCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 400);
       }, 300);
     } else {
       // Open October
@@ -661,17 +643,9 @@ const PastEditionDetail = () => {
         mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setTimeout(() => {
           setIsOctoberOpen(true);
-          // Scroll to the card after opening
-          setTimeout(() => {
-            octoberCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }, 400);
         }, 300);
       } else {
         setIsOctoberOpen(true);
-        // Scroll to the card after opening
-        setTimeout(() => {
-          octoberCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
       }
     }
   };
@@ -941,12 +915,11 @@ const PastEditionDetail = () => {
             </div>
 
             {/* May expanded card with gallery */}
-            <div ref={mayCardRef}>
-              <Card
-                className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
-                  isMayOpen ? "max-w-6xl" : "max-w-md"
-                }`}
-              >
+            <Card
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                isMayOpen ? "max-w-6xl" : "max-w-md"
+              }`}
+            >
               <CardContent className={`transition-all duration-500 ${isMayOpen ? "p-8" : "p-6"}`}>
                 <p
                   className={`text-center font-bold text-black transition-all duration-500 ${
@@ -982,7 +955,6 @@ const PastEditionDetail = () => {
                 </div>
               </CardContent>
             </Card>
-            </div>
 
             {/* October mini polaroid at bottom */}
             <div ref={bottomSectionRef} className="mt-16 flex flex-col items-center">
@@ -1162,12 +1134,11 @@ const PastEditionDetail = () => {
             </div>
 
             {/* October expanded card with gallery */}
-            <div ref={octoberCardRef}>
-              <Card
-                className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
-                  isOctoberOpen ? "max-w-6xl" : "max-w-md"
-                }`}
-              >
+            <Card
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                isOctoberOpen ? "max-w-6xl" : "max-w-md"
+              }`}
+            >
               <CardContent className={`transition-all duration-500 ${isOctoberOpen ? "p-8" : "p-6"}`}>
                 <p
                   className={`text-center font-bold text-black transition-all duration-500 ${
@@ -1203,7 +1174,6 @@ const PastEditionDetail = () => {
                 </div>
               </CardContent>
             </Card>
-            </div>
 
             {/* May mini polaroid at bottom */}
             <div ref={bottomSectionRef} className="mt-16 flex flex-col items-center">
