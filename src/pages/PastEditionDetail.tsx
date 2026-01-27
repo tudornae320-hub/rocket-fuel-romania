@@ -647,16 +647,9 @@ const PastEditionDetail = () => {
         <div className={`grid grid-cols-1 ${!activeEvent ? "md:grid-cols-2" : ""} gap-8 mb-8`}>
           {/* May Polaroid Stack */}
           <div
-            className={`flex flex-col items-center transition-all duration-700 ease-out ${
-              isOctoberOpen 
-                ? "opacity-0 pointer-events-none -translate-x-[100%] scale-95" 
-                : isMayOpen 
-                  ? "opacity-100 translate-x-0 scale-100" 
-                  : "opacity-100 translate-x-0 scale-100"
+            className={`flex flex-col items-center transition-all duration-500 ${
+              isOctoberOpen ? "opacity-0 pointer-events-none absolute" : "opacity-100"
             }`}
-            style={{
-              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
           >
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
@@ -847,16 +840,9 @@ const PastEditionDetail = () => {
 
           {/* October Polaroid Stack */}
           <div
-            className={`flex flex-col items-center transition-all duration-700 ease-out ${
-              isMayOpen 
-                ? "opacity-0 pointer-events-none translate-x-[100%] scale-95" 
-                : isOctoberOpen 
-                  ? "opacity-100 translate-x-0 scale-100" 
-                  : "opacity-100 translate-x-0 scale-100"
+            className={`flex flex-col items-center transition-all duration-500 ${
+              isMayOpen ? "opacity-0 pointer-events-none absolute" : "opacity-100"
             }`}
-            style={{
-              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
           >
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
