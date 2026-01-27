@@ -464,10 +464,10 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-28 md:mt-32">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-40 md:mt-48">
             {/* Arrow 1: Below Card 1 */}
             <div
-              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 opacity-0 animate-[fade-in_0.5s_ease-out_0.2s_forwards]"
               style={{ 
                 left: '5.5%'
               }}
@@ -490,7 +490,7 @@ const Home = () => {
 
             {/* Arrow 2: Above Card 2 - Flipped */}
             <div
-              className="hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              className="hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10 opacity-0 animate-[fade-in_0.5s_ease-out_0.5s_forwards]"
               style={{ 
                 left: '30%'
               }}
@@ -513,7 +513,7 @@ const Home = () => {
 
             {/* Arrow 3: Below Card 3 */}
             <div
-              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 opacity-0 animate-[fade-in_0.5s_ease-out_0.8s_forwards]"
               style={{ 
                 left: '57%'
               }}
