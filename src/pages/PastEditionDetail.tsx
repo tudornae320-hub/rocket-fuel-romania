@@ -196,25 +196,129 @@ const PastEditionDetail = () => {
         </section>
 
         {/* Single Polaroid Section */}
-        <section className="container mx-auto px-4 mb-20 pt-16">
+        <section className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
           <div className="flex flex-col items-center">
-            {/* Polaroid */}
-            <div
-              ref={polaroid2024Ref}
-              className="cursor-pointer hover-lift"
-              onClick={() => setIs2024Open((v) => !v)}
-            >
-              <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden">
-                  <img src={polaroidHackathon} alt="Startup Weekend 2024" className="w-full h-full object-cover" />
+            {/* Polaroid Stack */}
+            <div className="relative w-64 md:w-80 h-[280px] md:h-[320px]">
+              {/* Background polaroid - left tilted (2025) */}
+              <div 
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 -translate-x-[20px] z-0"
+              >
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-56 md:w-72 opacity-60">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-300"></div>
+                  <div className="h-8 bg-white flex items-center justify-center">
+                    <span className="text-gray-400 text-sm font-medium">2025</span>
+                  </div>
                 </div>
-                <div className="h-8 bg-white" />
+              </div>
+              
+              {/* Background polaroid - right tilted (2023) */}
+              <div 
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 translate-x-[20px] z-0"
+              >
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-56 md:w-72 opacity-60">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-300"></div>
+                  <div className="h-8 bg-white flex items-center justify-center">
+                    <span className="text-gray-400 text-sm font-medium">2023</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Main polaroid */}
+              <div
+                ref={polaroid2024Ref}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover-lift z-10"
+                onClick={() => setIs2024Open((v) => !v)}
+              >
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
+                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden">
+                    <img src={polaroidHackathon} alt="Startup Weekend 2024" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="h-8 bg-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* Floating side polaroids - only visible when opened */}
+            <div className={`absolute inset-0 pointer-events-none overflow-hidden transition-opacity duration-500 ${is2024Open ? 'opacity-100' : 'opacity-0'}`}>
+              {/* Left side polaroids */}
+              <div 
+                className={`absolute top-[100px] left-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                  is2024Open ? 'translate-x-[-20%] opacity-70' : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transform: is2024Open ? 'translateX(-20%) rotate(-15deg)' : 'translateX(-100%) rotate(-15deg)', transitionDelay: '100ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[350px] left-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                  is2024Open ? 'translate-x-[10%] opacity-60' : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transform: is2024Open ? 'translateX(10%) rotate(8deg)' : 'translateX(-100%) rotate(8deg)', transitionDelay: '250ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[550px] left-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                  is2024Open ? 'translate-x-[-10%] opacity-50' : 'translate-x-[-100%] opacity-0'
+                }`}
+                style={{ transform: is2024Open ? 'translateX(-10%) rotate(-5deg)' : 'translateX(-100%) rotate(-5deg)', transitionDelay: '400ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              {/* Right side polaroids */}
+              <div 
+                className={`absolute top-[150px] right-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                  is2024Open ? 'translate-x-[20%] opacity-70' : 'translate-x-[100%] opacity-0'
+                }`}
+                style={{ transform: is2024Open ? 'translateX(20%) rotate(12deg)' : 'translateX(100%) rotate(12deg)', transitionDelay: '150ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[400px] right-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                  is2024Open ? 'translate-x-[-5%] opacity-60' : 'translate-x-[100%] opacity-0'
+                }`}
+                style={{ transform: is2024Open ? 'translateX(-5%) rotate(-10deg)' : 'translateX(100%) rotate(-10deg)', transitionDelay: '300ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
+              </div>
+              
+              <div 
+                className={`absolute top-[600px] right-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                  is2024Open ? 'translate-x-[15%] opacity-50' : 'translate-x-[100%] opacity-0'
+                }`}
+                style={{ transform: is2024Open ? 'translateX(15%) rotate(6deg)' : 'translateX(100%) rotate(6deg)', transitionDelay: '450ms' }}
+              >
+                <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
+                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <div className="h-5 bg-white"></div>
+                </div>
               </div>
             </div>
 
             {/* Expandable Card with Photo Gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out ${
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
                 is2024Open ? "max-w-6xl" : "max-w-md"
               }`}
             >
