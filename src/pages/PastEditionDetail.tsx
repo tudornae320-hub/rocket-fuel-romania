@@ -340,14 +340,14 @@ const PastEditionDetail = () => {
 
             {/* Expandable Card with Photo Gallery */}
             <Card
-              className={`hover-lift w-full mx-auto transition-all duration-500 ease-out relative z-20 ${
-                is2024Open ? "max-w-6xl mt-8" : "max-w-xs mt-[80px]"
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+                is2024Open ? "max-w-6xl" : "max-w-md"
               }`}
             >
-              <CardContent className={`transition-all duration-500 ${is2024Open ? "p-8" : "p-4"}`}>
+              <CardContent className={`transition-all duration-500 ${is2024Open ? "p-8" : "p-6"}`}>
                 <p
                   className={`text-center font-bold text-black transition-all duration-500 ${
-                    is2024Open ? "text-3xl md:text-4xl mb-8" : "text-xl"
+                    is2024Open ? "text-3xl md:text-4xl mb-8" : "text-2xl"
                   }`}
                 >
                   2024
