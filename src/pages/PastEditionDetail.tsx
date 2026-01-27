@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { RocketFollower } from "@/components/RocketFollower";
 import heroBackground from "@/assets/hero-background.jpg";
+import polaroidHackathon from "@/assets/2024/polaroid-hackathon.jpg";
 
 const PastEditionDetail = () => {
   const { year } = useParams<{ year: string }>();
@@ -297,7 +298,9 @@ const PastEditionDetail = () => {
                   }`}
                 >
                   <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                    <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden" />
+                    <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden">
+                      <img src={polaroidHackathon} alt="Startup Weekend 2024" className="w-full h-full object-cover" />
+                    </div>
                     <div className="h-8 bg-white" />
                   </div>
                 </div>
@@ -315,7 +318,9 @@ const PastEditionDetail = () => {
                   }`}
                 >
                   <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                    <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden" />
+                    <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden">
+                      <img src={polaroidHackathon} alt="Startup Weekend 2024" className="w-full h-full object-cover" />
+                    </div>
                     <div className="h-8 bg-white" />
                   </div>
                 </div>
@@ -331,7 +336,9 @@ const PastEditionDetail = () => {
                       is2024Open ? "w-full max-w-2xl" : "w-64 md:w-80"
                     }`}
                   >
-                    <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden" />
+                    <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden">
+                      <img src={polaroidHackathon} alt="Startup Weekend 2024" className="w-full h-full object-cover" />
+                    </div>
                     <div className="h-8 bg-white" />
                   </div>
                 </div>
