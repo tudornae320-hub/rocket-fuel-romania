@@ -330,7 +330,7 @@ const PastEditionDetail = () => {
 
             {/* Expandable Card with Photo Gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+              className={`hover-lift w-full mx-auto mt-[120px] md:mt-[140px] transition-all duration-500 ease-out relative z-20 ${
                 is2024Open ? "max-w-6xl" : "max-w-md"
               }`}
             >
