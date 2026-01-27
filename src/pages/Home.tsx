@@ -121,9 +121,7 @@ const Home = () => {
 
     const arrowsObserver = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setArrowsVisible(true);
-        }
+        setArrowsVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
     );
@@ -483,7 +481,7 @@ const Home = () => {
           
           <div 
             ref={arrowsSectionRef}
-            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-28 md:mt-32"
+            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-40 md:mt-48"
           >
             {/* Arrow 1: Below Card 1 */}
             <div
