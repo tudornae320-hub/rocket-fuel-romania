@@ -32,6 +32,10 @@ const Home = () => {
   const [readyProgress, setReadyProgress] = useState(0);
   const [isCtaHighlighted, setIsCtaHighlighted] = useState(false);
   
+  // Arrows scroll animation state
+  const arrowsSectionRef = useRef<HTMLDivElement>(null);
+  const [arrowsVisible, setArrowsVisible] = useState(false);
+  
   // Emoji animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
   const ticketButtonContainerRef = useRef<HTMLDivElement>(null);
@@ -115,12 +119,25 @@ const Home = () => {
       { threshold: 0.3 }
     );
 
+    const arrowsObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setArrowsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
     if (hoursSectionRef.current) {
       hoursObserver.observe(hoursSectionRef.current);
     }
 
     if (ctaSectionRef.current) {
       ctaObserver.observe(ctaSectionRef.current);
+    }
+
+    if (arrowsSectionRef.current) {
+      arrowsObserver.observe(arrowsSectionRef.current);
     }
 
     // Detect mobile device
@@ -417,7 +434,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start max-w-6xl mx-auto">
             {/* Left Column - Icon and Headlines */}
-            <div className="flex-shrink-0 space-y-6">
+            <div className="flex-shrink-0 space-y-3">
               {/* Megaphone Icon with Vector overlay */}
               <div className="relative w-32 h-32 md:w-40 md:h-40">
                 <img src={megaphoneSvg} alt="Megaphone" className="w-full h-full" />
@@ -464,12 +481,16 @@ const Home = () => {
             </div>
           </div>
           
-          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-40 md:mt-48">
+          <div 
+            ref={arrowsSectionRef}
+            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-28 md:mt-32"
+          >
             {/* Arrow 1: Below Card 1 */}
             <div
-              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 opacity-0 animate-[fade-in_0.5s_ease-out_0.2s_forwards]"
+              className={`hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ 
-                left: '5.5%'
+                left: '5.5%',
+                transitionDelay: arrowsVisible ? '0.2s' : '0s'
               }}
             >
               <div
@@ -490,9 +511,10 @@ const Home = () => {
 
             {/* Arrow 2: Above Card 2 - Flipped */}
             <div
-              className="hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10 opacity-0 animate-[fade-in_0.5s_ease-out_0.5s_forwards]"
+              className={`hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ 
-                left: '30%'
+                left: '30%',
+                transitionDelay: arrowsVisible ? '0.5s' : '0s'
               }}
             >
               <div
@@ -513,9 +535,10 @@ const Home = () => {
 
             {/* Arrow 3: Below Card 3 */}
             <div
-              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 opacity-0 animate-[fade-in_0.5s_ease-out_0.8s_forwards]"
+              className={`hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ 
-                left: '57%'
+                left: '57%',
+                transitionDelay: arrowsVisible ? '0.8s' : '0s'
               }}
             >
               <div
