@@ -644,20 +644,12 @@ const PastEditionDetail = () => {
 
       {/* Polaroids Section */}
       <section ref={mainSectionRef} className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
-        <div className={`flex flex-col items-center ${!activeEvent ? "md:flex-row md:justify-center md:gap-16" : ""}`}>
+        <div className={`grid grid-cols-1 ${!activeEvent ? "md:grid-cols-2" : ""} gap-8 mb-8`}>
           {/* May Polaroid Stack */}
           <div
-            className={`flex flex-col items-center transition-all duration-700 ease-out ${
-              isOctoberOpen 
-                ? "opacity-0 pointer-events-none -translate-x-[100px]" 
-                : "opacity-100"
+            className={`flex flex-col items-center transition-all duration-500 ${
+              isOctoberOpen ? "opacity-0 pointer-events-none absolute" : "opacity-100"
             }`}
-            style={{ 
-              position: isOctoberOpen ? 'absolute' : 'relative',
-              left: isOctoberOpen ? '-100px' : 'auto',
-              marginLeft: isMayOpen ? 'auto' : '0',
-              marginRight: isMayOpen ? 'auto' : '0',
-            }}
           >
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
@@ -848,17 +840,9 @@ const PastEditionDetail = () => {
 
           {/* October Polaroid Stack */}
           <div
-            className={`flex flex-col items-center transition-all duration-700 ease-out ${
-              isMayOpen 
-                ? "opacity-0 pointer-events-none translate-x-[100px]" 
-                : "opacity-100"
+            className={`flex flex-col items-center transition-all duration-500 ${
+              isMayOpen ? "opacity-0 pointer-events-none absolute" : "opacity-100"
             }`}
-            style={{ 
-              position: isMayOpen ? 'absolute' : 'relative',
-              right: isMayOpen ? '-100px' : 'auto',
-              marginLeft: isOctoberOpen ? 'auto' : '0',
-              marginRight: isOctoberOpen ? 'auto' : '0',
-            }}
           >
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
