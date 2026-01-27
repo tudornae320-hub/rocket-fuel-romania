@@ -598,8 +598,11 @@ const PastEditionDetail = () => {
 
   const handleMayClick = (fromBottom: boolean = false) => {
     if (isMayOpen) {
-      // Close May
-      setIsMayOpen(false);
+      // Close May with scroll to top
+      mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        setIsMayOpen(false);
+      }, 200);
     } else if (isOctoberOpen) {
       // Switch from October to May - scroll to top first
       mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -611,15 +614,22 @@ const PastEditionDetail = () => {
       // Open May
       if (fromBottom) {
         mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+          setIsMayOpen(true);
+        }, 300);
+      } else {
+        setIsMayOpen(true);
       }
-      setIsMayOpen(true);
     }
   };
 
   const handleOctoberClick = (fromBottom: boolean = false) => {
     if (isOctoberOpen) {
-      // Close October
-      setIsOctoberOpen(false);
+      // Close October with scroll to top
+      mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        setIsOctoberOpen(false);
+      }, 200);
     } else if (isMayOpen) {
       // Switch from May to October - scroll to top first
       mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -631,8 +641,12 @@ const PastEditionDetail = () => {
       // Open October
       if (fromBottom) {
         mainSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+          setIsOctoberOpen(true);
+        }, 300);
+      } else {
+        setIsOctoberOpen(true);
       }
-      setIsOctoberOpen(true);
     }
   };
 
@@ -902,8 +916,8 @@ const PastEditionDetail = () => {
 
             {/* May expanded card with gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
-                isMayOpen ? "max-w-6xl" : "max-w-md"
+              className={`hover-lift w-full mx-auto transition-all duration-500 ease-out relative z-20 ${
+                isMayOpen ? "max-w-6xl mt-8" : "max-w-md mt-[120px] md:mt-[140px]"
               }`}
             >
               <CardContent className={`transition-all duration-500 ${isMayOpen ? "p-8" : "p-6"}`}>
@@ -1121,8 +1135,8 @@ const PastEditionDetail = () => {
 
             {/* October expanded card with gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
-                isOctoberOpen ? "max-w-6xl" : "max-w-md"
+              className={`hover-lift w-full mx-auto transition-all duration-500 ease-out relative z-20 ${
+                isOctoberOpen ? "max-w-6xl mt-8" : "max-w-md mt-[120px] md:mt-[140px]"
               }`}
             >
               <CardContent className={`transition-all duration-500 ${isOctoberOpen ? "p-8" : "p-6"}`}>
