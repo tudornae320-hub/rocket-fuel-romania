@@ -345,12 +345,12 @@ const PastEditionDetail = () => {
               }`}
             >
               <CardContent className={`transition-all duration-500 ${is2024Open ? "p-8" : "p-6"}`}>
-                <p
+              <p
                   className={`text-center font-bold text-black transition-all duration-500 ${
                     is2024Open ? "text-3xl md:text-4xl mb-8" : "text-2xl"
                   }`}
                 >
-                  2024
+                  May
                 </p>
 
                 {/* Photo Gallery - expands on click */}
