@@ -730,7 +730,7 @@ const PastEditionDetail = () => {
                   </div>
                 </div>
               </div>
-              <Card className="hover-lift w-full max-w-md mx-auto mt-8">
+              <Card className="hover-lift w-full max-w-md mx-auto mt-8 relative z-20">
                 <CardContent className="p-6">
                   <p className="text-center font-bold text-black text-2xl">May</p>
                 </CardContent>
@@ -787,7 +787,7 @@ const PastEditionDetail = () => {
                   </div>
                 </div>
               </div>
-              <Card className="hover-lift w-full max-w-md mx-auto mt-8">
+              <Card className="hover-lift w-full max-w-md mx-auto mt-8 relative z-20">
                 <CardContent className="p-6">
                   <p className="text-center font-bold text-black text-2xl">October</p>
                 </CardContent>
