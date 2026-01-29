@@ -4,6 +4,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { RocketFollower } from "@/components/RocketFollower";
 import heroBackground from "@/assets/hero-background.jpg";
 
+// 2024 images
+import img2024_1 from "@/assets/2024/Copy of DSC00002.jpg";
+import img2024_2 from "@/assets/2024/Copy of DSC00003.jpg";
+import img2024_3 from "@/assets/2024/Copy of DSC00015.jpg";
+import img2024_4 from "@/assets/2024/Copy of DSC00030.jpg";
+import img2024_5 from "@/assets/2024/Copy of DSC00037.jpg";
+import img2024_6 from "@/assets/2024/Copy of DSC00038.jpg";
+import img2024_7 from "@/assets/2024/Copy of DSC00043.jpg";
+import img2024_8 from "@/assets/2024/Copy of DSC00046.jpg";
+import img2024_9 from "@/assets/2024/Copy of DSC00068.jpg";
+import img2024_10 from "@/assets/2024/Copy of DSC00083.jpg";
+import img2024_11 from "@/assets/2024/Copy of DSC00108.jpg";
+import img2024_12 from "@/assets/2024/Copy of DSC00120.jpg";
+import img2024_main from "@/assets/2024/Copy of DSC00127.jpg";
+import img2024_left from "@/assets/2024/Copy of DSC00133.jpg";
+import img2024_right from "@/assets/2024/Copy of DSC00136.jpg";
+
+const images2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8, img2024_9, img2024_10, img2024_11, img2024_12];
+
 
 const PastEditionDetail = () => {
   const { year } = useParams<{ year: string }>();
@@ -205,7 +224,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={img2024_left} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -219,7 +238,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={img2024_right} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -233,7 +252,7 @@ const PastEditionDetail = () => {
                 onClick={() => setIs2024Open((v) => !v)}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={img2024_main} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white" />
                 </div>
               </div>
@@ -359,19 +378,17 @@ const PastEditionDetail = () => {
                       : "grid-cols-1 max-h-0 opacity-0"
                   }`}
                 >
-                  {Array.from({ length: 12 }).map((_, idx) => (
+                  {images2024.map((img, idx) => (
                     <div
                       key={idx}
-                      className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ${
+                      className={`aspect-square rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 overflow-hidden ${
                         is2024Open ? "scale-100 opacity-100" : "scale-95 opacity-0"
                       }`}
                       style={{
                         transitionDelay: is2024Open ? `${idx * 30}ms` : "0ms",
                       }}
                     >
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        Photo {idx + 1}
-                      </div>
+                      <img src={img} alt={`2024 event photo ${idx + 1}`} className="w-full h-full object-cover" />
                     </div>
                   ))}
                 </div>
