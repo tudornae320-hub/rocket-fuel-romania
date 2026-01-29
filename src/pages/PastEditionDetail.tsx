@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { RocketFollower } from "@/components/RocketFollower";
@@ -17,19 +17,32 @@ import img2024_9 from "@/assets/2024/Copy of DSC00068.jpg";
 import img2024_10 from "@/assets/2024/Copy of DSC00083.jpg";
 import img2024_11 from "@/assets/2024/Copy of DSC00108.jpg";
 import img2024_12 from "@/assets/2024/Copy of DSC00120.jpg";
-import img2024_main from "@/assets/2024/Copy of DSC00127.jpg";
-import img2024_left from "@/assets/2024/Copy of DSC00133.jpg";
-import img2024_right from "@/assets/2024/Copy of DSC00136.jpg";
-// Side polaroids images
-import img2024_side1 from "@/assets/2024/Copy of DSC00137.jpg";
-import img2024_side2 from "@/assets/2024/Copy of DSC00167.jpg";
-import img2024_side3 from "@/assets/2024/Copy of DSC00181.jpg";
-import img2024_side4 from "@/assets/2024/Copy of DSC00192.jpg";
-import img2024_side5 from "@/assets/2024/Copy of DSC00194.jpg";
-import img2024_side6 from "@/assets/2024/Copy of DSC00242.jpg";
+import img2024_13 from "@/assets/2024/Copy of DSC00127.jpg";
+import img2024_14 from "@/assets/2024/Copy of DSC00133.jpg";
+import img2024_15 from "@/assets/2024/Copy of DSC00136.jpg";
+import img2024_16 from "@/assets/2024/Copy of DSC00137.jpg";
+import img2024_17 from "@/assets/2024/Copy of DSC00167.jpg";
+import img2024_18 from "@/assets/2024/Copy of DSC00181.jpg";
+import img2024_19 from "@/assets/2024/Copy of DSC00192.jpg";
+import img2024_20 from "@/assets/2024/Copy of DSC00194.jpg";
+import img2024_21 from "@/assets/2024/Copy of DSC00242.jpg";
 
-const images2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8, img2024_9, img2024_10, img2024_11, img2024_12];
+const allImages2024 = [
+  img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, 
+  img2024_7, img2024_8, img2024_9, img2024_10, img2024_11, img2024_12,
+  img2024_13, img2024_14, img2024_15, img2024_16, img2024_17, img2024_18,
+  img2024_19, img2024_20, img2024_21
+];
 
+// Shuffle array utility
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const PastEditionDetail = () => {
   const { year } = useParams<{ year: string }>();
@@ -38,6 +51,37 @@ const PastEditionDetail = () => {
   const photoSectionRef = useRef<HTMLDivElement>(null);
 
   const [is2024Open, setIs2024Open] = useState(false);
+  
+  // Random images state for 2024
+  const [galleryImages, setGalleryImages] = useState(() => shuffleArray(allImages2024).slice(0, 12));
+  const [hoverImages, setHoverImages] = useState(() => shuffleArray(allImages2024).slice(0, 2));
+  const [sideImages, setSideImages] = useState(() => shuffleArray(allImages2024).slice(0, 6));
+  const [mainImage, setMainImage] = useState(() => allImages2024[Math.floor(Math.random() * allImages2024.length)]);
+
+  // Shuffle images when gallery opens
+  useEffect(() => {
+    if (is2024Open) {
+      setGalleryImages(shuffleArray(allImages2024).slice(0, 12));
+      setSideImages(shuffleArray(allImages2024).slice(0, 6));
+    }
+  }, [is2024Open]);
+
+  // Shuffle hover images when hovering
+  const handleHoverStart = useCallback(() => {
+    setHoverImages(shuffleArray(allImages2024).slice(0, 2));
+    setHoveredIndex(0);
+  }, []);
+
+  // Shuffle when not visible
+  useEffect(() => {
+    if (!is2024Open && hoveredIndex === null) {
+      const interval = setInterval(() => {
+        setMainImage(allImages2024[Math.floor(Math.random() * allImages2024.length)]);
+        setHoverImages(shuffleArray(allImages2024).slice(0, 2));
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [is2024Open, hoveredIndex]);
 
   const polaroid2024Ref = useRef<HTMLDivElement>(null);
   const polaroid1Ref = useRef<HTMLDivElement>(null);
@@ -219,7 +263,7 @@ const PastEditionDetail = () => {
             {/* Polaroid group with hover animation */}
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
-              onMouseEnter={() => setHoveredIndex(0)}
+              onMouseEnter={handleHoverStart}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
@@ -231,7 +275,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={img2024_left} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                  <img src={hoverImages[0]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -245,7 +289,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={img2024_right} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                  <img src={hoverImages[1]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -259,7 +303,7 @@ const PastEditionDetail = () => {
                 onClick={() => setIs2024Open((v) => !v)}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <img src={img2024_main} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                  <img src={mainImage} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white" />
                 </div>
               </div>
@@ -280,7 +324,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <img src={img2024_side1} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
+                  <img src={sideImages[0]} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -295,7 +339,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <img src={img2024_side2} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
+                  <img src={sideImages[1]} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -310,7 +354,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <img src={img2024_side3} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
+                  <img src={sideImages[2]} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -326,7 +370,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <img src={img2024_side4} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
+                  <img src={sideImages[3]} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -341,7 +385,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <img src={img2024_side5} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
+                  <img src={sideImages[4]} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -356,7 +400,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <img src={img2024_side6} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
+                  <img src={sideImages[5]} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -385,7 +429,7 @@ const PastEditionDetail = () => {
                       : "grid-cols-1 max-h-0 opacity-0"
                   }`}
                 >
-                  {images2024.map((img, idx) => (
+                  {galleryImages.map((img, idx) => (
                     <div
                       key={idx}
                       className={`aspect-square rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 overflow-hidden ${
