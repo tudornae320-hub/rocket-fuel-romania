@@ -20,6 +20,13 @@ import img2024_12 from "@/assets/2024/Copy of DSC00120.jpg";
 import img2024_main from "@/assets/2024/Copy of DSC00127.jpg";
 import img2024_left from "@/assets/2024/Copy of DSC00133.jpg";
 import img2024_right from "@/assets/2024/Copy of DSC00136.jpg";
+// Side polaroids images
+import img2024_side1 from "@/assets/2024/Copy of DSC00137.jpg";
+import img2024_side2 from "@/assets/2024/Copy of DSC00167.jpg";
+import img2024_side3 from "@/assets/2024/Copy of DSC00181.jpg";
+import img2024_side4 from "@/assets/2024/Copy of DSC00192.jpg";
+import img2024_side5 from "@/assets/2024/Copy of DSC00194.jpg";
+import img2024_side6 from "@/assets/2024/Copy of DSC00242.jpg";
 
 const images2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8, img2024_9, img2024_10, img2024_11, img2024_12];
 
@@ -273,7 +280,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <img src={img2024_side1} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -288,7 +295,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <img src={img2024_side2} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -303,7 +310,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <img src={img2024_side3} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -319,7 +326,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <img src={img2024_side4} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -334,7 +341,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <img src={img2024_side5} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>
@@ -349,7 +356,7 @@ const PastEditionDetail = () => {
                 }}
               >
                 <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-                  <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+                  <img src={img2024_side6} alt="2024 event" className="aspect-[4/3] rounded-sm object-cover" />
                   <div className="h-5 bg-white"></div>
                 </div>
               </div>

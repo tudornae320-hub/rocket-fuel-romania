@@ -6,6 +6,11 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { Calendar, Trophy, Users, MapPin } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 
+// 2024 images for polaroids
+import img2024_main from "@/assets/2024/Copy of DSC00127.jpg";
+import img2024_left from "@/assets/2024/Copy of DSC00133.jpg";
+import img2024_right from "@/assets/2024/Copy of DSC00136.jpg";
+
 const PastEditions = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
@@ -338,7 +343,7 @@ const PastEditions = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={img2024_left} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -352,7 +357,7 @@ const PastEditions = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={img2024_right} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -367,7 +372,7 @@ const PastEditions = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={img2024_main} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </Link>
