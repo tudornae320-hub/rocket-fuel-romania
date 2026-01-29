@@ -34,6 +34,20 @@ const PastEditions = () => {
   // Random images state for 2024 section
   const [hoverImages2024, setHoverImages2024] = useState(() => shuffleArray(allImages2024).slice(0, 2));
   const [mainImage2024, setMainImage2024] = useState(() => allImages2024[Math.floor(Math.random() * allImages2024.length)]);
+  const [is2024Visible, setIs2024Visible] = useState(true);
+  const polaroid2024SectionRef = useRef<HTMLDivElement>(null);
+  
+  // Track visibility of 2024 section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIs2024Visible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (polaroid2024SectionRef.current) {
+      observer.observe(polaroid2024SectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
   
   // Shuffle hover images when hovering on 2024
   const handle2024HoverStart = useCallback(() => {
@@ -41,16 +55,16 @@ const PastEditions = () => {
     setHoveredIndex(1);
   }, []);
   
-  // Shuffle when 2024 section is not being hovered
+  // Shuffle main polaroid only when section is not visible
   useEffect(() => {
-    if (hoveredIndex !== 1) {
+    if (!is2024Visible) {
       const interval = setInterval(() => {
         setMainImage2024(allImages2024[Math.floor(Math.random() * allImages2024.length)]);
         setHoverImages2024(shuffleArray(allImages2024).slice(0, 2));
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [hoveredIndex]);
+  }, [is2024Visible]);
   
   // Ticket button animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
@@ -365,7 +379,7 @@ const PastEditions = () => {
             </Card>
           </div>
           
-          <div className="flex flex-col items-center">
+          <div ref={polaroid2024SectionRef} className="flex flex-col items-center">
             {/* Polaroid group with hover animation */}
             <div 
               className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"

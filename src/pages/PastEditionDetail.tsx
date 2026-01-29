@@ -57,6 +57,20 @@ const PastEditionDetail = () => {
   const [hoverImages, setHoverImages] = useState(() => shuffleArray(allImages2024).slice(0, 2));
   const [sideImages, setSideImages] = useState(() => shuffleArray(allImages2024).slice(0, 6));
   const [mainImage, setMainImage] = useState(() => allImages2024[Math.floor(Math.random() * allImages2024.length)]);
+  const [isPolaroidVisible, setIsPolaroidVisible] = useState(true);
+  const polaroidSectionRef = useRef<HTMLDivElement>(null);
+
+  // Track visibility of polaroid section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsPolaroidVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (polaroidSectionRef.current) {
+      observer.observe(polaroidSectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   // Shuffle images when gallery opens
   useEffect(() => {
@@ -72,16 +86,16 @@ const PastEditionDetail = () => {
     setHoveredIndex(0);
   }, []);
 
-  // Shuffle when not visible
+  // Shuffle main polaroid only when section is not visible
   useEffect(() => {
-    if (!is2024Open && hoveredIndex === null) {
+    if (!isPolaroidVisible && !is2024Open) {
       const interval = setInterval(() => {
         setMainImage(allImages2024[Math.floor(Math.random() * allImages2024.length)]);
         setHoverImages(shuffleArray(allImages2024).slice(0, 2));
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [is2024Open, hoveredIndex]);
+  }, [isPolaroidVisible, is2024Open]);
 
   const polaroid2024Ref = useRef<HTMLDivElement>(null);
   const polaroid1Ref = useRef<HTMLDivElement>(null);
@@ -259,7 +273,7 @@ const PastEditionDetail = () => {
 
         {/* Single Polaroid Section */}
         <section className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
-          <div className="flex flex-col items-center">
+          <div ref={polaroidSectionRef} className="flex flex-col items-center">
             {/* Polaroid group with hover animation */}
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
