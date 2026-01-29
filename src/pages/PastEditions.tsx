@@ -16,7 +16,18 @@ import img2024_6 from "@/assets/2024/Copy of DSC00127.jpg";
 import img2024_7 from "@/assets/2024/Copy of DSC00133.jpg";
 import img2024_8 from "@/assets/2024/Copy of DSC00136.jpg";
 
+// 2023 images for polaroids
+import img2023_1 from "@/assets/2023/Copy of 03fb9a56-800a-439b-97aa-fc2285bc6f57.jpg";
+import img2023_2 from "@/assets/2023/Copy of 0e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg";
+import img2023_3 from "@/assets/2023/Copy of 20230319_154001.jpg";
+import img2023_4 from "@/assets/2023/Copy of 20230319_193424.jpg";
+import img2023_5 from "@/assets/2023/Copy of 2e38732f-eea7-4375-8a66-649a201cdffb.jpg";
+import img2023_6 from "@/assets/2023/Copy of 3eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg";
+import img2023_7 from "@/assets/2023/Copy of 4d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg";
+import img2023_8 from "@/assets/2023/Copy of 59e6570e-2113-4564-8dff-4fc1fc547e9b.jpg";
+
 const allImages2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8];
+const allImages2023 = [img2023_1, img2023_2, img2023_3, img2023_4, img2023_5, img2023_6, img2023_7, img2023_8];
 
 // Shuffle array utility
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -37,6 +48,12 @@ const PastEditions = () => {
   const [is2024Visible, setIs2024Visible] = useState(true);
   const polaroid2024SectionRef = useRef<HTMLDivElement>(null);
   
+  // Random images state for 2023 section
+  const [hoverImages2023, setHoverImages2023] = useState(() => shuffleArray(allImages2023).slice(0, 2));
+  const [mainImage2023, setMainImage2023] = useState(() => allImages2023[Math.floor(Math.random() * allImages2023.length)]);
+  const [is2023Visible, setIs2023Visible] = useState(true);
+  const polaroid2023SectionRef = useRef<HTMLDivElement>(null);
+  
   // Track visibility of 2024 section
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,10 +66,28 @@ const PastEditions = () => {
     return () => observer.disconnect();
   }, []);
   
+  // Track visibility of 2023 section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIs2023Visible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (polaroid2023SectionRef.current) {
+      observer.observe(polaroid2023SectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+  
   // Shuffle hover images when hovering on 2024
   const handle2024HoverStart = useCallback(() => {
     setHoverImages2024(shuffleArray(allImages2024).slice(0, 2));
     setHoveredIndex(1);
+  }, []);
+  
+  // Shuffle hover images when hovering on 2023
+  const handle2023HoverStart = useCallback(() => {
+    setHoverImages2023(shuffleArray(allImages2023).slice(0, 2));
+    setHoveredIndex(2);
   }, []);
   
   // Shuffle main polaroid only when section is not visible
@@ -65,6 +100,17 @@ const PastEditions = () => {
       return () => clearInterval(interval);
     }
   }, [is2024Visible]);
+  
+  // Shuffle main 2023 polaroid only when section is not visible
+  useEffect(() => {
+    if (!is2023Visible) {
+      const interval = setInterval(() => {
+        setMainImage2023(allImages2023[Math.floor(Math.random() * allImages2023.length)]);
+        setHoverImages2023(shuffleArray(allImages2023).slice(0, 2));
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [is2023Visible]);
   
   // Ticket button animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
@@ -440,11 +486,11 @@ const PastEditions = () => {
         </div>
 
         {/* Bottom Row - One Card */}
-        <div className="flex flex-col items-center max-w-md mx-auto">
+        <div ref={polaroid2023SectionRef} className="flex flex-col items-center max-w-md mx-auto">
           {/* Polaroid group with hover animation */}
           <div 
             className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"
-            onMouseEnter={() => setHoveredIndex(2)}
+            onMouseEnter={handle2023HoverStart}
             onMouseLeave={() => setHoveredIndex(null)}
           >
             {/* Left tilted polaroid */}
@@ -456,7 +502,7 @@ const PastEditions = () => {
               }`}
             >
               <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                <img src={hoverImages2023[0]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                 <div className="h-8 bg-white"></div>
               </div>
             </div>
@@ -470,7 +516,7 @@ const PastEditions = () => {
               }`}
             >
               <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                <img src={hoverImages2023[1]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                 <div className="h-8 bg-white"></div>
               </div>
             </div>
@@ -485,7 +531,7 @@ const PastEditions = () => {
               }`}
             >
               <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                <img src={mainImage2023} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                 <div className="h-8 bg-white"></div>
               </div>
             </Link>
