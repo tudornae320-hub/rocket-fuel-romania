@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { SquiggleDoodle, ArrowDoodle } from "@/components/Doodles";
@@ -7,12 +7,50 @@ import { Calendar, Trophy, Users, MapPin } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 
 // 2024 images for polaroids
-import img2024_main from "@/assets/2024/Copy of DSC00127.jpg";
-import img2024_left from "@/assets/2024/Copy of DSC00133.jpg";
-import img2024_right from "@/assets/2024/Copy of DSC00136.jpg";
+import img2024_1 from "@/assets/2024/Copy of DSC00002.jpg";
+import img2024_2 from "@/assets/2024/Copy of DSC00003.jpg";
+import img2024_3 from "@/assets/2024/Copy of DSC00015.jpg";
+import img2024_4 from "@/assets/2024/Copy of DSC00030.jpg";
+import img2024_5 from "@/assets/2024/Copy of DSC00037.jpg";
+import img2024_6 from "@/assets/2024/Copy of DSC00127.jpg";
+import img2024_7 from "@/assets/2024/Copy of DSC00133.jpg";
+import img2024_8 from "@/assets/2024/Copy of DSC00136.jpg";
+
+const allImages2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8];
+
+// Shuffle array utility
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const PastEditions = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  
+  // Random images state for 2024 section
+  const [hoverImages2024, setHoverImages2024] = useState(() => shuffleArray(allImages2024).slice(0, 2));
+  const [mainImage2024, setMainImage2024] = useState(() => allImages2024[Math.floor(Math.random() * allImages2024.length)]);
+  
+  // Shuffle hover images when hovering on 2024
+  const handle2024HoverStart = useCallback(() => {
+    setHoverImages2024(shuffleArray(allImages2024).slice(0, 2));
+    setHoveredIndex(1);
+  }, []);
+  
+  // Shuffle when 2024 section is not being hovered
+  useEffect(() => {
+    if (hoveredIndex !== 1) {
+      const interval = setInterval(() => {
+        setMainImage2024(allImages2024[Math.floor(Math.random() * allImages2024.length)]);
+        setHoverImages2024(shuffleArray(allImages2024).slice(0, 2));
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [hoveredIndex]);
   
   // Ticket button animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
@@ -331,7 +369,7 @@ const PastEditions = () => {
             {/* Polaroid group with hover animation */}
             <div 
               className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"
-              onMouseEnter={() => setHoveredIndex(1)}
+              onMouseEnter={handle2024HoverStart}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
@@ -343,7 +381,7 @@ const PastEditions = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={img2024_left} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                  <img src={hoverImages2024[0]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -357,7 +395,7 @@ const PastEditions = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={img2024_right} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                  <img src={hoverImages2024[1]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -372,7 +410,7 @@ const PastEditions = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <img src={img2024_main} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                  <img src={mainImage2024} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </Link>
