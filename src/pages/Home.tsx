@@ -31,32 +31,33 @@ const Home = () => {
   const readyPathLength = useRef(1);
   const [readyProgress, setReadyProgress] = useState(0);
   const [isCtaHighlighted, setIsCtaHighlighted] = useState(false);
-  
+
   // Arrows scroll animation state
   const arrowsSectionRef = useRef<HTMLDivElement>(null);
   const [arrowsVisible, setArrowsVisible] = useState(false);
-  
+
   // Emoji animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
   const ticketButtonContainerRef = useRef<HTMLDivElement>(null);
   const [emojiProgress, setEmojiProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   // Confetti animation state
-  const [confettiParticles, setConfettiParticles] = useState<Array<{
-    id: number;
-    x: number;
-    y: number;
-    vx: number;
-    vy: number;
-    rotation: number;
-    rotationSpeed: number;
-    color: string;
-    size: number;
-    shape: 'rect' | 'circle';
-  }>>([]);
+  const [confettiParticles, setConfettiParticles] = useState<
+    Array<{
+      id: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      rotation: number;
+      rotationSpeed: number;
+      color: string;
+      size: number;
+      shape: "rect" | "circle";
+    }>
+  >([]);
   const animationFrameRef = useRef<number | null>(null);
-  
 
   useEffect(() => {
     const path = circlePathRef.current;
@@ -109,21 +110,21 @@ const Home = () => {
       ([entry]) => {
         setIsHoursHighlighted(entry.isIntersecting);
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     const ctaObserver = new IntersectionObserver(
       ([entry]) => {
         setIsCtaHighlighted(entry.isIntersecting);
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     const arrowsObserver = new IntersectionObserver(
       ([entry]) => {
         setArrowsVisible(entry.isIntersecting);
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (hoursSectionRef.current) {
@@ -140,11 +141,13 @@ const Home = () => {
 
     // Detect mobile device
     const checkMobile = () => {
-      const isMobileDevice = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isMobileDevice =
+        window.innerWidth < 768 ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       setIsMobile(isMobileDevice);
       return isMobileDevice;
     };
-    
+
     const mobile = checkMobile();
     window.addEventListener("resize", checkMobile);
 
@@ -156,24 +159,22 @@ const Home = () => {
     if (!mobile) {
       handleMouseMove = (e: MouseEvent) => {
         if (!ticketButtonRef.current) return;
-        
+
         const buttonRect = ticketButtonRef.current.getBoundingClientRect();
         const buttonCenterX = buttonRect.left + buttonRect.width / 2;
         const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-        
+
         const mouseX = e.clientX;
         const mouseY = e.clientY;
-        
+
         // Calculate distance from cursor to button center
-        const distance = Math.sqrt(
-          Math.pow(mouseX - buttonCenterX, 2) + Math.pow(mouseY - buttonCenterY, 2)
-        );
-        
+        const distance = Math.sqrt(Math.pow(mouseX - buttonCenterX, 2) + Math.pow(mouseY - buttonCenterY, 2));
+
         // Max distance for activation (smaller range for closer proximity)
         const maxDistance = 150;
         // Calculate progress: 1 when cursor is at button, 0 when far away
         const progress = Math.max(0, Math.min(1, 1 - distance / maxDistance));
-        
+
         setEmojiProgress(progress);
       };
 
@@ -199,24 +200,24 @@ const Home = () => {
     let ticking = false;
     const calculateProgress = () => {
       if (!ticketButtonRef.current) return;
-      
+
       const buttonRect = ticketButtonRef.current.getBoundingClientRect();
       const buttonCenterY = buttonRect.top + buttonRect.height / 2;
       const viewportCenterY = window.innerHeight / 2;
-      
+
       // Calculate distance from button center to viewport center
       const distance = Math.abs(buttonCenterY - viewportCenterY);
-      
+
       // Max distance for activation (e.g., 300px from center)
       const maxDistance = 300;
-      
+
       // Calculate progress: 1 when button is at center, 0 when far away
       // Use smooth easing function for better animation
       const rawProgress = Math.max(0, Math.min(1, 1 - distance / maxDistance));
-      
+
       // Apply smooth easing (ease-out cubic)
       const progress = rawProgress < 1 ? 1 - Math.pow(1 - rawProgress, 3) : rawProgress;
-      
+
       setEmojiProgress(progress);
       ticking = false;
     };
@@ -230,7 +231,7 @@ const Home = () => {
 
     // Initial calculation
     calculateProgress();
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
@@ -251,7 +252,7 @@ const Home = () => {
     }
 
     const animate = () => {
-      setConfettiParticles(prev => {
+      setConfettiParticles((prev) => {
         if (prev.length === 0) {
           if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
@@ -259,30 +260,32 @@ const Home = () => {
           }
           return prev;
         }
-        
-        const updated = prev.map(particle => ({
-          ...particle,
-          x: particle.x + particle.vx,
-          y: particle.y + particle.vy,
-          vy: particle.vy + 0.3, // gravity
-          rotation: particle.rotation + particle.rotationSpeed,
-        })).filter(particle => {
-          // Remove particles that are off screen or fallen too far
-          return particle.y < window.innerHeight + 200 && particle.x > -100 && particle.x < window.innerWidth + 100;
-        });
-        
+
+        const updated = prev
+          .map((particle) => ({
+            ...particle,
+            x: particle.x + particle.vx,
+            y: particle.y + particle.vy,
+            vy: particle.vy + 0.3, // gravity
+            rotation: particle.rotation + particle.rotationSpeed,
+          }))
+          .filter((particle) => {
+            // Remove particles that are off screen or fallen too far
+            return particle.y < window.innerHeight + 200 && particle.x > -100 && particle.x < window.innerWidth + 100;
+          });
+
         if (updated.length > 0) {
           animationFrameRef.current = requestAnimationFrame(animate);
         } else {
           animationFrameRef.current = null;
         }
-        
+
         return updated;
       });
     };
-    
+
     animationFrameRef.current = requestAnimationFrame(animate);
-    
+
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
@@ -294,15 +297,15 @@ const Home = () => {
   // Confetti creation function
   const createConfetti = () => {
     if (!ticketButtonRef.current) return;
-    
+
     const buttonRect = ticketButtonRef.current.getBoundingClientRect();
     const startX = buttonRect.left + buttonRect.width / 2;
     const startY = buttonRect.top + buttonRect.height / 2;
-    
-    const colors = ['#5ad1fc', '#ff6b6b', '#4ecdc4', '#ffe66d', '#a8e6cf', '#ffd93d', '#6c5ce7', '#fd79a8'];
+
+    const colors = ["#5ad1fc", "#ff6b6b", "#4ecdc4", "#ffe66d", "#a8e6cf", "#ffd93d", "#6c5ce7", "#fd79a8"];
     const particleCount = 60;
     const particles = [];
-    
+
     for (let i = 0; i < particleCount; i++) {
       const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.6;
       const speed = 4 + Math.random() * 6;
@@ -316,12 +319,12 @@ const Home = () => {
         rotationSpeed: (Math.random() - 0.5) * 12,
         color: colors[Math.floor(Math.random() * colors.length)],
         size: 8 + Math.random() * 10,
-        shape: Math.random() > 0.5 ? 'rect' : 'circle',
+        shape: Math.random() > 0.5 ? "rect" : "circle",
       });
     }
-    
+
     setConfettiParticles(particles);
-    
+
     // Clean up after animation
     setTimeout(() => {
       setConfettiParticles([]);
@@ -333,7 +336,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Animated Rocket Follower */}
       <RocketFollower />
 
@@ -341,28 +344,24 @@ const Home = () => {
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16 no-pattern">
         {/* Background Image with Dark Gradient */}
         <div className="absolute inset-0">
-          <img 
-            src={heroBackground} 
-            alt="Startup Weekend" 
-            className="w-full h-full object-cover"
-          />
+          <img src={heroBackground} alt="Startup Weekend" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-dark-grey/80 via-dark-grey/70 to-dark-grey/90" />
         </div>
-        
+
         {/* Gradient Blend at Bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background z-10" />
-        
+
         <div className="container mx-auto px-4 md:px-8 relative z-10 flex items-center justify-between gap-12">
           {/* Left Side - Title and Info */}
           <div className="flex-1 max-w-2xl">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 animate-fade-in text-white uppercase tracking-tight">
               Startup Weekend Bucharest
             </h1>
-            
+
             {/* Z-shaped Line */}
             <div className="mb-6 w-[320px] md:w-[400px] lg:w-[480px]">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 857.78 120.97"
                 className="w-full h-auto"
                 preserveAspectRatio="xMidYMid meet"
@@ -372,24 +371,24 @@ const Home = () => {
                 </defs>
                 <g id="Layer_2" data-name="Layer 2">
                   <g id="objects">
-                    <path 
-                      className="cls-1 animate-draw-path" 
+                    <path
+                      className="cls-1 animate-draw-path"
                       d="M546.94,2.11q-91.62,2.84-183.06,9.51L198,14.56l-182,3.23c-5.87.1-15,4.4-15.85,10.92C-.91,35.89,8,37.09,13,37l118.29-2.09Q106.64,38,82.07,41.44c-5.68.78-13.61,3.44-15.43,9.66-1.62,5.54,3.44,9.47,8.81,9.56l273.19,4.69,58.14,1Q365,70.93,323.3,76.89,258,86.24,193.27,99c-4.66.91-11.27,5-12,10.22-.68,5,4.82,8.27,9.24,8.31l310.69,2.71,87.58.77c6.69,0,15.27-1.86,18.64-8.42,3-5.88-2.63-10.78-8.38-10.83L300,99.11l8.33-1.26q56.51-8.37,113.35-14.18,113.7-11.61,228.13-12.9L660,70.7l115.85,2c6.68.12,15.28-1.88,18.63-8.41,3.08-6-2.68-10.6-8.37-10.83q-59.12-2.37-118.31-2L512.88,48.75,239.69,44.07l-22-.38q71.52-7.61,143.26-12.85L660,25.54l182-3.23c5.57-.1,13.75-3.92,15.42-9.66S854,3.28,848.65,3.08Q697.87-2.54,546.94,2.11Z"
                       stroke="hsl(196, 96%, 67%)"
                       strokeWidth="2"
                       fill="hsl(196, 96%, 67%)"
                       strokeDasharray="2000"
                       strokeDashoffset="2000"
-                      style={{ 
-                        strokeLinecap: 'round',
-                        strokeLinejoin: 'round'
+                      style={{
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
                       }}
                     />
                   </g>
                 </g>
               </svg>
             </div>
-            
+
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
                 <Calendar className="w-6 h-6 text-primary" />
@@ -397,7 +396,12 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-3 text-lg md:text-xl text-off-white/90">
                 <MapPin className="w-5 h-5 text-primary" />
-                <a href="https://maps.app.goo.gl/DWoupMfrzjf1dEh1A" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                <a
+                  href="https://maps.app.goo.gl/DWoupMfrzjf1dEh1A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
                   Builders House
                 </a>
               </div>
@@ -406,20 +410,20 @@ const Home = () => {
               </p>
             </div>
           </div>
-          
+
           {/* Right Side - Vertical Line with Arrow */}
           <div className="hidden md:flex flex-row items-center gap-4 min-w-[100px]">
-            <a 
-              href="#about" 
+            <a
+              href="#about"
               className="text-white font-semibold text-lg hover:text-primary transition-colors cursor-pointer uppercase tracking-wide"
-              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+              style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
             >
               Learn More
             </a>
             <div className="h-[400px] w-1 bg-white/30 relative flex items-center justify-center">
               <div className="absolute left-1/2 translate-x-1 flex items-center justify-center animate-bob-horizontal">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/>
+                  <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
                 </svg>
               </div>
             </div>
@@ -436,26 +440,22 @@ const Home = () => {
               {/* Megaphone Icon with Vector overlay */}
               <div className="relative w-32 h-32 md:w-40 md:h-40">
                 <img src={megaphoneSvg} alt="Megaphone" className="w-full h-full" />
-                <img 
-                  src={vectorSvg} 
-                  alt="X overlay" 
+                <img
+                  src={vectorSvg}
+                  alt="X overlay"
                   className="absolute inset-0 w-full h-full object-contain"
-                  style={{ mixBlendMode: 'normal' }}
+                  style={{ mixBlendMode: "normal" }}
                 />
               </div>
-              
+
               {/* NO TALK */}
               <div>
-                <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">
-                  NO TALK.
-                </h3>
+                <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">NO TALK.</h3>
               </div>
 
               {/* ALL ACTION */}
               <div>
-                <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-primary">
-                  ALL ACTION!
-                </h3>
+                <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-primary">ALL ACTION!</h3>
               </div>
             </div>
 
@@ -463,11 +463,12 @@ const Home = () => {
             <div className="flex-1 space-y-8">
               {/* Top Section - Startup Weekend */}
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                Build a startup in a weekend
-                </h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3">Build a startup in a weekend</h2>
                 <p className="text-lg text-muted-foreground">
-                Startup Weekend is the place where creatives, coders, hustlers, thinkers, and dreamers come together to build real stuff in just 54 hours. Whether you have a wild idea or you just wanna join a team and create something new — this weekend’s for you.                </p>
+                  Startup Weekend is the place where creatives, coders, hustlers, thinkers, and dreamers come together
+                  to build real stuff in just 54 hours. Whether you have a wild idea or you just wanna join a team and
+                  create something new — this weekend’s for you.{" "}
+                </p>
               </div>
 
               {/* Bottom Section */}
@@ -478,79 +479,88 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
-          <div 
+
+          <div
             ref={arrowsSectionRef}
             className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-40 md:mt-48"
           >
             {/* Arrow 1: Below Card 1 */}
             <div
-              className={`hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ 
-                left: '5.5%',
-                transitionDelay: arrowsVisible ? '0.2s' : '0s'
+              className={`hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? "opacity-100" : "opacity-0"}`}
+              style={{
+                left: "5.5%",
+                transitionDelay: arrowsVisible ? "0.2s" : "0s",
               }}
             >
               <div
-                style={{ 
-                  transform: 'rotate(80deg) translateX(-5%)',
-                  width: '100%',
-                  height: '100%'
+                style={{
+                  transform: "rotate(80deg) translateX(-5%)",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
-                <img 
-                  src={sageterSvg} 
-                  alt="Arrow" 
+                <img
+                  src={sageterSvg}
+                  alt="Arrow"
                   className="w-full h-full object-contain"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)' }}
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
+                  }}
                 />
               </div>
             </div>
 
             {/* Arrow 2: Above Card 2 - Flipped */}
             <div
-              className={`hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ 
-                left: '30%',
-                transitionDelay: arrowsVisible ? '0.5s' : '0s'
+              className={`hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? "opacity-100" : "opacity-0"}`}
+              style={{
+                left: "30%",
+                transitionDelay: arrowsVisible ? "0.5s" : "0s",
               }}
             >
               <div
-                style={{ 
-                  transform: 'rotate(-80deg) scaleY(-1) translateX(+25%)',
-                  width: '100%',
-                  height: '100%'
+                style={{
+                  transform: "rotate(-80deg) scaleY(-1) translateX(+25%)",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
-                <img 
-                  src={sageterSvg} 
-                  alt="Arrow" 
+                <img
+                  src={sageterSvg}
+                  alt="Arrow"
                   className="w-full h-full object-contain"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)' }}
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
+                  }}
                 />
               </div>
             </div>
 
             {/* Arrow 3: Below Card 3 */}
             <div
-              className={`hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{ 
-                left: '57%',
-                transitionDelay: arrowsVisible ? '0.8s' : '0s'
+              className={`hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10 transition-opacity duration-500 ${arrowsVisible ? "opacity-100" : "opacity-0"}`}
+              style={{
+                left: "57%",
+                transitionDelay: arrowsVisible ? "0.8s" : "0s",
               }}
             >
               <div
-                style={{ 
-                  transform: 'rotate(80deg) translateX(-5%)',
-                  width: '100%',
-                  height: '100%'
+                style={{
+                  transform: "rotate(80deg) translateX(-5%)",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
-                <img 
-                  src={sageterSvg} 
-                  alt="Arrow" 
+                <img
+                  src={sageterSvg}
+                  alt="Arrow"
                   className="w-full h-full object-contain"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)' }}
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
+                  }}
                 />
               </div>
             </div>
@@ -564,11 +574,12 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                Get real feedback from mentors who’ve built things before — from shaping your idea and business model to pricing, strategy, and pitching.
+                  Get real feedback from mentors who’ve built things before — from shaping your idea and business model
+                  to pricing, strategy, and pitching.
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
@@ -578,11 +589,12 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                Have an idea? Pitch it on Friday and see who wants to build it with you.
-                No idea? No problem. You can join any team and help bring someone else’s concept to life.                </p>
+                  Have an idea? Pitch it on Friday and see who wants to build it with you. No idea? No problem. You can
+                  join any team and help bring someone else’s concept to life.{" "}
+                </p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
@@ -592,10 +604,12 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                Over the weekend, you’ll validate your idea, build an MVP, shape your business model, and practice your pitch. On Sunday, you’ll present in front of an expert jury and compete for awesome prizes.                </p>
+                  Over the weekend, you’ll validate your idea, build an MVP, shape your business model, and practice
+                  your pitch. On Sunday, you’ll present in front of an expert jury and compete for awesome prizes.{" "}
+                </p>
               </CardContent>
             </Card>
-            
+
             <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
@@ -605,7 +619,9 @@ const Home = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                We’ve got you covered with unlimited coffee, meals, snacks, and other goodies — so you can focus on building instead of worrying about food or energy.                </p>
+                  We’ve got you covered with unlimited coffee, meals, snacks, and other goodies — so you can focus on
+                  building instead of worrying about food or energy.{" "}
+                </p>
               </CardContent>
             </Card>
           </div>
@@ -621,32 +637,30 @@ const Home = () => {
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="block">
                   <span className="relative inline-block px-2 py-1">
-                    <span className={`relative z-10 inline-block transition-colors duration-500 delay-200 ${
-                      isHoursHighlighted ? 'text-white' : ''
-                    }`}>
+                    <span
+                      className={`relative z-10 inline-block transition-colors duration-500 delay-200 ${
+                        isHoursHighlighted ? "text-white" : ""
+                      }`}
+                    >
                       54 hours
                     </span>
-                    <span 
+                    <span
                       className={`absolute inset-0 bg-[#5ad1fc] rounded-sm transition-transform duration-700 ease-out ${
-                        isHoursHighlighted ? 'scale-x-100' : 'scale-x-0'
+                        isHoursHighlighted ? "scale-x-100" : "scale-x-0"
                       }`}
-                      style={{ 
-                        transformOrigin: 'left',
-                        zIndex: 0
+                      style={{
+                        transformOrigin: "left",
+                        zIndex: 0,
                       }}
                     />
-                  </span>
-                  {' '}to build a startup
+                  </span>{" "}
+                  to build a startup
                 </span>
               </h2>
-              
+
               {/* Linie SVG */}
               <div className="mt-6">
-                <img 
-                  src={linieSvg} 
-                  alt="Decorative line" 
-                  className="w-full h-auto"
-                />
+                <img src={linieSvg} alt="Decorative line" className="w-full h-auto" />
               </div>
             </div>
 
@@ -657,9 +671,17 @@ const Home = () => {
                   <strong>Learn how to think, work, and build like a startup in 54 thrilling hours.</strong>
                 </p>
                 <p className="text-lg text-muted-foreground">
-                  <a href="https://www.techstars.com/communities" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Techstars Startup Weekend</a> is an exciting and immersive foray into the world of startups. 
-                  Over an action-packed three days, you'll meet the very best mentors, investors, co-founders and sponsors 
-                  to show you how to get more done faster – and, maybe even <strong>start that business.</strong>
+                  <a
+                    href="https://www.techstars.com/communities"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    Techstars Startup Weekend
+                  </a>{" "}
+                  is an exciting and immersive foray into the world of startups. Over an action-packed three days,
+                  you'll meet the very best mentors, investors, co-founders and sponsors to show you how to get more
+                  done faster – and, maybe even <strong>start that business.</strong>
                 </p>
               </CardContent>
             </Card>
@@ -674,9 +696,9 @@ const Home = () => {
             {/* Left - Photo Card */}
             <Card className="w-full md:w-1/2 max-w-xl overflow-hidden">
               <CardContent className="p-4">
-                <img 
-                  src={mentorsSectionPhoto} 
-                  alt="Mentors working with participants" 
+                <img
+                  src={mentorsSectionPhoto}
+                  alt="Mentors working with participants"
                   className="aspect-[4/3] w-full rounded-2xl object-cover"
                 />
               </CardContent>
@@ -721,18 +743,16 @@ const Home = () => {
                   <span className="block">Mentors</span>
                 </h2>
               </div>
-              
+
               {/* Centered text below header */}
               <div className="text-center w-full max-w-lg mx-auto md:mx-0 mt-6">
-                <p className="text-lg text-muted-foreground">
-                  Learn from the best in the industry
-                </p>
+                <p className="text-lg text-muted-foreground">Learn from the best in the industry</p>
               </div>
             </div>
           </div>
-          
+
           <ScrollableMentors />
-          
+
           <InteractiveJuryGrid />
         </div>
       </section>
@@ -748,16 +768,12 @@ const Home = () => {
       <section id="partners" className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Sponsors & Partners
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Supported by the best
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Sponsors & Partners</h2>
+            <p className="text-lg text-muted-foreground">Supported by the best</p>
           </div>
-          
+
           <ScrollableSponsors />
-          
+
           <div className="text-center mt-12">
             <button className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98]">
               Get involved!
@@ -767,20 +783,20 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaSectionRef} className="pt-20 pb-32 md:pb-40 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 no-pattern">
+      <section
+        ref={ctaSectionRef}
+        className="pt-20 pb-32 md:pb-40 relative overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 no-pattern"
+      >
         <div className="absolute inset-0 opacity-10" />
-        
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span
-              ref={readyHeaderRef}
-              className="relative inline-flex items-center justify-center"
-            >
+            <span ref={readyHeaderRef} className="relative inline-flex items-center justify-center">
               <svg
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
                 viewBox="0 0 729.24 328.43"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ width: '150%', height: 'auto' }}
+                style={{ width: "150%", height: "auto" }}
               >
                 <defs>
                   <mask id="readyMask">
@@ -806,21 +822,23 @@ const Home = () => {
                 />
               </svg>
               <span className="relative z-10">Ready</span>
-            </span>
-            {' '}to build something{' '}
+            </span>{" "}
+            to build something{" "}
             <span className="relative inline-block pl-3 pr-2 py-1">
-              <span className={`relative z-10 inline-block transition-colors duration-500 delay-200 ${
-                isCtaHighlighted ? 'text-white' : ''
-              }`}>
+              <span
+                className={`relative z-10 inline-block transition-colors duration-500 delay-200 ${
+                  isCtaHighlighted ? "text-white" : ""
+                }`}
+              >
                 great?
               </span>
-              <span 
+              <span
                 className={`absolute top-1 left-0 right-0 bottom-0 bg-[#5ad1fc] rounded-sm transition-transform duration-700 ease-out ${
-                  isCtaHighlighted ? 'scale-x-100' : 'scale-x-0'
+                  isCtaHighlighted ? "scale-x-100" : "scale-x-0"
                 }`}
-                style={{ 
-                  transformOrigin: 'left',
-                  zIndex: 0
+                style={{
+                  transformOrigin: "left",
+                  zIndex: 0,
                 }}
               />
             </span>
@@ -829,65 +847,65 @@ const Home = () => {
             Join us for 54 hours of intense building, learning, and networking. Limited spots available!
           </p>
           <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
-            <button 
+            <button
               ref={ticketButtonRef}
               onClick={handleButtonClick}
               className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] relative z-10"
             >
               Get your ticket now
             </button>
-            
+
             {/* Confetti particles */}
             {confettiParticles.length > 0 && (
               <div className="fixed inset-0 pointer-events-none z-50">
-                {confettiParticles.map(particle => (
+                {confettiParticles.map((particle) => (
                   <div
                     key={particle.id}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       left: `${particle.x}px`,
                       top: `${particle.y}px`,
                       width: `${particle.size}px`,
                       height: `${particle.size}px`,
                       backgroundColor: particle.color,
-                      borderRadius: particle.shape === 'circle' ? '50%' : '2px',
+                      borderRadius: particle.shape === "circle" ? "50%" : "2px",
                       transform: `rotate(${particle.rotation}deg)`,
-                      pointerEvents: 'none',
+                      pointerEvents: "none",
                     }}
                   />
                 ))}
               </div>
             )}
-            
+
             {/* Animated party emojis - positioned below the button */}
-            <div 
+            <div
               className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-0"
               style={{
                 top: `calc(100% + ${isMobile ? 60 : 20}px - ${emojiProgress * (isMobile ? 100 : 120)}px)`, // More space on mobile to avoid intersection
-                transition: isMobile ? 'top 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none', // Smooth transition on mobile
+                transition: isMobile ? "top 0.3s cubic-bezier(0.4, 0, 0.2, 1)" : "none", // Smooth transition on mobile
               }}
             >
               {/* Left emoji */}
               <span
                 className="absolute text-6xl md:text-7xl"
                 style={{
-                  left: '-80px',
+                  left: "-80px",
                   transform: `translateX(${-emojiProgress * 15}px) scale(${0.5 + emojiProgress * 0.5})`,
                   opacity: emojiProgress * 0.9,
-                  transition: isMobile ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none', // Smooth transition on mobile
+                  transition: isMobile ? "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)" : "none", // Smooth transition on mobile
                 }}
               >
                 🎉
               </span>
-              
+
               {/* Right emoji (mirrored) */}
               <span
                 className="absolute text-6xl md:text-7xl"
                 style={{
-                  right: '-80px',
+                  right: "-80px",
                   transform: `translateX(${emojiProgress * 15}px) scaleX(-1) scale(${0.5 + emojiProgress * 0.5})`,
                   opacity: emojiProgress * 0.9,
-                  transition: isMobile ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none', // Smooth transition on mobile
+                  transition: isMobile ? "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)" : "none", // Smooth transition on mobile
                 }}
               >
                 🎉
