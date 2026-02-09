@@ -25,13 +25,13 @@ export const Footer = () => {
                 Transform your ideas into reality in just 54 hours. Join Romania's most exciting startup community.
               </p>
               <div className="flex items-center gap-3">
-                <a href="#" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                <a href="https://ro.linkedin.com/company/techstars-startup-weekend-romania" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
                   <Linkedin size={18} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                <a href="https://www.instagram.com/startupweekendromania/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
                   <Instagram size={18} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                <a href="https://www.tiktok.com/@startupweekendromania" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
                   <TikTokIcon />
                 </a>
               </div>
