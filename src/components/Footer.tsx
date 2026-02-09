@@ -13,7 +13,7 @@ export const Footer = () => {
       <div className="bg-background border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000]">
         {/* Main Footer Content */}
         <div className="container mx-auto px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Logo & Description */}
             <div className="lg:col-span-1">
               <div className="flex flex-col items-start mb-4">
@@ -37,27 +37,14 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="font-bold text-foreground mb-4">Quick Links</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Home</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Events</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Past Events</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Mentors</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
             {/* Our Cities */}
             <div>
               <h3 className="font-bold text-foreground mb-4">Our Cities</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Bucharest</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Constanta</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cluj</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Oradea</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Targu Jiu</a></li>
+                <li><a href="https://startupweekendromania.com/constanta/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Constanta</a></li>
+                <li><a href="https://startupweekendromania.com/cluj/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cluj</a></li>
+                <li><a href="https://startupweekendromania.com/oradea/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Oradea</a></li>
+                <li><a href="https://startupweekendromania.com/targu-jiu/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Targu Jiu</a></li>
               </ul>
             </div>
 
@@ -85,7 +72,7 @@ export const Footer = () => {
               <h3 className="font-bold text-foreground mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Host in Your City</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Startup Weekend</a></li>
+                <li><a href="https://startupweekendromania.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Startup Weekend</a></li>
                 <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">How It Works</a></li>
               </ul>
             </div>
