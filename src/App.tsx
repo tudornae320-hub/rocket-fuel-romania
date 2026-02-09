@@ -31,8 +31,8 @@ const AppContent = () => {
         <Route path="/partners" element={<Partners />} />
         <Route path="/mentors" element={<Mentors />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/past-editions" element={<PastEditions />} />
-        <Route path="/past-editions/:year" element={<PastEditionDetail />} />
+        <Route path="/past-editions" element={<NotFound />} />
+        <Route path="/past-editions/:year" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
