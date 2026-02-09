@@ -414,7 +414,9 @@ const Home = () => {
           {/* Right Side - Vertical Line with Arrow */}
           <div className="hidden md:flex flex-row items-center gap-4 min-w-[100px]">
             <a
-              href="#about"
+              href="https://startupweekendromania.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white font-semibold text-lg hover:text-primary transition-colors cursor-pointer uppercase tracking-wide"
               style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
             >
