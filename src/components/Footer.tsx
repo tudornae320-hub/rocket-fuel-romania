@@ -3,7 +3,7 @@ import { Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 // TikTok icon (not in lucide-react)
 const TikTokIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -25,13 +25,28 @@ export const Footer = () => {
                 Transform your ideas into reality in just 54 hours. Join Romania's most exciting startup community.
               </p>
               <div className="flex items-center gap-3">
-                <a href="https://ro.linkedin.com/company/techstars-startup-weekend-romania" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                <a
+                  href="https://ro.linkedin.com/company/techstars-startup-weekend-romania"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors"
+                >
                   <Linkedin size={18} />
                 </a>
-                <a href="https://www.instagram.com/startupweekendromania/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                <a
+                  href="https://www.instagram.com/startupweekendromania/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors"
+                >
                   <Instagram size={18} />
                 </a>
-                <a href="https://www.tiktok.com/@startupweekendromania" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                <a
+                  href="https://www.tiktok.com/@startupweekendromania"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-foreground flex items-center justify-center hover:bg-foreground/5 transition-colors"
+                >
                   <TikTokIcon />
                 </a>
               </div>
@@ -41,10 +56,46 @@ export const Footer = () => {
             <div>
               <h3 className="font-bold text-foreground mb-4">Our Cities</h3>
               <ul className="space-y-3">
-                <li><a href="https://startupweekendromania.com/constanta/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Constanta</a></li>
-                <li><a href="https://startupweekendromania.com/cluj/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cluj</a></li>
-                <li><a href="https://startupweekendromania.com/oradea/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Oradea</a></li>
-                <li><a href="https://startupweekendromania.com/targu-jiu/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">Targu Jiu</a></li>
+                <li>
+                  <a
+                    href="https://startupweekendromania.com/constanta/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Constanta
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://startupweekendromania.com/cluj/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Cluj
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://startupweekendromania.com/oradea/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Oradea
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://startupweekendromania.com/targu-jiu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Targu Jiu
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -54,11 +105,21 @@ export const Footer = () => {
               <ul className="space-y-3">
                 <li className="flex items-center gap-2">
                   <Mail size={16} className="text-primary" />
-                  <a href="mailto:hello@startupweekend.ro" className="text-sm text-muted-foreground hover:text-primary transition-colors">hello@startupweekend.ro</a>
+                  <a
+                    href="mailto:hi@startupweekendbucharest.com"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    hi@startupweekendbucharest.com
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={16} className="text-primary" />
-                  <a href="tel:+40123456789" className="text-sm text-muted-foreground hover:text-primary transition-colors">+40 123 456 789</a>
+                  <a
+                    href="tel:+40750728423"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    +40 750 728 423
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin size={16} className="text-primary" />
@@ -71,9 +132,26 @@ export const Footer = () => {
             <div>
               <h3 className="font-bold text-foreground mb-4">Resources</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Host in Your City</a></li>
-                <li><a href="https://startupweekendromania.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Startup Weekend</a></li>
-                <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">How It Works</a></li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Host in Your City
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://startupweekendromania.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    About Startup Weekend
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    How It Works
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -87,8 +165,12 @@ export const Footer = () => {
                 Copyright © 2025 <span className="text-foreground">Startup Weekend Romania</span>. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
+                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Privacy Policy
+                </a>
+                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Terms of Service
+                </a>
               </div>
             </div>
           </div>
