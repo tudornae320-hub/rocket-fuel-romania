@@ -10,6 +10,50 @@ import hero2025Oct from "@/2025_oct_movi.gif";
 
 const hero2025Gifs = [hero2025May, hero2025Oct];
 
+// 2025 May images
+import img2025m_1 from "@/assets/2025/may/Copy of Copy of DSC_0028.jpg";
+import img2025m_2 from "@/assets/2025/may/Copy of Copy of DSC_0039.jpg";
+import img2025m_3 from "@/assets/2025/may/Copy of Copy of DSC_0049.jpg";
+import img2025m_4 from "@/assets/2025/may/Copy of Copy of DSC_0066.jpg";
+import img2025m_5 from "@/assets/2025/may/Copy of Copy of DSC_0071.jpg";
+import img2025m_6 from "@/assets/2025/may/Copy of Copy of DSC_0092.jpg";
+import img2025m_7 from "@/assets/2025/may/Copy of Copy of DSC_0104.jpg";
+import img2025m_8 from "@/assets/2025/may/Copy of Copy of DSC_0116.jpg";
+import img2025m_9 from "@/assets/2025/may/Copy of Copy of DSC_0124.jpg";
+import img2025m_10 from "@/assets/2025/may/Copy of Copy of DSC_0134.jpg";
+import img2025m_11 from "@/assets/2025/may/Copy of Copy of DSC_0149.jpg";
+import img2025m_12 from "@/assets/2025/may/Copy of Copy of DSC_0158.jpg";
+import img2025m_13 from "@/assets/2025/may/Copy of Copy of DSC_0170.jpg";
+import img2025m_14 from "@/assets/2025/may/Copy of Copy of DSC_0191.jpg";
+import img2025m_15 from "@/assets/2025/may/Copy of Copy of DSC_0204.jpg";
+import img2025m_16 from "@/assets/2025/may/Copy of Copy of DSC_0248.jpg";
+import img2025m_17 from "@/assets/2025/may/Copy of Copy of DSC_0263.jpg";
+import img2025m_18 from "@/assets/2025/may/Copy of Copy of DSC_0270.jpg";
+import img2025m_19 from "@/assets/2025/may/Copy of Copy of DSC_0277.jpg";
+import img2025m_20 from "@/assets/2025/may/Copy of Copy of DSC_0286.jpg";
+
+// 2025 October images
+import img2025o_1 from "@/assets/2025/october/IMG_3287.jpg";
+import img2025o_2 from "@/assets/2025/october/IMG_3362.jpg";
+import img2025o_3 from "@/assets/2025/october/IMG_3472.jpg";
+import img2025o_4 from "@/assets/2025/october/IMG_3553.jpg";
+import img2025o_5 from "@/assets/2025/october/IMG_3617.jpg";
+import img2025o_6 from "@/assets/2025/october/IMG_3735.jpg";
+import img2025o_7 from "@/assets/2025/october/IMG_3876.jpg";
+import img2025o_8 from "@/assets/2025/october/IMG_3957.jpg";
+import img2025o_9 from "@/assets/2025/october/IMG_4070.jpg";
+import img2025o_10 from "@/assets/2025/october/IMG_4141.jpg";
+import img2025o_11 from "@/assets/2025/october/IMG_4251.jpg";
+import img2025o_12 from "@/assets/2025/october/IMG_4329.jpg";
+import img2025o_13 from "@/assets/2025/october/IMG_4405.jpg";
+import img2025o_14 from "@/assets/2025/october/IMG_4478.jpg";
+import img2025o_15 from "@/assets/2025/october/IMG_4559.jpg";
+import img2025o_16 from "@/assets/2025/october/IMG_4600.jpg";
+import img2025o_17 from "@/assets/2025/october/IMG_4660.jpg";
+import img2025o_18 from "@/assets/2025/october/IMG_4703.jpg";
+import img2025o_19 from "@/assets/2025/october/IMG_4746.jpg";
+import img2025o_20 from "@/assets/2025/october/IMG_4763.jpg";
+
 // 2024 images
 import img2024_1 from "@/assets/2024/Copy of DSC00002.jpg";
 import img2024_2 from "@/assets/2024/Copy of DSC00003.jpg";
@@ -51,6 +95,20 @@ import img2023_14 from "@/assets/2023/Copy of e2962422-1a25-45cf-8564-db0b658c1e
 import img2023_15 from "@/assets/2023/Copy of WhatsApp Image 2023-03-17 at 21.24.18.jpeg";
 import img2023_16 from "@/assets/2023/Copy of WhatsApp Image 2023-03-17 at 21.25.12.jpeg";
 
+const allImages2025May = [
+  img2025m_1, img2025m_2, img2025m_3, img2025m_4, img2025m_5, img2025m_6,
+  img2025m_7, img2025m_8, img2025m_9, img2025m_10, img2025m_11, img2025m_12,
+  img2025m_13, img2025m_14, img2025m_15, img2025m_16, img2025m_17, img2025m_18,
+  img2025m_19, img2025m_20
+];
+
+const allImages2025Oct = [
+  img2025o_1, img2025o_2, img2025o_3, img2025o_4, img2025o_5, img2025o_6,
+  img2025o_7, img2025o_8, img2025o_9, img2025o_10, img2025o_11, img2025o_12,
+  img2025o_13, img2025o_14, img2025o_15, img2025o_16, img2025o_17, img2025o_18,
+  img2025o_19, img2025o_20
+];
+
 const allImages2024 = [
   img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, 
   img2024_7, img2024_8, img2024_9, img2024_10, img2024_11, img2024_12,
@@ -72,6 +130,33 @@ const shuffleArray = <T,>(array: T[]): T[] => {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled;
+};
+
+const CountUp = ({ end, duration = 1500, trigger }: { end: number; duration?: number; trigger: boolean }) => {
+  const [count, setCount] = useState(0);
+  const prevTrigger = useRef(false);
+
+  useEffect(() => {
+    if (!trigger) {
+      setCount(0);
+      prevTrigger.current = false;
+      return;
+    }
+    if (prevTrigger.current) return;
+    prevTrigger.current = true;
+
+    const startTime = performance.now();
+    const animate = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [trigger, end, duration]);
+
+  return <>{count}</>;
 };
 
 const PastEditionDetail = () => {
@@ -356,47 +441,47 @@ const PastEditionDetail = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
-              <div
-                className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
-                  hoveredIndex === 0
-                    ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
-                    : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
-                }`}
-              >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={hoverImages[0]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
-                  <div className="h-8 bg-white"></div>
+                <div
+                  className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
+                    hoveredIndex === 0
+                      ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
+                      : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
+                  }`}
+                >
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                    <img src={hoverImages[0]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                    <div className="h-8 bg-white"></div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Right tilted polaroid */}
-              <div
-                className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
-                  hoveredIndex === 0
-                    ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
-                    : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
-                }`}
-              >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={hoverImages[1]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
-                  <div className="h-8 bg-white"></div>
+                {/* Right tilted polaroid */}
+                <div
+                  className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
+                    hoveredIndex === 0
+                      ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
+                      : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
+                  }`}
+                >
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                    <img src={hoverImages[1]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                    <div className="h-8 bg-white"></div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Main polaroid - raises on hover */}
-              <div
-                ref={polaroid2024Ref}
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
-                  hoveredIndex === 0 ? "-translate-y-[calc(50%+40px)] z-30" : "-translate-y-1/2 z-10"
-                }`}
-                onClick={() => setIs2024Open((v) => !v)}
-              >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <img src={mainImage} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
-                  <div className="h-8 bg-white" />
+                {/* Main polaroid - raises on hover */}
+                <div
+                  ref={polaroid2024Ref}
+                  className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
+                    hoveredIndex === 0 ? "-translate-y-[calc(50%+40px)] z-30" : "-translate-y-1/2 z-10"
+                  }`}
+                  onClick={() => setIs2024Open((v) => !v)}
+                >
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
+                    <img src={mainImage} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                    <div className="h-8 bg-white" />
+                  </div>
                 </div>
               </div>
-            </div>
 
             {/* Floating side polaroids - only visible when opened */}
             <div
@@ -510,6 +595,32 @@ const PastEditionDetail = () => {
                   2024
                 </p>
 
+                {/* Stats Section */}
+                <div
+                  className={`grid grid-cols-3 gap-6 md:gap-12 transition-all duration-700 overflow-hidden ${
+                    is2024Open ? "max-h-[200px] opacity-100 mb-8 mt-2" : "max-h-0 opacity-0 mb-0 mt-0"
+                  }`}
+                >
+                  {[
+                    { value: 50, label: "Participants" },
+                    { value: 19, label: "Ideas Pitched" },
+                    { value: 9, label: "Teams Formed" },
+                  ].map((stat, i) => (
+                    <div
+                      key={stat.label}
+                      className={`text-center transition-all duration-500 ${
+                        is2024Open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: is2024Open ? `${300 + i * 150}ms` : "0ms" }}
+                    >
+                      <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                        <CountUp end={stat.value} trigger={is2024Open} />
+                      </p>
+                      <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
                 {/* Photo Gallery - expands on click */}
                 <div
                   className={`grid transition-all duration-500 ease-out overflow-hidden ${
@@ -534,6 +645,22 @@ const PastEditionDetail = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Stats row below card - fades when gallery opens */}
+            <div className={`grid grid-cols-3 gap-12 md:gap-24 mt-12 transition-all duration-500 ${is2024Open ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
+              {[
+                { value: 50, label: "Participants" },
+                { value: 19, label: "Ideas Pitched" },
+                { value: 9, label: "Teams Formed" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                    <CountUp end={stat.value} trigger={!is2024Open} />
+                  </p>
+                  <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>
@@ -567,50 +694,50 @@ const PastEditionDetail = () => {
             {/* Polaroid group with hover animation */}
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
-              onMouseEnter={handleHoverStart2023}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              {/* Left tilted polaroid */}
-              <div
-                className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
-                  hoveredIndex === 2
-                    ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
-                    : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
-                }`}
+                onMouseEnter={handleHoverStart2023}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={hoverImages2023[0]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
-                  <div className="h-8 bg-white"></div>
+                {/* Left tilted polaroid */}
+                <div
+                  className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
+                    hoveredIndex === 2
+                      ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
+                      : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
+                  }`}
+                >
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                    <img src={hoverImages2023[0]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                    <div className="h-8 bg-white"></div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Right tilted polaroid */}
-              <div
-                className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
-                  hoveredIndex === 2
-                    ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
-                    : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
-                }`}
-              >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <img src={hoverImages2023[1]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
-                  <div className="h-8 bg-white"></div>
+                {/* Right tilted polaroid */}
+                <div
+                  className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
+                    hoveredIndex === 2
+                      ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
+                      : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
+                  }`}
+                >
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                    <img src={hoverImages2023[1]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                    <div className="h-8 bg-white"></div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Main polaroid - raises on hover */}
-              <div
-                className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
-                  hoveredIndex === 2 ? "-translate-y-[calc(50%+40px)] z-30" : "-translate-y-1/2 z-10"
-                }`}
-                onClick={() => setIs2023Open((v) => !v)}
-              >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <img src={mainImage2023} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
-                  <div className="h-8 bg-white" />
+                {/* Main polaroid - raises on hover */}
+                <div
+                  className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
+                    hoveredIndex === 2 ? "-translate-y-[calc(50%+40px)] z-30" : "-translate-y-1/2 z-10"
+                  }`}
+                  onClick={() => setIs2023Open((v) => !v)}
+                >
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
+                    <img src={mainImage2023} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
+                    <div className="h-8 bg-white" />
+                  </div>
                 </div>
               </div>
-            </div>
 
             {/* Floating side polaroids - only visible when opened */}
             <div
@@ -724,6 +851,32 @@ const PastEditionDetail = () => {
                   2023
                 </p>
 
+                {/* Stats Section */}
+                <div
+                  className={`grid grid-cols-3 gap-6 md:gap-12 transition-all duration-700 overflow-hidden ${
+                    is2023Open ? "max-h-[200px] opacity-100 mb-8 mt-2" : "max-h-0 opacity-0 mb-0 mt-0"
+                  }`}
+                >
+                  {[
+                    { value: 50, label: "Participants" },
+                    { value: 17, label: "Ideas Pitched" },
+                    { value: 14, label: "Teams Formed" },
+                  ].map((stat, i) => (
+                    <div
+                      key={stat.label}
+                      className={`text-center transition-all duration-500 ${
+                        is2023Open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: is2023Open ? `${300 + i * 150}ms` : "0ms" }}
+                    >
+                      <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                        <CountUp end={stat.value} trigger={is2023Open} />
+                      </p>
+                      <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
                 {/* Photo Gallery - expands on click */}
                 <div
                   className={`grid transition-all duration-500 ease-out overflow-hidden ${
@@ -748,6 +901,22 @@ const PastEditionDetail = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Stats row below card - fades when gallery opens */}
+            <div className={`grid grid-cols-3 gap-12 md:gap-24 mt-12 transition-all duration-500 ${is2023Open ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
+              {[
+                { value: 50, label: "Participants" },
+                { value: 17, label: "Ideas Pitched" },
+                { value: 14, label: "Teams Formed" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                    <CountUp end={stat.value} trigger={!is2023Open} />
+                  </p>
+                  <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>
@@ -768,6 +937,17 @@ const PastEditionDetail = () => {
   const [activeEvent, setActiveEvent] = useState<"may" | "october" | null>(null);
   const mainSectionRef = useRef<HTMLDivElement>(null);
   const [heroGifIndex, setHeroGifIndex] = useState(0);
+
+  // 2025 May images state
+  const [galleryImages2025May, setGalleryImages2025May] = useState(() => shuffleArray(allImages2025May).slice(0, 12));
+  const [hoverImages2025May, setHoverImages2025May] = useState(() => shuffleArray(allImages2025May).slice(0, 2));
+  const [sideImages2025May, setSideImages2025May] = useState(() => shuffleArray(allImages2025May).slice(0, 6));
+  const [mainImage2025May, setMainImage2025May] = useState(() => allImages2025May[Math.floor(Math.random() * allImages2025May.length)]);
+
+  // 2025 October images state
+  const [galleryImages2025Oct, setGalleryImages2025Oct] = useState(() => shuffleArray(allImages2025Oct).slice(0, 12));
+  const [hoverImages2025Oct, setHoverImages2025Oct] = useState(() => shuffleArray(allImages2025Oct).slice(0, 2));
+  const [mainImage2025Oct, setMainImage2025Oct] = useState(() => allImages2025Oct[Math.floor(Math.random() * allImages2025Oct.length)]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -821,7 +1001,7 @@ const PastEditionDetail = () => {
             }}
           >
             <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-              <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+              <img src={sideImages2025May[0]} alt="2025 May" className="aspect-[4/3] rounded-sm object-cover" />
               <div className="h-5 bg-white"></div>
             </div>
           </div>
@@ -836,7 +1016,7 @@ const PastEditionDetail = () => {
             }}
           >
             <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-              <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+              <img src={sideImages2025May[1]} alt="2025 May" className="aspect-[4/3] rounded-sm object-cover" />
               <div className="h-5 bg-white"></div>
             </div>
           </div>
@@ -851,7 +1031,7 @@ const PastEditionDetail = () => {
             }}
           >
             <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-              <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+              <img src={sideImages2025May[2]} alt="2025 May" className="aspect-[4/3] rounded-sm object-cover" />
               <div className="h-5 bg-white"></div>
             </div>
           </div>
@@ -867,7 +1047,7 @@ const PastEditionDetail = () => {
             }}
           >
             <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-              <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+              <img src={sideImages2025May[3]} alt="2025 May" className="aspect-[4/3] rounded-sm object-cover" />
               <div className="h-5 bg-white"></div>
             </div>
           </div>
@@ -882,7 +1062,7 @@ const PastEditionDetail = () => {
             }}
           >
             <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-              <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+              <img src={sideImages2025May[4]} alt="2025 May" className="aspect-[4/3] rounded-sm object-cover" />
               <div className="h-5 bg-white"></div>
             </div>
           </div>
@@ -897,7 +1077,7 @@ const PastEditionDetail = () => {
             }}
           >
             <div className="bg-white p-2 border-2 border-[#000000] shadow-[3px_3px_0px_0px_#000000] rounded-sm">
-              <div className="aspect-[4/3] bg-gray-200 rounded-sm"></div>
+              <img src={sideImages2025May[5]} alt="2025 May" className="aspect-[4/3] rounded-sm object-cover" />
               <div className="h-5 bg-white"></div>
             </div>
           </div>
@@ -918,7 +1098,7 @@ const PastEditionDetail = () => {
           >
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
-              onMouseEnter={() => setHoveredIndex(0)}
+              onMouseEnter={() => { setHoverImages2025May(shuffleArray(allImages2025May).slice(0, 2)); setHoveredIndex(0); }}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
@@ -930,7 +1110,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={hoverImages2025May[0]} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -944,7 +1124,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={hoverImages2025May[1]} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -954,10 +1134,10 @@ const PastEditionDetail = () => {
                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
                   hoveredIndex === 0 ? "-translate-y-[calc(50%+40px)] z-30" : "-translate-y-1/2 z-10"
                 }`}
-                onClick={() => setActiveEvent(prev => prev === "may" ? null : "may")}
+                onClick={() => { setGalleryImages2025May(shuffleArray(allImages2025May).slice(0, 12)); setActiveEvent(prev => prev === "may" ? null : "may"); }}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={mainImage2025May} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white" />
                 </div>
               </div>
@@ -986,19 +1166,17 @@ const PastEditionDetail = () => {
                 >
                   <div className="overflow-hidden min-h-0">
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-2">
-                      {Array.from({ length: 12 }).map((_, idx) => (
+                      {galleryImages2025May.map((img, idx) => (
                         <div
                           key={idx}
-                          className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                          className={`aspect-square rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                             activeEvent === "may" ? "scale-100 opacity-100 translate-y-0" : "scale-[0.97] opacity-0 translate-y-3"
                           }`}
                           style={{
                             transitionDelay: activeEvent === "may" ? `${idx * 50}ms` : `${(11 - idx) * 20}ms`,
                           }}
                         >
-                          <div className="w-full h-full flex items-center justify-center text-gray-400">
-                            Photo {idx + 1}
-                          </div>
+                          <img src={img} alt={`2025 May photo ${idx + 1}`} className="w-full h-full object-cover" />
                         </div>
                       ))}
                     </div>
@@ -1006,6 +1184,22 @@ const PastEditionDetail = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Stats row below May card - fades when gallery opens */}
+            <div className={`grid grid-cols-3 gap-12 md:gap-24 mt-12 transition-all duration-500 ${activeEvent === "may" ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
+              {[
+                { value: 50, label: "Participants" },
+                { value: 19, label: "Ideas Pitched" },
+                { value: 10, label: "Teams Formed" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                    <CountUp end={stat.value} trigger={activeEvent !== "may"} />
+                  </p>
+                  <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* October Polaroid Stack */}
@@ -1016,7 +1210,7 @@ const PastEditionDetail = () => {
           >
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
-              onMouseEnter={() => setHoveredIndex(1)}
+              onMouseEnter={() => { setHoverImages2025Oct(shuffleArray(allImages2025Oct).slice(0, 2)); setHoveredIndex(1); }}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
@@ -1028,7 +1222,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={hoverImages2025Oct[0]} alt="2025 October event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -1042,7 +1236,7 @@ const PastEditionDetail = () => {
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={hoverImages2025Oct[1]} alt="2025 October event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
@@ -1052,10 +1246,10 @@ const PastEditionDetail = () => {
                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 transition-all duration-500 ease-out cursor-pointer ${
                   hoveredIndex === 1 ? "-translate-y-[calc(50%+40px)] z-30" : "-translate-y-1/2 z-10"
                 }`}
-                onClick={() => setActiveEvent(prev => prev === "october" ? null : "october")}
+                onClick={() => { setGalleryImages2025Oct(shuffleArray(allImages2025Oct).slice(0, 12)); setActiveEvent(prev => prev === "october" ? null : "october"); }}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
+                  <img src={mainImage2025Oct} alt="2025 October event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white" />
                 </div>
               </div>
@@ -1084,19 +1278,17 @@ const PastEditionDetail = () => {
                 >
                   <div className="overflow-hidden min-h-0">
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-2">
-                      {Array.from({ length: 12 }).map((_, idx) => (
+                      {galleryImages2025Oct.map((img, idx) => (
                         <div
                           key={idx}
-                          className={`aspect-square bg-gray-200 rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                          className={`aspect-square rounded-sm border-2 border-[#000000] shadow-[2px_2px_0px_0px_#000000] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                             activeEvent === "october" ? "scale-100 opacity-100 translate-y-0" : "scale-[0.97] opacity-0 translate-y-3"
                           }`}
                           style={{
                             transitionDelay: activeEvent === "october" ? `${idx * 50}ms` : `${(11 - idx) * 20}ms`,
                           }}
                         >
-                          <div className="w-full h-full flex items-center justify-center text-gray-400">
-                            Photo {idx + 1}
-                          </div>
+                          <img src={img} alt={`2025 October photo ${idx + 1}`} className="w-full h-full object-cover" />
                         </div>
                       ))}
                     </div>
@@ -1104,6 +1296,22 @@ const PastEditionDetail = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Stats row below October card - fades when gallery opens */}
+            <div className={`grid grid-cols-3 gap-12 md:gap-24 mt-12 transition-all duration-500 ${activeEvent === "october" ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"}`}>
+              {[
+                { value: 50, label: "Participants" },
+                { value: 21, label: "Ideas Pitched" },
+                { value: 10, label: "Teams Formed" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                    <CountUp end={stat.value} trigger={activeEvent !== "october"} />
+                  </p>
+                  <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

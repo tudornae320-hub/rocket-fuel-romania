@@ -13,7 +13,7 @@ export const ArrowDoodle = ({ className = "" }: { className?: string }) => (
       strokeWidth="2.5"
       strokeLinecap="round"
       fill="none"
-      className="text-primary"
+      className="text-secondary"
     />
     <path
       d="M65 25L70 30L65 35"
@@ -21,7 +21,7 @@ export const ArrowDoodle = ({ className = "" }: { className?: string }) => (
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-primary"
+      className="text-secondary"
     />
   </svg>
 );
@@ -101,7 +101,7 @@ export const UnderlineDoodle = ({ className = "" }: { className?: string }) => (
       strokeWidth="3"
       strokeLinecap="round"
       fill="none"
-      className="text-primary"
+      className="text-secondary"
     />
   </svg>
 );

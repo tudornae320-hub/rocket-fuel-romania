@@ -11,6 +11,26 @@ import gif2023 from "@/2023_movie.gif";
 
 const tvGifs = [heroBackground, gif2025_may, gif2025_oct, gif2023];
 
+// 2025 May images for polaroids
+import img2025m_1 from "@/assets/2025/may/Copy of Copy of DSC_0028.jpg";
+import img2025m_2 from "@/assets/2025/may/Copy of Copy of DSC_0049.jpg";
+import img2025m_3 from "@/assets/2025/may/Copy of Copy of DSC_0066.jpg";
+import img2025m_4 from "@/assets/2025/may/Copy of Copy of DSC_0104.jpg";
+import img2025m_5 from "@/assets/2025/may/Copy of Copy of DSC_0134.jpg";
+import img2025m_6 from "@/assets/2025/may/Copy of Copy of DSC_0170.jpg";
+import img2025m_7 from "@/assets/2025/may/Copy of Copy of DSC_0248.jpg";
+import img2025m_8 from "@/assets/2025/may/Copy of Copy of DSC_0277.jpg";
+
+// 2025 October images for polaroids
+import img2025o_1 from "@/assets/2025/october/IMG_3362.jpg";
+import img2025o_2 from "@/assets/2025/october/IMG_3553.jpg";
+import img2025o_3 from "@/assets/2025/october/IMG_3735.jpg";
+import img2025o_4 from "@/assets/2025/october/IMG_3957.jpg";
+import img2025o_5 from "@/assets/2025/october/IMG_4251.jpg";
+import img2025o_6 from "@/assets/2025/october/IMG_4478.jpg";
+import img2025o_7 from "@/assets/2025/october/IMG_4600.jpg";
+import img2025o_8 from "@/assets/2025/october/IMG_4746.jpg";
+
 // 2024 images for polaroids
 import img2024_1 from "@/assets/2024/Copy of DSC00002.jpg";
 import img2024_2 from "@/assets/2024/Copy of DSC00003.jpg";
@@ -31,6 +51,9 @@ import img2023_6 from "@/assets/2023/Copy of 3eafa8d1-3cf9-4d7f-a53f-f0e7e836b83
 import img2023_7 from "@/assets/2023/Copy of 4d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg";
 import img2023_8 from "@/assets/2023/Copy of 59e6570e-2113-4564-8dff-4fc1fc547e9b.jpg";
 
+const allImages2025May = [img2025m_1, img2025m_2, img2025m_3, img2025m_4, img2025m_5, img2025m_6, img2025m_7, img2025m_8];
+const allImages2025Oct = [img2025o_1, img2025o_2, img2025o_3, img2025o_4, img2025o_5, img2025o_6, img2025o_7, img2025o_8];
+const allImages2025 = [...allImages2025May, ...allImages2025Oct];
 const allImages2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8];
 const allImages2023 = [img2023_1, img2023_2, img2023_3, img2023_4, img2023_5, img2023_6, img2023_7, img2023_8];
 
@@ -102,6 +125,12 @@ const PastEditions = () => {
     }, 700);
   };
   
+  // Random images state for 2025 section (both May and October)
+  const [hoverImages2025, setHoverImages2025] = useState(() => shuffleArray(allImages2025).slice(0, 2));
+  const [mainImage2025, setMainImage2025] = useState(() => allImages2025[Math.floor(Math.random() * allImages2025.length)]);
+  const [is2025Visible, setIs2025Visible] = useState(true);
+  const polaroid2025SectionRef = useRef<HTMLDivElement>(null);
+
   // Random images state for 2024 section
   const [hoverImages2024, setHoverImages2024] = useState(() => shuffleArray(allImages2024).slice(0, 2));
   const [mainImage2024, setMainImage2024] = useState(() => allImages2024[Math.floor(Math.random() * allImages2024.length)]);
@@ -114,6 +143,18 @@ const PastEditions = () => {
   const [is2023Visible, setIs2023Visible] = useState(true);
   const polaroid2023SectionRef = useRef<HTMLDivElement>(null);
   
+  // Track visibility of 2025 section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIs2025Visible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (polaroid2025SectionRef.current) {
+      observer.observe(polaroid2025SectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   // Track visibility of 2024 section
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -138,6 +179,12 @@ const PastEditions = () => {
     return () => observer.disconnect();
   }, []);
   
+  // Shuffle hover images when hovering on 2025
+  const handle2025HoverStart = useCallback(() => {
+    setHoverImages2025(shuffleArray(allImages2025).slice(0, 2));
+    setHoveredIndex(0);
+  }, []);
+
   // Shuffle hover images when hovering on 2024
   const handle2024HoverStart = useCallback(() => {
     setHoverImages2024(shuffleArray(allImages2024).slice(0, 2));
@@ -150,6 +197,17 @@ const PastEditions = () => {
     setHoveredIndex(2);
   }, []);
   
+  // Shuffle main 2025 polaroid only when section is not visible
+  useEffect(() => {
+    if (!is2025Visible) {
+      const interval = setInterval(() => {
+        setMainImage2025(allImages2025[Math.floor(Math.random() * allImages2025.length)]);
+        setHoverImages2025(shuffleArray(allImages2025).slice(0, 2));
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [is2025Visible]);
+
   // Shuffle main polaroid only when section is not visible
   useEffect(() => {
     if (!is2024Visible) {
@@ -430,13 +488,13 @@ const PastEditions = () => {
               />
 
               {/* Channel knob - wobbly (clickable) */}
-              <g onClick={switchChannel} className="cursor-pointer" role="button" aria-label="Switch channel">
+              <g onClick={switchChannel} className="cursor-pointer group/knob" role="button" aria-label="Switch channel">
                 <path
                   d="M 560 155 C 561 135, 550 122, 533 120 C 516 118, 505 130, 504 150 C 503 170, 514 182, 531 184 C 548 186, 559 175, 560 155"
-                  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="hsl(var(--background))" className="text-foreground hover:text-foreground/70 transition-colors"
+                  strokeWidth="2.5" strokeLinecap="round" className="stroke-foreground fill-[hsl(var(--background))] group-hover/knob:stroke-[#5ad1fc] group-hover/knob:fill-[#5ad1fc] transition-colors"
                 />
-                <path d="M 532 151 C 530 149, 528 152, 531 154 C 534 155, 535 152, 532 151" fill="currentColor" className="text-foreground" />
-                <path d="M 531 151 L 530 128" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-foreground" />
+                <path d="M 532 151 C 530 149, 528 152, 531 154 C 534 155, 535 152, 532 151" className="fill-[#5ad1fc] group-hover/knob:fill-white transition-colors" />
+                <path d="M 531 151 L 530 128" strokeWidth="2" strokeLinecap="round" className="stroke-[#5ad1fc] group-hover/knob:stroke-white transition-colors" />
               </g>
 
               {/* Volume knob - smaller */}
@@ -444,8 +502,8 @@ const PastEditions = () => {
                 d="M 552 240 C 553 225, 544 215, 531 214 C 518 213, 510 222, 509 237 C 508 252, 517 262, 530 263 C 543 264, 551 255, 552 240"
                 stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" className="text-foreground"
               />
-              <path d="M 530 238 C 528 236, 527 239, 530 241 C 533 242, 533 239, 530 238" fill="currentColor" className="text-foreground" />
-              <path d="M 530 238 L 542 228" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="text-foreground" />
+              <path d="M 530 238 C 528 236, 527 239, 530 241 C 533 242, 533 239, 530 238" fill="#5ad1fc" />
+              <path d="M 530 238 L 542 228" stroke="#5ad1fc" strokeWidth="1.8" strokeLinecap="round" />
 
               {/* Power button - small wobbly rectangle */}
               <path
@@ -456,11 +514,11 @@ const PastEditions = () => {
               <path d="M 532 311 C 529 309, 527 312, 530 315 C 533 317, 535 313, 532 311" fill="currentColor" className="text-foreground/50" />
 
               {/* Simple horizontal lines for speaker at bottom */}
-              <path d="M 478 370 C 500 369, 555 371, 590 370" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" className="text-foreground/30" />
-              <path d="M 479 382 C 505 383, 560 381, 589 382" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" className="text-foreground/30" />
-              <path d="M 478 394 C 510 395, 548 393, 590 394" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" className="text-foreground/30" />
-              <path d="M 479 406 C 502 405, 562 407, 589 406" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" className="text-foreground/30" />
-              <path d="M 478 418 C 515 419, 550 417, 590 418" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" className="text-foreground/30" />
+              <path d="M 478 370 C 500 369, 555 371, 590 370" stroke="#5ad1fc" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M 479 382 C 505 383, 560 381, 589 382" stroke="#5ad1fc" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M 478 394 C 510 395, 548 393, 590 394" stroke="#5ad1fc" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M 479 406 C 502 405, 562 407, 589 406" stroke="#5ad1fc" strokeWidth="1.3" strokeLinecap="round" />
+              <path d="M 478 418 C 515 419, 550 417, 590 418" stroke="#5ad1fc" strokeWidth="1.3" strokeLinecap="round" />
 
               {/* Scratchy shading on wood body */}
               <g className="text-foreground/10">
@@ -560,52 +618,52 @@ const PastEditions = () => {
 
         {/* Top Row - Two Cards Side by Side */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative z-10">
-          <div className="flex flex-col items-center">
+          <div ref={polaroid2025SectionRef} className="flex flex-col items-center">
             {/* Polaroid group with hover animation */}
-            <div 
+            <div
               className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"
-              onMouseEnter={() => setHoveredIndex(0)}
+              onMouseEnter={handle2025HoverStart}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
-              <div 
+              <div
                 className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
-                  hoveredIndex === 0 
-                    ? 'opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10' 
+                  hoveredIndex === 0
+                    ? 'opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10'
                     : 'opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0'
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden"></div>
+                  <img src={hoverImages2025[0]} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
-              
+
               {/* Right tilted polaroid */}
-              <div 
+              <div
                 className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
-                  hoveredIndex === 0 
-                    ? 'opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10' 
+                  hoveredIndex === 0
+                    ? 'opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10'
                     : 'opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0'
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
-                  <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden"></div>
+                  <img src={hoverImages2025[1]} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </div>
-              
+
               {/* Main polaroid - raises on hover */}
-              <Link 
+              <Link
                 to="/past-editions/2025"
                 className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out cursor-pointer ${
-                  hoveredIndex === 0 
-                    ? 'translate-y-[-40px] z-30' 
+                  hoveredIndex === 0
+                    ? 'translate-y-[-40px] z-30'
                     : 'translate-y-0 z-10'
                 }`}
               >
                 <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-64 md:w-80">
-                  <div className="bg-gray-200 aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden"></div>
+                  <img src={mainImage2025} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
               </Link>
