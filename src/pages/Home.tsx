@@ -192,53 +192,7 @@ const Home = () => {
     };
   }, []);
 
-  // Mobile: Track button distance from center of screen for smooth emoji animation
-  useEffect(() => {
-    if (!isMobile || !ticketButtonRef.current) return;
-
-    let ticking = false;
-    const calculateProgress = () => {
-      if (!ticketButtonRef.current) return;
-
-      const buttonRect = ticketButtonRef.current.getBoundingClientRect();
-      const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-      const viewportCenterY = window.innerHeight / 2;
-
-      // Calculate distance from button center to viewport center
-      const distance = Math.abs(buttonCenterY - viewportCenterY);
-
-      // Max distance for activation (e.g., 300px from center)
-      const maxDistance = 300;
-
-      // Calculate progress: 1 when button is at center, 0 when far away
-      // Use smooth easing function for better animation
-      const rawProgress = Math.max(0, Math.min(1, 1 - distance / maxDistance));
-
-      // Apply smooth easing (ease-out cubic)
-      const progress = rawProgress < 1 ? 1 - Math.pow(1 - rawProgress, 3) : rawProgress;
-
-      setEmojiProgress(progress);
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(calculateProgress);
-        ticking = true;
-      }
-    };
-
-    // Initial calculation
-    calculateProgress();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [isMobile]);
+  // Mobile: No scroll-based emoji animation - emojis only show on button press
 
   // Confetti animation effect
   useEffect(() => {
@@ -332,6 +286,10 @@ const Home = () => {
 
   const handleButtonClick = () => {
     createConfetti();
+    if (isMobile) {
+      setEmojiProgress(1);
+      setTimeout(() => setEmojiProgress(0), 750);
+    }
   };
 
   return (

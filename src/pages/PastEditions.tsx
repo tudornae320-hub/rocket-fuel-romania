@@ -264,43 +264,7 @@ const PastEditions = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Mobile: Track button distance from center of screen for smooth emoji animation
-  useEffect(() => {
-    if (!isMobile || !ticketButtonRef.current) return;
-
-    let ticking = false;
-    const calculateProgress = () => {
-      if (!ticketButtonRef.current) return;
-      
-      const buttonRect = ticketButtonRef.current.getBoundingClientRect();
-      const buttonCenterY = buttonRect.top + buttonRect.height / 2;
-      const viewportCenterY = window.innerHeight / 2;
-      
-      const distance = Math.abs(buttonCenterY - viewportCenterY);
-      const maxDistance = 300;
-      const rawProgress = Math.max(0, Math.min(1, 1 - distance / maxDistance));
-      const progress = rawProgress < 1 ? 1 - Math.pow(1 - rawProgress, 3) : rawProgress;
-      
-      setEmojiProgress(progress);
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(calculateProgress);
-        ticking = true;
-      }
-    };
-
-    calculateProgress();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, [isMobile]);
+  // Mobile: No scroll-based emoji animation - emojis only show on button press
 
   // Desktop: Mouse tracking for emoji animation
   useEffect(() => {
@@ -417,6 +381,10 @@ const PastEditions = () => {
 
   const handleButtonClick = () => {
     createConfetti();
+    if (isMobile) {
+      setEmojiProgress(1);
+      setTimeout(() => setEmojiProgress(0), 750);
+    }
   };
   return (
     <div className="min-h-screen">
@@ -424,7 +392,7 @@ const PastEditions = () => {
       <RocketFollower />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-16 no-pattern">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-24 md:pt-16 no-pattern">
         <div className="container mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           {/* Left Side - Title and Line */}
           <div className="flex-1 max-w-2xl">
@@ -594,7 +562,7 @@ const PastEditions = () => {
 
       {/* Past Editions Grid */}
       <section className="container mx-auto px-4 mb-20 pt-16 relative">
-        {/* Curved dotted path connecting 2023 → 2024 → 2025 (hidden on mobile) */}
+        {/* Curved dotted path connecting 2023 → 2024 → 2025 (desktop S-curve) */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none hidden md:block z-0"
           viewBox="0 0 1000 1000"
@@ -602,7 +570,6 @@ const PastEditions = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Single S-curve path: 2023 (bottom center) → 2024 (top right) → dip → 2025 (top left) */}
           <path
             d="M 500 720
                C 700 720, 900 600, 800 400
@@ -611,6 +578,27 @@ const PastEditions = () => {
             stroke="#5ad1fc"
             strokeWidth="4"
             strokeDasharray="16 10"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </svg>
+
+        {/* Vertical wavy dotted path connecting cards (mobile only) */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none block md:hidden z-0"
+          viewBox="0 0 100 1000"
+          preserveAspectRatio="xMidYMid meet"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M 50 200
+               C 70 280, 30 340, 50 420
+               C 70 500, 30 560, 50 640
+               C 70 720, 30 790, 50 870"
+            stroke="#5ad1fc"
+            strokeWidth="2.5"
+            strokeDasharray="12 8"
             strokeLinecap="round"
             fill="none"
           />
