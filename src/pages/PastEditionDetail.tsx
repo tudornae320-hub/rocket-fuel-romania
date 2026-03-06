@@ -1158,6 +1158,32 @@ const PastEditionDetail = () => {
                   May
                 </p>
 
+                {/* Stats Section - visible when expanded */}
+                <div
+                  className={`grid grid-cols-3 gap-6 md:gap-12 transition-all duration-700 overflow-hidden ${
+                    activeEvent === "may" ? "max-h-[200px] opacity-100 mb-8 mt-2" : "max-h-0 opacity-0 mb-0 mt-0"
+                  }`}
+                >
+                  {[
+                    { value: 50, label: "Participants" },
+                    { value: 19, label: "Ideas Pitched" },
+                    { value: 10, label: "Teams Formed" },
+                  ].map((stat, i) => (
+                    <div
+                      key={stat.label}
+                      className={`text-center transition-all duration-500 ${
+                        activeEvent === "may" ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: activeEvent === "may" ? `${300 + i * 150}ms` : "0ms" }}
+                    >
+                      <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                        <CountUp end={stat.value} trigger={activeEvent === "may"} />
+                      </p>
+                      <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
                 {/* Photo Gallery - expands on click */}
                 <div
                   className={`grid transition-[grid-template-rows,opacity] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
@@ -1269,6 +1295,32 @@ const PastEditionDetail = () => {
                 >
                   October
                 </p>
+
+                {/* Stats Section - visible when expanded */}
+                <div
+                  className={`grid grid-cols-3 gap-6 md:gap-12 transition-all duration-700 overflow-hidden ${
+                    activeEvent === "october" ? "max-h-[200px] opacity-100 mb-8 mt-2" : "max-h-0 opacity-0 mb-0 mt-0"
+                  }`}
+                >
+                  {[
+                    { value: 50, label: "Participants" },
+                    { value: 21, label: "Ideas Pitched" },
+                    { value: 10, label: "Teams Formed" },
+                  ].map((stat, i) => (
+                    <div
+                      key={stat.label}
+                      className={`text-center transition-all duration-500 ${
+                        activeEvent === "october" ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                      }`}
+                      style={{ transitionDelay: activeEvent === "october" ? `${300 + i * 150}ms` : "0ms" }}
+                    >
+                      <p className="text-4xl md:text-5xl font-black text-[#5ad1fc]">
+                        <CountUp end={stat.value} trigger={activeEvent === "october"} />
+                      </p>
+                      <p className="text-sm md:text-base font-semibold text-foreground/70 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
 
                 {/* Photo Gallery - expands on click */}
                 <div
