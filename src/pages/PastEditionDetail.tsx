@@ -322,11 +322,11 @@ const PastEditionDetail = () => {
           <div
             className={`absolute top-1/2 transition-all duration-500 ease-out ${isExpanded ? "left-[10%]" : "left-0"} ${
               hoveredIndex === index
-                ? `opacity-100 -translate-y-1/2 -rotate-[25deg] scale-100 z-10 ${isExpanded ? "translate-x-[-30px]" : "translate-x-[-60px]"}`
+                ? `opacity-100 -translate-y-1/2 -rotate-[25deg] scale-100 z-10 ${isExpanded ? "translate-x-[-30px]" : "translate-x-[-30px] md:translate-x-[-60px]"}`
                 : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
             }`}
           >
-            <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+            <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
               <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
               <div className="h-8 bg-white"></div>
             </div>
@@ -338,11 +338,11 @@ const PastEditionDetail = () => {
               isExpanded ? "right-[10%]" : "right-0"
             } ${
               hoveredIndex === index
-                ? `opacity-100 -translate-y-1/2 rotate-[25deg] scale-100 z-10 ${isExpanded ? "translate-x-[30px]" : "translate-x-[60px]"}`
+                ? `opacity-100 -translate-y-1/2 rotate-[25deg] scale-100 z-10 ${isExpanded ? "translate-x-[30px]" : "translate-x-[30px] md:translate-x-[60px]"}`
                 : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
             }`}
           >
-            <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+            <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
               <div className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden bg-gray-200"></div>
               <div className="h-8 bg-white"></div>
             </div>
@@ -426,7 +426,22 @@ const PastEditionDetail = () => {
 
           <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="flex items-center justify-center">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tight">2024</h1>
+              <div className="relative inline-block -rotate-3">
+                <h1
+                  className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
+                  style={{
+                    paintOrder: "stroke fill",
+                    WebkitTextStroke: "3px rgba(0,0,0,0.3)",
+                    textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
+                  }}
+                >
+                  2024
+                </h1>
+                <svg className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[115%]" height="30" viewBox="0 0 220 30" fill="none">
+                  <path d="M5 18C15 10, 30 22, 50 13C70 5, 85 20, 110 12C135 4, 155 22, 175 14C190 8, 205 18, 215 12" stroke="#5ad1fc" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.5" />
+                  <path d="M8 16C20 8, 40 24, 55 11C75 3, 90 19, 115 10C140 2, 158 21, 178 12C195 6, 208 17, 218 11" stroke="#5ad1fc" strokeWidth="4" strokeLinecap="round" fill="none" />
+                </svg>
+              </div>
             </div>
           </div>
         </section>
@@ -444,11 +459,11 @@ const PastEditionDetail = () => {
                 <div
                   className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
                     hoveredIndex === 0
-                      ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
+                      ? "opacity-100 translate-x-[-30px] md:translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
                       : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                   }`}
                 >
-                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                     <img src={hoverImages[0]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                     <div className="h-8 bg-white"></div>
                   </div>
@@ -458,11 +473,11 @@ const PastEditionDetail = () => {
                 <div
                   className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
                     hoveredIndex === 0
-                      ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
+                      ? "opacity-100 translate-x-[30px] md:translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
                       : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                   }`}
                 >
-                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                     <img src={hoverImages[1]} alt="2024 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                     <div className="h-8 bg-white"></div>
                   </div>
@@ -489,7 +504,7 @@ const PastEditionDetail = () => {
             >
               {/* Left side polaroids */}
               <div
-                className={`absolute top-[100px] left-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                className={`absolute top-[100px] left-0 w-20 md:w-40 transition-all duration-700 ease-out ${
                   is2024Open ? "translate-x-[-20%] opacity-70" : "translate-x-[-100%] opacity-0"
                 }`}
                 style={{
@@ -504,7 +519,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[350px] left-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                className={`absolute top-[350px] left-0 w-16 md:w-36 transition-all duration-700 ease-out ${
                   is2024Open ? "translate-x-[10%] opacity-60" : "translate-x-[-100%] opacity-0"
                 }`}
                 style={{
@@ -519,7 +534,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[550px] left-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                className={`absolute top-[550px] left-0 w-14 md:w-32 transition-all duration-700 ease-out ${
                   is2024Open ? "translate-x-[-10%] opacity-50" : "translate-x-[-100%] opacity-0"
                 }`}
                 style={{
@@ -535,7 +550,7 @@ const PastEditionDetail = () => {
 
               {/* Right side polaroids */}
               <div
-                className={`absolute top-[150px] right-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                className={`absolute top-[150px] right-0 w-20 md:w-40 transition-all duration-700 ease-out ${
                   is2024Open ? "translate-x-[20%] opacity-70" : "translate-x-[100%] opacity-0"
                 }`}
                 style={{
@@ -550,7 +565,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[400px] right-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                className={`absolute top-[400px] right-0 w-16 md:w-36 transition-all duration-700 ease-out ${
                   is2024Open ? "translate-x-[-5%] opacity-60" : "translate-x-[100%] opacity-0"
                 }`}
                 style={{
@@ -565,7 +580,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[600px] right-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                className={`absolute top-[600px] right-0 w-14 md:w-32 transition-all duration-700 ease-out ${
                   is2024Open ? "translate-x-[15%] opacity-50" : "translate-x-[100%] opacity-0"
                 }`}
                 style={{
@@ -683,7 +698,22 @@ const PastEditionDetail = () => {
 
           <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="flex items-center justify-center">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tight">2023</h1>
+              <div className="relative inline-block rotate-2">
+                <h1
+                  className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
+                  style={{
+                    paintOrder: "stroke fill",
+                    WebkitTextStroke: "3px rgba(0,0,0,0.3)",
+                    textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
+                  }}
+                >
+                  2023
+                </h1>
+                <svg className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[115%]" height="30" viewBox="0 0 220 30" fill="none">
+                  <path d="M3 15C18 22, 40 6, 60 17C80 26, 100 8, 120 16C140 24, 165 7, 185 15C200 21, 210 12, 218 16" stroke="#5ad1fc" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.5" />
+                  <path d="M6 13C22 21, 42 5, 65 15C85 24, 105 7, 125 14C145 22, 168 6, 188 13C203 19, 212 10, 216 14" stroke="#5ad1fc" strokeWidth="4" strokeLinecap="round" fill="none" />
+                </svg>
+              </div>
             </div>
           </div>
         </section>
@@ -701,11 +731,11 @@ const PastEditionDetail = () => {
                 <div
                   className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
                     hoveredIndex === 2
-                      ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
+                      ? "opacity-100 translate-x-[-30px] md:translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
                       : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                   }`}
                 >
-                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                     <img src={hoverImages2023[0]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                     <div className="h-8 bg-white"></div>
                   </div>
@@ -715,11 +745,11 @@ const PastEditionDetail = () => {
                 <div
                   className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
                     hoveredIndex === 2
-                      ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
+                      ? "opacity-100 translate-x-[30px] md:translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
                       : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                   }`}
                 >
-                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                  <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                     <img src={hoverImages2023[1]} alt="2023 event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                     <div className="h-8 bg-white"></div>
                   </div>
@@ -745,7 +775,7 @@ const PastEditionDetail = () => {
             >
               {/* Left side polaroids */}
               <div
-                className={`absolute top-[100px] left-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                className={`absolute top-[100px] left-0 w-20 md:w-40 transition-all duration-700 ease-out ${
                   is2023Open ? "translate-x-[-20%] opacity-70" : "translate-x-[-100%] opacity-0"
                 }`}
                 style={{
@@ -760,7 +790,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[350px] left-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                className={`absolute top-[350px] left-0 w-16 md:w-36 transition-all duration-700 ease-out ${
                   is2023Open ? "translate-x-[10%] opacity-60" : "translate-x-[-100%] opacity-0"
                 }`}
                 style={{
@@ -775,7 +805,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[550px] left-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                className={`absolute top-[550px] left-0 w-14 md:w-32 transition-all duration-700 ease-out ${
                   is2023Open ? "translate-x-[-10%] opacity-50" : "translate-x-[-100%] opacity-0"
                 }`}
                 style={{
@@ -791,7 +821,7 @@ const PastEditionDetail = () => {
 
               {/* Right side polaroids */}
               <div
-                className={`absolute top-[150px] right-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+                className={`absolute top-[150px] right-0 w-20 md:w-40 transition-all duration-700 ease-out ${
                   is2023Open ? "translate-x-[20%] opacity-70" : "translate-x-[100%] opacity-0"
                 }`}
                 style={{
@@ -806,7 +836,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[400px] right-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+                className={`absolute top-[400px] right-0 w-16 md:w-36 transition-all duration-700 ease-out ${
                   is2023Open ? "translate-x-[-5%] opacity-60" : "translate-x-[100%] opacity-0"
                 }`}
                 style={{
@@ -821,7 +851,7 @@ const PastEditionDetail = () => {
               </div>
 
               <div
-                className={`absolute top-[600px] right-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+                className={`absolute top-[600px] right-0 w-14 md:w-32 transition-all duration-700 ease-out ${
                   is2023Open ? "translate-x-[15%] opacity-50" : "translate-x-[100%] opacity-0"
                 }`}
                 style={{
@@ -979,7 +1009,22 @@ const PastEditionDetail = () => {
 
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="flex items-center justify-center">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tight">2025</h1>
+            <div className="relative inline-block -rotate-2">
+            <h1
+              className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
+              style={{
+                paintOrder: "stroke fill",
+                WebkitTextStroke: "3px rgba(0,0,0,0.3)",
+                textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
+              }}
+            >
+              2025
+            </h1>
+            <svg className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[115%]" height="30" viewBox="0 0 220 30" fill="none">
+              <path d="M4 16C20 9, 38 23, 58 12C78 3, 95 21, 118 13C138 6, 160 22, 180 11C198 4, 210 16, 217 13" stroke="#5ad1fc" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.5" />
+              <path d="M7 14C24 7, 42 22, 62 10C82 1, 100 20, 122 11C142 4, 163 21, 183 10C200 3, 213 15, 219 11" stroke="#5ad1fc" strokeWidth="4" strokeLinecap="round" fill="none" />
+            </svg>
+          </div>
           </div>
         </div>
       </section>
@@ -992,7 +1037,7 @@ const PastEditionDetail = () => {
         >
           {/* Left side polaroids */}
           <div
-            className={`absolute top-[100px] left-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+            className={`absolute top-[100px] left-0 w-20 md:w-40 transition-all duration-700 ease-out ${
               activeEvent ? "translate-x-[-20%] opacity-70" : "translate-x-[-100%] opacity-0"
             }`}
             style={{
@@ -1007,7 +1052,7 @@ const PastEditionDetail = () => {
           </div>
 
           <div
-            className={`absolute top-[350px] left-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+            className={`absolute top-[350px] left-0 w-16 md:w-36 transition-all duration-700 ease-out ${
               activeEvent ? "translate-x-[10%] opacity-60" : "translate-x-[-100%] opacity-0"
             }`}
             style={{
@@ -1022,7 +1067,7 @@ const PastEditionDetail = () => {
           </div>
 
           <div
-            className={`absolute top-[550px] left-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+            className={`absolute top-[550px] left-0 w-14 md:w-32 transition-all duration-700 ease-out ${
               activeEvent ? "translate-x-[-10%] opacity-50" : "translate-x-[-100%] opacity-0"
             }`}
             style={{
@@ -1038,7 +1083,7 @@ const PastEditionDetail = () => {
 
           {/* Right side polaroids */}
           <div
-            className={`absolute top-[150px] right-0 w-32 md:w-40 transition-all duration-700 ease-out ${
+            className={`absolute top-[150px] right-0 w-20 md:w-40 transition-all duration-700 ease-out ${
               activeEvent ? "translate-x-[20%] opacity-70" : "translate-x-[100%] opacity-0"
             }`}
             style={{
@@ -1053,7 +1098,7 @@ const PastEditionDetail = () => {
           </div>
 
           <div
-            className={`absolute top-[400px] right-0 w-28 md:w-36 transition-all duration-700 ease-out ${
+            className={`absolute top-[400px] right-0 w-16 md:w-36 transition-all duration-700 ease-out ${
               activeEvent ? "translate-x-[-5%] opacity-60" : "translate-x-[100%] opacity-0"
             }`}
             style={{
@@ -1068,7 +1113,7 @@ const PastEditionDetail = () => {
           </div>
 
           <div
-            className={`absolute top-[600px] right-0 w-24 md:w-32 transition-all duration-700 ease-out ${
+            className={`absolute top-[600px] right-0 w-14 md:w-32 transition-all duration-700 ease-out ${
               activeEvent ? "translate-x-[15%] opacity-50" : "translate-x-[100%] opacity-0"
             }`}
             style={{
@@ -1105,11 +1150,11 @@ const PastEditionDetail = () => {
               <div
                 className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
                   hoveredIndex === 0
-                    ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
+                    ? "opacity-100 translate-x-[-30px] md:translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
                     : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                 }`}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                   <img src={hoverImages2025May[0]} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
@@ -1119,11 +1164,11 @@ const PastEditionDetail = () => {
               <div
                 className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
                   hoveredIndex === 0
-                    ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
+                    ? "opacity-100 translate-x-[30px] md:translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
                     : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                 }`}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                   <img src={hoverImages2025May[1]} alt="2025 May event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
@@ -1243,11 +1288,11 @@ const PastEditionDetail = () => {
               <div
                 className={`absolute left-0 top-1/2 transition-all duration-500 ease-out ${
                   hoveredIndex === 1
-                    ? "opacity-100 translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
+                    ? "opacity-100 translate-x-[-30px] md:translate-x-[-60px] -translate-y-1/2 -rotate-[25deg] scale-100 z-10"
                     : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                 }`}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                   <img src={hoverImages2025Oct[0]} alt="2025 October event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>
@@ -1257,11 +1302,11 @@ const PastEditionDetail = () => {
               <div
                 className={`absolute right-0 top-1/2 transition-all duration-500 ease-out ${
                   hoveredIndex === 1
-                    ? "opacity-100 translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
+                    ? "opacity-100 translate-x-[30px] md:translate-x-[60px] -translate-y-1/2 rotate-[25deg] scale-100 z-10"
                     : "opacity-0 translate-x-0 -translate-y-1/2 translate-y-[20px] rotate-0 scale-95 z-0"
                 }`}
               >
-                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-48 md:w-56">
+                <div className="bg-white p-3 border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] rounded-sm w-36 md:w-56">
                   <img src={hoverImages2025Oct[1]} alt="2025 October event" className="aspect-[4/3] w-full mb-2 rounded-sm overflow-hidden object-cover" />
                   <div className="h-8 bg-white"></div>
                 </div>

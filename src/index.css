@@ -303,4 +303,16 @@ All colors MUST be HSL.
   .animate-float-in-right {
     animation: float-in-right 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
+
+  @keyframes noteWiggle {
+    0%, 100% { transform: rotate(4deg) translateY(0); }
+    25% { transform: rotate(6deg) translateY(-3px); }
+    50% { transform: rotate(3deg) translateY(1px); }
+    75% { transform: rotate(5deg) translateY(-2px); }
+  }
+
+  @keyframes pokeHand {
+    0%, 100% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(-6px) scale(1.15); }
+  }
 }

@@ -551,6 +551,59 @@ const PastEditions = () => {
                 }}
               />
             </div>
+
+            {/* "switch the channel!" scribble with arrow */}
+            <div
+              className="absolute z-30 hidden md:block cursor-pointer"
+              style={{
+                right: '-28%',
+                top: '10%',
+                animation: 'noteWiggle 3s ease-in-out infinite',
+              }}
+              onClick={switchChannel}
+            >
+              <svg width="160" height="130" viewBox="0 0 160 130" fill="none" overflow="visible">
+                {/* "switch" */}
+                <text x="20" y="22" fill="#333" fontSize="15" fontWeight="700" fontFamily="'Comic Sans MS', 'Marker Felt', cursive" transform="rotate(-3, 20, 22)">switch</text>
+                {/* "the" */}
+                <text x="35" y="40" fill="#333" fontSize="14" fontWeight="600" fontFamily="'Comic Sans MS', 'Marker Felt', cursive" transform="rotate(1, 35, 40)">the</text>
+                {/* "channel!" */}
+                <text x="12" y="62" fill="#5ad1fc" fontSize="17" fontWeight="900" fontFamily="'Comic Sans MS', 'Marker Felt', cursive" transform="rotate(-1, 12, 62)">channel!</text>
+                {/* Wobbly underline - fits "channel!" width only */}
+                <path d="M14 66 C25 64, 40 68, 55 65 C65 63, 75 67, 85 65" stroke="#5ad1fc" strokeWidth="3" strokeLinecap="round" fill="none" opacity="0.45" />
+                <path d="M16 65 C28 63, 42 67, 57 64 C67 62, 77 66, 87 64" stroke="#5ad1fc" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                {/* Arrow curving down-left toward TV knob */}
+                <path d="M45 72 C42 85, 30 100, 10 110 C-5 118, -25 122, -45 125" stroke="#333" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                {/* Arrowhead pointing left */}
+                <path d="M-39 119 L-48 125 L-39 131" stroke="#333" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                <path d="M47 73 C44 86, 32 101, 12 111 C-3 119, -23 123, -43 126" stroke="#333" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.3" />
+              </svg>
+            </div>
+
+            {/* Mobile: scribble text above the TV */}
+            <div
+              className="absolute md:hidden z-30 cursor-pointer"
+              style={{
+                right: '-5%',
+                top: '-18%',
+                animation: 'noteWiggle 3s ease-in-out infinite',
+              }}
+              onClick={switchChannel}
+            >
+              <svg width="130" height="110" viewBox="0 0 130 110" fill="none" overflow="visible">
+                <text x="15" y="18" fill="#333" fontSize="13" fontWeight="700" fontFamily="'Comic Sans MS', 'Marker Felt', cursive" transform="rotate(-3, 15, 18)">switch</text>
+                <text x="28" y="34" fill="#333" fontSize="12" fontWeight="600" fontFamily="'Comic Sans MS', 'Marker Felt', cursive" transform="rotate(1, 28, 34)">the</text>
+                <text x="8" y="52" fill="#5ad1fc" fontSize="15" fontWeight="900" fontFamily="'Comic Sans MS', 'Marker Felt', cursive" transform="rotate(-1, 8, 52)">channel!</text>
+                {/* Underline matching "channel!" */}
+                <path d="M10 56 C22 54, 35 58, 48 55 C58 53, 65 57, 75 55" stroke="#5ad1fc" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.45" />
+                <path d="M12 55 C24 53, 37 57, 50 54 C60 52, 67 56, 77 54" stroke="#5ad1fc" strokeWidth="2" strokeLinecap="round" fill="none" />
+                {/* Arrow curving down toward TV knob */}
+                <path d="M65 62 C68 72, 66 85, 62 95 C59 102, 58 108, 58 118" stroke="#333" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                {/* Arrowhead pointing down */}
+                <path d="M52 112 L58 122 L64 112" stroke="#333" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                <path d="M67 63 C70 73, 68 86, 64 96 C61 103, 60 109, 60 119" stroke="#333" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.3" />
+              </svg>
+            </div>
           </div>
         </div>
       </section>
