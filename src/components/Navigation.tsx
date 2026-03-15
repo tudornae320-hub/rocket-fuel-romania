@@ -72,9 +72,15 @@ export const Navigation = () => {
             >
               Past Editions
             </Link>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 rounded-full">
-              Get your ticket
-            </Button>
+            <a
+              href="https://buy.stripe.com/4gMbJ1gEdaZJeHddqX1gs04"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 rounded-full">
+                Get your ticket
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
