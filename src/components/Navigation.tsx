@@ -32,10 +32,12 @@ export const Navigation = () => {
       <div className="container mx-auto px-6 bg-background border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000]">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" onClick={scrollToTop} className="flex flex-col items-start">
-            <span className="text-xs font-bold text-foreground leading-tight">techstars_</span>
-            <span className="text-xs font-bold text-foreground leading-tight">Startup Weekend</span>
-            <span className="text-xs font-bold text-primary leading-tight">Romania</span>
+          <Link to="/" onClick={scrollToTop} className="flex items-center">
+            <img
+              src={new URL("@/assets/logo-bucharest.png", import.meta.url).href}
+              alt="Bucharest Startup Weekend"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
