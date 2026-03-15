@@ -129,7 +129,7 @@ export const InteractiveJuryGrid = () => {
           />
         </div>
         <p className="text-lg md:text-xl text-muted-foreground text-center">
-          Placeholder text
+          2025 Judges
         </p>
         {/* Arrow below placeholder text */}
         <div className="flex items-center justify-center flex-shrink-0 hidden md:block">
