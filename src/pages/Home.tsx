@@ -351,17 +351,17 @@ const Home = () => {
                 <Calendar className="w-6 h-6 text-primary" />
                 <span>24-26 April2026 </span>
               </div>
-              <div className="flex items-center gap-3 text-lg md:text-xl text-off-white/90">
-                <MapPin className="w-5 h-5 text-primary" />
-                <a
-                  href="https://maps.app.goo.gl/DWoupMfrzjf1dEh1A"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors">
-                  
-                  Builders House
-                </a>
-              </div>
+              
+
+
+
+
+
+
+
+
+
+              
               <p className="text-lg md:text-xl text-off-white/80 mt-4">
                 powered by <span className="font-bold text-primary">Stripe</span>
               </p>
