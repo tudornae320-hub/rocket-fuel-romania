@@ -286,6 +286,7 @@ const Home = () => {
 
   const handleButtonClick = () => {
     createConfetti();
+    window.open("https://buy.stripe.com/4gMbJ1gEdaZJeHddqX1gs04", "_blank");
     if (isMobile) {
       setEmojiProgress(1);
       setTimeout(() => setEmojiProgress(0), 750);
