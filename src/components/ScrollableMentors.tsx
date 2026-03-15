@@ -67,9 +67,9 @@ export const ScrollableMentors = () => {
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const momentumRef = useRef<number>();
-  const hoverEnterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const hoverExitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const slowDownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hoverEnterTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hoverExitTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const slowDownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Handle smooth scroll pause when hovering
   useEffect(() => {
