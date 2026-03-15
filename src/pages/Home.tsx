@@ -702,7 +702,7 @@ const Home = () => {
 
               {/* Centered text below header */}
               <div className="text-center w-full max-w-lg mx-auto md:mx-0 mt-6">
-                <p className="text-lg text-muted-foreground">Learn from the best in the industry</p>
+                <p className="text-lg text-muted-foreground">Previous editions speakers and mentors    </p>
               </div>
             </div>
           </div>
