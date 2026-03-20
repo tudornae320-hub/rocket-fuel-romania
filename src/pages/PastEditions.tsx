@@ -13,14 +13,14 @@ const tvGifs = [heroBackground, gif2025_may, gif2025_oct, gif2023];
 
 // 2025 May images for polaroids
 const allImages2025May = [
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0028.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0049.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0066.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0104.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0134.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0170.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0248.jpg",
-  "/2025/may/Copy%20of%20Copy%20of%20DSC_0277.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0028.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0049.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0066.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0104.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0134.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0170.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0248.jpg",
+  "/2025/may/Copy_of_Copy_of_DSC_0277.jpg",
 ];
 
 // 2025 October images for polaroids
@@ -39,26 +39,26 @@ const allImages2025 = [...allImages2025May, ...allImages2025Oct];
 
 // 2024 images for polaroids
 const allImages2024 = [
-  "/2024/Copy%20of%20DSC00002.jpg",
-  "/2024/Copy%20of%20DSC00003.jpg",
-  "/2024/Copy%20of%20DSC00015.jpg",
-  "/2024/Copy%20of%20DSC00030.jpg",
-  "/2024/Copy%20of%20DSC00037.jpg",
-  "/2024/Copy%20of%20DSC00127.jpg",
-  "/2024/Copy%20of%20DSC00133.jpg",
-  "/2024/Copy%20of%20DSC00136.jpg",
+  "/2024/Copy_of_DSC00002.jpg",
+  "/2024/Copy_of_DSC00003.jpg",
+  "/2024/Copy_of_DSC00015.jpg",
+  "/2024/Copy_of_DSC00030.jpg",
+  "/2024/Copy_of_DSC00037.jpg",
+  "/2024/Copy_of_DSC00127.jpg",
+  "/2024/Copy_of_DSC00133.jpg",
+  "/2024/Copy_of_DSC00136.jpg",
 ];
 
 // 2023 images for polaroids
 const allImages2023 = [
-  "/2023/Copy%20of%2003fb9a56-800a-439b-97aa-fc2285bc6f57.jpg",
-  "/2023/Copy%20of%200e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg",
-  "/2023/Copy%20of%2020230319_154001.jpg",
-  "/2023/Copy%20of%2020230319_193424.jpg",
-  "/2023/Copy%20of%202e38732f-eea7-4375-8a66-649a201cdffb.jpg",
-  "/2023/Copy%20of%203eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg",
-  "/2023/Copy%20of%204d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg",
-  "/2023/Copy%20of%2059e6570e-2113-4564-8dff-4fc1fc547e9b.jpg",
+  "/2023/Copy_of_03fb9a56-800a-439b-97aa-fc2285bc6f57.jpg",
+  "/2023/Copy_of_0e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg",
+  "/2023/Copy_of_20230319_154001.jpg",
+  "/2023/Copy_of_20230319_193424.jpg",
+  "/2023/Copy_of_2e38732f-eea7-4375-8a66-649a201cdffb.jpg",
+  "/2023/Copy_of_3eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg",
+  "/2023/Copy_of_4d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg",
+  "/2023/Copy_of_59e6570e-2113-4564-8dff-4fc1fc547e9b.jpg",
 ];
 
 // Shuffle array utility
