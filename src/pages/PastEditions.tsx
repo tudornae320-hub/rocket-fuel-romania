@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
-import { SquiggleDoodle, ArrowDoodle } from "@/components/Doodles";
+import { SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
 import { Calendar, Trophy, Users, MapPin } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
@@ -845,8 +845,6 @@ const PastEditions = () => {
 
       {/* CTA Section */}
       <section className="py-16 relative">
-        <ArrowDoodle className="top-10 left-10 opacity-20" />
-        <ArrowDoodle className="bottom-10 right-10 opacity-20 rotate-180" />
         
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
