@@ -12,50 +12,54 @@ import gif2023 from "@/2023_movie.gif";
 const tvGifs = [heroBackground, gif2025_may, gif2025_oct, gif2023];
 
 // 2025 May images for polaroids
-import img2025m_1 from "@/assets/2025/may/Copy of Copy of DSC_0028.jpg";
-import img2025m_2 from "@/assets/2025/may/Copy of Copy of DSC_0049.jpg";
-import img2025m_3 from "@/assets/2025/may/Copy of Copy of DSC_0066.jpg";
-import img2025m_4 from "@/assets/2025/may/Copy of Copy of DSC_0104.jpg";
-import img2025m_5 from "@/assets/2025/may/Copy of Copy of DSC_0134.jpg";
-import img2025m_6 from "@/assets/2025/may/Copy of Copy of DSC_0170.jpg";
-import img2025m_7 from "@/assets/2025/may/Copy of Copy of DSC_0248.jpg";
-import img2025m_8 from "@/assets/2025/may/Copy of Copy of DSC_0277.jpg";
+const allImages2025May = [
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0028.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0049.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0066.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0104.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0134.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0170.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0248.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0277.jpg",
+];
 
 // 2025 October images for polaroids
-import img2025o_1 from "@/assets/2025/october/IMG_3362.jpg";
-import img2025o_2 from "@/assets/2025/october/IMG_3553.jpg";
-import img2025o_3 from "@/assets/2025/october/IMG_3735.jpg";
-import img2025o_4 from "@/assets/2025/october/IMG_3957.jpg";
-import img2025o_5 from "@/assets/2025/october/IMG_4251.jpg";
-import img2025o_6 from "@/assets/2025/october/IMG_4478.jpg";
-import img2025o_7 from "@/assets/2025/october/IMG_4600.jpg";
-import img2025o_8 from "@/assets/2025/october/IMG_4746.jpg";
+const allImages2025Oct = [
+  "/2025/october/IMG_3362.jpg",
+  "/2025/october/IMG_3553.jpg",
+  "/2025/october/IMG_3735.jpg",
+  "/2025/october/IMG_3957.jpg",
+  "/2025/october/IMG_4251.jpg",
+  "/2025/october/IMG_4478.jpg",
+  "/2025/october/IMG_4600.jpg",
+  "/2025/october/IMG_4746.jpg",
+];
+
+const allImages2025 = [...allImages2025May, ...allImages2025Oct];
 
 // 2024 images for polaroids
-import img2024_1 from "@/assets/2024/Copy of DSC00002.jpg";
-import img2024_2 from "@/assets/2024/Copy of DSC00003.jpg";
-import img2024_3 from "@/assets/2024/Copy of DSC00015.jpg";
-import img2024_4 from "@/assets/2024/Copy of DSC00030.jpg";
-import img2024_5 from "@/assets/2024/Copy of DSC00037.jpg";
-import img2024_6 from "@/assets/2024/Copy of DSC00127.jpg";
-import img2024_7 from "@/assets/2024/Copy of DSC00133.jpg";
-import img2024_8 from "@/assets/2024/Copy of DSC00136.jpg";
+const allImages2024 = [
+  "/2024/Copy%20of%20DSC00002.jpg",
+  "/2024/Copy%20of%20DSC00003.jpg",
+  "/2024/Copy%20of%20DSC00015.jpg",
+  "/2024/Copy%20of%20DSC00030.jpg",
+  "/2024/Copy%20of%20DSC00037.jpg",
+  "/2024/Copy%20of%20DSC00127.jpg",
+  "/2024/Copy%20of%20DSC00133.jpg",
+  "/2024/Copy%20of%20DSC00136.jpg",
+];
 
 // 2023 images for polaroids
-import img2023_1 from "@/assets/2023/Copy of 03fb9a56-800a-439b-97aa-fc2285bc6f57.jpg";
-import img2023_2 from "@/assets/2023/Copy of 0e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg";
-import img2023_3 from "@/assets/2023/Copy of 20230319_154001.jpg";
-import img2023_4 from "@/assets/2023/Copy of 20230319_193424.jpg";
-import img2023_5 from "@/assets/2023/Copy of 2e38732f-eea7-4375-8a66-649a201cdffb.jpg";
-import img2023_6 from "@/assets/2023/Copy of 3eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg";
-import img2023_7 from "@/assets/2023/Copy of 4d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg";
-import img2023_8 from "@/assets/2023/Copy of 59e6570e-2113-4564-8dff-4fc1fc547e9b.jpg";
-
-const allImages2025May = [img2025m_1, img2025m_2, img2025m_3, img2025m_4, img2025m_5, img2025m_6, img2025m_7, img2025m_8];
-const allImages2025Oct = [img2025o_1, img2025o_2, img2025o_3, img2025o_4, img2025o_5, img2025o_6, img2025o_7, img2025o_8];
-const allImages2025 = [...allImages2025May, ...allImages2025Oct];
-const allImages2024 = [img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, img2024_7, img2024_8];
-const allImages2023 = [img2023_1, img2023_2, img2023_3, img2023_4, img2023_5, img2023_6, img2023_7, img2023_8];
+const allImages2023 = [
+  "/2023/Copy%20of%2003fb9a56-800a-439b-97aa-fc2285bc6f57.jpg",
+  "/2023/Copy%20of%200e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg",
+  "/2023/Copy%20of%2020230319_154001.jpg",
+  "/2023/Copy%20of%2020230319_193424.jpg",
+  "/2023/Copy%20of%202e38732f-eea7-4375-8a66-649a201cdffb.jpg",
+  "/2023/Copy%20of%203eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg",
+  "/2023/Copy%20of%204d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg",
+  "/2023/Copy%20of%2059e6570e-2113-4564-8dff-4fc1fc547e9b.jpg",
+];
 
 // Shuffle array utility
 const shuffleArray = <T,>(array: T[]): T[] => {

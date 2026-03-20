@@ -2,7 +2,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { RocketFollower } from "@/components/RocketFollower";
-import heroBackground from "@/assets/hero-background.jpg";
 import heroGif from "@/assets/video_hero_2.gif";
 import hero2023Gif from "@/2023_movie.gif";
 import hero2025May from "@/2025_may_movie2.gif";
@@ -11,115 +10,96 @@ import hero2025Oct from "@/2025_oct_movi.gif";
 const hero2025Gifs = [hero2025May, hero2025Oct];
 
 // 2025 May images
-import img2025m_1 from "@/assets/2025/may/Copy of Copy of DSC_0028.jpg";
-import img2025m_2 from "@/assets/2025/may/Copy of Copy of DSC_0039.jpg";
-import img2025m_3 from "@/assets/2025/may/Copy of Copy of DSC_0049.jpg";
-import img2025m_4 from "@/assets/2025/may/Copy of Copy of DSC_0066.jpg";
-import img2025m_5 from "@/assets/2025/may/Copy of Copy of DSC_0071.jpg";
-import img2025m_6 from "@/assets/2025/may/Copy of Copy of DSC_0092.jpg";
-import img2025m_7 from "@/assets/2025/may/Copy of Copy of DSC_0104.jpg";
-import img2025m_8 from "@/assets/2025/may/Copy of Copy of DSC_0116.jpg";
-import img2025m_9 from "@/assets/2025/may/Copy of Copy of DSC_0124.jpg";
-import img2025m_10 from "@/assets/2025/may/Copy of Copy of DSC_0134.jpg";
-import img2025m_11 from "@/assets/2025/may/Copy of Copy of DSC_0149.jpg";
-import img2025m_12 from "@/assets/2025/may/Copy of Copy of DSC_0158.jpg";
-import img2025m_13 from "@/assets/2025/may/Copy of Copy of DSC_0170.jpg";
-import img2025m_14 from "@/assets/2025/may/Copy of Copy of DSC_0191.jpg";
-import img2025m_15 from "@/assets/2025/may/Copy of Copy of DSC_0204.jpg";
-import img2025m_16 from "@/assets/2025/may/Copy of Copy of DSC_0248.jpg";
-import img2025m_17 from "@/assets/2025/may/Copy of Copy of DSC_0263.jpg";
-import img2025m_18 from "@/assets/2025/may/Copy of Copy of DSC_0270.jpg";
-import img2025m_19 from "@/assets/2025/may/Copy of Copy of DSC_0277.jpg";
-import img2025m_20 from "@/assets/2025/may/Copy of Copy of DSC_0286.jpg";
+const allImages2025May = [
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0028.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0039.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0049.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0066.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0071.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0092.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0104.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0116.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0124.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0134.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0149.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0158.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0170.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0191.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0204.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0248.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0263.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0270.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0277.jpg",
+  "/2025/may/Copy%20of%20Copy%20of%20DSC_0286.jpg",
+];
 
 // 2025 October images
-import img2025o_1 from "@/assets/2025/october/IMG_3287.jpg";
-import img2025o_2 from "@/assets/2025/october/IMG_3362.jpg";
-import img2025o_3 from "@/assets/2025/october/IMG_3472.jpg";
-import img2025o_4 from "@/assets/2025/october/IMG_3553.jpg";
-import img2025o_5 from "@/assets/2025/october/IMG_3617.jpg";
-import img2025o_6 from "@/assets/2025/october/IMG_3735.jpg";
-import img2025o_7 from "@/assets/2025/october/IMG_3876.jpg";
-import img2025o_8 from "@/assets/2025/october/IMG_3957.jpg";
-import img2025o_9 from "@/assets/2025/october/IMG_4070.jpg";
-import img2025o_10 from "@/assets/2025/october/IMG_4141.jpg";
-import img2025o_11 from "@/assets/2025/october/IMG_4251.jpg";
-import img2025o_12 from "@/assets/2025/october/IMG_4329.jpg";
-import img2025o_13 from "@/assets/2025/october/IMG_4405.jpg";
-import img2025o_14 from "@/assets/2025/october/IMG_4478.jpg";
-import img2025o_15 from "@/assets/2025/october/IMG_4559.jpg";
-import img2025o_16 from "@/assets/2025/october/IMG_4600.jpg";
-import img2025o_17 from "@/assets/2025/october/IMG_4660.jpg";
-import img2025o_18 from "@/assets/2025/october/IMG_4703.jpg";
-import img2025o_19 from "@/assets/2025/october/IMG_4746.jpg";
-import img2025o_20 from "@/assets/2025/october/IMG_4763.jpg";
+const allImages2025Oct = [
+  "/2025/october/IMG_3287.jpg",
+  "/2025/october/IMG_3362.jpg",
+  "/2025/october/IMG_3472.jpg",
+  "/2025/october/IMG_3553.jpg",
+  "/2025/october/IMG_3617.jpg",
+  "/2025/october/IMG_3735.jpg",
+  "/2025/october/IMG_3876.jpg",
+  "/2025/october/IMG_3957.jpg",
+  "/2025/october/IMG_4070.jpg",
+  "/2025/october/IMG_4141.jpg",
+  "/2025/october/IMG_4251.jpg",
+  "/2025/october/IMG_4329.jpg",
+  "/2025/october/IMG_4405.jpg",
+  "/2025/october/IMG_4478.jpg",
+  "/2025/october/IMG_4559.jpg",
+  "/2025/october/IMG_4600.jpg",
+  "/2025/october/IMG_4660.jpg",
+  "/2025/october/IMG_4703.jpg",
+  "/2025/october/IMG_4746.jpg",
+  "/2025/october/IMG_4763.jpg",
+];
 
 // 2024 images
-import img2024_1 from "@/assets/2024/Copy of DSC00002.jpg";
-import img2024_2 from "@/assets/2024/Copy of DSC00003.jpg";
-import img2024_3 from "@/assets/2024/Copy of DSC00015.jpg";
-import img2024_4 from "@/assets/2024/Copy of DSC00030.jpg";
-import img2024_5 from "@/assets/2024/Copy of DSC00037.jpg";
-import img2024_6 from "@/assets/2024/Copy of DSC00038.jpg";
-import img2024_7 from "@/assets/2024/Copy of DSC00043.jpg";
-import img2024_8 from "@/assets/2024/Copy of DSC00046.jpg";
-import img2024_9 from "@/assets/2024/Copy of DSC00068.jpg";
-import img2024_10 from "@/assets/2024/Copy of DSC00083.jpg";
-import img2024_11 from "@/assets/2024/Copy of DSC00108.jpg";
-import img2024_12 from "@/assets/2024/Copy of DSC00120.jpg";
-import img2024_13 from "@/assets/2024/Copy of DSC00127.jpg";
-import img2024_14 from "@/assets/2024/Copy of DSC00133.jpg";
-import img2024_15 from "@/assets/2024/Copy of DSC00136.jpg";
-import img2024_16 from "@/assets/2024/Copy of DSC00137.jpg";
-import img2024_17 from "@/assets/2024/Copy of DSC00167.jpg";
-import img2024_18 from "@/assets/2024/Copy of DSC00181.jpg";
-import img2024_19 from "@/assets/2024/Copy of DSC00192.jpg";
-import img2024_20 from "@/assets/2024/Copy of DSC00194.jpg";
-import img2024_21 from "@/assets/2024/Copy of DSC00242.jpg";
+const allImages2024 = [
+  "/2024/Copy%20of%20DSC00002.jpg",
+  "/2024/Copy%20of%20DSC00003.jpg",
+  "/2024/Copy%20of%20DSC00015.jpg",
+  "/2024/Copy%20of%20DSC00030.jpg",
+  "/2024/Copy%20of%20DSC00037.jpg",
+  "/2024/Copy%20of%20DSC00038.jpg",
+  "/2024/Copy%20of%20DSC00043.jpg",
+  "/2024/Copy%20of%20DSC00046.jpg",
+  "/2024/Copy%20of%20DSC00068.jpg",
+  "/2024/Copy%20of%20DSC00083.jpg",
+  "/2024/Copy%20of%20DSC00108.jpg",
+  "/2024/Copy%20of%20DSC00120.jpg",
+  "/2024/Copy%20of%20DSC00127.jpg",
+  "/2024/Copy%20of%20DSC00133.jpg",
+  "/2024/Copy%20of%20DSC00136.jpg",
+  "/2024/Copy%20of%20DSC00137.jpg",
+  "/2024/Copy%20of%20DSC00167.jpg",
+  "/2024/Copy%20of%20DSC00181.jpg",
+  "/2024/Copy%20of%20DSC00192.jpg",
+  "/2024/Copy%20of%20DSC00194.jpg",
+  "/2024/Copy%20of%20DSC00242.jpg",
+];
 
 // 2023 images
-import img2023_1 from "@/assets/2023/Copy of 03fb9a56-800a-439b-97aa-fc2285bc6f57.jpg";
-import img2023_2 from "@/assets/2023/Copy of 0e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg";
-import img2023_3 from "@/assets/2023/Copy of 20230319_154001.jpg";
-import img2023_4 from "@/assets/2023/Copy of 20230319_193424.jpg";
-import img2023_5 from "@/assets/2023/Copy of 2e38732f-eea7-4375-8a66-649a201cdffb.jpg";
-import img2023_6 from "@/assets/2023/Copy of 3eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg";
-import img2023_7 from "@/assets/2023/Copy of 4d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg";
-import img2023_8 from "@/assets/2023/Copy of 59e6570e-2113-4564-8dff-4fc1fc547e9b.jpg";
-import img2023_9 from "@/assets/2023/Copy of 59f672f2-72d8-4bc8-9326-10fd6dec0ccd.jpg";
-import img2023_10 from "@/assets/2023/Copy of 919ae593-57a3-4fb2-b3a1-78e69f197d66.jpg";
-import img2023_11 from "@/assets/2023/Copy of 96b3e5fe-b8de-4fb0-87ad-3f1c8b1b2359.jpg";
-import img2023_12 from "@/assets/2023/Copy of a5cf15f2-5811-4432-829b-009e31dec16e.jpg";
-import img2023_13 from "@/assets/2023/Copy of cf63c410-fc3d-4949-a837-932cc1aaf1b4.jpg";
-import img2023_14 from "@/assets/2023/Copy of e2962422-1a25-45cf-8564-db0b658c1e42.jpg";
-import img2023_15 from "@/assets/2023/Copy of WhatsApp Image 2023-03-17 at 21.24.18.jpeg";
-import img2023_16 from "@/assets/2023/Copy of WhatsApp Image 2023-03-17 at 21.25.12.jpeg";
-
-const allImages2025May = [
-  img2025m_1, img2025m_2, img2025m_3, img2025m_4, img2025m_5, img2025m_6,
-  img2025m_7, img2025m_8, img2025m_9, img2025m_10, img2025m_11, img2025m_12,
-  img2025m_13, img2025m_14, img2025m_15, img2025m_16, img2025m_17, img2025m_18,
-  img2025m_19, img2025m_20
-];
-
-const allImages2025Oct = [
-  img2025o_1, img2025o_2, img2025o_3, img2025o_4, img2025o_5, img2025o_6,
-  img2025o_7, img2025o_8, img2025o_9, img2025o_10, img2025o_11, img2025o_12,
-  img2025o_13, img2025o_14, img2025o_15, img2025o_16, img2025o_17, img2025o_18,
-  img2025o_19, img2025o_20
-];
-
-const allImages2024 = [
-  img2024_1, img2024_2, img2024_3, img2024_4, img2024_5, img2024_6, 
-  img2024_7, img2024_8, img2024_9, img2024_10, img2024_11, img2024_12,
-  img2024_13, img2024_14, img2024_15, img2024_16, img2024_17, img2024_18,
-  img2024_19, img2024_20, img2024_21
-];
-
 const allImages2023 = [
-  img2023_1, img2023_2, img2023_3, img2023_4, img2023_5, img2023_6,
-  img2023_7, img2023_8, img2023_9, img2023_10, img2023_11, img2023_12,
-  img2023_13, img2023_14, img2023_15, img2023_16
+  "/2023/Copy%20of%2003fb9a56-800a-439b-97aa-fc2285bc6f57.jpg",
+  "/2023/Copy%20of%200e4dd94b-b81a-4f68-95e6-4f866dc76079.jpg",
+  "/2023/Copy%20of%2020230319_154001.jpg",
+  "/2023/Copy%20of%2020230319_193424.jpg",
+  "/2023/Copy%20of%202e38732f-eea7-4375-8a66-649a201cdffb.jpg",
+  "/2023/Copy%20of%203eafa8d1-3cf9-4d7f-a53f-f0e7e836b83d.jpg",
+  "/2023/Copy%20of%204d634022-33a2-4fb6-b9a8-31e7c7b229e1.jpg",
+  "/2023/Copy%20of%2059e6570e-2113-4564-8dff-4fc1fc547e9b.jpg",
+  "/2023/Copy%20of%2059f672f2-72d8-4bc8-9326-10fd6dec0ccd.jpg",
+  "/2023/Copy%20of%20919ae593-57a3-4fb2-b3a1-78e69f197d66.jpg",
+  "/2023/Copy%20of%2096b3e5fe-b8de-4fb0-87ad-3f1c8b1b2359.jpg",
+  "/2023/Copy%20of%20a5cf15f2-5811-4432-829b-009e31dec16e.jpg",
+  "/2023/Copy%20of%20cf63c410-fc3d-4949-a837-932cc1aaf1b4.jpg",
+  "/2023/Copy%20of%20e2962422-1a25-45cf-8564-db0b658c1e42.jpg",
+  "/2023/Copy%20of%20WhatsApp%20Image%202023-03-17%20at%2021.24.18.jpeg",
+  "/2023/Copy%20of%20WhatsApp%20Image%202023-03-17%20at%2021.25.12.jpeg",
 ];
 
 // Shuffle array utility
@@ -167,7 +147,12 @@ const PastEditionDetail = () => {
 
   const [is2024Open, setIs2024Open] = useState(false);
   const [is2023Open, setIs2023Open] = useState(false);
-  
+
+  // Scroll past the hero to the photo content on mount
+  useEffect(() => {
+    window.scrollTo({ top: window.innerHeight * 0.5, behavior: "smooth" });
+  }, []);
+
   // Random images state for 2024
   const [galleryImages, setGalleryImages] = useState(() => shuffleArray(allImages2024).slice(0, 12));
   const [hoverImages, setHoverImages] = useState(() => shuffleArray(allImages2024).slice(0, 2));
@@ -437,10 +422,6 @@ const PastEditionDetail = () => {
                 >
                   2024
                 </h1>
-                <svg className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[115%]" height="30" viewBox="0 0 220 30" fill="none">
-                  <path d="M5 18C15 10, 30 22, 50 13C70 5, 85 20, 110 12C135 4, 155 22, 175 14C190 8, 205 18, 215 12" stroke="#5ad1fc" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.5" />
-                  <path d="M8 16C20 8, 40 24, 55 11C75 3, 90 19, 115 10C140 2, 158 21, 178 12C195 6, 208 17, 218 11" stroke="#5ad1fc" strokeWidth="4" strokeLinecap="round" fill="none" />
-                </svg>
               </div>
             </div>
           </div>
@@ -709,10 +690,6 @@ const PastEditionDetail = () => {
                 >
                   2023
                 </h1>
-                <svg className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[115%]" height="30" viewBox="0 0 220 30" fill="none">
-                  <path d="M3 15C18 22, 40 6, 60 17C80 26, 100 8, 120 16C140 24, 165 7, 185 15C200 21, 210 12, 218 16" stroke="#5ad1fc" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.5" />
-                  <path d="M6 13C22 21, 42 5, 65 15C85 24, 105 7, 125 14C145 22, 168 6, 188 13C203 19, 212 10, 216 14" stroke="#5ad1fc" strokeWidth="4" strokeLinecap="round" fill="none" />
-                </svg>
               </div>
             </div>
           </div>
@@ -1020,10 +997,6 @@ const PastEditionDetail = () => {
             >
               2025
             </h1>
-            <svg className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-[115%]" height="30" viewBox="0 0 220 30" fill="none">
-              <path d="M4 16C20 9, 38 23, 58 12C78 3, 95 21, 118 13C138 6, 160 22, 180 11C198 4, 210 16, 217 13" stroke="#5ad1fc" strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.5" />
-              <path d="M7 14C24 7, 42 22, 62 10C82 1, 100 20, 122 11C142 4, 163 21, 183 10C200 3, 213 15, 219 11" stroke="#5ad1fc" strokeWidth="4" strokeLinecap="round" fill="none" />
-            </svg>
           </div>
           </div>
         </div>
