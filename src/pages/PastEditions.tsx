@@ -848,10 +848,10 @@ const PastEditions = () => {
         
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Fii parte din următoarea ediție!
+            Be part of the next edition!
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Alătură-te comunității noastre și construiește viitorul startup-urilor din România
+            Join our community and build the future of startups in Romania
           </p>
           <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
             <button 
