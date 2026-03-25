@@ -366,6 +366,11 @@ const Home = () => {
               <p className="text-lg md:text-xl text-off-white/80 mt-4">
                 powered by <span className="font-bold text-primary">Stripe</span>
               </p>
+              <button
+                onClick={handleButtonClick}
+                className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] mt-6">
+                Get your ticket
+              </button>
             </div>
           </div>
 
@@ -380,13 +385,17 @@ const Home = () => {
               
               Learn More
             </a>
-            <div className="h-[400px] w-1 bg-white/30 relative flex items-center justify-center">
+            <a
+              href="https://startupweekendromania.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-[400px] w-1 bg-white/30 relative flex items-center justify-center cursor-pointer">
               <div className="absolute left-1/2 translate-x-1 flex items-center justify-center animate-bob-horizontal">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white" className="hover:fill-primary transition-colors">
                   <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
                 </svg>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
