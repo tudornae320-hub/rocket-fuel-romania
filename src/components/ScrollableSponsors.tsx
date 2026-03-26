@@ -2,15 +2,10 @@ import { useRef, useState, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 // Import sponsor images
-import adobe from "@/assets/sponsors/adobe.png";
-import amplifyong from "@/assets/sponsors/amplifyong.png";
 import bosRomania from "@/assets/sponsors/bos-romania.png";
 import brewtifi from "@/assets/sponsors/brewtifi.png";
-import brightLabs from "@/assets/sponsors/bright-labs.png";
 import businessClub from "@/assets/sponsors/business_club.png";
 import codeCup from "@/assets/sponsors/code-cup.png";
-import founderInstitute from "@/assets/sponsors/founder-institute.png";
-import how2web from "@/assets/sponsors/how2web.webp";
 import launchRo from "@/assets/sponsors/launch-ro.webp";
 import makeItOradea from "@/assets/sponsors/make-it-oradea.png";
 import prow from "@/assets/sponsors/prow.png";
@@ -24,15 +19,10 @@ import vsfa from "@/assets/sponsors/vsfa.png";
 
 // Image mapping
 const sponsorImages: { [key: string]: string } = {
-  'adobe': adobe,
-  'amplifyong': amplifyong,
   'bos-romania': bosRomania,
   'brewtifi': brewtifi,
-  'bright-labs': brightLabs,
   'business-club': businessClub,
   'code-cup': codeCup,
-  'founder-institute': founderInstitute,
-  'how2web': how2web,
   'launch-ro': launchRo,
   'make-it-oradea': makeItOradea,
   'prow': prow,
@@ -48,20 +38,15 @@ const sponsorImages: { [key: string]: string } = {
 const sponsors = [
   { name: "Stripe", slug: "stripe", image: sponsorImages['stripe'] },
   { name: "Veridion", slug: "veridion", image: sponsorImages['veridion'] },
-  { name: "Adobe", slug: "adobe", image: sponsorImages['adobe'] },
   { name: "Techstars", slug: "techstars", image: sponsorImages['techstars'] },
   { name: "VSFA", slug: "vsfa", image: sponsorImages['vsfa'] },
   { name: "BOS Romania", slug: "bos-romania", image: sponsorImages['bos-romania'] },
   { name: "PROW", slug: "prow", image: sponsorImages['prow'] },
-  { name: "AmplifyONG", slug: "amplifyong", image: sponsorImages['amplifyong'] },
   { name: "Brewtifi", slug: "brewtifi", image: sponsorImages['brewtifi'] },
   { name: "VIP Romania", slug: "vip-romania", image: sponsorImages['vip-romania'] },
   { name: "V7 Capital", slug: "v7-capital", image: sponsorImages['v7-capital'] },
   { name: "Launch.ro", slug: "launch-ro", image: sponsorImages['launch-ro'] },
-  { name: "How2Web", slug: "how2web", image: sponsorImages['how2web'] },
   { name: "Make It Oradea", slug: "make-it-oradea", image: sponsorImages['make-it-oradea'] },
-  { name: "Bright Labs", slug: "bright-labs", image: sponsorImages['bright-labs'] },
-  { name: "Founder Institute", slug: "founder-institute", image: sponsorImages['founder-institute'] },
   { name: "Business Club", slug: "business-club", image: sponsorImages['business-club'] },
   { name: "Third Place", slug: "third-place", image: sponsorImages['third-place'] },
   { name: "Code Cup", slug: "code-cup", image: sponsorImages['code-cup'] },

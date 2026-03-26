@@ -17,9 +17,11 @@ export const Footer = () => {
             {/* Logo & Description */}
             <div className="lg:col-span-1">
               <div className="flex flex-col items-start mb-4">
-                <span className="text-sm font-bold text-foreground leading-tight">techstars_</span>
-                <span className="text-sm font-bold text-foreground leading-tight">Startup Weekend</span>
-                <span className="text-sm font-bold text-primary leading-tight">Romania</span>
+                <img
+                  src={new URL("@/assets/logo-bucharest.png", import.meta.url).href}
+                  alt="Bucharest Startup Weekend"
+                  className="h-16 w-auto object-contain"
+                />
               </div>
               <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                 Transform your ideas into reality in just 54 hours. Join Romania's most exciting startup community.
