@@ -16,7 +16,7 @@ import rotundSvg from "@/assets/rotund.svg";
 import sageterSvg from "@/assets/sageter.svg";
 import mentorsSectionPhoto from "@/assets/mentors-section-photo.webp";
 import techstarsLogo from "@/assets/sponsors/techstars.webp";
-import stripeLogo from "@/assets/sponsors/stripe.webp";
+import stripeLogo from "@/assets/sponsors/stripe.png";
 import { AgendaPills } from "@/components/AgendaPills";
 
 const Home = () => {
@@ -737,9 +737,9 @@ const Home = () => {
           {/* Powered by */}
           <div className="text-center mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-8">Powered by</p>
-            <div className="flex items-center justify-center gap-12 md:gap-20">
-              <img src={techstarsLogo} alt="Techstars" className="h-12 md:h-16 w-auto object-contain" />
-              <img src={stripeLogo} alt="Stripe" className="h-12 md:h-16 w-auto object-contain" />
+            <div className="flex items-center justify-center gap-16 md:gap-24">
+              <img src={stripeLogo} alt="Stripe" className="h-16 md:h-24 w-auto object-contain" />
+              <img src={techstarsLogo} alt="Techstars" className="h-16 md:h-24 w-auto object-contain" />
             </div>
           </div>
 
