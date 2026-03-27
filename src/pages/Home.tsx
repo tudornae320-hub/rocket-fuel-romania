@@ -5,7 +5,7 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
-import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award, Mic, Users, Hammer, Trophy } from "lucide-react";
+import { Lightbulb, MapPin, Calendar, Mic, Users, Hammer, Trophy } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 import arrowRight from "@/assets/arrow-right.png";
 import megaphoneSvg from "@/assets/megaphone.svg";
@@ -39,9 +39,6 @@ const Home = () => {
   const arrowsSectionRef = useRef<HTMLDivElement>(null);
   const [arrowsProgress, setArrowsProgress] = useState(0);
 
-  // Arrows scroll animation state (How It Works section)
-  const arrowsSectionRef2 = useRef<HTMLDivElement>(null);
-  const [arrowsProgress2, setArrowsProgress2] = useState(0);
 
   // Emoji animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
@@ -110,11 +107,6 @@ const Home = () => {
             setArrowsProgress(Math.min(1, Math.max(0, rawArrows)));
           }
 
-          if (arrowsSectionRef2.current) {
-            const rectArrows2 = arrowsSectionRef2.current.getBoundingClientRect();
-            const rawArrows2 = (viewH - rectArrows2.top) / (viewH * 0.8);
-            setArrowsProgress2(Math.min(1, Math.max(0, rawArrows2)));
-          }
 
           ticking = false;
         });
@@ -542,154 +534,6 @@ const Home = () => {
             <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Lightbulb className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="text-xl">Workshops & Mentorship</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Get real feedback from mentors who’ve built things before — from shaping your idea and business model
-                  to pricing, strategy, and pitching.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
-              <CardHeader>
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Presentation className="w-8 h-8 text-secondary" />
-                </div>
-                <CardTitle className="text-xl">Pitch your concept</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Have an idea? Pitch it on Friday and see who wants to build it with you. No idea? No problem. You can
-                  join any team and help bring someone else’s concept to life.{" "}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
-              <CardHeader>
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Award className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="text-xl">Build & win</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Over the weekend, you’ll validate your idea, build an MVP, shape your business model, and practice
-                  your pitch. On Sunday, you’ll present in front of an expert jury and compete for awesome prizes.{" "}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
-              <CardHeader>
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Coffee className="w-8 h-8 text-secondary" />
-                </div>
-                <CardTitle className="text-xl">Fuel the journey</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  We’ve got you covered with unlimited coffee, meals, snacks, and other goodies — so you can focus on
-                  building instead of worrying about food or energy.{" "}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works - 4 Step Cards */}
-      <section className="py-20 md:py-28 relative no-pattern">
-        <div className="container mx-auto px-4">
-          <div
-            ref={arrowsSectionRef2}
-            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-40 md:mt-48"
-          >
-            {/* Arrow 1: Below Card 1 */}
-            <div
-              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
-              style={{ left: "5.5%" }}
-            >
-              <div
-                style={{
-                  transform: "rotate(80deg) translateX(-5%)",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <img
-                  src={sageterSvg}
-                  alt="Arrow"
-                  className="w-full h-full object-contain"
-                  style={{
-                    filter:
-                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
-                    maskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%)`,
-                    WebkitMaskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%)`,
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Arrow 2: Above Card 2 - Flipped */}
-            <div
-              className="hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10"
-              style={{ left: "30%" }}
-            >
-              <div
-                style={{
-                  transform: "rotate(-80deg) scaleY(-1) translateX(+25%)",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <img
-                  src={sageterSvg}
-                  alt="Arrow"
-                  className="w-full h-full object-contain"
-                  style={{
-                    filter:
-                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
-                    maskImage: `linear-gradient(to bottom, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%)`,
-                    WebkitMaskImage: `linear-gradient(to bottom, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%)`,
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Arrow 3: Below Card 3 */}
-            <div
-              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
-              style={{ left: "57%" }}
-            >
-              <div
-                style={{
-                  transform: "rotate(80deg) translateX(-5%)",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <img
-                  src={sageterSvg}
-                  alt="Arrow"
-                  className="w-full h-full object-contain"
-                  style={{
-                    filter:
-                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
-                    maskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%)`,
-                    WebkitMaskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%)`,
-                  }}
-                />
-              </div>
-            </div>
-
-            <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
-              <CardHeader>
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Mic className="w-8 h-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">Meet & Pitch</CardTitle>
@@ -745,6 +589,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
 
       <section ref={hoursSectionRef} className="py-20 relative no-pattern">
         <div className="container mx-auto px-4">
