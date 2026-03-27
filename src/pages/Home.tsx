@@ -39,6 +39,10 @@ const Home = () => {
   const arrowsSectionRef = useRef<HTMLDivElement>(null);
   const [arrowsProgress, setArrowsProgress] = useState(0);
 
+  // Arrows scroll animation state (How It Works section)
+  const arrowsSectionRef2 = useRef<HTMLDivElement>(null);
+  const [arrowsProgress2, setArrowsProgress2] = useState(0);
+
   // Emoji animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
   const ticketButtonContainerRef = useRef<HTMLDivElement>(null);
@@ -104,6 +108,12 @@ const Home = () => {
             const sectionHeight = arrowsSectionRef.current.offsetHeight;
             const rawArrows = (viewH - rectArrows.top) / (viewH * 0.8);
             setArrowsProgress(Math.min(1, Math.max(0, rawArrows)));
+          }
+
+          if (arrowsSectionRef2.current) {
+            const rectArrows2 = arrowsSectionRef2.current.getBoundingClientRect();
+            const rawArrows2 = (viewH - rectArrows2.top) / (viewH * 0.8);
+            setArrowsProgress2(Math.min(1, Math.max(0, rawArrows2)));
           }
 
           ticking = false;
@@ -595,8 +605,89 @@ const Home = () => {
       {/* How It Works - 4 Step Cards */}
       <section className="py-20 md:py-28 relative no-pattern">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <Card className="text-center space-y-4 relative z-10 w-full">
+          <div
+            ref={arrowsSectionRef2}
+            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-40 md:mt-48"
+          >
+            {/* Arrow 1: Below Card 1 */}
+            <div
+              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              style={{ left: "5.5%" }}
+            >
+              <div
+                style={{
+                  transform: "rotate(80deg) translateX(-5%)",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <img
+                  src={sageterSvg}
+                  alt="Arrow"
+                  className="w-full h-full object-contain"
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
+                    maskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%)`,
+                    WebkitMaskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, arrowsProgress2 * 2.5)) * 100}%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Arrow 2: Above Card 2 - Flipped */}
+            <div
+              className="hidden md:block absolute top-[calc(50%-9rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              style={{ left: "30%" }}
+            >
+              <div
+                style={{
+                  transform: "rotate(-80deg) scaleY(-1) translateX(+25%)",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <img
+                  src={sageterSvg}
+                  alt="Arrow"
+                  className="w-full h-full object-contain"
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
+                    maskImage: `linear-gradient(to bottom, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%)`,
+                    WebkitMaskImage: `linear-gradient(to bottom, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.2) * 2.5)) * 100}%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Arrow 3: Below Card 3 */}
+            <div
+              className="hidden md:block absolute top-[calc(50%+7rem)] w-[20%] h-[40%] pointer-events-none z-10"
+              style={{ left: "57%" }}
+            >
+              <div
+                style={{
+                  transform: "rotate(80deg) translateX(-5%)",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <img
+                  src={sageterSvg}
+                  alt="Arrow"
+                  className="w-full h-full object-contain"
+                  style={{
+                    filter:
+                      "brightness(0) saturate(100%) invert(70%) sepia(96%) saturate(1352%) hue-rotate(170deg) brightness(98%) contrast(98%)",
+                    maskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%)`,
+                    WebkitMaskImage: `linear-gradient(to top, black ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%, transparent ${Math.min(1, Math.max(0, (arrowsProgress2 - 0.4) * 2.5)) * 100}%)`,
+                  }}
+                />
+              </div>
+            </div>
+
+            <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Mic className="w-8 h-8 text-primary" />
@@ -610,7 +701,7 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center space-y-4 relative z-10 w-full">
+            <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
                   <Users className="w-8 h-8 text-secondary" />
@@ -624,7 +715,7 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center space-y-4 relative z-10 w-full">
+            <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                   <Hammer className="w-8 h-8 text-primary" />
@@ -638,7 +729,7 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center space-y-4 relative z-10 w-full">
+            <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
                   <Trophy className="w-8 h-8 text-secondary" />
