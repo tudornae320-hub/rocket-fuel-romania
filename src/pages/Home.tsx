@@ -930,13 +930,15 @@ const Home = () => {
                 }`}
                 style={{ zIndex: 2 }}
               >
-                <iframe
-                  src="https://www.youtube.com/embed/Z_2TuPZcxQU?autoplay=1&mute=1&loop=1&playlist=Z_2TuPZcxQU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                  className="w-full h-full object-cover rounded-sm border-0"
-                  title="Event highlight"
-                />
+                <div className="w-full h-full rounded-sm overflow-hidden pointer-events-none relative">
+                  <iframe
+                    src="https://www.youtube.com/embed/Z_2TuPZcxQU?autoplay=1&mute=1&loop=1&playlist=Z_2TuPZcxQU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3"
+                    allow="autoplay; encrypted-media"
+                    className="w-full h-full rounded-sm border-0 scale-[1.2]"
+                    title="Event highlight"
+                    tabIndex={-1}
+                  />
+                </div>
               </div>
             </div>
           </div>
