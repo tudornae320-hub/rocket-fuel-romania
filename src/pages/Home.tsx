@@ -5,7 +5,7 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
-import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
+import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award, Mic, Users, Hammer, Trophy } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 import arrowRight from "@/assets/arrow-right.png";
 import megaphoneSvg from "@/assets/megaphone.svg";
@@ -592,7 +592,69 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 54 Hours to Build */}
+      {/* How It Works - 4 Step Cards */}
+      <section className="py-20 md:py-28 relative no-pattern">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <Card className="text-center space-y-4 relative z-10 w-full">
+              <CardHeader>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Mic className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Meet & Pitch</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Kick things off by meeting participants, sharing ideas, and pitching your concept to the room. Anyone can pitch, and everyone gets to vote.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center space-y-4 relative z-10 w-full">
+              <CardHeader>
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Users className="w-8 h-8 text-secondary" />
+                </div>
+                <CardTitle className="text-xl">Team Up</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  The top ideas form teams. Join a project that excites you, find the right mix of skills, and start building with people you just met.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center space-y-4 relative z-10 w-full">
+              <CardHeader>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Hammer className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Build & Validate</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Turn your idea into something real. Build your MVP, test assumptions, talk to users, and improve fast with mentor feedback.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center space-y-4 relative z-10 w-full">
+              <CardHeader>
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Trophy className="w-8 h-8 text-secondary" />
+                </div>
+                <CardTitle className="text-xl">Demo Day</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Wrap up the weekend by pitching your startup to judges and the audience. Celebrate what you built and compete for prizes.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section ref={hoursSectionRef} className="py-20 relative no-pattern">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center max-w-6xl mx-auto">
