@@ -664,12 +664,15 @@ const PastEditions = () => {
 
         {/* Top Row - Two Cards Side by Side */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative z-10">
-          <div ref={polaroid2025SectionRef} className="flex flex-col items-center">
+          <div
+            ref={polaroid2025SectionRef}
+            className="flex flex-col items-center cursor-pointer"
+            onMouseEnter={handle2025HoverStart}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             {/* Polaroid group with hover animation */}
             <div
               className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"
-              onMouseEnter={handle2025HoverStart}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
               <div
@@ -714,21 +717,26 @@ const PastEditions = () => {
                 </div>
               </Link>
             </div>
-            <Card className="hover-lift w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
-              <CardContent className="p-6">
-                <p className="text-center font-bold text-black text-2xl">
-                  2025
-                </p>
-              </CardContent>
-            </Card>
+            <Link to="/past-editions/2025" className="w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
+              <Card className="hover-lift cursor-pointer">
+                <CardContent className="p-6">
+                  <p className="text-center font-bold text-black text-2xl">
+                    2025
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
           
-          <div ref={polaroid2024SectionRef} className="flex flex-col items-center">
+          <div
+            ref={polaroid2024SectionRef}
+            className="flex flex-col items-center cursor-pointer"
+            onMouseEnter={handle2024HoverStart}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             {/* Polaroid group with hover animation */}
             <div 
               className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"
-              onMouseEnter={handle2024HoverStart}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
               <div 
@@ -773,23 +781,28 @@ const PastEditions = () => {
                 </div>
               </Link>
             </div>
-            <Card className="hover-lift w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
-              <CardContent className="p-6">
-                <p className="text-center font-bold text-black text-2xl">
-                  2024
-                </p>
-              </CardContent>
-            </Card>
+            <Link to="/past-editions/2024" className="w-full max-w-md mx-auto mt-[120px] md:mt-[140px]">
+              <Card className="hover-lift cursor-pointer">
+                <CardContent className="p-6">
+                  <p className="text-center font-bold text-black text-2xl">
+                    2024
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
 
         {/* Bottom Row - One Card */}
-        <div ref={polaroid2023SectionRef} className="flex flex-col items-center max-w-md mx-auto relative z-10">
+        <div
+          ref={polaroid2023SectionRef}
+          className="flex flex-col items-center max-w-md mx-auto relative z-10 cursor-pointer"
+          onMouseEnter={handle2023HoverStart}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
           {/* Polaroid group with hover animation */}
           <div 
             className="relative w-64 md:w-80 mb-0 h-[280px] md:h-[320px]"
-            onMouseEnter={handle2023HoverStart}
-            onMouseLeave={() => setHoveredIndex(null)}
           >
             {/* Left tilted polaroid */}
             <div 
@@ -834,13 +847,15 @@ const PastEditions = () => {
               </div>
             </Link>
           </div>
-          <Card className="hover-lift w-full mt-[120px] md:mt-[140px]">
-            <CardContent className="p-6">
-              <p className="text-center font-bold text-black text-2xl">
-                2023
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/past-editions/2023" className="w-full mt-[120px] md:mt-[140px]">
+            <Card className="hover-lift cursor-pointer">
+              <CardContent className="p-6">
+                <p className="text-center font-bold text-black text-2xl">
+                  2023
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
 
