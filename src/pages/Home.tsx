@@ -756,7 +756,9 @@ const Home = () => {
       >
         <div className="absolute inset-0 opacity-10" />
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: CTA content */}
+          <div className="text-center lg:text-left">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span ref={readyHeaderRef} className="relative inline-flex items-center justify-center">
               <svg
