@@ -293,15 +293,17 @@ const PastEditionDetail = () => {
     const eventName = event === "may" ? "May" : "October";
 
     return (
-      <div className={`flex flex-col items-center transition-all duration-700 ${isExpanded ? "w-full max-w-4xl" : ""}`}>
+      <div
+        className={`flex flex-col items-center transition-all duration-700 cursor-pointer ${isExpanded ? "w-full max-w-4xl" : ""}`}
+        onMouseEnter={handleHover}
+        onMouseLeave={() => setHoveredIndex(null)}
+        onClick={() => handlePolaroidClick(event)}
+      >
         <div
           ref={polaroidRef}
           className={`relative mb-0 transition-all duration-700 ${
             isExpanded ? "w-full max-w-2xl h-[400px] md:h-[500px]" : "w-64 md:w-80 h-[280px] md:h-[320px]"
           }`}
-          onMouseEnter={handleHover}
-          onMouseLeave={() => setHoveredIndex(null)}
-          onClick={() => handlePolaroidClick(event)}
         >
           {/* Left tilted polaroid */}
           <div
