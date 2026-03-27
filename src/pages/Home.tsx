@@ -15,6 +15,8 @@ import cercMentoriSvg from "@/assets/cerc_mentori.svg";
 import rotundSvg from "@/assets/rotund.svg";
 import sageterSvg from "@/assets/sageter.svg";
 import mentorsSectionPhoto from "@/assets/mentors-section-photo.webp";
+import techstarsLogo from "@/assets/sponsors/techstars.webp";
+import stripeLogo from "@/assets/sponsors/stripe.webp";
 import { AgendaPills } from "@/components/AgendaPills";
 
 const Home = () => {
