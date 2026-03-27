@@ -756,7 +756,9 @@ const Home = () => {
       >
         <div className="absolute inset-0 opacity-10" />
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: CTA content */}
+          <div className="text-center lg:text-left">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span ref={readyHeaderRef} className="relative inline-flex items-center justify-center">
               <svg
@@ -810,7 +812,7 @@ const Home = () => {
               />
             </span>
           </h2>
-          <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-muted-foreground max-w-2xl lg:mx-0 mx-auto">
             Join us for 54 hours of intense building, learning, and networking. Limited spots available!
           </p>
           <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
@@ -879,63 +881,62 @@ const Home = () => {
               </span>
             </div>
           </div>
-        </div>
-      </section>
+          </div>
 
-      {/* Polaroid Stack Section */}
-      <section className="py-20 md:py-28 relative no-pattern">
-        <div className="container mx-auto px-4 flex justify-center">
-          <div
-            className="relative w-[280px] h-[340px] md:w-[340px] md:h-[420px] cursor-default"
-            onMouseEnter={() => setIsPolaroidHovered(true)}
-            onMouseLeave={() => setIsPolaroidHovered(false)}
-          >
-            {/* Left background polaroid */}
+          {/* Right: Polaroid Stack */}
+          <div className="flex justify-center lg:justify-end">
             <div
-              className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
-                isPolaroidHovered
-                  ? "opacity-100 -translate-x-16 md:-translate-x-24 -rotate-12 scale-95"
-                  : "opacity-0 translate-x-0 rotate-0 scale-100"
-              }`}
-              style={{ zIndex: 1 }}
+              className="relative w-[280px] h-[340px] md:w-[340px] md:h-[420px] cursor-default"
+              onMouseEnter={() => setIsPolaroidHovered(true)}
+              onMouseLeave={() => setIsPolaroidHovered(false)}
             >
-              <img
-                src="/2025/may/Copy_of_Copy_of_DSC_0170.jpg"
-                alt="Startup Weekend 2025"
-                className="w-full h-full object-cover rounded-sm"
-              />
-            </div>
+              {/* Left background polaroid */}
+              <div
+                className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
+                  isPolaroidHovered
+                    ? "opacity-100 -translate-x-16 md:-translate-x-24 -rotate-12 scale-95"
+                    : "opacity-0 translate-x-0 rotate-0 scale-100"
+                }`}
+                style={{ zIndex: 1 }}
+              >
+                <img
+                  src="/2025/may/Copy_of_Copy_of_DSC_0170.jpg"
+                  alt="Startup Weekend 2025"
+                  className="w-full h-full object-cover rounded-sm"
+                />
+              </div>
 
-            {/* Right background polaroid */}
-            <div
-              className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
-                isPolaroidHovered
-                  ? "opacity-100 translate-x-16 md:translate-x-24 rotate-12 scale-95"
-                  : "opacity-0 translate-x-0 rotate-0 scale-100"
-              }`}
-              style={{ zIndex: 1 }}
-            >
-              <img
-                src="/2024/Copy_of_DSC00127.jpg"
-                alt="Startup Weekend 2024"
-                className="w-full h-full object-cover rounded-sm"
-              />
-            </div>
+              {/* Right background polaroid */}
+              <div
+                className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
+                  isPolaroidHovered
+                    ? "opacity-100 translate-x-16 md:translate-x-24 rotate-12 scale-95"
+                    : "opacity-0 translate-x-0 rotate-0 scale-100"
+                }`}
+                style={{ zIndex: 1 }}
+              >
+                <img
+                  src="/2024/Copy_of_DSC00127.jpg"
+                  alt="Startup Weekend 2024"
+                  className="w-full h-full object-cover rounded-sm"
+                />
+              </div>
 
-            {/* Main front polaroid with video */}
-            <div
-              className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
-                isPolaroidHovered ? "-translate-y-2" : ""
-              }`}
-              style={{ zIndex: 2 }}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/Z_2TuPZcxQU?autoplay=1&mute=1&loop=1&playlist=Z_2TuPZcxQU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                className="w-full h-full object-cover rounded-sm border-0"
-                title="Event highlight"
-              />
+              {/* Main front polaroid with video */}
+              <div
+                className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
+                  isPolaroidHovered ? "-translate-y-2" : ""
+                }`}
+                style={{ zIndex: 2 }}
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/Z_2TuPZcxQU?autoplay=1&mute=1&loop=1&playlist=Z_2TuPZcxQU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  className="w-full h-full object-cover rounded-sm border-0"
+                  title="Event highlight"
+                />
+              </div>
             </div>
           </div>
         </div>
