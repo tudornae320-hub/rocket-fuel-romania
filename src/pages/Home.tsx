@@ -756,9 +756,9 @@ const Home = () => {
       >
         <div className="absolute inset-0 opacity-10" />
 
-        <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
+        <div className="container mx-auto px-0 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
           {/* Left: CTA content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left px-4 lg:pl-4 lg:pr-0">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span ref={readyHeaderRef} className="relative inline-flex items-center justify-center">
               <svg
@@ -885,7 +885,7 @@ const Home = () => {
           </div>
 
           {/* Right: Polaroid Stack */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end lg:pr-0">
             <div
               className="relative w-[280px] h-[340px] md:w-[340px] md:h-[420px] cursor-default"
               onMouseEnter={() => setIsPolaroidHovered(true)}
