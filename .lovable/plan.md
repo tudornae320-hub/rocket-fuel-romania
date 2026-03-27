@@ -1,23 +1,19 @@
 
 
-## Plan: Replicate the staggered card layout for "How It Works" section
+## Plan: Remove gap between CTA text and polaroid
 
 ### What
-Replace the current plain grid "How It Works" section (lines 595-656) with an exact replica of the original card section's layout (lines 450-591) — including the staggered vertical offsets (`-translate-y-24` / `translate-y-24`), the three animated arrow SVGs between cards, and the same scroll-progress-based reveal animation.
+Remove padding/margins creating the visual gap between the left CTA block and right polaroid stack.
 
 ### Changes (single file: `src/pages/Home.tsx`)
 
-1. **Add a new scroll ref and progress tracker** for the second arrow section (e.g. `arrowsSectionRef2` / `arrowsProgress2`), mirroring the existing `arrowsSectionRef` / `arrowsProgress` pattern.
+1. **Line 759** — Remove `px-4` from the container div so there's no horizontal padding pushing content inward:
+   - Change `container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center`
+   - To `container mx-auto px-0 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center`
 
-2. **Replace the "How It Works" section** (lines 595-656) with a structure identical to lines 450-591:
-   - Same `relative grid` container with `mt-40 md:mt-48`
-   - Three arrow SVGs positioned identically (below card 1, above card 2, below card 3) using `sageterSvg`, with the same rotation, flip, and mask-based scroll reveal — but referencing the new `arrowsProgress2`
-   - Cards 1 & 3 use `md:-translate-y-24`, Cards 2 & 4 use `md:translate-y-24`
-   - Keep the new content (Meet & Pitch / Team Up / Build & Validate / Demo Day) and icons (Mic, Users, Hammer, Trophy)
+2. **Line 761** — Remove any padding/margin on the left column div (currently just `text-center lg:text-left`, so likely fine — but add `px-4 lg:pl-4 lg:pr-0` to keep left text readable while eliminating right-side space).
 
-3. **No other changes** — purely structural duplication with different content.
+3. **Line 888** — Remove right-side spacing on the polaroid column: change `flex justify-center lg:justify-end` to `flex justify-center lg:justify-end lg:pr-0` (or remove any implicit spacing).
 
-### Technical details
-- The existing scroll progress logic uses `useEffect` + `IntersectionObserver` or scroll listener tied to `arrowsSectionRef`. The same pattern will be duplicated for `arrowsSectionRef2`.
-- Arrow positioning uses absolute positioning with percentage-based `left` and `top` offsets, identical to the original.
+The core issue is `px-4` on the container plus the `container` class max-width creating whitespace. We'll keep `px-4` only on the left text column and let the polaroid sit flush on the right.
 
