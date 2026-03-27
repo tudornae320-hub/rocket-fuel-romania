@@ -4,10 +4,40 @@ import sageterSvg from "@/assets/sageter.svg";
 import linieSvg from "@/assets/linie.svg";
 import threeLinesSvg from "@/assets/3_lines.svg";
 
+// Import jury images
+import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
+import eduardBurghelia from "@/assets/jury/eduard-burghelia.jpg";
+import florinVisa from "@/assets/jury/florin-visa.jpeg";
+
+// Image mapping
+const juryImages: { [key: string]: string | null } = {
+  'aleodor-tabarcea': aleodorTabarcea,
+  'eduard-burghelia': eduardBurghelia,
+  'florin-visa': florinVisa,
+};
+
 const juryMembers = [
-  { name: "TBA", role: "TBA", company: "TBA", bio: "TBA", image: null },
-  { name: "TBA", role: "TBA", company: "TBA", bio: "TBA", image: null },
-  { name: "TBA", role: "TBA", company: "TBA", bio: "TBA", image: null },
+  { 
+    name: "Aleodor Tabarcea", 
+    role: "Engineering Manager", 
+    company: "Stripe",
+    bio: "Passionate about building high-performance teams and scalable systems.",
+    image: juryImages['aleodor-tabarcea']
+  },
+  { 
+    name: "Eduard Burghelia", 
+    role: "Venture Partner", 
+    company: "V7 Capital",
+    bio: "Investing in early-stage startups across CEE with a focus on deep tech.",
+    image: juryImages['eduard-burghelia']
+  },
+  { 
+    name: "Florin Visa", 
+    role: "Partner", 
+    company: "Early Game Ventures",
+    bio: "Supporting founders from idea to Series A with hands-on guidance.",
+    image: juryImages['florin-visa']
+  },
 ];
 
 export const InteractiveJuryGrid = () => {
