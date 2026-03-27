@@ -5,7 +5,7 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
-import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award, Mic, Users, Hammer, Trophy } from "lucide-react";
+import { Lightbulb, MapPin, Calendar, Mic, Users, Hammer, Trophy } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 import arrowRight from "@/assets/arrow-right.png";
 import megaphoneSvg from "@/assets/megaphone.svg";
@@ -39,9 +39,6 @@ const Home = () => {
   const arrowsSectionRef = useRef<HTMLDivElement>(null);
   const [arrowsProgress, setArrowsProgress] = useState(0);
 
-  // Arrows scroll animation state (How It Works section)
-  const arrowsSectionRef2 = useRef<HTMLDivElement>(null);
-  const [arrowsProgress2, setArrowsProgress2] = useState(0);
 
   // Emoji animation state
   const ticketButtonRef = useRef<HTMLButtonElement>(null);
@@ -110,11 +107,6 @@ const Home = () => {
             setArrowsProgress(Math.min(1, Math.max(0, rawArrows)));
           }
 
-          if (arrowsSectionRef2.current) {
-            const rectArrows2 = arrowsSectionRef2.current.getBoundingClientRect();
-            const rawArrows2 = (viewH - rectArrows2.top) / (viewH * 0.8);
-            setArrowsProgress2(Math.min(1, Math.max(0, rawArrows2)));
-          }
 
           ticking = false;
         });
