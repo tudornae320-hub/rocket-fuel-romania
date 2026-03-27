@@ -813,7 +813,8 @@ const Home = () => {
             </span>
           </h2>
           <p className="text-xl mb-8 text-muted-foreground max-w-2xl lg:mx-0 mx-auto">
-            Join us for 54 hours of intense building, learning, and networking. Limited spots available!
+            Join us for 54 hours of intense building, learning, and networking.<br />
+            Limited spots available!
           </p>
           <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
             <button
