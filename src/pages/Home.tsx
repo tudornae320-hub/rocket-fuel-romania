@@ -22,6 +22,7 @@ import { AgendaPills } from "@/components/AgendaPills";
 const Home = () => {
   const hoursSectionRef = useRef<HTMLElement>(null);
   const [isHoursHighlighted, setIsHoursHighlighted] = useState(false);
+  const [isPolaroidHovered, setIsPolaroidHovered] = useState(false);
   const ctaSectionRef = useRef<HTMLElement>(null);
   const mentorsHeaderRef = useRef<HTMLDivElement>(null);
   const circlePathRef = useRef<SVGPathElement>(null);
@@ -751,6 +752,63 @@ const Home = () => {
             <button className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98]">
               Get involved!
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Polaroid Stack Section */}
+      <section className="py-20 md:py-28 relative no-pattern">
+        <div className="container mx-auto px-4 flex justify-center">
+          <div
+            className="relative w-[280px] h-[340px] md:w-[340px] md:h-[420px] cursor-default"
+            onMouseEnter={() => setIsPolaroidHovered(true)}
+            onMouseLeave={() => setIsPolaroidHovered(false)}
+          >
+            {/* Left background polaroid */}
+            <div
+              className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
+                isPolaroidHovered
+                  ? "opacity-100 -translate-x-16 md:-translate-x-24 -rotate-12 scale-95"
+                  : "opacity-0 translate-x-0 rotate-0 scale-100"
+              }`}
+              style={{ zIndex: 1 }}
+            >
+              <img
+                src="/2025/may/Copy_of_Copy_of_DSC_0170.jpg"
+                alt="Startup Weekend 2025"
+                className="w-full h-full object-cover rounded-sm"
+              />
+            </div>
+
+            {/* Right background polaroid */}
+            <div
+              className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
+                isPolaroidHovered
+                  ? "opacity-100 translate-x-16 md:translate-x-24 rotate-12 scale-95"
+                  : "opacity-0 translate-x-0 rotate-0 scale-100"
+              }`}
+              style={{ zIndex: 1 }}
+            >
+              <img
+                src="/2024/Copy_of_DSC00127.jpg"
+                alt="Startup Weekend 2024"
+                className="w-full h-full object-cover rounded-sm"
+              />
+            </div>
+
+            {/* Main front polaroid with GIF */}
+            <div
+              className={`absolute inset-0 bg-white rounded-sm border-2 border-[#000000] shadow-[4px_4px_0px_0px_#000000] p-2 pb-10 transition-all duration-500 ease-out ${
+                isPolaroidHovered ? "-translate-y-2" : ""
+              }`}
+              style={{ zIndex: 2 }}
+            >
+              <img
+                src={heroBackground}
+                alt="Startup Weekend highlights"
+                className="w-full h-full object-cover rounded-sm"
+              />
+            </div>
           </div>
         </div>
       </section>
