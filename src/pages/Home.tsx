@@ -22,6 +22,7 @@ import { AgendaPills } from "@/components/AgendaPills";
 const Home = () => {
   const hoursSectionRef = useRef<HTMLElement>(null);
   const [isHoursHighlighted, setIsHoursHighlighted] = useState(false);
+  const [isPolaroidHovered, setIsPolaroidHovered] = useState(false);
   const ctaSectionRef = useRef<HTMLElement>(null);
   const mentorsHeaderRef = useRef<HTMLDivElement>(null);
   const circlePathRef = useRef<SVGPathElement>(null);
