@@ -433,10 +433,9 @@ const Home = () => {
               {/* Top Section - Startup Weekend */}
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Build a startup in a weekend</h2>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Startup Weekend is the place where creatives, coders, hustlers, thinkers, and dreamers come together
-                  to build real stuff in just 54 hours. Whether you have a wild idea or you just wanna join a team and
-                  create something new — this weekend's for you.
+                <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
+                  Startup Weekend is the place where creatives, coders, hustlers, thinkers, and dreamers come together to build real stuff in just 54 hours. {"\n\n"}
+                  Whether you have a wild idea or you just wanna join a team and create something new, this weekend's for you.
                 </p>
               </div>
 
