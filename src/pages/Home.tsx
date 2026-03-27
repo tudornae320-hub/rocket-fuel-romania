@@ -810,11 +810,6 @@ const Home = () => {
 
           <ScrollableSponsors />
 
-          <div className="text-center mt-12">
-            <button className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98]">
-              Get involved!
-            </button>
-          </div>
         </div>
       </section>
 
