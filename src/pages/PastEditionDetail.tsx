@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { RocketFollower } from "@/components/RocketFollower";
 import heroGif from "@/assets/video_hero_2.gif";
@@ -414,16 +414,18 @@ const PastEditionDetail = () => {
           <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="flex items-center justify-center">
               <div className="relative inline-block -rotate-3">
-                <h1
-                  className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
-                  style={{
-                    paintOrder: "stroke fill",
-                    WebkitTextStroke: "3px rgba(0,0,0,0.3)",
-                    textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
-                  }}
-                >
-                  2024
-                </h1>
+                <Link to="/past-editions" className="hover:opacity-80 transition-opacity cursor-pointer">
+                  <h1
+                    className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
+                    style={{
+                      paintOrder: "stroke fill",
+                      WebkitTextStroke: "3px rgba(0,0,0,0.3)",
+                      textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
+                    }}
+                  >
+                    2024
+                  </h1>
+                </Link>
               </div>
             </div>
           </div>
@@ -686,16 +688,18 @@ const PastEditionDetail = () => {
           <div className="container mx-auto px-4 md:px-8 relative z-10">
             <div className="flex items-center justify-center">
               <div className="relative inline-block rotate-2">
-                <h1
-                  className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
-                  style={{
-                    paintOrder: "stroke fill",
-                    WebkitTextStroke: "3px rgba(0,0,0,0.3)",
-                    textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
-                  }}
-                >
-                  2023
-                </h1>
+                <Link to="/past-editions" className="hover:opacity-80 transition-opacity cursor-pointer">
+                  <h1
+                    className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
+                    style={{
+                      paintOrder: "stroke fill",
+                      WebkitTextStroke: "3px rgba(0,0,0,0.3)",
+                      textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
+                    }}
+                  >
+                    2023
+                  </h1>
+                </Link>
               </div>
             </div>
           </div>
@@ -944,7 +948,9 @@ const PastEditionDetail = () => {
     return (
       <div className="min-h-screen pt-24">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-center mb-8">{year}</h1>
+          <Link to="/past-editions" className="hover:opacity-80 transition-opacity cursor-pointer">
+            <h1 className="text-5xl md:text-6xl font-bold text-center mb-8">{year}</h1>
+          </Link>
         </div>
       </div>
     );
@@ -997,16 +1003,18 @@ const PastEditionDetail = () => {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="flex items-center justify-center">
             <div className="relative inline-block -rotate-2">
-            <h1
-              className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
-              style={{
-                paintOrder: "stroke fill",
-                WebkitTextStroke: "3px rgba(0,0,0,0.3)",
-                textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
-              }}
-            >
-              2025
-            </h1>
+            <Link to="/past-editions" className="hover:opacity-80 transition-opacity cursor-pointer">
+              <h1
+                className="text-7xl md:text-9xl lg:text-[10rem] font-black text-white tracking-tight"
+                style={{
+                  paintOrder: "stroke fill",
+                  WebkitTextStroke: "3px rgba(0,0,0,0.3)",
+                  textShadow: "4px 4px 0px rgba(0,0,0,0.25), -2px -2px 0px rgba(90,209,252,0.3)",
+                }}
+              >
+                2025
+              </h1>
+            </Link>
           </div>
           </div>
         </div>
