@@ -929,13 +929,12 @@ const Home = () => {
               }`}
               style={{ zIndex: 2 }}
             >
-              <video
-                src={heroBackground}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover rounded-sm"
+              <iframe
+                src="https://www.youtube.com/embed/Z_2TuPZcxQU?autoplay=1&mute=1&loop=1&playlist=Z_2TuPZcxQU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                className="w-full h-full object-cover rounded-sm border-0"
+                title="Event highlight"
               />
             </div>
           </div>
