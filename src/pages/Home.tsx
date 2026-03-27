@@ -5,7 +5,7 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
-import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award } from "lucide-react";
+import { Lightbulb, MapPin, Calendar, Coffee, Presentation, Award, Mic, Users, Hammer, Trophy } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 import arrowRight from "@/assets/arrow-right.png";
 import megaphoneSvg from "@/assets/megaphone.svg";
