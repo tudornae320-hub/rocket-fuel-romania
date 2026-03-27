@@ -736,7 +736,7 @@ const Home = () => {
 
           {/* Powered by */}
           <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-8">Powered by</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">Powered by</h2>
             <div className="flex items-center justify-center gap-16 md:gap-24">
               <img src={stripeLogo} alt="Stripe" className="h-16 md:h-24 w-auto object-contain" />
               <img src={techstarsLogo} alt="Techstars" className="h-16 md:h-24 w-auto object-contain" />
@@ -745,7 +745,7 @@ const Home = () => {
 
           {/* Supported by */}
           <div className="text-center mb-8">
-            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Supported by</p>
+            <h2 className="text-4xl md:text-5xl font-bold">Supported by</h2>
           </div>
 
           <ScrollableSponsors />
