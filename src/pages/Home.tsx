@@ -401,13 +401,13 @@ const Home = () => {
       </section>
 
       {/* No talk. All Action! */}
-      <section id="about" className="pt-16 pb-56 md:pt-20 md:pb-72 relative">
+      <section id="about" className="pt-20 pb-56 md:pt-28 md:pb-72 relative">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center max-w-6xl mx-auto">
             {/* Left Column - Icon and Headlines */}
-            <div className="flex-shrink-0 space-y-3">
+            <div className="flex-shrink-0 space-y-4 md:min-w-[260px]">
               {/* Megaphone Icon with Vector overlay */}
-              <div className="relative w-32 h-32 md:w-40 md:h-40">
+              <div className="relative w-36 h-36 md:w-44 md:h-44 mx-auto md:mx-0">
                 <img src={megaphoneSvg} alt="Megaphone" className="w-full h-full" />
                 <img
                   src={vectorSvg}
@@ -418,31 +418,31 @@ const Home = () => {
               </div>
 
               {/* NO TALK */}
-              <div>
+              <div className="text-center md:text-left">
                 <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">NO TALK.</h3>
               </div>
 
               {/* ALL ACTION */}
-              <div>
+              <div className="text-center md:text-left">
                 <h3 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-primary">ALL ACTION!</h3>
               </div>
             </div>
 
-            {/* Middle Column - All Text Sections */}
-            <div className="flex-1 space-y-8">
+            {/* Right Column - All Text Sections */}
+            <div className="flex-1 space-y-6">
               {/* Top Section - Startup Weekend */}
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-3">Build a startup in a weekend</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">Build a startup in a weekend</h2>
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   Startup Weekend is the place where creatives, coders, hustlers, thinkers, and dreamers come together
                   to build real stuff in just 54 hours. Whether you have a wild idea or you just wanna join a team and
-                  create something new — this weekend’s for you.{" "}
+                  create something new — this weekend's for you.
                 </p>
               </div>
 
               {/* Bottom Section */}
               <div>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg leading-relaxed text-muted-foreground">
                   Learn new <strong>skills</strong>, meet your future team and build something that matters.
                 </p>
               </div>
