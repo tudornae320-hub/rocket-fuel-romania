@@ -542,14 +542,13 @@ const Home = () => {
             <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Lightbulb className="w-8 h-8 text-primary" />
+                  <Mic className="w-8 h-8 text-primary" />
                 </div>
-                <CardTitle className="text-xl">Workshops & Mentorship</CardTitle>
+                <CardTitle className="text-xl">Meet & Pitch</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Get real feedback from mentors who’ve built things before — from shaping your idea and business model
-                  to pricing, strategy, and pitching.
+                  Kick things off by meeting participants, sharing ideas, and pitching your concept to the room. Anyone can pitch, and everyone gets to vote.
                 </p>
               </CardContent>
             </Card>
@@ -557,14 +556,13 @@ const Home = () => {
             <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Presentation className="w-8 h-8 text-secondary" />
+                  <Users className="w-8 h-8 text-secondary" />
                 </div>
-                <CardTitle className="text-xl">Pitch your concept</CardTitle>
+                <CardTitle className="text-xl">Team Up</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Have an idea? Pitch it on Friday and see who wants to build it with you. No idea? No problem. You can
-                  join any team and help bring someone else’s concept to life.{" "}
+                  The top ideas form teams. Join a project that excites you, find the right mix of skills, and start building with people you just met.
                 </p>
               </CardContent>
             </Card>
@@ -572,14 +570,13 @@ const Home = () => {
             <Card className="text-center space-y-4 md:-translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Award className="w-8 h-8 text-primary" />
+                  <Hammer className="w-8 h-8 text-primary" />
                 </div>
-                <CardTitle className="text-xl">Build & win</CardTitle>
+                <CardTitle className="text-xl">Build & Validate</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Over the weekend, you’ll validate your idea, build an MVP, shape your business model, and practice
-                  your pitch. On Sunday, you’ll present in front of an expert jury and compete for awesome prizes.{" "}
+                  Turn your idea into something real. Build your MVP, test assumptions, talk to users, and improve fast with mentor feedback.
                 </p>
               </CardContent>
             </Card>
@@ -587,14 +584,13 @@ const Home = () => {
             <Card className="text-center space-y-4 md:translate-y-24 relative z-10 w-full">
               <CardHeader>
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Coffee className="w-8 h-8 text-secondary" />
+                  <Trophy className="w-8 h-8 text-secondary" />
                 </div>
-                <CardTitle className="text-xl">Fuel the journey</CardTitle>
+                <CardTitle className="text-xl">Demo Day</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We’ve got you covered with unlimited coffee, meals, snacks, and other goodies — so you can focus on
-                  building instead of worrying about food or energy.{" "}
+                  Wrap up the weekend by pitching your startup to judges and the audience. Celebrate what you built and compete for prizes.
                 </p>
               </CardContent>
             </Card>
