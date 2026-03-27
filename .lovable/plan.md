@@ -1,25 +1,23 @@
 
 
-## Plan: Add a video/gif polaroid card to the Home page
+## Plan: Replicate the staggered card layout for "How It Works" section
 
 ### What
-A decorative polaroid stack near the bottom of the Home page — same visual style as the Past Editions polaroid cards. The **front (main) polaroid** displays a gif (`video_hero_2.gif`), and the **two background polaroids** (left and right) show static images from the existing event photos. On hover, the side polaroids fan out just like the Past Editions page.
+Replace the current plain grid "How It Works" section (lines 595-656) with an exact replica of the original card section's layout (lines 450-591) — including the staggered vertical offsets (`-translate-y-24` / `translate-y-24`), the three animated arrow SVGs between cards, and the same scroll-progress-based reveal animation.
 
-### Where
-Insert a new section in `src/pages/Home.tsx` just **before** the final CTA section ("Ready to build something great?"), roughly around line 760.
+### Changes (single file: `src/pages/Home.tsx`)
 
-### Implementation (single file: `src/pages/Home.tsx`)
+1. **Add a new scroll ref and progress tracker** for the second arrow section (e.g. `arrowsSectionRef2` / `arrowsProgress2`), mirroring the existing `arrowsSectionRef` / `arrowsProgress` pattern.
 
-1. **Add state** — a boolean `isPolaroidHovered` to track hover.
+2. **Replace the "How It Works" section** (lines 595-656) with a structure identical to lines 450-591:
+   - Same `relative grid` container with `mt-40 md:mt-48`
+   - Three arrow SVGs positioned identically (below card 1, above card 2, below card 3) using `sageterSvg`, with the same rotation, flip, and mask-based scroll reveal — but referencing the new `arrowsProgress2`
+   - Cards 1 & 3 use `md:-translate-y-24`, Cards 2 & 4 use `md:translate-y-24`
+   - Keep the new content (Meet & Pitch / Team Up / Build & Validate / Demo Day) and icons (Mic, Users, Hammer, Trophy)
 
-2. **Add a new section** with the same polaroid structure used in `PastEditions.tsx`:
-   - Parent container with `onMouseEnter`/`onMouseLeave` toggling `isPolaroidHovered`
-   - **Left polaroid** — static image (e.g. a 2025 event photo from `/2025/may/...`), tilted left, fades/slides in on hover
-   - **Right polaroid** — static image (e.g. a 2024 event photo from `/2024/...`), tilted right, fades/slides in on hover
-   - **Main polaroid** — `<img src={heroBackground}>` (the gif), raises up on hover
-   - Same white border, black shadow, rounded-sm styling as existing polaroids
+3. **No other changes** — purely structural duplication with different content.
 
-3. **Purely decorative** — no `<Link>`, no navigation on click.
-
-4. Reuse the exact same CSS transition classes (`transition-all duration-500 ease-out`) and hover transforms (rotation, translation, opacity) from the Past Editions polaroid pattern.
+### Technical details
+- The existing scroll progress logic uses `useEffect` + `IntersectionObserver` or scroll listener tied to `arrowsSectionRef`. The same pattern will be duplicated for `arrowsSectionRef2`.
+- Arrow positioning uses absolute positioning with percentage-based `left` and `top` offsets, identical to the original.
 
