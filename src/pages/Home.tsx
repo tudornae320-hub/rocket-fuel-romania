@@ -728,9 +728,22 @@ const Home = () => {
       {/* Sponsors & Partners */}
       <section id="partners" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Sponsors & Partners</h2>
-            <p className="text-lg text-muted-foreground">Supported by the best</p>
+          </div>
+
+          {/* Powered by */}
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-8">Powered by</p>
+            <div className="flex items-center justify-center gap-12 md:gap-20">
+              <img src={techstarsLogo} alt="Techstars" className="h-12 md:h-16 w-auto object-contain" />
+              <img src={stripeLogo} alt="Stripe" className="h-12 md:h-16 w-auto object-contain" />
+            </div>
+          </div>
+
+          {/* Supported by */}
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Supported by</p>
           </div>
 
           <ScrollableSponsors />
