@@ -401,7 +401,7 @@ const Home = () => {
       </section>
 
       {/* No talk. All Action! */}
-      <section id="about" className="pt-20 pb-56 md:pt-28 md:pb-72 relative">
+      <section id="about" className="pt-20 pb-72 md:pt-28 md:pb-96 relative">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center max-w-6xl mx-auto">
             {/* Left Column - Icon and Headlines */}
