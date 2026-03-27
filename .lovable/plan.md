@@ -1,36 +1,26 @@
 
 
-## Replace sponsors section with "Powered by" + "Supported by" layout
+## Plan: Unify year card and polaroid hover/click behavior
 
-### What changes
+Currently each edition section has two separate elements:
+1. **Polaroid group** — hovering fans out side polaroids, clicking navigates to `/past-editions/{year}`
+2. **Year card** (e.g. "2025") — has a basic `hover-lift` effect, no click action, no connection to polaroid animation
 
-The current "Sponsors & Partners" section will be restructured into two sub-sections:
+### Changes (single file: `src/pages/PastEditions.tsx`)
 
-1. **"Powered by"** -- Techstars + Stripe logos displayed large and centered (static, no carousel)
-2. **"Supported by"** -- The scrollable carousel remains the same size but all current logos are replaced with the 8 uploaded logos: Code Society, Nova, Ambasada, Brewtifi, Make IT in Oradea, How To Web, Featherless.ai, and one more (the numbered uploads)
+**For each edition (2025, 2024, 2023):**
 
-The "Supported by the best" subtitle is removed.
+1. **Wrap both polaroid group and year card in a single parent container** that handles `onMouseEnter` / `onMouseLeave` — so hovering the year card triggers the same polaroid fan-out animation as hovering the photos.
 
-### Technical details
+2. **Make the year card a `<Link>`** to `/past-editions/{year}` so clicking it navigates the same way as clicking the main polaroid.
 
-**Files to create/modify:**
+3. **Remove the separate `onMouseEnter`/`onMouseLeave`** from the polaroid `div` since the parent now handles it.
 
-1. **Save 8 uploaded logos** to `src/assets/sponsors/` as:
-   - `code-society.png` (Logo_Partner_SWB-1)
-   - `nova.png` (Logo_Partner_SWB-2)
-   - `ambasada.png` (Logo_Partner_SWB-5)
-   - `brewtifi.png` (replace existing, Logo_Partner_SWB-6)
-   - `make-it-oradea.png` (replace existing, Logo_Partner_SWB-7)
-   - `how-to-web.png` (Logo_Partner_SWB-8)
-   - `featherless-ai.png` (Logo_Partner_SWB-9)
+This means the hover zone expands to cover both the polaroid stack and the year label below it, creating a unified interactive area. Hovering anywhere in that zone fans the polaroids; clicking either the photos or the year card navigates to the edition page.
 
-2. **`src/pages/Home.tsx`** -- Restructure the partners section:
-   - Remove the "Supported by the best" subtitle
-   - Add a "Powered by" sub-section with Techstars and Stripe logos displayed large (using existing assets)
-   - Add a "Supported by" heading above the `ScrollableSponsors` component
+### Technical detail
 
-3. **`src/components/ScrollableSponsors.tsx`** -- Replace the sponsors array:
-   - Remove all current sponsor imports and entries (Stripe, Veridion, VSFA, BOS Romania, PROW, VIP Romania, V7 Capital, Launch.ro, Business Club, Third Place, Code Cup, and old Techstars/Brewtifi/Make It Oradea)
-   - Add new imports for the 7 uploaded logos
-   - Update sponsors array with: Code Society, Nova, Ambasada, Brewtifi, Make IT in Oradea, How To Web, Featherless.ai
+- Move `onMouseEnter={handle20XXHoverStart}` and `onMouseLeave={() => setHoveredIndex(null)}` from the polaroid container `div` up to the parent `div` that wraps both polaroid + card.
+- Change each `<Card className="hover-lift ...">` wrapping the year text into a `<Link to="/past-editions/{year}"><Card ...>...</Card></Link>` (or wrap the Card's content in a Link).
+- Add `cursor-pointer` to the year card for visual affordance.
 
