@@ -431,12 +431,15 @@ const PastEditionDetail = () => {
 
         {/* Single Polaroid Section */}
         <section className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
-          <div ref={polaroidSectionRef} className="flex flex-col items-center pb-3 px-1">
+          <div
+            ref={polaroidSectionRef}
+            className="flex flex-col items-center pb-3 px-1 cursor-pointer"
+            onMouseEnter={handleHoverStart}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             {/* Polaroid group with hover animation */}
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
-              onMouseEnter={handleHoverStart}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Left tilted polaroid */}
                 <div
@@ -580,9 +583,10 @@ const PastEditionDetail = () => {
 
             {/* Expandable Card with Photo Gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 cursor-pointer ${
                 is2024Open ? "max-w-6xl" : "max-w-md"
               }`}
+              onClick={() => setIs2024Open((v) => !v)}
             >
               <CardContent className={`transition-all duration-500 ${is2024Open ? "p-8" : "p-6"}`}>
                 <p
@@ -699,12 +703,15 @@ const PastEditionDetail = () => {
 
         {/* Single Polaroid Section */}
         <section className="container mx-auto px-4 mb-20 pt-16 relative overflow-hidden">
-          <div ref={polaroidSectionRef2023} className="flex flex-col items-center pb-3 px-1">
+          <div
+            ref={polaroidSectionRef2023}
+            className="flex flex-col items-center pb-3 px-1 cursor-pointer"
+            onMouseEnter={handleHoverStart2023}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             {/* Polaroid group with hover animation */}
             <div
               className="relative w-64 md:w-80 h-[280px] md:h-[320px]"
-                onMouseEnter={handleHoverStart2023}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Left tilted polaroid */}
                 <div
@@ -847,9 +854,10 @@ const PastEditionDetail = () => {
 
             {/* Expandable Card with Photo Gallery */}
             <Card
-              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 ${
+              className={`hover-lift w-full mx-auto mt-8 transition-all duration-500 ease-out relative z-20 cursor-pointer ${
                 is2023Open ? "max-w-6xl" : "max-w-md"
               }`}
+              onClick={() => setIs2023Open((v) => !v)}
             >
               <CardContent className={`transition-all duration-500 ${is2023Open ? "p-8" : "p-6"}`}>
                 <p
