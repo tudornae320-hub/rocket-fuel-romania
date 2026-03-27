@@ -716,7 +716,7 @@ const Home = () => {
 
           <ScrollableMentors />
 
-          <InteractiveJuryGrid />
+          {/* <InteractiveJuryGrid /> */}
         </div>
       </section>
 
