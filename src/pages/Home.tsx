@@ -756,7 +756,7 @@ const Home = () => {
       >
         <div className="absolute inset-0 opacity-10" />
 
-        <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
           {/* Left: CTA content */}
           <div className="text-center lg:text-left">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -792,7 +792,7 @@ const Home = () => {
               </svg>
               <span className="relative z-10">Ready</span>
             </span>{" "}
-            to build something{" "}
+            to build<br />something{" "}
             <span className="relative inline-block pl-3 pr-2 py-1">
               <span
                 className={`relative z-10 inline-block transition-colors duration-500 delay-200 ${
