@@ -821,7 +821,7 @@ const Home = () => {
             <button
               ref={ticketButtonRef}
               onClick={handleButtonClick}
-              className="rounded-2xl border-2 border-[#000000] bg-secondary px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-secondary-foreground hover:bg-secondary/90 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] relative z-10"
+              className="rounded-2xl border-2 border-[#000000] bg-primary px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary-foreground hover:bg-primary/90 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] relative z-10"
             >
               Get your ticket now
             </button>
