@@ -850,7 +850,7 @@ const Home = () => {
 
             {/* Animated party emojis - positioned below the button */}
             <div
-              className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-0"
+              className="absolute left-0 lg:left-[100px] pointer-events-none z-0"
               style={{
                 top: `calc(100% + ${isMobile ? 60 : 20}px - ${emojiProgress * (isMobile ? 100 : 120)}px)`, // More space on mobile to avoid intersection
                 transition: isMobile ? "top 0.3s cubic-bezier(0.4, 0, 0.2, 1)" : "none", // Smooth transition on mobile
