@@ -733,16 +733,16 @@ const Home = () => {
 
           {/* Powered by */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">Powered by</h2>
+            <h3 className="text-4xl md:text-5xl font-bold mb-8">Powered by</h3>
             <div className="flex items-center justify-center gap-16 md:gap-24">
-              <img src={stripeLogo} alt="Stripe" className="h-16 md:h-24 w-auto object-contain" />
-              <img src={techstarsLogo} alt="Techstars" className="h-16 md:h-24 w-auto object-contain" />
+              <img src={stripeLogo} alt="Stripe" className="h-20 md:h-32 w-auto object-contain" />
+              <img src={techstarsLogo} alt="Techstars" className="h-20 md:h-32 w-auto object-contain" />
             </div>
           </div>
 
           {/* Supported by */}
           <div className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold">Supported by</h2>
+            <h3 className="text-4xl md:text-5xl font-bold">Supported by</h3>
           </div>
 
           <ScrollableSponsors />
