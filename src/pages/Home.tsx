@@ -945,7 +945,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      </section>
 
       {/* Polaroid Stack Section */}
       <section className="py-20 md:py-28 relative no-pattern">
