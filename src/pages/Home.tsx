@@ -886,7 +886,7 @@ const Home = () => {
           </div>
 
           {/* Right: Polaroid Stack */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="flex justify-center lg:justify-end lg:-mt-8">
             <div
               className="relative w-[280px] h-[340px] md:w-[340px] md:h-[420px] cursor-default"
               onMouseEnter={() => setIsPolaroidHovered(true)}
