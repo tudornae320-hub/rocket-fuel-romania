@@ -350,6 +350,9 @@ const Home = () => {
             </div>
 
             <div className="space-y-3 mb-6">
+              <p className="text-lg md:text-xl text-off-white/80">
+                powered by <span className="font-bold text-primary">Stripe</span>
+              </p>
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
                 <Calendar className="w-6 h-6 text-primary" />
                 <span>24-26 April 2026</span>
@@ -366,10 +369,6 @@ const Home = () => {
                   <span className="text-sm md:text-base text-off-white/60">Strada Academiei 28-30, București</span>
                 </span>
               </a>
-
-              <p className="text-lg md:text-xl text-off-white/80 mt-4">
-                powered by <span className="font-bold text-primary">Stripe</span>
-              </p>
               <button
                 onClick={handleButtonClick}
                 className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-black font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] mt-6"
