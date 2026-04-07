@@ -358,10 +358,13 @@ const Home = () => {
                 href="https://maps.app.goo.gl/BtaQYVHwCtPM78ok6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-lg md:text-xl text-off-white/90 hover:text-primary transition-colors"
+                className="flex items-start gap-3 text-off-white/90 hover:text-primary transition-colors"
               >
-                <MapPin className="w-6 h-6 text-primary flex-shrink-0" />
-                <span>Nova Coworking Excelsior, Strada Academiei 28-30, București</span>
+                <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                <span className="flex flex-col">
+                  <span className="text-lg md:text-xl font-semibold">Nova Coworking Excelsior</span>
+                  <span className="text-sm md:text-base text-off-white/60">Strada Academiei 28-30, București</span>
+                </span>
               </a>
 
               <p className="text-lg md:text-xl text-off-white/80 mt-4">
