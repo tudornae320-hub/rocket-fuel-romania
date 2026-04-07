@@ -350,7 +350,7 @@ const Home = () => {
             </div>
 
             <div className="space-y-3 mb-6">
-              <p className="text-xl md:text-2xl text-off-white/80">
+              <p className="text-2xl md:text-3xl text-off-white/80">
                 powered by <span className="font-bold" style={{ color: '#6772E5' }}>Stripe</span>
               </p>
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
