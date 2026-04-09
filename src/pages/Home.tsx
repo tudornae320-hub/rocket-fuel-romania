@@ -353,6 +353,12 @@ const Home = () => {
               <p className="text-2xl md:text-3xl text-off-white/80">
                 powered by <span className="font-bold" style={{ color: '#6772E5' }}>Stripe</span>
               </p>
+              <button
+                onClick={handleButtonClick}
+                className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-black font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] mt-3"
+              >
+                Get your ticket
+              </button>
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
                 <Calendar className="w-6 h-6 text-primary" />
                 <span>24-26 April 2026</span>
@@ -369,12 +375,6 @@ const Home = () => {
                   <span className="text-sm md:text-base text-off-white/60">Strada Academiei 28-30, București</span>
                 </span>
               </a>
-              <button
-                onClick={handleButtonClick}
-                className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-black font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] mt-6"
-              >
-                Get your ticket
-              </button>
             </div>
           </div>
 
