@@ -381,18 +381,14 @@ const Home = () => {
           {/* Right Side - Vertical Line with Arrow */}
           <div className="hidden md:flex flex-row items-center gap-4 min-w-[100px]">
             <a
-              href="https://startupweekendromania.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#about"
               className="text-white font-semibold text-lg hover:text-primary transition-colors cursor-pointer uppercase tracking-wide"
               style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
             >
               Learn More
             </a>
             <a
-              href="https://startupweekendromania.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#about"
               className="h-[400px] w-1 bg-white/30 relative flex items-center justify-center cursor-pointer"
             >
               <div className="absolute left-1/2 translate-x-1 flex items-center justify-center animate-bob-horizontal">
