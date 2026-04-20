@@ -12,6 +12,7 @@ import bogdanDeac from "@/assets/mentors/bogdan-deac.jpg";
 import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg";
 import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
+import peterStoica from "@/assets/mentors/peter-stoica.jpg";
 
 const mentors = [
   {
@@ -83,6 +84,13 @@ const mentors = [
     company: "QA DNA",
     image: lianaStoian,
     linkedin: "https://www.linkedin.com/in/liana-st/",
+  },
+  {
+    name: "Peter Stoica",
+    role: "CTO",
+    company: "QA DNA",
+    image: peterStoica,
+    linkedin: "https://www.linkedin.com/in/peter-stoica/",
   },
 ];
 
