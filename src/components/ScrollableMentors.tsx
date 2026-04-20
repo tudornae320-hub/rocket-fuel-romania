@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 
 import raresBanescu from "@/assets/mentors/rares-banescu.jpg";
 import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
+import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
 
 const mentors = [
   {
@@ -19,6 +20,13 @@ const mentors = [
     company: "Supertree",
     image: gianinaCraciun,
     linkedin: "https://www.linkedin.com/in/gianinacraciun/",
+  },
+  {
+    name: "Valentin Maior",
+    role: "Cofounder",
+    company: "SyndiFi Capital",
+    image: valentinMaior,
+    linkedin: "https://www.linkedin.com/in/valentinmaior/",
   },
 ];
 
