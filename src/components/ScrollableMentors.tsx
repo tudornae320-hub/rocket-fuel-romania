@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 
 import raresBanescu from "@/assets/mentors/rares-banescu.jpg";
+import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
 
 const mentors = [
   {
@@ -11,6 +12,13 @@ const mentors = [
     company: "theMarketer",
     image: raresBanescu,
     linkedin: "https://www.linkedin.com/in/rares-banescu/",
+  },
+  {
+    name: "Gianina Craciun",
+    role: "Founder",
+    company: "Supertree",
+    image: gianinaCraciun,
+    linkedin: "https://www.linkedin.com/in/gianinacraciun/",
   },
 ];
 
