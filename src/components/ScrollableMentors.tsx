@@ -11,6 +11,7 @@ import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
 import bogdanDeac from "@/assets/mentors/bogdan-deac.jpg";
 import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg";
 import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
+import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 
 const mentors = [
   {
@@ -75,6 +76,13 @@ const mentors = [
     company: "Endeavor Romania",
     image: mihneaCraciun,
     linkedin: "https://www.linkedin.com/in/mihnea-craciun-7038053/",
+  },
+  {
+    name: "Liana Stoian",
+    role: "CEO",
+    company: "QA DNA",
+    image: lianaStoian,
+    linkedin: "https://www.linkedin.com/in/liana-st/",
   },
 ];
 
