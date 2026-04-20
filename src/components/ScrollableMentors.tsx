@@ -52,6 +52,7 @@ const mentors = [
     company: "",
     image: oanaCosman,
     linkedin: "https://www.linkedin.com/in/oanacosman/",
+  },
   {
     name: "Bogdan Deac",
     role: "Software Engineer",
