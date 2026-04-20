@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SquiggleDoodle } from "@/components/Doodles";
 import { RocketFollower } from "@/components/RocketFollower";
 import { Calendar, Trophy, Users, MapPin } from "lucide-react";
+import { PastMentors } from "@/components/PastMentors";
 import heroBackground from "@/assets/video_hero_2.gif";
 import gif2025_may from "@/2025_may_movie2.gif";
 import gif2025_oct from "@/2025_oct_movi.gif";
@@ -858,6 +859,9 @@ const PastEditions = () => {
           </Link>
         </div>
       </section>
+
+      {/* Past Mentors Section */}
+      <PastMentors />
 
       {/* CTA Section */}
       <section className="py-16 relative">
