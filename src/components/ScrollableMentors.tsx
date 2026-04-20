@@ -9,6 +9,7 @@ import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
 import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
 import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
 import bogdanDeac from "@/assets/mentors/bogdan-deac.jpg";
+import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg";
 
 const mentors = [
   {
@@ -59,6 +60,13 @@ const mentors = [
     company: "Stripe",
     image: bogdanDeac,
     linkedin: "https://www.linkedin.com/in/bogdantdeac/",
+  },
+  {
+    name: "Claudiu Jojatu",
+    role: "Cofounder",
+    company: "Milk & Cookies",
+    image: claudiuJojatu,
+    linkedin: "https://www.linkedin.com/in/claudiujojatu/",
   },
 ];
 
