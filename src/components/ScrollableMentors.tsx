@@ -2,15 +2,15 @@ import { useRef, useState, MouseEvent, useCallback, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 
-import alexGavril from "@/assets/mentors/alex-gavril.jpg";
+import raresBanescu from "@/assets/mentors/rares-banescu.jpg";
 
 const mentors = [
   {
-    name: "Alex Gavril",
-    role: "CEO",
-    company: "▲ promocrat",
-    image: alexGavril,
-    linkedin: "https://www.linkedin.com/in/alexgavril/",
+    name: "Rareș Bănescu",
+    role: "Founder",
+    company: "theMarketer",
+    image: raresBanescu,
+    linkedin: "https://www.linkedin.com/in/rares-banescu/",
   },
 ];
 
