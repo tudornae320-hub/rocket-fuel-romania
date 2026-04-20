@@ -7,6 +7,7 @@ import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
 import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
 import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
 import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
+import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
 
 const mentors = [
   {
@@ -43,6 +44,13 @@ const mentors = [
     company: "Veridion",
     image: raduCudalb,
     linkedin: "https://www.linkedin.com/in/radu-cudalb/",
+  },
+  {
+    name: "Oana Cosman",
+    role: "Startups & Investments Journalist",
+    company: "",
+    image: oanaCosman,
+    linkedin: "https://www.linkedin.com/in/oanacosman/",
   },
 ];
 
