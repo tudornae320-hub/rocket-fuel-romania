@@ -10,6 +10,7 @@ import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
 import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
 import bogdanDeac from "@/assets/mentors/bogdan-deac.jpg";
 import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg";
+import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
 
 const mentors = [
   {
@@ -67,6 +68,13 @@ const mentors = [
     company: "Milk & Cookies",
     image: claudiuJojatu,
     linkedin: "https://www.linkedin.com/in/claudiujojatu/",
+  },
+  {
+    name: "Mihnea Craciun",
+    role: "Managing Director",
+    company: "Endeavor Romania",
+    image: mihneaCraciun,
+    linkedin: "https://www.linkedin.com/in/mihnea-craciun-7038053/",
   },
 ];
 
