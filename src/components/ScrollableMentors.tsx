@@ -7,6 +7,7 @@ import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
 import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
 import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
 import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
+import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
 
 const mentors = [
   {
@@ -43,6 +44,13 @@ const mentors = [
     company: "Veridion",
     image: raduCudalb,
     linkedin: "https://www.linkedin.com/in/radu-cudalb/",
+  },
+  {
+    name: "Oana Cosman",
+    role: "Startups & Investments Journalist",
+    company: "",
+    image: oanaCosman,
+    linkedin: "https://www.linkedin.com/in/oanacosman/",
   },
 ];
 
@@ -248,7 +256,7 @@ export const ScrollableMentors = () => {
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <h3 className="font-bold text-base text-foreground truncate">{mentor.name}</h3>
-              <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>
+              {mentor.company && <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>}
               <p className="text-sm text-muted-foreground truncate">{mentor.role}</p>
             </div>
             {mentor.linkedin && (
@@ -351,7 +359,7 @@ export const ScrollableMentors = () => {
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <h3 className="font-bold text-base text-foreground truncate">{mentor.name}</h3>
-                      <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>
+                      {mentor.company && <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>}
                       <p className="text-sm text-muted-foreground truncate">{mentor.role}</p>
                     </div>
                     {mentor.linkedin && (
