@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 import raresBanescu from "@/assets/mentors/rares-banescu.jpg";
 import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
 import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
+import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
 
 const mentors = [
   {
@@ -27,6 +28,13 @@ const mentors = [
     company: "SyndiFi Capital",
     image: valentinMaior,
     linkedin: "https://www.linkedin.com/in/valentinmaior/",
+  },
+  {
+    name: "Cosmin Cosma",
+    role: "Cofounder & CEO",
+    company: "Finqware",
+    image: cosminCosma,
+    linkedin: "https://www.linkedin.com/in/ccosma/",
   },
 ];
 
