@@ -8,6 +8,7 @@ import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
 import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
 import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
 import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
+import bogdanDeac from "@/assets/mentors/bogdan-deac.jpg";
 
 const mentors = [
   {
@@ -51,6 +52,13 @@ const mentors = [
     company: "",
     image: oanaCosman,
     linkedin: "https://www.linkedin.com/in/oanacosman/",
+  },
+  {
+    name: "Bogdan Deac",
+    role: "Software Engineer",
+    company: "Stripe",
+    image: bogdanDeac,
+    linkedin: "https://www.linkedin.com/in/bogdantdeac/",
   },
 ];
 
