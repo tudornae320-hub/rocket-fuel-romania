@@ -256,7 +256,7 @@ export const ScrollableMentors = () => {
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <h3 className="font-bold text-base text-foreground truncate">{mentor.name}</h3>
-              <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>
+              {mentor.company && <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>}
               <p className="text-sm text-muted-foreground truncate">{mentor.role}</p>
             </div>
             {mentor.linkedin && (
@@ -359,7 +359,7 @@ export const ScrollableMentors = () => {
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <h3 className="font-bold text-base text-foreground truncate">{mentor.name}</h3>
-                      <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>
+                      {mentor.company && <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>}
                       <p className="text-sm text-muted-foreground truncate">{mentor.role}</p>
                     </div>
                     {mentor.linkedin && (
