@@ -6,6 +6,7 @@ import raresBanescu from "@/assets/mentors/rares-banescu.jpg";
 import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
 import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
 import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
+import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
 
 const mentors = [
   {
@@ -35,6 +36,13 @@ const mentors = [
     company: "Finqware",
     image: cosminCosma,
     linkedin: "https://www.linkedin.com/in/ccosma/",
+  },
+  {
+    name: "Radu Cudalb",
+    role: "Software Engineer",
+    company: "Veridion",
+    image: raduCudalb,
+    linkedin: "https://www.linkedin.com/in/radu-cudalb/",
   },
 ];
 
