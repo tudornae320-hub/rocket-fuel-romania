@@ -60,6 +60,7 @@ const mentors = [
     company: "Stripe",
     image: bogdanDeac,
     linkedin: "https://www.linkedin.com/in/bogdantdeac/",
+  },
   {
     name: "Claudiu Jojatu",
     role: "Cofounder",
