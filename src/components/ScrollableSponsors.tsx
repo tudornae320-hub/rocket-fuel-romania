@@ -12,6 +12,7 @@ import lsac from "@/assets/sponsors/lsac.png";
 import founderInstitute from "@/assets/sponsors/founder-institute.png";
 import qaDna from "@/assets/sponsors/qa-dna.png";
 import kickstartRomania from "@/assets/sponsors/kickstart-romania.png";
+import refold from "@/assets/sponsors/refold.png";
 
 const sponsors = [
   { name: "Code Society", image: codeSociety },
@@ -24,6 +25,7 @@ const sponsors = [
   { name: "Founder Institute", image: founderInstitute },
   { name: "QA DNA", image: qaDna },
   { name: "Kickstart Romania", image: kickstartRomania },
+  { name: "Refold", image: refold },
 ];
 
 export const ScrollableSponsors = () => {
