@@ -16,6 +16,7 @@ import refold from "@/assets/sponsors/refold.png";
 import promocrat from "@/assets/sponsors/promocrat.png";
 import oportune from "@/assets/sponsors/oportune.png";
 import activize from "@/assets/sponsors/activize.png";
+import supertree from "@/assets/sponsors/supertree.png";
 
 const sponsors = [
   { name: "Code Society", image: codeSociety },
@@ -32,6 +33,7 @@ const sponsors = [
   { name: "Promocrat", image: promocrat },
   { name: "Oportune", image: oportune },
   { name: "Activize", image: activize },
+  { name: "Supertree", image: supertree },
 ];
 
 export const ScrollableSponsors = () => {
