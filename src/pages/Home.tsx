@@ -735,9 +735,8 @@ const Home = () => {
           {/* Powered by */}
           <div className="text-center mb-20">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-10">Powered by</p>
-            <div className="flex items-center justify-center gap-16 md:gap-24">
+            <div className="flex items-center justify-center">
               <img src={stripeLogo} alt="Stripe" className="h-20 md:h-28 w-auto object-contain" />
-              <img src={techstarsLogo} alt="Techstars" className="h-20 md:h-28 w-auto object-contain" />
             </div>
           </div>
 
