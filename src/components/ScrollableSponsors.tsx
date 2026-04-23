@@ -7,12 +7,7 @@ import nova from "@/assets/sponsors/nova.png";
 import partner3 from "@/assets/sponsors/partner-3.png";
 import ambasada from "@/assets/sponsors/ambasada.png";
 import brewtifi from "@/assets/sponsors/brewtifi.png";
-import makeItOradea from "@/assets/sponsors/make-it-oradea.png";
-import howToWeb from "@/assets/sponsors/how-to-web.png";
 import featherlessAi from "@/assets/sponsors/featherless-ai.png";
-import amplifyOng from "@/assets/sponsors/amplify-ong.png";
-import launchRomania from "@/assets/sponsors/launch-romania.png";
-import brightLabs from "@/assets/sponsors/bright-labs.png";
 import lsac from "@/assets/sponsors/lsac.png";
 import founderInstitute from "@/assets/sponsors/founder-institute.png";
 import qaDna from "@/assets/sponsors/qa-dna.png";
@@ -24,12 +19,7 @@ const sponsors = [
   { name: "Partner", image: partner3 },
   { name: "Ambasada", image: ambasada },
   { name: "Brewtifi", image: brewtifi },
-  { name: "Make IT in Oradea", image: makeItOradea },
-  { name: "How To Web", image: howToWeb },
   { name: "Featherless.ai", image: featherlessAi },
-  { name: "AmpliFY ONG", image: amplifyOng },
-  { name: "Launch Romania", image: launchRomania },
-  { name: "BrightLabs Incubator", image: brightLabs },
   { name: "LSAC", image: lsac },
   { name: "Founder Institute", image: founderInstitute },
   { name: "QA DNA", image: qaDna },
