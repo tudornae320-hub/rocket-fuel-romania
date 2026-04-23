@@ -17,6 +17,7 @@ import promocrat from "@/assets/sponsors/promocrat.png";
 import oportune from "@/assets/sponsors/oportune.png";
 import activize from "@/assets/sponsors/activize.png";
 import supertree from "@/assets/sponsors/supertree.png";
+import romanianBusinessClub from "@/assets/sponsors/romanian-business-club.png";
 
 const sponsors = [
   { name: "Code Society", image: codeSociety },
@@ -34,6 +35,7 @@ const sponsors = [
   { name: "Oportune", image: oportune },
   { name: "Activize", image: activize },
   { name: "Supertree", image: supertree },
+  { name: "Romanian Business Club", image: romanianBusinessClub },
 ];
 
 export const ScrollableSponsors = () => {
