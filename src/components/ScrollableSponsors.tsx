@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 // Import sponsor images
 import codeSociety from "@/assets/sponsors/code-society.png";
 import nova from "@/assets/sponsors/nova.png";
-import partner3 from "@/assets/sponsors/partner-3.png";
+
 import ambasada from "@/assets/sponsors/ambasada.png";
 import brewtifi from "@/assets/sponsors/brewtifi.png";
 import featherlessAi from "@/assets/sponsors/featherless-ai.png";
@@ -20,7 +20,7 @@ import activize from "@/assets/sponsors/activize.png";
 const sponsors = [
   { name: "Code Society", image: codeSociety },
   { name: "Nova", image: nova },
-  { name: "Partner", image: partner3 },
+  
   { name: "Ambasada", image: ambasada },
   { name: "Brewtifi", image: brewtifi },
   { name: "Featherless.ai", image: featherlessAi },
