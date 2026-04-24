@@ -407,7 +407,12 @@ export const ScrollableMentors = () => {
               <CardContent className="p-0">
                 <div className="relative w-full h-[180px] overflow-hidden">
                   {mentor.image ? (
-                    <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover" />
+                    <img
+                      src={mentor.image}
+                      alt={mentor.name}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: mentor.objectPosition ?? 'center' }}
+                    />
                   ) : (
                     <div className="w-full h-full bg-muted" />
                   )}
