@@ -10,8 +10,7 @@ const agendaData = {
       { time: "19:00 - 19:30", title: "Welcome", desc: "Meet our Techstars facilitator and review agenda for the weekend" },
       { time: "19:30 - 20:00", title: "Pitches", desc: "Facilitator gives a walk-through of the pitching process and then pitches begin! Optionally line up to give your pitch" },
       { time: "20:00 - 20:30", title: "Vote for top pitches and form teams", desc: "Network, share questions, vote for the top pitches and form teams" },
-      { time: "20:30 - 21:30", title: "Workshop: From Idea to Reality", desc: "Learn how to validate your idea and start building" },
-      { time: "21:30 - Late", title: "Start building!", desc: "Set up your team workspace for the weekend and start work on the idea. You may stay as late as the venue will allow" },
+      { time: "20:30 - Late", title: "Start building!", desc: "Set up your team workspace for the weekend and start work on the idea. You may stay as late as the venue will allow" },
     ],
   },
   saturday: {
