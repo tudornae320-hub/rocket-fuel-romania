@@ -21,7 +21,7 @@ const agendaData = {
       { time: "10:30 - 11:30", title: "Workshop: GTM Strategy", desc: "Learn go-to-market strategy with Claudiu Jojatu, CEO Milk&Cookies" },
       { time: "13:00 - 14:00", title: "Lunch", desc: "Take a well-earned break and recharge" },
       { time: "14:00 - 17:00", title: "Mentoring sessions", desc: "Get feedback and support from mentors one-on-one" },
-      { time: "18:00 - 18:30", title: "Talk: The story of Planable", desc: "Behind-the-scenes with Nicolae Gudumac (Founder & CTO)" },
+      { time: "18:00 - 18:30", title: "Pitching Workshop ", desc: "Behind-the-scenes with Nicolae Gudumac (Founder & CTO)" },
       { time: "19:00 - 19:30", title: "Dinner", desc: "Refuel and chat with other teams" },
       { time: "21:00 - Late", title: "Night Sprint", desc: "Build, iterate, repeat. Venue stays open late" },
     ],
