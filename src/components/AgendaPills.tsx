@@ -18,7 +18,7 @@ const agendaData = {
     initial: "S",
     events: [
       { time: "09:00 - 09:30", title: "Breakfast", desc: "Start strong with breakfast at the venue" },
-      { time: "10:30 - 11:30", title: "Workshop: GTM Strategy", desc: "Learn go-to-market strategy with Alex Gavril, CEO ▲ promocrat" },
+      { time: "10:30 - 11:30", title: "Workshop: GTM Strategy", desc: "Learn go-to-market strategy with Claudiu Jojatu, CEO Milk&Cookies" },
       { time: "13:00 - 14:00", title: "Lunch", desc: "Take a well-earned break and recharge" },
       { time: "14:00 - 17:00", title: "Mentoring sessions", desc: "Get feedback and support from mentors one-on-one" },
       { time: "18:00 - 18:30", title: "Talk: The story of Planable", desc: "Behind-the-scenes with Nicolae Gudumac (Founder & CTO)" },
