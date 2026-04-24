@@ -31,8 +31,7 @@ const agendaData = {
     initial: "S",
     events: [
       { time: "09:30 - 10:00", title: "Breakfast", desc: "Grab breakfast and prep for the final sprint" },
-      { time: "10:30 - 11:30", title: "Pitching Workshop", desc: "Craft a compelling pitch with Cosmin Pirvu from Veridion" },
-      { time: "12:00 - 13:00", title: "Pitch Practice", desc: "Test your pitch, get feedback, boost confidence" },
+      { time: "11:00 - 13:00", title: "Pitch Practice", desc: "Test your pitch, get feedback, boost confidence" },
       { time: "13:00 - 14:00", title: "Lunch", desc: "Fuel up one last time before the big moment" },
       { time: "14:00 - 15:00", title: "Pitch Prep & Tech Check", desc: "Final polish and make sure everything works" },
       { time: "15:00 - 17:00", title: "Final Presentations", desc: "5 min pitch + 5 min Q&A with the jury. Show what you built!" },
