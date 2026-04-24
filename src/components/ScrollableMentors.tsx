@@ -59,7 +59,7 @@ const mentors: Mentor[] = [
     company: "Veridion",
     image: raduCudalb,
     linkedin: "https://www.linkedin.com/in/radu-cudalb/",
-    objectPosition: "center top",
+    objectPosition: "center 20%",
   },
   {
     name: "Oana Cosman",
@@ -95,7 +95,7 @@ const mentors: Mentor[] = [
     company: "QA DNA",
     image: lianaStoian,
     linkedin: "https://www.linkedin.com/in/liana-st/",
-    objectPosition: "center top",
+    objectPosition: "center 20%",
   },
   {
     name: "Peter Stoica",
