@@ -14,7 +14,16 @@ import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import peterStoica from "@/assets/mentors/peter-stoica.jpg";
 
-const mentors = [
+type Mentor = {
+  name: string;
+  role: string;
+  company: string;
+  image: string;
+  linkedin: string;
+  objectPosition?: string;
+};
+
+const mentors: Mentor[] = [
   {
     name: "Rareș Bănescu",
     role: "Founder",
@@ -28,6 +37,7 @@ const mentors = [
     company: "Supertree",
     image: gianinaCraciun,
     linkedin: "https://www.linkedin.com/in/gianinacraciun/",
+    objectPosition: "center top",
   },
   {
     name: "Valentin Maior",
@@ -49,6 +59,7 @@ const mentors = [
     company: "Veridion",
     image: raduCudalb,
     linkedin: "https://www.linkedin.com/in/radu-cudalb/",
+    objectPosition: "center top",
   },
   {
     name: "Oana Cosman",
@@ -84,6 +95,7 @@ const mentors = [
     company: "QA DNA",
     image: lianaStoian,
     linkedin: "https://www.linkedin.com/in/liana-st/",
+    objectPosition: "center top",
   },
   {
     name: "Peter Stoica",
@@ -287,7 +299,12 @@ export const ScrollableMentors = () => {
       <CardContent className="p-0">
         <div className="relative w-full h-[180px] overflow-hidden">
           {mentor.image ? (
-            <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover" />
+            <img
+              src={mentor.image}
+              alt={mentor.name}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: mentor.objectPosition ?? 'center' }}
+            />
           ) : (
             <div className="w-full h-full bg-muted" />
           )}
@@ -390,7 +407,12 @@ export const ScrollableMentors = () => {
               <CardContent className="p-0">
                 <div className="relative w-full h-[180px] overflow-hidden">
                   {mentor.image ? (
-                    <img src={mentor.image} alt={mentor.name} className="w-full h-full object-cover" />
+                    <img
+                      src={mentor.image}
+                      alt={mentor.name}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: mentor.objectPosition ?? 'center' }}
+                    />
                   ) : (
                     <div className="w-full h-full bg-muted" />
                   )}
