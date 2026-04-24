@@ -722,13 +722,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Agenda */}
-      <section id="agenda" className="py-20 relative no-pattern">
-        <div className="container mx-auto px-4">
-          <AgendaPills />
-        </div>
-      </section>
-
       {/* Sponsors & Partners */}
       <section id="partners" className="py-20 relative">
         <div className="container mx-auto px-4">
@@ -749,6 +742,13 @@ const Home = () => {
 
           <ScrollableSponsors />
 
+        </div>
+      </section>
+
+      {/* Agenda */}
+      <section id="agenda" className="py-20 relative no-pattern">
+        <div className="container mx-auto px-4">
+          <AgendaPills />
         </div>
       </section>
 
