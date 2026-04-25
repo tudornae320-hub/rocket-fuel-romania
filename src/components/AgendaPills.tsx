@@ -33,9 +33,8 @@ const agendaData = {
       { time: "09:00 - 09:30", title: "Breakfast", desc: "Grab breakfast and prep for the final sprint" },
       { time: "11:00 - 13:00", title: "Pitch Practice", desc: "Test your pitch, get feedback, boost confidence" },
       { time: "13:00 - 14:00", title: "Lunch", desc: "Fuel up one last time before the big moment" },
-      { time: "14:00 - 15:00", title: "Pitch Prep & Tech Check", desc: "Final polish and make sure everything works" },
-      { time: "15:00 - 17:00", title: "Final Presentations", desc: "5 min pitch + 5 min Q&A with the jury. Show what you built!" },
-      { time: "17:00 - 19:00", title: "Awards & After Party", desc: "Celebrate an unforgettable weekend together!" },
+      { time: "14:00 - 16:00", title: "Final Presentations", desc: "3 min pitch + 3 min Q&A with the jury. Show what you built!" },
+      { time: "16:00 - 17:00", title: "Awards & Networking", desc: "Celebrate an unforgettable weekend together!" },
     ],
   },
 };
