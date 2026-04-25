@@ -13,6 +13,7 @@ import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg";
 import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import peterStoica from "@/assets/mentors/peter-stoica.jpg";
+import cosminBolocan from "@/assets/mentors/cosmin-bolocan.jpg";
 
 type Mentor = {
   name: string;
@@ -103,6 +104,14 @@ const mentors: Mentor[] = [
     company: "QA DNA",
     image: peterStoica,
     linkedin: "https://www.linkedin.com/in/peter-stoica/",
+  },
+  {
+    name: "Cosmin Bolocan",
+    role: "Co-founder",
+    company: "Brewtifi",
+    image: cosminBolocan,
+    linkedin: "https://www.linkedin.com/in/petre-cosmin-vlad-bolocan/",
+    objectPosition: "center top",
   },
 ];
 
