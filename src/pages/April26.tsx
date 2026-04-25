@@ -151,13 +151,16 @@ const April26 = () => {
               </div>
               <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
                 <p>
-                  Did your team get out and <strong className="font-bold">talk to customers?</strong>
+                  Did the team <strong className="font-bold">validate the problem</strong> with real potential users?
                 </p>
                 <p>
-                  Are you actually <strong className="font-bold">solving a problem?</strong>
+                  Is the problem <strong className="font-bold">clear, specific, and important</strong> enough?
                 </p>
                 <p>
-                  Have you identified a specific <strong className="font-bold">target market?</strong>
+                  Did they identify a clear <strong className="font-bold">target market?</strong>
+                </p>
+                <p>
+                  Is there evidence that people actually <strong className="font-bold">need or want</strong> this solution?
                 </p>
               </div>
             </article>
@@ -172,13 +175,16 @@ const April26 = () => {
               </div>
               <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
                 <p>
-                  Do you have an <strong className="font-bold">mvp or prototype?</strong>
+                  Did the team build a working <strong className="font-bold">MVP, prototype, or clear product demo?</strong>
                 </p>
                 <p>
-                  How <strong className="font-bold">functional</strong> is the mockup or prototype?
+                  How <strong className="font-bold">functional and realistic</strong> is the solution?
                 </p>
                 <p>
-                  <strong className="font-bold">Design matters!</strong> Is your product easy to use?
+                  Is the product <strong className="font-bold">easy to understand and use?</strong>
+                </p>
+                <p>
+                  Does the <strong className="font-bold">design support</strong> the user experience?
                 </p>
               </div>
             </article>
@@ -193,13 +199,16 @@ const April26 = () => {
               </div>
               <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
                 <p>
-                  How do you plan on making this a <strong className="font-bold">successful business?</strong>
+                  Is there a clear plan for how this can <strong className="font-bold">become a business?</strong>
                 </p>
                 <p>
-                  Are you solving a problem? <span className="whitespace-nowrap">(<strong className="font-bold">value proposition</strong>)</span>
+                  Is the <strong className="font-bold">value proposition</strong> strong and easy to understand?
                 </p>
                 <p>
-                  How <strong className="font-bold">unique</strong> is your idea?
+                  Does the team understand <strong className="font-bold">who would pay and why?</strong>
+                </p>
+                <p>
+                  Is the idea <strong className="font-bold">differentiated</strong> from existing alternatives?
                 </p>
               </div>
             </article>
