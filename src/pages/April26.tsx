@@ -140,76 +140,70 @@ const April26 = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-8">
             {/* 01 Validation */}
-            <article className="bg-[#000000] border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
-              <div className="mb-6">
-                <div className="text-off-white font-bold text-2xl leading-none mb-1">01</div>
-                <h3 className="text-off-white font-bold text-3xl md:text-4xl leading-tight">
-                  Validation
-                </h3>
-              </div>
-              <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
-                <p>
-                  Did the team <strong className="font-bold">validate the problem</strong> with real potential users?
-                </p>
-                <p>
-                  Is the problem <strong className="font-bold">clear, specific, and important</strong> enough?
-                </p>
-                <p>
-                  Did they identify a clear <strong className="font-bold">target market?</strong>
-                </p>
-                <p>
-                  Is there evidence that people actually <strong className="font-bold">need or want</strong> this solution?
-                </p>
+            <article className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
+              <div className="flex flex-col md:flex-row md:items-start md:gap-6 gap-4">
+                <div className="flex-shrink-0">
+                  <div className="bg-secondary border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] w-16 h-16 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-secondary-foreground">01</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                    Validation
+                  </h3>
+                  <ul className="space-y-2 text-base md:text-lg text-foreground leading-relaxed list-disc pl-5">
+                    <li>Did the team <strong className="font-bold">validate the problem</strong> with real potential users?</li>
+                    <li>Is the problem <strong className="font-bold">clear, specific, and important</strong> enough?</li>
+                    <li>Did they identify a clear <strong className="font-bold">target market?</strong></li>
+                    <li>Is there evidence that people actually <strong className="font-bold">need or want</strong> this solution?</li>
+                  </ul>
+                </div>
               </div>
             </article>
 
             {/* 02 Execution & Design */}
-            <article className="bg-[#000000] border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
-              <div className="mb-6">
-                <div className="text-off-white font-bold text-2xl leading-none mb-1">02</div>
-                <h3 className="text-off-white font-bold text-3xl md:text-4xl leading-tight">
-                  Execution &amp; Design
-                </h3>
-              </div>
-              <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
-                <p>
-                  Did the team build a working <strong className="font-bold">MVP, prototype, or clear product demo?</strong>
-                </p>
-                <p>
-                  How <strong className="font-bold">functional and realistic</strong> is the solution?
-                </p>
-                <p>
-                  Is the product <strong className="font-bold">easy to understand and use?</strong>
-                </p>
-                <p>
-                  Does the <strong className="font-bold">design support</strong> the user experience?
-                </p>
+            <article className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
+              <div className="flex flex-col md:flex-row md:items-start md:gap-6 gap-4">
+                <div className="flex-shrink-0">
+                  <div className="bg-secondary border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] w-16 h-16 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-secondary-foreground">02</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                    Execution &amp; Design
+                  </h3>
+                  <ul className="space-y-2 text-base md:text-lg text-foreground leading-relaxed list-disc pl-5">
+                    <li>Did the team build a working <strong className="font-bold">MVP, prototype, or clear product demo?</strong></li>
+                    <li>How <strong className="font-bold">functional and realistic</strong> is the solution?</li>
+                    <li>Is the product <strong className="font-bold">easy to understand and use?</strong></li>
+                    <li>Does the <strong className="font-bold">design support</strong> the user experience?</li>
+                  </ul>
+                </div>
               </div>
             </article>
 
             {/* 03 Business Model */}
-            <article className="bg-[#000000] border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
-              <div className="mb-6">
-                <div className="text-off-white font-bold text-2xl leading-none mb-1">03</div>
-                <h3 className="text-off-white font-bold text-3xl md:text-4xl leading-tight">
-                  Business Model
-                </h3>
-              </div>
-              <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
-                <p>
-                  Is there a clear plan for how this can <strong className="font-bold">become a business?</strong>
-                </p>
-                <p>
-                  Is the <strong className="font-bold">value proposition</strong> strong and easy to understand?
-                </p>
-                <p>
-                  Does the team understand <strong className="font-bold">who would pay and why?</strong>
-                </p>
-                <p>
-                  Is the idea <strong className="font-bold">differentiated</strong> from existing alternatives?
-                </p>
+            <article className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
+              <div className="flex flex-col md:flex-row md:items-start md:gap-6 gap-4">
+                <div className="flex-shrink-0">
+                  <div className="bg-secondary border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] w-16 h-16 flex items-center justify-center">
+                    <span className="text-2xl font-bold text-secondary-foreground">03</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                    Business Model
+                  </h3>
+                  <ul className="space-y-2 text-base md:text-lg text-foreground leading-relaxed list-disc pl-5">
+                    <li>Is there a clear plan for how this can <strong className="font-bold">become a business?</strong></li>
+                    <li>Is the <strong className="font-bold">value proposition</strong> strong and easy to understand?</li>
+                    <li>Does the team understand <strong className="font-bold">who would pay and why?</strong></li>
+                    <li>Is the idea <strong className="font-bold">differentiated</strong> from existing alternatives?</li>
+                  </ul>
+                </div>
               </div>
             </article>
           </div>
