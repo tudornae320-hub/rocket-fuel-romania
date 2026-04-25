@@ -47,6 +47,7 @@ const mentors: Mentor[] = [
     company: "SyndiFi Capital",
     image: valentinMaior,
     linkedin: "https://www.linkedin.com/in/valentinmaior/",
+    objectPosition: "center top",
   },
   {
     name: "Cosmin Cosma",
@@ -69,6 +70,7 @@ const mentors: Mentor[] = [
     company: "",
     image: oanaCosman,
     linkedin: "https://www.linkedin.com/in/oanacosman/",
+    objectPosition: "center top",
   },
   {
     name: "Bogdan Deac",
@@ -76,6 +78,7 @@ const mentors: Mentor[] = [
     company: "Stripe",
     image: bogdanDeac,
     linkedin: "https://www.linkedin.com/in/bogdantdeac/",
+    objectPosition: "center top",
   },
   {
     name: "Claudiu Jojatu",
@@ -90,6 +93,7 @@ const mentors: Mentor[] = [
     company: "Endeavor Romania",
     image: mihneaCraciun,
     linkedin: "https://www.linkedin.com/in/mihnea-craciun-7038053/",
+    objectPosition: "center top",
   },
   {
     name: "Liana Stoian",
@@ -105,6 +109,7 @@ const mentors: Mentor[] = [
     company: "QA DNA",
     image: peterStoica,
     linkedin: "https://www.linkedin.com/in/peter-stoica/",
+    objectPosition: "center top",
   },
   {
     name: "Cosmin Bolocan",
@@ -120,6 +125,7 @@ const mentors: Mentor[] = [
     company: "Staffino",
     image: stefanDumitru,
     linkedin: "https://www.linkedin.com/in/stefandumitrucx/",
+    objectPosition: "center top",
   },
 ];
 
