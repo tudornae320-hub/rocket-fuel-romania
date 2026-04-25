@@ -131,23 +131,15 @@ const April26 = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
-            Meet the Teams
+            Mentoring Schedule
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            What our teams are building and where they need a hand from mentors.
+            Find your slot, find your team. Two groups running in parallel.
           </p>
         </div>
 
         {/* Mentoring Schedule */}
         <section className="mb-20">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Mentoring Schedule
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Find your slot, find your team. Two groups running in parallel.
-            </p>
-          </div>
 
           <div className="space-y-10">
             {schedules.map((group) => (
