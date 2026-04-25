@@ -59,7 +59,7 @@ const teams: Team[] = [
   {
     name: "Viba Team",
     pitch:
-      "Viba is a mobile app that shows the live “vibe” of nearby venues and events.\n\nEach place has a real-time channel where people there can post text, voice notes, and photos. Open the app, check the map or list, see what’s happening nearby, and decide where to go.\n\nIt’s for locals, tourists, groups, venues, and hosts who want to know or show what’s actually happening right now.\n\nInstead of stale reviews, curated stories, or slow group chats, Viba makes social content place-based and live, with 24-hour venue channels, simple posting tools, and no infinite feed.",
+      "Viba is a mobile app that shows the live “vibe” of nearby venues and events.\nEach place has a real-time channel where people there can post text, voice notes, and photos. Open the app, check the map or list, see what’s happening nearby, and decide where to go.\nIt’s for locals, tourists, groups, venues, and hosts who want to know or show what’s actually happening right now.\nInstead of stale reviews, curated stories, or slow group chats, Viba makes social content place-based and live, with 24-hour venue channels, simple posting tools, and no infinite feed.",
   },
   {
     name: "TerraTune",
