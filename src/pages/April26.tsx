@@ -5,6 +5,53 @@ interface Team {
   pitch: string;
 }
 
+interface Schedule {
+  title: string;
+  mentors: string[];
+  slots: string[][];
+}
+
+const schedules: Schedule[] = [
+  {
+    title: "Group 1",
+    mentors: [
+      "Bogdan Deac",
+      "Claudiu Jojatu",
+      "Cosmin Cosma",
+      "Stefan Dumitru",
+      "Radu Cudalb",
+      "Rares Banescu",
+    ],
+    slots: [
+      ["CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image", "CumSeFace"],
+      ["Medic75", "CodeArchaeologist", "Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE"],
+      ["CodeArchaeologist", "Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE", "Medic75"],
+      ["Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist"],
+      ["One image", "CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare"],
+      ["CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image"],
+    ],
+  },
+  {
+    title: "Group 2",
+    mentors: [
+      "Gianina Craciun",
+      "Valentin Maior",
+      "Mihnea Craciun",
+      "Oana Cosman",
+      "Peter Stoica",
+      "Liana Stoian",
+    ],
+    slots: [
+      ["CivicMind", "ArtiMedi", "The Sage AI", "PeMal", "Viba Team", "TerraTune"],
+      ["ArtiMedi", "The Sage AI", "PeMal", "Viba Team", "TerraTune", "CivicMind"],
+      ["The Sage AI", "PeMal", "Viba Team", "TerraTune", "CivicMind", "ArtiMedi"],
+      ["PeMal", "Viba Team", "TerraTune", "CivicMind", "ArtiMedi", "The Sage AI"],
+      ["Viba Team", "TerraTune", "CivicMind", "ArtiMedi", "The Sage AI", "PeMal"],
+      ["TerraTune", "CivicMind", "ArtiMedi", "The Sage AI", "PeMal", "Viba Team"],
+    ],
+  },
+];
+
 const teams: Team[] = [
   {
     name: "ArtiMedi",
