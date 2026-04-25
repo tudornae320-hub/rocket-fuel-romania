@@ -122,7 +122,7 @@ const April26 = () => {
 
   return (
     <main className="min-h-screen bg-background pt-32 pb-20 px-4">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="inline-block bg-primary border-2 border-[#000000] rounded-full px-5 py-2 shadow-[4px_4px_0px_0px_#000000] mb-6">
@@ -156,42 +156,40 @@ const April26 = () => {
                   {group.title}
                 </h3>
                 <div className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden">
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm md:text-base border-collapse">
-                      <thead>
-                        <tr className="bg-secondary text-secondary-foreground">
-                          <th className="text-left font-bold px-4 py-3 border-b-2 border-[#000000] border-r-2 whitespace-nowrap">
-                            Slot
+                  <table className="w-full text-xs md:text-sm border-collapse table-fixed">
+                    <thead>
+                      <tr className="bg-secondary text-secondary-foreground">
+                        <th className="text-left font-bold px-2 md:px-3 py-3 border-b-2 border-[#000000] border-r-2 w-[70px] md:w-[80px]">
+                          Slot
+                        </th>
+                        {group.mentors.map((mentor) => (
+                          <th
+                            key={mentor}
+                            className="text-left font-bold px-2 md:px-3 py-3 border-b-2 border-[#000000] border-r-2 last:border-r-0 leading-tight"
+                          >
+                            {mentor}
                           </th>
-                          {group.mentors.map((mentor) => (
-                            <th
-                              key={mentor}
-                              className="text-left font-bold px-4 py-3 border-b-2 border-[#000000] border-r-2 last:border-r-0 whitespace-nowrap"
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {group.slots.map((row, slotIdx) => (
+                        <tr key={slotIdx} className="even:bg-muted/30">
+                          <td className="font-bold px-2 md:px-3 py-3 border-b border-[#000000]/20 border-r-2 border-r-[#000000]">
+                            Slot {slotIdx + 1}
+                          </td>
+                          {row.map((team, i) => (
+                            <td
+                              key={i}
+                              className="px-2 md:px-3 py-3 border-b border-[#000000]/20 border-r border-r-[#000000]/20 last:border-r-0 leading-tight"
                             >
-                              {mentor}
-                            </th>
+                              {team}
+                            </td>
                           ))}
                         </tr>
-                      </thead>
-                      <tbody>
-                        {group.slots.map((row, slotIdx) => (
-                          <tr key={slotIdx} className="even:bg-muted/30">
-                            <td className="font-bold px-4 py-3 border-b border-[#000000]/20 border-r-2 border-r-[#000000] whitespace-nowrap">
-                              Slot {slotIdx + 1}
-                            </td>
-                            {row.map((team, i) => (
-                              <td
-                                key={i}
-                                className="px-4 py-3 border-b border-[#000000]/20 border-r border-r-[#000000]/20 last:border-r-0 whitespace-nowrap"
-                              >
-                                {team}
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             ))}
