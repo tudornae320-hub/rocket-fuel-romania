@@ -13,6 +13,7 @@ import ioanaSerban from "@/assets/mentors/ioana-serban.jpg";
 import tudorPetracovici from "@/assets/mentors/tudor-petracovici.jpg";
 import alexNicoara from "@/assets/mentors/alex-nicoara.jpg";
 import danielDeaconu from "@/assets/mentors/daniel-deaconu.jpg";
+import cosminBolocan from "@/assets/mentors/cosmin-bolocan.jpg";
 
 const pastMentors = [
   { name: "Nicolae Gudumac", role: "Founder & CTO", company: "Planable", image: nicolaeGudumac },
@@ -28,6 +29,7 @@ const pastMentors = [
   { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion", image: tudorPetracovici },
   { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai", image: alexNicoara },
   { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", image: danielDeaconu },
+  { name: "Cosmin Bolocan", role: "Co-founder", company: "Brewtifi", image: cosminBolocan },
 ];
 
 export const PastMentors = () => {
