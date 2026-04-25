@@ -11,6 +11,11 @@ const teams: Team[] = [
     pitch:
       "We're building a lead generation platform to solve the problem of inefficiency in the sales process (or maybe better said in the lead generation part of the process) to customers that are between 5-25 employees in the US/UK/Western Europe that sell high ticket services and constantly needs new clients. We're doing this by using our platform of lead generation so we can profile qualified leads for them.",
   },
+  {
+    name: "Medic75",
+    pitch:
+      "We're building a real-time medicine request platform that connects patients with nearby pharmacies. For patients who urgently need medication, we solve the problem of wasting time calling pharmacy after pharmacy only to hear 'we don't have it.' A patient simply sends a request for a specific medicine, nearby pharmacies receive it instantly, approved the request if available and the patient picks the best option based on availability, distance, or price.",
+  },
 ];
 
 const April26 = () => {
