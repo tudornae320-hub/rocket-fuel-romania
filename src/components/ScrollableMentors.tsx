@@ -14,6 +14,7 @@ import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import peterStoica from "@/assets/mentors/peter-stoica.jpg";
 import cosminBolocan from "@/assets/mentors/cosmin-bolocan.jpg";
+import stefanDumitru from "@/assets/mentors/stefan-dumitru.jpg";
 
 type Mentor = {
   name: string;
@@ -112,6 +113,13 @@ const mentors: Mentor[] = [
     image: cosminBolocan,
     linkedin: "https://www.linkedin.com/in/petre-cosmin-vlad-bolocan/",
     objectPosition: "center top",
+  },
+  {
+    name: "Stefan Dumitru",
+    role: "Regional Manager",
+    company: "Staffino",
+    image: stefanDumitru,
+    linkedin: "https://www.linkedin.com/in/stefandumitrucx/",
   },
 ];
 
