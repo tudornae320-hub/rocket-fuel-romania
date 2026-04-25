@@ -320,7 +320,7 @@ export const ScrollableMentors = () => {
       style={{ transitionProperty: 'transform, opacity, margin, box-shadow, border-color' }}
     >
       <CardContent className="p-0">
-        <div className="relative w-full h-[180px] overflow-hidden">
+        <div className="relative w-full h-[240px] overflow-hidden">
           {mentor.image ? (
             <img
               src={mentor.image}
@@ -428,7 +428,7 @@ export const ScrollableMentors = () => {
               className="overflow-hidden hover:!border-primary hover:shadow-lg transition-all duration-300"
             >
               <CardContent className="p-0">
-                <div className="relative w-full h-[180px] overflow-hidden">
+                <div className="relative w-full h-[240px] overflow-hidden">
                   {mentor.image ? (
                     <img
                       src={mentor.image}
