@@ -59,7 +59,7 @@ const teams: Team[] = [
   {
     name: "Viba Team",
     pitch:
-      "Viba — a mobile app that shows the live 'vibe' of nearby venues and events. Each place has its own real-time channel where people there post text, voice notes and photos. List view, map view, live channels, native keyboard / camera / share sheet — open it, see what's happening tonight in walking distance, decide, go. Who it's for: people who go out — locals deciding where to head tonight, planners picking the spot for their group, tourists with no local network, and the venues/hosts who want to show that something is on right now. Not for review-readers, daily-feed-scrollers, or dating-app users. What problem we solve: reviews are stale, Instagram stories are curated, and group chats are slow — there's no single place to answer 'where is it actually good right now?' People are physically at a venue but talking about it across five different apps, and a huge slice of daily screen time gets spent on social platforms that never lead to a real-world experience. How: by making the unit of social content a place at this moment, not a person's timeline — live channels scoped to each venue with a 24-hour window so everything on screen is about now; three input modes that match nightlife (text, voice, photo); anti-doom-scroll defaults (no infinite feed, no engagement-bait notifications); and web-first delivery so a viba.app link from a friend opens straight to the venue's live channel — no install required.",
+      "Viba is a mobile app that shows the live “vibe” of nearby venues and events.\n\nEach place has a real-time channel where people there can post text, voice notes, and photos. Open the app, check the map or list, see what’s happening nearby, and decide where to go.\n\nIt’s for locals, tourists, groups, venues, and hosts who want to know or show what’s actually happening right now.\n\nInstead of stale reviews, curated stories, or slow group chats, Viba makes social content place-based and live, with 24-hour venue channels, simple posting tools, and no infinite feed.",
   },
   {
     name: "TerraTune",
@@ -115,7 +115,7 @@ const April26 = () => {
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
                     {team.name}
                   </h2>
-                  <p className="text-base md:text-lg text-foreground leading-relaxed">
+                  <p className="text-base md:text-lg text-foreground leading-relaxed whitespace-pre-line">
                     {team.pitch}
                   </p>
                 </div>
