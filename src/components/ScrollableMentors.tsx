@@ -78,6 +78,7 @@ const mentors: Mentor[] = [
     company: "Stripe",
     image: bogdanDeac,
     linkedin: "https://www.linkedin.com/in/bogdantdeac/",
+    objectPosition: "center top",
   },
   {
     name: "Claudiu Jojatu",
