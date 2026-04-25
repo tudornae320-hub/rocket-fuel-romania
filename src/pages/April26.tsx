@@ -155,7 +155,8 @@ const April26 = () => {
                 <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">
                   {group.title}
                 </h3>
-                <div className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden">
+                {/* Desktop table */}
+                <div className="hidden md:block bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden">
                   <table className="w-full text-xs md:text-sm border-collapse table-fixed">
                     <thead>
                       <tr className="bg-secondary text-secondary-foreground">
@@ -190,6 +191,31 @@ const April26 = () => {
                       ))}
                     </tbody>
                   </table>
+                </div>
+
+                {/* Mobile cards */}
+                <div className="md:hidden space-y-4">
+                  {group.slots.map((row, slotIdx) => (
+                    <div
+                      key={slotIdx}
+                      className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden"
+                    >
+                      <div className="bg-secondary text-secondary-foreground px-4 py-2 border-b-2 border-[#000000] font-bold">
+                        Slot {slotIdx + 1}
+                      </div>
+                      <ul className="divide-y divide-[#000000]/15">
+                        {group.mentors.map((mentor, i) => (
+                          <li
+                            key={mentor}
+                            className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm"
+                          >
+                            <span className="font-semibold text-foreground">{mentor}</span>
+                            <span className="text-foreground/80 text-right">{row[i]}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
