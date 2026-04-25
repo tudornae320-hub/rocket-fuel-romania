@@ -122,7 +122,7 @@ const April26 = () => {
 
   return (
     <main className="min-h-screen bg-background pt-32 pb-20 px-4">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="inline-block bg-primary border-2 border-[#000000] rounded-full px-5 py-2 shadow-[4px_4px_0px_0px_#000000] mb-6">
