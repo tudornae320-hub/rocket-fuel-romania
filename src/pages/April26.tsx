@@ -55,11 +55,6 @@ const April26 = () => {
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
                     {team.name}
                   </h2>
-                  <div className="inline-block bg-primary/20 border-2 border-[#000000] rounded-full px-3 py-1 mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-foreground">
-                      Elevator Pitch
-                    </span>
-                  </div>
                   <p className="text-base md:text-lg text-foreground leading-relaxed">
                     {team.pitch}
                   </p>
