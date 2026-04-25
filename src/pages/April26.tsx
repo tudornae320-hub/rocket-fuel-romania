@@ -131,7 +131,7 @@ const April26 = () => {
               Judging Criteria
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              The three lenses to look through when giving feedback or scoring teams.
+              The three lenses to look through when giving feedback.
             </p>
           </div>
 
