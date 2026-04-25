@@ -93,6 +93,7 @@ const mentors: Mentor[] = [
     company: "Endeavor Romania",
     image: mihneaCraciun,
     linkedin: "https://www.linkedin.com/in/mihnea-craciun-7038053/",
+    objectPosition: "center top",
   },
   {
     name: "Liana Stoian",
