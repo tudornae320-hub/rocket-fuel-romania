@@ -16,6 +16,61 @@ const teams: Team[] = [
     pitch:
       "We're building a real-time medicine request platform that connects patients with nearby pharmacies. For patients who urgently need medication, we solve the problem of wasting time calling pharmacy after pharmacy only to hear 'we don't have it.' A patient simply sends a request for a specific medicine, nearby pharmacies receive it instantly, approved the request if available and the patient picks the best option based on availability, distance, or price.",
   },
+  {
+    name: "The Sage",
+    pitch:
+      "We are building an AI Wrapper that guides users through their problem. We help them clear their perspective and their mind, managing a work-life balance.",
+  },
+  {
+    name: "CivicMind",
+    pitch:
+      "CivicMind is developing an AI-powered legislative transparency and personalized civic intelligence platform to help citizens and civic organizations fight misinformation, understand how Romanian laws affect their lives, and hold politicians accountable with live parliamentary and legislative data, semantic search across the full legal corpus, vote tracking, and AI agents that analyze bills, surface similar laws, answer questions, and personalize insights for each user profile.",
+  },
+  {
+    name: "Hackshare",
+    pitch:
+      "Building shouldn't be in silence, but nothing is out there for founders. We are a BeReal for your startup: share realtime progress without wasting time.",
+  },
+  {
+    name: "One Image",
+    pitch:
+      "Influencer analysis using AI. 10 cheaper influencers will create more impact than one big one — we help you find those ones and make data driven decisions.",
+  },
+  {
+    name: "CodeArchaeologist",
+    pitch:
+      "The Product: A web app where a junior developer pastes in a file of confusing, legacy code. The tool instantly generates simple, plain-English documentation and adds line-by-line comments explaining the logic. The Target Audience: Mid-sized companies struggling to onboard junior developers. The Problem: Senior engineers retire or quit, leaving behind thousands of lines of old, completely undocumented code. Junior developers waste weeks just trying to understand what the code actually does.",
+  },
+  {
+    name: "CumSeFace",
+    pitch:
+      "We are building an automated system for consultancy firms that maps legislative changes directly onto their client portfolios and generates concrete action plans for each, eliminating the need for manual research. Consultants waste hundreds of unbillable hours manually tracking legislative updates and cross-referencing them against client data. This 'manual research gap' leads to missed opportunities, human error, and slow response times. Our system automatically maps real-time legislative changes directly onto a firm's client portfolio. It generates alerts on new legislation and key insights on how the changes could affect their customers.",
+  },
+  {
+    name: "ArtiMedi",
+    pitch:
+      "ArtiMedi is a platform for underprivileged students preparing for national exams like the capacity exam and the baccalaureate. We solve the lack of access to quality tutoring by offering memberships that provide an AI-powered tutor with personalized lessons, practice, and feedback — so every student has a fair chance to succeed.",
+  },
+  {
+    name: "PeMal",
+    pitch:
+      "PeMal is a peer-to-peer business model that intermediates the process of booking a spot for fishing. It also serves as a way for fishing pond owners to access a broader audience by listing all of their rules and facilities. The problem we're trying to solve is the fact that the majority of anglers don't have the certainty that they have a stand secured just by calling, since pond owners often give out the spots based on connections and so on. Also, many times the conditions and rules are not accurate when you arrive there, resulting in extra taxes and things like this. We bring a system that allows both the angler and the owner to reach out, clarify the conditions, see the free spots, and give the option to choose where you'll sit. This way, pond owners benefit from much easier schedule management, not having to worry about calls, hours, or when and who comes.",
+  },
+  {
+    name: "Viba Team",
+    pitch:
+      "Viba — a mobile app that shows the live 'vibe' of nearby venues and events. Each place has its own real-time channel where people there post text, voice notes and photos. List view, map view, live channels, native keyboard / camera / share sheet — open it, see what's happening tonight in walking distance, decide, go. Who it's for: people who go out — locals deciding where to head tonight, planners picking the spot for their group, tourists with no local network, and the venues/hosts who want to show that something is on right now. Not for review-readers, daily-feed-scrollers, or dating-app users. What problem we solve: reviews are stale, Instagram stories are curated, and group chats are slow — there's no single place to answer 'where is it actually good right now?' People are physically at a venue but talking about it across five different apps, and a huge slice of daily screen time gets spent on social platforms that never lead to a real-world experience. How: by making the unit of social content a place at this moment, not a person's timeline — live channels scoped to each venue with a 24-hour window so everything on screen is about now; three input modes that match nightlife (text, voice, photo); anti-doom-scroll defaults (no infinite feed, no engagement-bait notifications); and web-first delivery so a viba.app link from a friend opens straight to the venue's live channel — no install required.",
+  },
+  {
+    name: "TerraTune",
+    pitch:
+      "We're building an AI-powered platform that guides farmers through every stage of the agricultural season — from soil preparation to harvest. It's built for Romanian farmers managing between 20 and 500 hectares, who make critical decisions daily without access to an agronomist. The problem is that most farmers in Romania operate without specialized advisory support. They rely on intuition, local tradition, and occasional calls to input suppliers — which leads to mistimed interventions, wasted inputs, and lost yield. Hiring a full-time agronomist costs 1,000–1,500€/month, which most small and mid-sized farms can't justify. We solve this by combining real-time weather data, soil sensor integration, and crop-specific logic into a single dashboard that tells the farmer what to do, when, and why. The platform onboards each farmer with their location, farm size, and crop types, then generates a personalized calendar of agricultural tasks with alerts triggered by actual field conditions — not generic schedules.",
+  },
+  {
+    name: "The Sage AI",
+    pitch:
+      "The Sage is developing an AI Wisdom Coach to help professionals who seem successful on the outside, but feel stuck on the inside — caught in decision paralysis, unclarity and patterns that keep repeating over and over again. The Sage AI diagnoses root causes and delivers precise, actionable solutions drawn from Buddhist psychology — one of the oldest and most rigorous cause-and-effect systems ever developed for the evolution of the human mind. No spirituality required. Pure logic. Cause & Effect.",
+  },
 ];
 
 const April26 = () => {
