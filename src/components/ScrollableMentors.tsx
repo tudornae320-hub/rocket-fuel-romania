@@ -70,6 +70,7 @@ const mentors: Mentor[] = [
     company: "",
     image: oanaCosman,
     linkedin: "https://www.linkedin.com/in/oanacosman/",
+    objectPosition: "center top",
   },
   {
     name: "Bogdan Deac",
