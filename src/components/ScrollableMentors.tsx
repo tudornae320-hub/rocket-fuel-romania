@@ -47,6 +47,7 @@ const mentors: Mentor[] = [
     company: "SyndiFi Capital",
     image: valentinMaior,
     linkedin: "https://www.linkedin.com/in/valentinmaior/",
+    objectPosition: "center top",
   },
   {
     name: "Cosmin Cosma",
