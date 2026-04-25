@@ -112,14 +112,6 @@ const mentors: Mentor[] = [
     objectPosition: "center top",
   },
   {
-    name: "Cosmin Bolocan",
-    role: "Co-founder",
-    company: "Brewtifi",
-    image: cosminBolocan,
-    linkedin: "https://www.linkedin.com/in/petre-cosmin-vlad-bolocan/",
-    objectPosition: "center top",
-  },
-  {
     name: "Stefan Dumitru",
     role: "Regional Manager",
     company: "Staffino",
