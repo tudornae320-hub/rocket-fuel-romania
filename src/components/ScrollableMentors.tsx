@@ -109,6 +109,7 @@ const mentors: Mentor[] = [
     company: "QA DNA",
     image: peterStoica,
     linkedin: "https://www.linkedin.com/in/peter-stoica/",
+    objectPosition: "center top",
   },
   {
     name: "Cosmin Bolocan",
