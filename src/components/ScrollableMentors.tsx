@@ -105,6 +105,14 @@ const mentors: Mentor[] = [
     image: peterStoica,
     linkedin: "https://www.linkedin.com/in/peter-stoica/",
   },
+  {
+    name: "Cosmin Bolocan",
+    role: "Co-founder",
+    company: "Brewtifi",
+    image: cosminBolocan,
+    linkedin: "https://www.linkedin.com/in/petre-cosmin-vlad-bolocan/",
+    objectPosition: "center top",
+  },
 ];
 
 const HOVER_ENTER_DELAY = 80;
