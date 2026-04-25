@@ -5,6 +5,53 @@ interface Team {
   pitch: string;
 }
 
+interface Schedule {
+  title: string;
+  mentors: string[];
+  slots: string[][];
+}
+
+const schedules: Schedule[] = [
+  {
+    title: "Group 1",
+    mentors: [
+      "Bogdan Deac",
+      "Claudiu Jojatu",
+      "Cosmin Cosma",
+      "Stefan Dumitru",
+      "Radu Cudalb",
+      "Rares Banescu",
+    ],
+    slots: [
+      ["CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image", "CumSeFace"],
+      ["Medic75", "CodeArchaeologist", "Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE"],
+      ["CodeArchaeologist", "Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE", "Medic75"],
+      ["Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist"],
+      ["One image", "CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare"],
+      ["CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image"],
+    ],
+  },
+  {
+    title: "Group 2",
+    mentors: [
+      "Gianina Craciun",
+      "Valentin Maior",
+      "Mihnea Craciun",
+      "Oana Cosman",
+      "Peter Stoica",
+      "Liana Stoian",
+    ],
+    slots: [
+      ["CivicMind", "ArtiMedi", "The Sage AI", "PeMal", "Viba Team", "TerraTune"],
+      ["ArtiMedi", "The Sage AI", "PeMal", "Viba Team", "TerraTune", "CivicMind"],
+      ["The Sage AI", "PeMal", "Viba Team", "TerraTune", "CivicMind", "ArtiMedi"],
+      ["PeMal", "Viba Team", "TerraTune", "CivicMind", "ArtiMedi", "The Sage AI"],
+      ["Viba Team", "TerraTune", "CivicMind", "ArtiMedi", "The Sage AI", "PeMal"],
+      ["TerraTune", "CivicMind", "ArtiMedi", "The Sage AI", "PeMal", "Viba Team"],
+    ],
+  },
+];
+
 const teams: Team[] = [
   {
     name: "ArtiMedi",
@@ -90,6 +137,66 @@ const April26 = () => {
             What our teams are building and where they need a hand from mentors.
           </p>
         </div>
+
+        {/* Mentoring Schedule */}
+        <section className="mb-20">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Mentoring Schedule
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Find your slot, find your team. Two groups running in parallel.
+            </p>
+          </div>
+
+          <div className="space-y-10">
+            {schedules.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-4">
+                  {group.title}
+                </h3>
+                <div className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm md:text-base border-collapse">
+                      <thead>
+                        <tr className="bg-secondary text-secondary-foreground">
+                          <th className="text-left font-bold px-4 py-3 border-b-2 border-[#000000] border-r-2 whitespace-nowrap">
+                            Slot
+                          </th>
+                          {group.mentors.map((mentor) => (
+                            <th
+                              key={mentor}
+                              className="text-left font-bold px-4 py-3 border-b-2 border-[#000000] border-r-2 last:border-r-0 whitespace-nowrap"
+                            >
+                              {mentor}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {group.slots.map((row, slotIdx) => (
+                          <tr key={slotIdx} className="even:bg-muted/30">
+                            <td className="font-bold px-4 py-3 border-b border-[#000000]/20 border-r-2 border-r-[#000000] whitespace-nowrap">
+                              Slot {slotIdx + 1}
+                            </td>
+                            {row.map((team, i) => (
+                              <td
+                                key={i}
+                                className="px-4 py-3 border-b border-[#000000]/20 border-r border-r-[#000000]/20 last:border-r-0 whitespace-nowrap"
+                              >
+                                {team}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Teams */}
         <div className="grid grid-cols-1 gap-8">
