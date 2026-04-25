@@ -114,6 +114,13 @@ const mentors: Mentor[] = [
     linkedin: "https://www.linkedin.com/in/petre-cosmin-vlad-bolocan/",
     objectPosition: "center top",
   },
+  {
+    name: "Stefan Dumitru",
+    role: "Regional Manager",
+    company: "Staffino",
+    image: stefanDumitru,
+    linkedin: "https://www.linkedin.com/in/stefandumitrucx/",
+  },
 ];
 
 const HOVER_ENTER_DELAY = 80;
