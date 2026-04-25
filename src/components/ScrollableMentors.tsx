@@ -125,6 +125,7 @@ const mentors: Mentor[] = [
     company: "Staffino",
     image: stefanDumitru,
     linkedin: "https://www.linkedin.com/in/stefandumitrucx/",
+    objectPosition: "center top",
   },
 ];
 
