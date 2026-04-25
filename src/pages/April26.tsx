@@ -124,6 +124,88 @@ const April26 = () => {
           ))}
         </div>
 
+        {/* Judging Criteria */}
+        <section className="mt-20">
+          <div className="text-center mb-10">
+            <div className="inline-block bg-secondary border-2 border-[#000000] rounded-full px-5 py-2 shadow-[4px_4px_0px_0px_#000000] mb-6">
+              <span className="font-bold text-secondary-foreground text-sm uppercase tracking-wider">
+                For the mentors
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Judging Criteria
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+              The three lenses to look through when giving feedback or scoring teams.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* 01 Validation */}
+            <article className="bg-[#000000] border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
+              <div className="mb-6">
+                <div className="text-off-white font-bold text-2xl leading-none mb-1">01</div>
+                <h3 className="text-off-white font-bold text-3xl md:text-4xl leading-tight">
+                  Validation
+                </h3>
+              </div>
+              <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
+                <p>
+                  Did your team get out and <strong className="font-bold">talk to customers?</strong>
+                </p>
+                <p>
+                  Are you actually <strong className="font-bold">solving a problem?</strong>
+                </p>
+                <p>
+                  Have you identified a specific <strong className="font-bold">target market?</strong>
+                </p>
+              </div>
+            </article>
+
+            {/* 02 Execution & Design */}
+            <article className="bg-[#000000] border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
+              <div className="mb-6">
+                <div className="text-off-white font-bold text-2xl leading-none mb-1">02</div>
+                <h3 className="text-off-white font-bold text-3xl md:text-4xl leading-tight">
+                  Execution &amp; Design
+                </h3>
+              </div>
+              <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
+                <p>
+                  Do you have an <strong className="font-bold">mvp or prototype?</strong>
+                </p>
+                <p>
+                  How <strong className="font-bold">functional</strong> is the mockup or prototype?
+                </p>
+                <p>
+                  <strong className="font-bold">Design matters!</strong> Is your product easy to use?
+                </p>
+              </div>
+            </article>
+
+            {/* 03 Business Model */}
+            <article className="bg-[#000000] border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] p-6 md:p-8 hover-lift">
+              <div className="mb-6">
+                <div className="text-off-white font-bold text-2xl leading-none mb-1">03</div>
+                <h3 className="text-off-white font-bold text-3xl md:text-4xl leading-tight">
+                  Business Model
+                </h3>
+              </div>
+              <div className="space-y-5 text-primary text-lg md:text-xl leading-snug">
+                <p>
+                  How do you plan on making this a <strong className="font-bold">successful business?</strong>
+                </p>
+                <p>
+                  Are you solving a problem? <span className="whitespace-nowrap">(<strong className="font-bold">value proposition</strong>)</span>
+                </p>
+                <p>
+                  How <strong className="font-bold">unique</strong> is your idea?
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
         {/* Footer note */}
         <div className="mt-16 text-center">
           <p className="text-muted-foreground text-sm">
