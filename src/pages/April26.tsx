@@ -215,6 +215,17 @@ const April26 = () => {
         </section>
 
         {/* Teams */}
+        <section className="mb-12">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Meet the Teams
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+              What our teams are building and where they need a hand from mentors.
+            </p>
+          </div>
+        </section>
+
         <div className="grid grid-cols-1 gap-8">
           {teams.map((team, idx) => (
             <article
