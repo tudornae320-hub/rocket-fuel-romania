@@ -23,12 +23,12 @@ const schedules: Schedule[] = [
       "Rares Banescu",
     ],
     slots: [
-      ["CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image", "CumSeFace"],
-      ["Medic75", "CodeArchaeologist", "Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE"],
-      ["CodeArchaeologist", "Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE", "Medic75"],
-      ["Hackshare", "One image", "CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist"],
-      ["One image", "CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare"],
-      ["CumSeFace", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image"],
+      ["CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image", "Acta"],
+      ["Medic75", "CodeArchaeologist", "Hackshare", "One image", "Acta", "CTRL ALT ELITE"],
+      ["CodeArchaeologist", "Hackshare", "One image", "Acta", "CTRL ALT ELITE", "Medic75"],
+      ["Hackshare", "One image", "Acta", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist"],
+      ["One image", "Acta", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare"],
+      ["Acta", "CTRL ALT ELITE", "Medic75", "CodeArchaeologist", "Hackshare", "One image"],
     ],
   },
   {
@@ -74,9 +74,9 @@ const teams: Team[] = [
       "CTRL ALT ELITE is a lead generation platform for small B2B companies selling high-ticket services in the US, UK, and Western Europe. It helps companies with 5–25 employees find and profile qualified leads faster. The platform improves sales efficiency by focusing on better lead generation.",
   },
   {
-    name: "CumSeFace",
+    name: "Acta",
     pitch:
-      "CumSeFace is an automated legislative monitoring platform for consultancy firms. It tracks legislative changes, maps them to client portfolios, and generates concrete action plans for each client. This reduces manual research, missed opportunities, human error, and slow response times.",
+      "Acta is an automated legislative monitoring platform for consultancy firms. It tracks legislative changes, maps them to client portfolios, and generates concrete action plans for each client. This reduces manual research, missed opportunities, human error, and slow response times.",
   },
   {
     name: "Hackshare",
