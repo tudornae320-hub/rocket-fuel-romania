@@ -7,69 +7,64 @@ interface Team {
 
 const teams: Team[] = [
   {
-    name: "CTRL ALT ELITE",
+    name: "ArtiMedi",
     pitch:
-      "We're building a lead generation platform to solve the problem of inefficiency in the sales process (or maybe better said in the lead generation part of the process) to customers that are between 5-25 employees in the US/UK/Western Europe that sell high ticket services and constantly needs new clients. We're doing this by using our platform of lead generation so we can profile qualified leads for them.",
-  },
-  {
-    name: "Medic75",
-    pitch:
-      "We're building a real-time medicine request platform that connects patients with nearby pharmacies. For patients who urgently need medication, we solve the problem of wasting time calling pharmacy after pharmacy only to hear 'we don't have it.' A patient simply sends a request for a specific medicine, nearby pharmacies receive it instantly, approved the request if available and the patient picks the best option based on availability, distance, or price.",
-  },
-  {
-    name: "The Sage",
-    pitch:
-      "We are building an AI Wrapper that guides users through their problem. We help them clear their perspective and their mind, managing a work-life balance.",
+      "ArtiMedi is an AI tutoring platform for underprivileged students preparing for national exams like Evaluarea Nationala and Bacalaureat. It offers personalized lessons, practice, and feedback through memberships, helping students access quality learning support regardless of background. The goal is to give every student a fair chance to succeed.",
   },
   {
     name: "CivicMind",
     pitch:
-      "CivicMind is developing an AI-powered legislative transparency and personalized civic intelligence platform to help citizens and civic organizations fight misinformation, understand how Romanian laws affect their lives, and hold politicians accountable with live parliamentary and legislative data, semantic search across the full legal corpus, vote tracking, and AI agents that analyze bills, surface similar laws, answer questions, and personalize insights for each user profile.",
-  },
-  {
-    name: "Hackshare",
-    pitch:
-      "Building shouldn't be in silence, but nothing is out there for founders. We are a BeReal for your startup: share realtime progress without wasting time.",
-  },
-  {
-    name: "One Image",
-    pitch:
-      "Influencer analysis using AI. 10 cheaper influencers will create more impact than one big one — we help you find those ones and make data driven decisions.",
+      "CivicMind is an AI-powered civic intelligence platform for citizens and civic organizations in Romania. It helps people understand laws, track political decisions, and fight misinformation using live legislative data, semantic search, vote tracking, and personalized AI insights. The platform makes complex legal and political information easier to understand and act on.",
   },
   {
     name: "CodeArchaeologist",
     pitch:
-      "The Product: A web app where a junior developer pastes in a file of confusing, legacy code. The tool instantly generates simple, plain-English documentation and adds line-by-line comments explaining the logic. The Target Audience: Mid-sized companies struggling to onboard junior developers. The Problem: Senior engineers retire or quit, leaving behind thousands of lines of old, completely undocumented code. Junior developers waste weeks just trying to understand what the code actually does.",
+      "CodeArchaeologist is a web app that helps junior developers understand confusing legacy code. Users paste in undocumented code, and the tool generates simple explanations, documentation, and line-by-line comments. It helps companies onboard developers faster and reduce time lost understanding old codebases.",
+  },
+  {
+    name: "CTRL ALT ELITE",
+    pitch:
+      "CTRL ALT ELITE is a lead generation platform for small B2B companies selling high-ticket services in the US, UK, and Western Europe. It helps companies with 5–25 employees find and profile qualified leads faster. The platform improves sales efficiency by focusing on better lead generation.",
   },
   {
     name: "CumSeFace",
     pitch:
-      "We are building an automated system for consultancy firms that maps legislative changes directly onto their client portfolios and generates concrete action plans for each, eliminating the need for manual research. Consultants waste hundreds of unbillable hours manually tracking legislative updates and cross-referencing them against client data. This 'manual research gap' leads to missed opportunities, human error, and slow response times. Our system automatically maps real-time legislative changes directly onto a firm's client portfolio. It generates alerts on new legislation and key insights on how the changes could affect their customers.",
+      "CumSeFace is an automated legislative monitoring platform for consultancy firms. It tracks legislative changes, maps them to client portfolios, and generates concrete action plans for each client. This reduces manual research, missed opportunities, human error, and slow response times.",
   },
   {
-    name: "ArtiMedi",
+    name: "Hackshare",
     pitch:
-      "ArtiMedi is a platform for underprivileged students preparing for national exams like the capacity exam and the baccalaureate. We solve the lack of access to quality tutoring by offering memberships that provide an AI-powered tutor with personalized lessons, practice, and feedback — so every student has a fair chance to succeed.",
+      "Hackshare is a real-time progress sharing platform for founders and builders. It helps startup teams share what they are building without polished updates, long posts, or social media noise. The focus is on quick, authentic progress updates for startups.",
+  },
+  {
+    name: "Medic75",
+    pitch:
+      "Medic75 is a real-time medicine request platform connecting patients with nearby pharmacies. Patients request a specific medicine, pharmacies confirm availability, and the patient chooses the best option based on distance, price, or stock. It helps people avoid wasting time calling multiple pharmacies.",
+  },
+  {
+    name: "One image",
+    pitch:
+      "One image is an AI-powered influencer analysis platform for brands and marketing teams. It helps companies identify smaller, more cost-effective influencers who can create stronger campaign impact than one expensive large creator. The platform supports more data-driven influencer marketing decisions.",
   },
   {
     name: "PeMal",
     pitch:
-      "PeMal is a peer-to-peer business model that intermediates the process of booking a spot for fishing. It also serves as a way for fishing pond owners to access a broader audience by listing all of their rules and facilities. The problem we're trying to solve is the fact that the majority of anglers don't have the certainty that they have a stand secured just by calling, since pond owners often give out the spots based on connections and so on. Also, many times the conditions and rules are not accurate when you arrive there, resulting in extra taxes and things like this. We bring a system that allows both the angler and the owner to reach out, clarify the conditions, see the free spots, and give the option to choose where you'll sit. This way, pond owners benefit from much easier schedule management, not having to worry about calls, hours, or when and who comes.",
-  },
-  {
-    name: "Viba Team",
-    pitch:
-      "Viba is a mobile app that shows the live “vibe” of nearby venues and events.\nEach place has a real-time channel where people there can post text, voice notes, and photos. Open the app, check the map or list, see what’s happening nearby, and decide where to go.\nIt’s for locals, tourists, groups, venues, and hosts who want to know or show what’s actually happening right now.\nInstead of stale reviews, curated stories, or slow group chats, Viba makes social content place-based and live, with 24-hour venue channels, simple posting tools, and no infinite feed.",
+      "PeMal is a booking platform for fishing spots, connecting anglers with fishing pond owners. Anglers can see available spots, rules, facilities, and conditions before booking, while owners manage reservations more easily. It brings more transparency and predictability to the fishing experience.",
   },
   {
     name: "TerraTune",
     pitch:
-      "An AI-powered platform that guides Romanian farmers through the agricultural season, from soil preparation to harvest.\nIt’s built for farmers managing 20–500 hectares who often make daily decisions without access to an agronomist.\nThe platform combines weather data, soil sensor inputs, and crop-specific logic to recommend what to do, when, and why. Each farmer gets a personalized task calendar and alerts based on real field conditions, not generic schedules.",
+      "TerraTune is an AI farming assistant for Romanian farmers managing 20–500 hectares. It guides farmers through the agricultural season using weather data, soil sensor inputs, and crop-specific logic. The platform recommends what to do, when, and why, based on real field conditions.",
   },
   {
     name: "The Sage AI",
     pitch:
-      "The Sage is developing an AI Wisdom Coach to help professionals who seem successful on the outside, but feel stuck on the inside — caught in decision paralysis, unclarity and patterns that keep repeating over and over again. The Sage AI diagnoses root causes and delivers precise, actionable solutions drawn from Buddhist psychology — one of the oldest and most rigorous cause-and-effect systems ever developed for the evolution of the human mind. No spirituality required. Pure logic. Cause & Effect.",
+      "The Sage AI is an AI wisdom coach for professionals who seem successful on the outside but feel stuck on the inside. It helps diagnose root causes behind decision paralysis, lack of clarity, and repeating patterns. The guidance is based on logic, cause and effect, and Buddhist psychology, without requiring spirituality.",
+  },
+  {
+    name: "Viba",
+    pitch:
+      "Viba is a real-time cultural discovery app for people who want to make the most of what is happening around them. It shows nearby events, venues, and social activity in one place, using real-time updates, smart curation, and location-based recommendations. The goal is to help people stop scrolling and start experiencing the city in real life.",
   },
 ];
 
