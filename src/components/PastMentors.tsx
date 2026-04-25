@@ -29,6 +29,7 @@ const pastMentors = [
   { name: "Tudor Petracovici", role: "Full Stack Engineer", company: "Veridion", image: tudorPetracovici },
   { name: "Alex Nicoară", role: "Co-founder", company: "Soulmag.ai", image: alexNicoara },
   { name: "Daniel Deaconu", role: "Founder", company: "The Simplifier", image: danielDeaconu },
+  { name: "Cosmin Bolocan", role: "Co-founder", company: "Brewtifi", image: cosminBolocan },
 ];
 
 export const PastMentors = () => {
