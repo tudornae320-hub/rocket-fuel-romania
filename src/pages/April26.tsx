@@ -64,7 +64,7 @@ const teams: Team[] = [
   {
     name: "TerraTune",
     pitch:
-      "We're building an AI-powered platform that guides farmers through every stage of the agricultural season — from soil preparation to harvest. It's built for Romanian farmers managing between 20 and 500 hectares, who make critical decisions daily without access to an agronomist. The problem is that most farmers in Romania operate without specialized advisory support. They rely on intuition, local tradition, and occasional calls to input suppliers — which leads to mistimed interventions, wasted inputs, and lost yield. Hiring a full-time agronomist costs 1,000–1,500€/month, which most small and mid-sized farms can't justify. We solve this by combining real-time weather data, soil sensor integration, and crop-specific logic into a single dashboard that tells the farmer what to do, when, and why. The platform onboards each farmer with their location, farm size, and crop types, then generates a personalized calendar of agricultural tasks with alerts triggered by actual field conditions — not generic schedules.",
+      "An AI-powered platform that guides Romanian farmers through the agricultural season, from soil preparation to harvest.\nIt’s built for farmers managing 20–500 hectares who often make daily decisions without access to an agronomist.\nThe platform combines weather data, soil sensor inputs, and crop-specific logic to recommend what to do, when, and why. Each farmer gets a personalized task calendar and alerts based on real field conditions, not generic schedules.",
   },
   {
     name: "The Sage AI",
