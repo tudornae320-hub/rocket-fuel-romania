@@ -14,6 +14,7 @@ import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import peterStoica from "@/assets/mentors/peter-stoica.jpg";
 import cosminBolocan from "@/assets/mentors/cosmin-bolocan.jpg";
+import stefanDumitru from "@/assets/mentors/stefan-dumitru.jpg";
 
 type Mentor = {
   name: string;
