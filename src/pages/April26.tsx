@@ -204,12 +204,6 @@ const April26 = () => {
           </div>
         </section>
 
-        {/* Footer note */}
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground text-sm">
-            More teams coming soon as they pitch and form. 🚀
-          </p>
-        </div>
       </div>
     </main>
   );
