@@ -127,11 +127,6 @@ const April26 = () => {
         {/* Judging Criteria */}
         <section className="mt-20">
           <div className="text-center mb-10">
-            <div className="inline-block bg-secondary border-2 border-[#000000] rounded-full px-5 py-2 shadow-[4px_4px_0px_0px_#000000] mb-6">
-              <span className="font-bold text-secondary-foreground text-sm uppercase tracking-wider">
-                For the mentors
-              </span>
-            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
               Judging Criteria
             </h2>
