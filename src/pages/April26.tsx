@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import alexGavril from "@/assets/mentors/alex-gavril.jpg";
+import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
 
 interface Jury {
   name: string;
@@ -23,6 +24,12 @@ const jury: Jury[] = [
     role: "CEO",
     company: "▲ promocrat",
     image: alexGavril,
+  },
+  {
+    name: "Aleodor Tabarcea",
+    role: "Engineering Manager",
+    company: "Stripe",
+    image: aleodorTabarcea,
   },
 ];
 
