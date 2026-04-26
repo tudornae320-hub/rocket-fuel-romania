@@ -1,4 +1,30 @@
 import { useEffect } from "react";
+import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
+import alexGavril from "@/assets/mentors/alex-gavril.jpg";
+
+interface Jury {
+  name: string;
+  role: string;
+  company: string;
+  image: string;
+  objectPosition?: string;
+}
+
+const jury: Jury[] = [
+  {
+    name: "Liana Stoian",
+    role: "CEO",
+    company: "QA DNA",
+    image: lianaStoian,
+    objectPosition: "center 20%",
+  },
+  {
+    name: "Alex Gavril",
+    role: "CEO",
+    company: "▲ promocrat",
+    image: alexGavril,
+  },
+];
 
 interface Team {
   name: string;
