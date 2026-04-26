@@ -18,7 +18,16 @@ import mentorsSectionPhoto from "@/assets/mentors-section-photo.webp";
 
 import stripeLogo from "@/assets/sponsors/stripe.png";
 import techstarsLogo from "@/assets/sponsors/techstars.webp";
+import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
+import alexGavril from "@/assets/mentors/alex-gavril.jpg";
+import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
 import { AgendaPills } from "@/components/AgendaPills";
+
+const jury = [
+  { name: "Liana Stoian", role: "CEO", company: "QA DNA", image: lianaStoian, objectPosition: "center 20%" },
+  { name: "Alex Gavril", role: "CEO", company: "▲ promocrat", image: alexGavril },
+  { name: "Aleodor Tabarcea", role: "Engineering Manager", company: "Stripe", image: aleodorTabarcea },
+];
 
 const Home = () => {
   const hoursSectionRef = useRef<HTMLElement>(null);
@@ -717,8 +726,49 @@ const Home = () => {
           </div>
 
           <ScrollableMentors />
+        </div>
+      </section>
 
-          {/* <InteractiveJuryGrid /> */}
+      {/* Meet the Jury */}
+      <section id="jury" className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Meet the Jury
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+              The minds judging your final pitches on Sunday.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {jury.map((member) => (
+              <article
+                key={member.name}
+                className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden hover-lift"
+              >
+                <div className="w-full aspect-square overflow-hidden border-b-2 border-[#000000]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: member.objectPosition ?? "center" }}
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm md:text-base text-secondary font-semibold">
+                    {member.role}
+                  </p>
+                  <p className="text-sm md:text-base text-muted-foreground">
+                    {member.company}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
