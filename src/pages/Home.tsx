@@ -371,7 +371,7 @@ const Home = () => {
               </button>
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
                 <Calendar className="w-6 h-6 text-primary" />
-                <span>24-26 April 2026</span>
+                <span>9-11 October 2026</span>
               </div>
               <a
                 href="https://maps.app.goo.gl/BtaQYVHwCtPM78ok6"
