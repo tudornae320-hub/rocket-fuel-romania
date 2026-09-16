@@ -711,7 +711,7 @@ const Home = () => {
                   />
                 </svg>
                 <h2 className="relative text-4xl md:text-5xl font-bold leading-tight">
-                  <span className="block">Speakers &</span>
+                  <span className="block">Previous</span>
                   <span className="block">Mentors</span>
                 </h2>
               </div>
@@ -728,7 +728,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Meet the Jury
+              Previous Jury
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               The minds judging your final pitches on Sunday.
