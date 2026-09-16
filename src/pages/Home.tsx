@@ -711,7 +711,7 @@ const Home = () => {
                   />
                 </svg>
                 <h2 className="relative text-4xl md:text-5xl font-bold leading-tight">
-                  <span className="block">Speakers &</span>
+                  <span className="block">Previous</span>
                   <span className="block">Mentors</span>
                 </h2>
               </div>
