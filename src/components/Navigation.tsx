@@ -73,7 +73,7 @@ export const Navigation = () => {
               Past Editions
             </Link>
             <a
-              href="https://buy.stripe.com/4gMbJ1gEdaZJeHddqX1gs04"
+              href="https://buy.stripe.com/cNi8wP3Rr2tdbv19aH1gs08"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -128,7 +128,7 @@ export const Navigation = () => {
                 Past Editions
               </Link>
               <a
-                href="https://buy.stripe.com/4gMbJ1gEdaZJeHddqX1gs04"
+                href="https://buy.stripe.com/cNi8wP3Rr2tdbv19aH1gs08"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full"

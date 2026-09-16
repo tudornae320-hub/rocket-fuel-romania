@@ -386,7 +386,7 @@ const PastEditions = () => {
 
   const handleButtonClick = () => {
     createConfetti();
-    window.open("https://buy.stripe.com/4gMbJ1gEdaZJeHddqX1gs04", "_blank");
+    window.open("https://buy.stripe.com/cNi8wP3Rr2tdbv19aH1gs08", "_blank");
     if (isMobile) {
       setEmojiProgress(1);
       setTimeout(() => setEmojiProgress(0), 750);
