@@ -373,18 +373,12 @@ const Home = () => {
                 <Calendar className="w-6 h-6 text-primary" />
                 <span>9-11 October 2026</span>
               </div>
-              <a
-                href="https://maps.app.goo.gl/BtaQYVHwCtPM78ok6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 text-off-white/90 hover:text-primary transition-colors"
-              >
+              <div className="flex items-start gap-3 text-off-white/90">
                 <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                 <span className="flex flex-col">
-                  <span className="text-lg md:text-xl font-semibold">Nova Coworking Excelsior</span>
-                  <span className="text-sm md:text-base text-off-white/60">Strada Academiei 28-30, București</span>
+                  <span className="text-lg md:text-xl font-semibold">TBC</span>
                 </span>
-              </a>
+              </div>
             </div>
           </div>
 
