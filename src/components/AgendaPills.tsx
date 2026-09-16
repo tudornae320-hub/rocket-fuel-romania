@@ -18,7 +18,7 @@ const agendaData = {
     initial: "S",
     events: [
       { time: "09:00 - 09:30", title: "Breakfast", desc: "Start strong with breakfast at the venue" },
-      { time: "10:30 - 11:30", title: "Workshop: GTM Strategy", desc: "Learn go-to-market strategy with Claudiu Jojatu, CEO Milk&Cookies" },
+      { time: "10:30 - 11:30", title: "Workshop TBC", desc: "" },
       { time: "13:00 - 14:00", title: "Lunch", desc: "Take a well-earned break and recharge" },
       { time: "14:00 - 17:00", title: "Mentoring sessions", desc: "Get feedback and support from mentors one-on-one" },
       { time: "18:00 - 18:30", title: "Pitching Workshop ", desc: "Learn how to craft a clear, convincing pitch and present your idea with Cosmin Pirvu, Startup Program Manager @Veridion" },
