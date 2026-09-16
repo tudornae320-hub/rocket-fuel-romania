@@ -178,7 +178,7 @@ export const AgendaPills = () => {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-foreground mb-1">{event.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{event.desc}</p>
+                  {event.desc && <p className="text-sm text-muted-foreground leading-relaxed">{event.desc}</p>}
                 </div>
               </div>
             ))}
