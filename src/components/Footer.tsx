@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 // TikTok icon (not in lucide-react)
