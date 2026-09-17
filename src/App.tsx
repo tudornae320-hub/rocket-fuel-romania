@@ -25,10 +25,7 @@ const AppContent = () => {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cities" element={<Cities />} />
-        <Route path="/partners" element={<Partners />} />
         <Route path="/mentors" element={<Mentors />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/past-editions" element={<PastEditions />} />
         <Route path="/past-editions/:year" element={<PastEditionDetail />} />
         <Route path="/April26" element={<April26 />} />
