@@ -135,7 +135,12 @@ export const Footer = () => {
               <h3 className="font-bold text-foreground mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    href="https://startupweekendromania.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
                     Host in Your City
                   </a>
                 </li>
@@ -150,9 +155,12 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/#about"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
                     How It Works
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
