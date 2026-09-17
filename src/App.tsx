@@ -12,6 +12,8 @@ import Partners from "./pages/Partners";
 import Mentors from "./pages/Mentors";
 import Contact from "./pages/Contact";
 import PastEditions from "./pages/PastEditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import PastEditionDetail from "./pages/PastEditionDetail";
 import April26 from "./pages/April26";
 import NotFound from "./pages/NotFound";
