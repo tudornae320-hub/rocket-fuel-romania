@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 // TikTok icon (not in lucide-react)
@@ -135,7 +136,12 @@ export const Footer = () => {
               <h3 className="font-bold text-foreground mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    href="https://startupweekendromania.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
                     Host in Your City
                   </a>
                 </li>
@@ -150,9 +156,12 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/#about"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
                     How It Works
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -167,12 +176,18 @@ export const Footer = () => {
                 Copyright © 2026 <span className="text-foreground">Startup Weekend Romania</span>. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/privacy-policy"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Privacy Policy
-                </a>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                </Link>
+                <Link
+                  to="/terms-of-service"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Terms of Service
-                </a>
+                </Link>
               </div>
             </div>
           </div>

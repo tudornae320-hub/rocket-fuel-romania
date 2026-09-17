@@ -12,6 +12,8 @@ import Partners from "./pages/Partners";
 import Mentors from "./pages/Mentors";
 import Contact from "./pages/Contact";
 import PastEditions from "./pages/PastEditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import PastEditionDetail from "./pages/PastEditionDetail";
 import April26 from "./pages/April26";
 import NotFound from "./pages/NotFound";
@@ -34,6 +36,8 @@ const AppContent = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/past-editions" element={<PastEditions />} />
         <Route path="/past-editions/:year" element={<PastEditionDetail />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/April26" element={<April26 />} />
         <Route path="/april26" element={<April26 />} />
         <Route path="*" element={<NotFound />} />
