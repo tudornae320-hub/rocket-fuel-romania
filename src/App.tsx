@@ -36,6 +36,8 @@ const AppContent = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/past-editions" element={<PastEditions />} />
         <Route path="/past-editions/:year" element={<PastEditionDetail />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/April26" element={<April26 />} />
         <Route path="/april26" element={<April26 />} />
         <Route path="*" element={<NotFound />} />
