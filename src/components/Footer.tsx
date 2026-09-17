@@ -175,12 +175,18 @@ export const Footer = () => {
                 Copyright © 2026 <span className="text-foreground">Startup Weekend Romania</span>. All rights reserved.
               </p>
               <div className="flex items-center gap-6">
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  to="/privacy-policy"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Privacy Policy
-                </a>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                </Link>
+                <Link
+                  to="/terms-of-service"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
                   Terms of Service
-                </a>
+                </Link>
               </div>
             </div>
           </div>
