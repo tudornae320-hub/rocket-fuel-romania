@@ -376,7 +376,7 @@ const Home = () => {
               <div className="flex items-start gap-3 text-off-white/90">
                 <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                 <span className="flex flex-col">
-                  <span className="text-lg md:text-xl font-semibold">TBC</span>
+                  <span className="text-lg md:text-xl font-semibold">QADNA</span>
                 </span>
               </div>
             </div>
