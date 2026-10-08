@@ -20,7 +20,7 @@ import sisc from "@/assets/sponsors/sisc.png";
 import vsfa from "@/assets/sponsors/vsfa.png";
 import best from "@/assets/sponsors/best.png";
 
-const sponsors = [
+const sponsors: { name: string; image: string; small?: boolean }[] = [
   
   { name: "Ambasada", image: ambasada },
   { name: "Brewtifi", image: brewtifi },
@@ -33,8 +33,8 @@ const sponsors = [
   { name: "Oportune", image: oportune },
   { name: "Activize", image: activize },
   { name: "Romanian Business Club", image: romanianBusinessClub },
-  { name: "BOS", image: bos },
-  { name: "VIP", image: vip },
+  { name: "BOS", image: bos, small: true },
+  { name: "VIP", image: vip, small: true },
   { name: "SISC", image: sisc },
   { name: "VSFA", image: vsfa },
   { name: "BEST", image: best },
