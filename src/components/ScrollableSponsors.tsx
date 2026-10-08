@@ -151,7 +151,7 @@ export const ScrollableSponsors = () => {
                 <img 
                   src={sponsor.image} 
                   alt={sponsor.name}
-                  className="max-w-full max-h-full object-contain select-none pointer-events-none"
+                  className={`max-w-full object-contain select-none pointer-events-none ${sponsor.small ? 'max-h-[60px]' : 'max-h-full'}`}
                   draggable={false}
                   onDragStart={(e) => e.preventDefault()}
                 />
