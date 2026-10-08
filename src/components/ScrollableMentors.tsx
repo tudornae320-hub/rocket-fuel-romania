@@ -2,19 +2,16 @@ import { useRef, useState, MouseEvent, useCallback, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 
-import raresBanescu from "@/assets/mentors/rares-banescu.jpg";
-import gianinaCraciun from "@/assets/mentors/gianina-craciun.jpg";
-import valentinMaior from "@/assets/mentors/valentin-maior.jpg";
-import cosminCosma from "@/assets/mentors/cosmin-cosma.jpg";
-import raduCudalb from "@/assets/mentors/radu-cudalb.jpg";
-import oanaCosman from "@/assets/mentors/oana-cosman.jpg";
-import bogdanDeac from "@/assets/mentors/bogdan-deac.jpg";
-import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg";
-import mihneaCraciun from "@/assets/mentors/mihnea-craciun.jpg";
-import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
-import peterStoica from "@/assets/mentors/peter-stoica.jpg";
-
-import stefanDumitru from "@/assets/mentors/stefan-dumitru.jpg";
+import andreiFredy from "@/assets/mentors/andrei-fredy-craciun.jpg.asset.json";
+import davidWebster from "@/assets/mentors/david-webster.jpg.asset.json";
+import antonioHus from "@/assets/mentors/antonio-hus.jpg.asset.json";
+import cosminPosteuca from "@/assets/mentors/cosmin-posteuca.jpg.asset.json";
+import bogdanDeac from "@/assets/mentors/bogdan-deac-oct26.jpg.asset.json";
+import cristianGeorge from "@/assets/mentors/cristian-george-farauanu.jpg.asset.json";
+import ionutMunteanu from "@/assets/mentors/ionut-radu-munteanu.jpg.asset.json";
+import constantinPestrea from "@/assets/mentors/constantin-daniel-pestrea.jpg.asset.json";
+import stelianaMoraru from "@/assets/mentors/steliana-moraru.jpg.asset.json";
+import { Button } from "@/components/ui/button";
 
 type Mentor = {
   name: string;
@@ -27,96 +24,75 @@ type Mentor = {
 
 const mentors: Mentor[] = [
   {
-    name: "Rareș Bănescu",
-    role: "Founder",
-    company: "theMarketer",
-    image: raresBanescu,
-    linkedin: "https://www.linkedin.com/in/rares-banescu/",
-  },
-  {
-    name: "Gianina Craciun",
-    role: "Founder",
-    company: "Supertree",
-    image: gianinaCraciun,
-    linkedin: "https://www.linkedin.com/in/gianinacraciun/",
+    name: "Andrei-Fredy Craciun",
+    role: "Co-Founder",
+    company: "Estera AI",
+    image: andreiFredy.url,
+    linkedin: "",
     objectPosition: "center top",
   },
   {
-    name: "Valentin Maior",
-    role: "Cofounder",
-    company: "SyndiFi Capital",
-    image: valentinMaior,
-    linkedin: "https://www.linkedin.com/in/valentinmaior/",
+    name: "David Webster",
+    role: "Founder",
+    company: "UK/Romania Business",
+    image: davidWebster.url,
+    linkedin: "",
     objectPosition: "center top",
   },
   {
-    name: "Cosmin Cosma",
-    role: "Cofounder & CEO",
-    company: "Finqware",
-    image: cosminCosma,
-    linkedin: "https://www.linkedin.com/in/ccosma/",
-  },
-  {
-    name: "Radu Cudalb",
+    name: "Antonio Hus",
     role: "Software Engineer",
-    company: "Veridion",
-    image: raduCudalb,
-    linkedin: "https://www.linkedin.com/in/radu-cudalb/",
-    objectPosition: "center 20%",
+    company: "Stripe",
+    image: antonioHus.url,
+    linkedin: "",
+    objectPosition: "center top",
   },
   {
-    name: "Oana Cosman",
-    role: "Startups & Investments Journalist",
-    company: "",
-    image: oanaCosman,
-    linkedin: "https://www.linkedin.com/in/oanacosman/",
+    name: "Cosmin Posteuca",
+    role: "Big Data Engineer",
+    company: "Veridion",
+    image: cosminPosteuca.url,
+    linkedin: "",
     objectPosition: "center top",
   },
   {
     name: "Bogdan Deac",
     role: "Software Engineer",
     company: "Stripe",
-    image: bogdanDeac,
+    image: bogdanDeac.url,
     linkedin: "https://www.linkedin.com/in/bogdantdeac/",
     objectPosition: "center top",
   },
   {
-    name: "Claudiu Jojatu",
-    role: "Cofounder",
-    company: "Milk & Cookies",
-    image: claudiuJojatu,
-    linkedin: "https://www.linkedin.com/in/claudiujojatu/",
-  },
-  {
-    name: "Mihnea Craciun",
-    role: "Managing Director",
-    company: "Endeavor Romania",
-    image: mihneaCraciun,
-    linkedin: "https://www.linkedin.com/in/mihnea-craciun-7038053/",
+    name: "Cristian-George Farauanu",
+    role: "Business Development",
+    company: "Featherless.ai",
+    image: cristianGeorge.url,
+    linkedin: "",
     objectPosition: "center top",
   },
   {
-    name: "Liana Stoian",
+    name: "Ionuț Radu Munteanu",
+    role: "Founder",
+    company: "Pan Development Ltd",
+    image: ionutMunteanu.url,
+    linkedin: "",
+    objectPosition: "center top",
+  },
+  {
+    name: "Constantin-Daniel Pestrea",
+    role: "Associate Lecturer",
+    company: "ASE Bucharest",
+    image: constantinPestrea.url,
+    linkedin: "",
+    objectPosition: "center top",
+  },
+  {
+    name: "Steliana Moraru",
     role: "CEO",
-    company: "QA DNA",
-    image: lianaStoian,
-    linkedin: "https://www.linkedin.com/in/liana-st/",
-    objectPosition: "center 20%",
-  },
-  {
-    name: "Peter Stoica",
-    role: "CTO",
-    company: "QA DNA",
-    image: peterStoica,
-    linkedin: "https://www.linkedin.com/in/peter-stoica/",
-    objectPosition: "center top",
-  },
-  {
-    name: "Stefan Dumitru",
-    role: "Regional Manager",
-    company: "Staffino",
-    image: stefanDumitru,
-    linkedin: "https://www.linkedin.com/in/stefandumitrucx/",
+    company: "Vettoria",
+    image: stelianaMoraru.url,
+    linkedin: "",
     objectPosition: "center top",
   },
 ];
@@ -327,9 +303,9 @@ export const ScrollableMentors = () => {
         <div className="p-4 border-t border-[#000000]">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <h3 className="font-bold text-base text-foreground truncate">{mentor.name}</h3>
-              {mentor.company && <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>}
-              <p className="text-sm text-muted-foreground truncate">{mentor.role}</p>
+              <h3 className="font-bold text-base text-foreground break-words">{mentor.name}</h3>
+              {mentor.company && <p className="text-sm text-secondary font-medium break-words">{mentor.company}</p>}
+              <p className="text-sm text-muted-foreground break-words">{mentor.role}</p>
             </div>
             {mentor.linkedin && (
               <a
@@ -353,7 +329,7 @@ export const ScrollableMentors = () => {
   return (
     <div className="relative">
       <div className="flex flex-col items-center mb-8">
-        <button
+        <Button
           onClick={() => setIsExpanded(!isExpanded)}
           className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] flex items-center gap-2 text-secondary hover:text-secondary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98]"
         >
@@ -368,7 +344,7 @@ export const ScrollableMentors = () => {
               <ChevronDown className="w-5 h-5" />
             </>
           )}
-        </button>
+        </Button>
       </div>
 
       {!isExpanded && (
@@ -435,9 +411,9 @@ export const ScrollableMentors = () => {
                 <div className="p-4 border-t border-[#000000]">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
-                      <h3 className="font-bold text-base text-foreground truncate">{mentor.name}</h3>
-                      {mentor.company && <p className="text-sm text-secondary font-medium truncate">{mentor.company}</p>}
-                      <p className="text-sm text-muted-foreground truncate">{mentor.role}</p>
+                      <h3 className="font-bold text-base text-foreground break-words">{mentor.name}</h3>
+                      {mentor.company && <p className="text-sm text-secondary font-medium break-words">{mentor.company}</p>}
+                      <p className="text-sm text-muted-foreground break-words">{mentor.role}</p>
                     </div>
                     {mentor.linkedin && (
                       <a
