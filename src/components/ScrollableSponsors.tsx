@@ -14,6 +14,11 @@ import refold from "@/assets/sponsors/refold.png";
 import oportune from "@/assets/sponsors/oportune.png";
 import activize from "@/assets/sponsors/activize.png";
 import romanianBusinessClub from "@/assets/sponsors/romanian-business-club.png";
+import bos from "@/assets/sponsors/bos.png";
+import vip from "@/assets/sponsors/vip.png";
+import sisc from "@/assets/sponsors/sisc.png";
+import vsfa from "@/assets/sponsors/vsfa.png";
+import best from "@/assets/sponsors/best.png";
 
 const sponsors = [
   
@@ -28,6 +33,11 @@ const sponsors = [
   { name: "Oportune", image: oportune },
   { name: "Activize", image: activize },
   { name: "Romanian Business Club", image: romanianBusinessClub },
+  { name: "BOS", image: bos },
+  { name: "VIP", image: vip },
+  { name: "SISC", image: sisc },
+  { name: "VSFA", image: vsfa },
+  { name: "BEST", image: best },
 ];
 
 export const ScrollableSponsors = () => {
