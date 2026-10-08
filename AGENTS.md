@@ -1,0 +1,2 @@
+# Architecture rules
+- Store newly extracted uploaded mentor portraits as Lovable Assets pointers and use their URLs in the existing mentor carousel; this preserves source photos without adding binary media to the repository.
