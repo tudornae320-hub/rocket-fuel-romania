@@ -28,7 +28,7 @@ const mentors: Mentor[] = [
     role: "Co-Founder",
     company: "Estera AI",
     image: andreiFredy.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/fredyandrei/",
     objectPosition: "center top",
   },
   {
@@ -36,7 +36,7 @@ const mentors: Mentor[] = [
     role: "Founder",
     company: "UK/Romania Business",
     image: davidWebster.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/david-w-2b98742/",
     objectPosition: "center top",
   },
   {
@@ -44,7 +44,7 @@ const mentors: Mentor[] = [
     role: "Software Engineer",
     company: "Stripe",
     image: antonioHus.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/antonio-hus",
     objectPosition: "center top",
   },
   {
@@ -52,7 +52,7 @@ const mentors: Mentor[] = [
     role: "Big Data Engineer",
     company: "Veridion",
     image: cosminPosteuca.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/cosminposteuca",
     objectPosition: "center top",
   },
   {
@@ -68,7 +68,7 @@ const mentors: Mentor[] = [
     role: "Business Development",
     company: "Featherless.ai",
     image: cristianGeorge.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/george-farauanu/",
     objectPosition: "center top",
   },
   {
@@ -76,7 +76,7 @@ const mentors: Mentor[] = [
     role: "Founder",
     company: "Pan Development Ltd",
     image: ionutMunteanu.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/imunteanu/",
     objectPosition: "center top",
   },
   {
@@ -84,7 +84,7 @@ const mentors: Mentor[] = [
     role: "Associate Lecturer",
     company: "ASE Bucharest",
     image: constantinPestrea.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/constantin-daniel-pestrea-b34a27214/",
     objectPosition: "center top",
   },
   {
@@ -92,7 +92,7 @@ const mentors: Mentor[] = [
     role: "CEO",
     company: "Vettoria",
     image: stelianaMoraru.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/stelianamoraru/",
     objectPosition: "center top",
   },
 ];
