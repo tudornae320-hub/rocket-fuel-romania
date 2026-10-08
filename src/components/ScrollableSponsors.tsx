@@ -2,8 +2,6 @@ import { useRef, useState, MouseEvent } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 // Import sponsor images
-import codeSociety from "@/assets/sponsors/code-society.png";
-import nova from "@/assets/sponsors/nova.png";
 
 import ambasada from "@/assets/sponsors/ambasada.png";
 import brewtifi from "@/assets/sponsors/brewtifi.png";
@@ -13,15 +11,16 @@ import founderInstitute from "@/assets/sponsors/founder-institute.png";
 import qaDna from "@/assets/sponsors/qa-dna.png";
 import kickstartRomania from "@/assets/sponsors/kickstart-romania.png";
 import refold from "@/assets/sponsors/refold.png";
-import promocrat from "@/assets/sponsors/promocrat.png";
 import oportune from "@/assets/sponsors/oportune.png";
 import activize from "@/assets/sponsors/activize.png";
-import supertree from "@/assets/sponsors/supertree.png";
 import romanianBusinessClub from "@/assets/sponsors/romanian-business-club.png";
+import bos from "@/assets/sponsors/bos.png";
+import vip from "@/assets/sponsors/vip.png";
+import sisc from "@/assets/sponsors/sisc.png";
+import vsfa from "@/assets/sponsors/vsfa.png";
+import best from "@/assets/sponsors/best.png";
 
 const sponsors = [
-  { name: "Code Society", image: codeSociety },
-  { name: "Nova", image: nova },
   
   { name: "Ambasada", image: ambasada },
   { name: "Brewtifi", image: brewtifi },
@@ -31,11 +30,14 @@ const sponsors = [
   { name: "QA DNA", image: qaDna },
   { name: "Kickstart Romania", image: kickstartRomania },
   { name: "Refold", image: refold },
-  { name: "Promocrat", image: promocrat },
   { name: "Oportune", image: oportune },
   { name: "Activize", image: activize },
-  { name: "Supertree", image: supertree },
   { name: "Romanian Business Club", image: romanianBusinessClub },
+  { name: "BOS", image: bos },
+  { name: "VIP", image: vip },
+  { name: "SISC", image: sisc },
+  { name: "VSFA", image: vsfa },
+  { name: "BEST", image: best },
 ];
 
 export const ScrollableSponsors = () => {
