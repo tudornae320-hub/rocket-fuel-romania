@@ -5,7 +5,7 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
-import { Lightbulb, MapPin, Calendar, Mic, Users, Hammer, Trophy } from "lucide-react";
+import { Lightbulb, MapPin, Calendar, Mic, Users, Hammer, Trophy, Linkedin } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 import arrowRight from "@/assets/arrow-right.png";
 import megaphoneSvg from "@/assets/megaphone.svg";
@@ -24,12 +24,9 @@ import lucianPopovici from "@/assets/jury/lucian-popovici.png.asset.json";
 import { AgendaPills } from "@/components/AgendaPills";
 
 const jury = [
-  { name: "Liana Stoian", role: "CEO", company: "QA DNA", image: lianaStoian, objectPosition: "center 20%" },
-  { name: "Alex Gavril", role: "CEO", company: "▲ promocrat", image: alexGavril },
-  { name: "Aleodor Tabarcea", role: "Engineering Manager", company: "Stripe", image: aleodorTabarcea },
-  { name: "Bogdan Deac", role: "Software Engineer", company: "Stripe", image: bogdanDeacOct26.url, objectPosition: "center top" },
-  { name: "Raluca Epureanu", role: "Founder & CEO", company: "FlairMakers", image: ralucaEpureanu.url, objectPosition: "center top" },
-  { name: "Lucian Popovici", role: "Founder & Engineering Director", company: "Bridging Innovation", image: lucianPopovici.url, objectPosition: "center top" },
+  { name: "Bogdan Deac", role: "Software Engineer", company: "Stripe", image: bogdanDeacOct26.url, linkedin: "https://www.linkedin.com/in/bogdantdeac/", objectPosition: "center top" },
+  { name: "Raluca Epureanu", role: "Founder & CEO", company: "FlairMakers", image: ralucaEpureanu.url, linkedin: "https://www.linkedin.com/in/raluca-epureanu/", objectPosition: "center top" },
+  { name: "Lucian Popovici", role: "Founder & Engineering Director", company: "Bridging Innovation", image: lucianPopovici.url, linkedin: "https://www.linkedin.com/in/lucianpopovici/", objectPosition: "center top" },
 ];
 
 const Home = () => {
