@@ -18,9 +18,6 @@ import mentorsSectionPhoto from "@/assets/mentors-section-photo.webp";
 
 import stripeLogo from "@/assets/sponsors/stripe.png";
 import techstarsLogo from "@/assets/sponsors/techstars.webp";
-import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
-import alexGavril from "@/assets/mentors/alex-gavril.jpg";
-import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
 import bogdanDeacOct26 from "@/assets/mentors/bogdan-deac-oct26.jpg.asset.json";
 import ralucaEpureanu from "@/assets/jury/raluca-epureanu.png.asset.json";
 import lucianPopovici from "@/assets/jury/lucian-popovici.png.asset.json";
