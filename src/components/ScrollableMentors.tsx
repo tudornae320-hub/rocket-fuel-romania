@@ -12,6 +12,7 @@ import ionutMunteanu from "@/assets/mentors/ionut-radu-munteanu.jpg.asset.json";
 import constantinPestrea from "@/assets/mentors/constantin-daniel-pestrea.jpg.asset.json";
 import stelianaMoraru from "@/assets/mentors/steliana-moraru.jpg.asset.json";
 import adinaSaniuta from "@/assets/mentors/adina-saniuta.jpg.asset.json";
+import ancaPopan from "@/assets/mentors/anca-popan.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 
 type Mentor = {
@@ -102,6 +103,14 @@ const mentors: Mentor[] = [
     company: "SNSPA",
     image: adinaSaniuta.url,
     linkedin: "https://www.linkedin.com/in/adina-saniuta/",
+    objectPosition: "center top",
+  },
+  {
+    name: "Anca Popan",
+    role: "Associate",
+    company: "Lexters",
+    image: ancaPopan.url,
+    linkedin: "https://www.linkedin.com/in/anca-popan/",
     objectPosition: "center top",
   },
 ];
