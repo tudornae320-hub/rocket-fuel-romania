@@ -1,13 +1,16 @@
 import { useEffect } from "react";
+import { Linkedin } from "lucide-react";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import alexGavril from "@/assets/mentors/alex-gavril.jpg";
 import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
+import bogdanDeac from "@/assets/mentors/bogdan-deac-oct26.jpg.asset.json";
 
 interface Jury {
   name: string;
   role: string;
   company: string;
-  image: string;
+  image?: string;
+  linkedin?: string;
   objectPosition?: string;
 }
 
@@ -30,6 +33,26 @@ const jury: Jury[] = [
     role: "Engineering Manager",
     company: "Stripe",
     image: aleodorTabarcea,
+  },
+  {
+    name: "Raluca Epureanu",
+    role: "Founder & CEO",
+    company: "FlairMakers",
+    linkedin: "https://www.linkedin.com/in/raluca-epureanu/",
+  },
+  {
+    name: "Lucian Popovici",
+    role: "Founder & Engineering Director",
+    company: "Bridging Innovation",
+    linkedin: "https://www.linkedin.com/in/lucianpopovici/",
+  },
+  {
+    name: "Bogdan Deac",
+    role: "Software Engineer",
+    company: "Stripe",
+    image: bogdanDeac.url,
+    objectPosition: "center top",
+    linkedin: "https://www.linkedin.com/in/bogdantdeac/",
   },
 ];
 
@@ -297,30 +320,52 @@ const April26 = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {jury.map((member) => (
               <article
                 key={member.name}
                 className="bg-card border-2 border-[#000000] rounded-2xl shadow-[4px_4px_0px_0px_#000000] overflow-hidden hover-lift"
               >
-                <div className="w-full aspect-square overflow-hidden border-b-2 border-[#000000]">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: member.objectPosition ?? "center" }}
-                  />
+                <div className="w-full aspect-square overflow-hidden border-b-2 border-[#000000] bg-secondary/10 flex items-center justify-center">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: member.objectPosition ?? "center" }}
+                    />
+                  ) : (
+                    <span className="text-7xl font-bold text-secondary/70 select-none">
+                      {member.name
+                        .split(" ")
+                        .map((part) => part[0])
+                        .join("")}
+                    </span>
+                  )}
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm md:text-base text-secondary font-semibold">
-                    {member.role}
-                  </p>
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    {member.company}
-                  </p>
+                <div className="p-5 flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-sm md:text-base text-secondary font-semibold">
+                      {member.role}
+                    </p>
+                    <p className="text-sm md:text-base text-muted-foreground">
+                      {member.company}
+                    </p>
+                  </div>
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={`${member.name} on LinkedIn`}
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
               </article>
             ))}
