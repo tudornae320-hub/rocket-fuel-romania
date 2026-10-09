@@ -45,6 +45,11 @@ All colors MUST be HSL.
     --input: 0 2% 85%;
     --ring: 196 96% 67%;
 
+    /* Sold out state */
+    --sold-out: 0 0% 88%;
+    --sold-out-foreground: 0 0% 40%;
+    --sold-out-border: 0 0% 55%;
+
     --radius: 0.75rem;
 
     /* Gradients */
@@ -88,6 +93,10 @@ All colors MUST be HSL.
     --border: 0 2% 30%;
     --input: 0 2% 30%;
     --ring: 196 96% 67%;
+
+    --sold-out: 0 0% 25%;
+    --sold-out-foreground: 0 0% 62%;
+    --sold-out-border: 0 0% 45%;
   }
 }
 
