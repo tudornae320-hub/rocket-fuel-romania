@@ -101,7 +101,7 @@ const mentors: Mentor[] = [
     role: "Doctor în Marketing și Lector Universitar",
     company: "SNSPA",
     image: adinaSaniuta.url,
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/adina-saniuta/",
     objectPosition: "center top",
   },
 ];
