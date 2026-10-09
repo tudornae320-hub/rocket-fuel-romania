@@ -11,6 +11,7 @@ import cristianGeorge from "@/assets/mentors/cristian-george-farauanu.jpg.asset.
 import ionutMunteanu from "@/assets/mentors/ionut-radu-munteanu.jpg.asset.json";
 import constantinPestrea from "@/assets/mentors/constantin-daniel-pestrea.jpg.asset.json";
 import stelianaMoraru from "@/assets/mentors/steliana-moraru.jpg.asset.json";
+import adinaSaniuta from "@/assets/mentors/adina-saniuta.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 
 type Mentor = {
@@ -93,6 +94,14 @@ const mentors: Mentor[] = [
     company: "Vettoria",
     image: stelianaMoraru.url,
     linkedin: "https://www.linkedin.com/in/stelianamoraru/",
+    objectPosition: "center top",
+  },
+  {
+    name: "Adina Saniuta",
+    role: "Doctor în Marketing și Lector Universitar",
+    company: "SNSPA",
+    image: adinaSaniuta.url,
+    linkedin: "",
     objectPosition: "center top",
   },
 ];
