@@ -32,7 +32,7 @@ const agendaData = {
     events: [
       { time: "09:00 - 09:30", title: "Breakfast", desc: "Grab breakfast and prep for the final sprint" },
       { time: "11:00 - 13:00", title: "Pitch Practice", desc: "Test your pitch, get feedback, boost confidence" },
-      { time: "14:00 - 15:00", title: "Lunch", desc: "Fuel up one last time before the big moment" },
+      { time: "13:00 - 14:00", title: "Lunch", desc: "Fuel up one last time before the big moment" },
       { time: "15:00 - 17:00", title: "Final Presentations", desc: "3 min pitch + 3 min Q&A with the jury. Show what you built!" },
       { time: "17:00 - 18:00", title: "Awards & Networking", desc: "Celebrate an unforgettable weekend together!" },
     ],
