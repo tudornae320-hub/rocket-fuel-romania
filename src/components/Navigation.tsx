@@ -72,15 +72,12 @@ export const Navigation = () => {
             >
               Past Editions
             </Link>
-            <a
-              href="https://buy.stripe.com/cNi8wP3Rr2tdbv19aH1gs08"
-              target="_blank"
-              rel="noopener noreferrer"
+            <span
+              aria-disabled="true"
+              className="inline-flex items-center justify-center rounded-full border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-2.5 font-semibold text-[hsl(var(--sold-out-foreground))] shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] cursor-not-allowed select-none"
             >
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 rounded-full">
-                Get your ticket
-              </Button>
-            </a>
+              Sold out
+            </span>
           </div>
 
           {/* Mobile Menu Button */}
@@ -127,16 +124,12 @@ export const Navigation = () => {
               >
                 Past Editions
               </Link>
-              <a
-                href="https://buy.stripe.com/cNi8wP3Rr2tdbv19aH1gs08"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full"
+              <span
+                aria-disabled="true"
+                className="flex w-full items-center justify-center rounded-full border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-2.5 font-semibold text-[hsl(var(--sold-out-foreground))] shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] cursor-not-allowed select-none"
               >
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full w-full">
-                  Get your ticket
-                </Button>
-              </a>
+                Sold out
+              </span>
             </div>
           </div>
         )}

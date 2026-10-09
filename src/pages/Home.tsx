@@ -364,10 +364,12 @@ const Home = () => {
                 powered by <span className="font-bold" style={{ color: '#6772E5' }}>Stripe</span>
               </p>
               <button
-                onClick={handleButtonClick}
-                className="rounded-2xl border-2 border-[#000000] bg-card px-6 shadow-[4px_4px_0px_0px_#000000] text-black font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] py-[12px] my-[30px]"
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="rounded-2xl border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] text-[hsl(var(--sold-out-foreground))] font-semibold py-[12px] my-[30px] cursor-not-allowed select-none"
               >
-                Get your ticket
+                Sold out
               </button>
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
                 <Calendar className="w-6 h-6 text-primary" />
@@ -867,10 +869,12 @@ const Home = () => {
           <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
             <button
               ref={ticketButtonRef}
-              onClick={handleButtonClick}
-              className="rounded-2xl border-2 border-[#000000] bg-primary px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary-foreground hover:bg-primary/90 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] relative z-10"
+              type="button"
+              disabled
+              aria-disabled="true"
+              className="rounded-2xl border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-3 shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] text-[hsl(var(--sold-out-foreground))] font-semibold cursor-not-allowed select-none relative z-10"
             >
-              Get your ticket
+              Sold out
             </button>
 
             {/* Confetti particles */}

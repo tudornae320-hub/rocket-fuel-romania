@@ -874,12 +874,14 @@ const PastEditions = () => {
             Join our community and build the future of startups in Romania
           </p>
           <div ref={ticketButtonContainerRef} className="relative pb-24 md:pb-32">
-            <button 
+            <button
               ref={ticketButtonRef}
-              onClick={handleButtonClick}
-              className="rounded-2xl border-2 border-[#000000] bg-card px-6 py-3 shadow-[4px_4px_0px_0px_#000000] text-primary hover:text-primary/80 hover:bg-primary/10 font-semibold transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-[0px_0px_0px_0px_#000000] active:scale-[0.98] relative z-10"
+              type="button"
+              disabled
+              aria-disabled="true"
+              className="rounded-2xl border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-3 shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] text-[hsl(var(--sold-out-foreground))] font-semibold cursor-not-allowed select-none relative z-10"
             >
-              Get your ticket now
+              Sold out
             </button>
             
             {/* Confetti particles */}
