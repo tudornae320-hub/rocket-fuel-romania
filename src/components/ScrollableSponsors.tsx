@@ -10,7 +10,6 @@ import lsac from "@/assets/sponsors/lsac.png";
 import founderInstitute from "@/assets/sponsors/founder-institute.png";
 import qaDna from "@/assets/sponsors/qa-dna.png";
 import kickstartRomania from "@/assets/sponsors/kickstart-romania.png";
-import refold from "@/assets/sponsors/refold.png";
 import oportune from "@/assets/sponsors/oportune.png";
 import activize from "@/assets/sponsors/activize.png";
 import romanianBusinessClub from "@/assets/sponsors/romanian-business-club.png";
@@ -29,7 +28,6 @@ const sponsors: { name: string; image: string; small?: boolean }[] = [
   { name: "Founder Institute", image: founderInstitute },
   { name: "QA DNA", image: qaDna },
   { name: "Kickstart Romania", image: kickstartRomania },
-  { name: "Refold", image: refold },
   { name: "Oportune", image: oportune },
   { name: "Activize", image: activize },
   { name: "Romanian Business Club", image: romanianBusinessClub },
