@@ -21,12 +21,18 @@ import techstarsLogo from "@/assets/sponsors/techstars.webp";
 import lianaStoian from "@/assets/mentors/liana-stoian.jpg";
 import alexGavril from "@/assets/mentors/alex-gavril.jpg";
 import aleodorTabarcea from "@/assets/jury/aleodor-tabarcea.jpeg";
+import bogdanDeacOct26 from "@/assets/mentors/bogdan-deac-oct26.jpg.asset.json";
+import ralucaEpureanu from "@/assets/jury/raluca-epureanu.png.asset.json";
+import lucianPopovici from "@/assets/jury/lucian-popovici.png.asset.json";
 import { AgendaPills } from "@/components/AgendaPills";
 
 const jury = [
   { name: "Liana Stoian", role: "CEO", company: "QA DNA", image: lianaStoian, objectPosition: "center 20%" },
   { name: "Alex Gavril", role: "CEO", company: "▲ promocrat", image: alexGavril },
   { name: "Aleodor Tabarcea", role: "Engineering Manager", company: "Stripe", image: aleodorTabarcea },
+  { name: "Bogdan Deac", role: "Software Engineer", company: "Stripe", image: bogdanDeacOct26.url, objectPosition: "center top" },
+  { name: "Raluca Epureanu", role: "Founder & CEO", company: "FlairMakers", image: ralucaEpureanu.url, objectPosition: "center top" },
+  { name: "Lucian Popovici", role: "Founder & Engineering Director", company: "Bridging Innovation", image: lucianPopovici.url, objectPosition: "center top" },
 ];
 
 const Home = () => {
@@ -730,7 +736,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Previous Jury
+              Jury
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               The minds judging your final pitches on Sunday.
