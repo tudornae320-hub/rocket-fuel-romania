@@ -761,6 +761,15 @@ const Home = () => {
                   <p className="text-sm md:text-base text-muted-foreground">
                     {member.company}
                   </p>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-secondary hover:underline"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    LinkedIn
+                  </a>
                 </div>
               </article>
             ))}
