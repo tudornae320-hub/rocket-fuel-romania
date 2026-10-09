@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 
 // Import sponsor images
 
-import ambasada from "@/assets/sponsors/ambasada.png";
 import brewtifi from "@/assets/sponsors/brewtifi.png";
 import featherlessAi from "@/assets/sponsors/featherless-ai.png";
 import lsac from "@/assets/sponsors/lsac.png";
@@ -21,7 +20,6 @@ import best from "@/assets/sponsors/best.png";
 
 const sponsors: { name: string; image: string; small?: boolean }[] = [
   
-  { name: "Ambasada", image: ambasada },
   { name: "Brewtifi", image: brewtifi },
   { name: "Featherless.ai", image: featherlessAi },
   { name: "LSAC", image: lsac },
