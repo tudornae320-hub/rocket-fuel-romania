@@ -14,6 +14,7 @@ import stelianaMoraru from "@/assets/mentors/steliana-moraru.jpg.asset.json";
 import adinaSaniuta from "@/assets/mentors/adina-saniuta.jpg.asset.json";
 import ancaPopan from "@/assets/mentors/anca-popan.jpg.asset.json";
 import cristiDragan from "@/assets/mentors/cristi-dragan.jpg.asset.json";
+import claudiuJojatu from "@/assets/mentors/claudiu-jojatu.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 
 type Mentor = {
@@ -120,6 +121,14 @@ const mentors: Mentor[] = [
     company: "Weekend",
     image: cristiDragan.url,
     linkedin: "https://www.linkedin.com/in/cristi-dragan",
+    objectPosition: "center top",
+  },
+  {
+    name: "Claudiu Jojatu",
+    role: "Co-Founder",
+    company: "Milk & Cookies",
+    image: claudiuJojatu.url,
+    linkedin: "https://www.linkedin.com/in/claudiujojatu/",
     objectPosition: "center top",
   },
 ];
