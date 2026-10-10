@@ -58,8 +58,8 @@ const RoomSection = ({ room, tables }: { room: 1 | 2; tables: number[] }) => (
                 <p className="text-sm font-semibold text-muted-foreground">Round {i + 1}</p>
                 <span className="text-sm font-semibold uppercase text-muted-foreground">Room {room}</span>
               </div>
-              <p className="mt-1 text-4xl font-bold uppercase text-secondary">Table {table}</p>
-              <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
+              <p className="mt-1 text-2xl font-bold uppercase text-secondary">Table {table}</p>
+              <p className="mt-1 break-words text-2xl font-semibold leading-snug">{TABLES[table]}</p>
             </article>
             {i < tables.length - 1 && (
               <div className="flex justify-center py-1" aria-hidden="true">
