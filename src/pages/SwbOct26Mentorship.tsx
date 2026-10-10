@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { ArrowDown, Users, User } from "lucide-react";
+import { ArrowDown, Check, Users, User } from "lucide-react";
 
 const TABLES: Record<number, string> = {
   1: "AirSpot",
@@ -48,6 +48,7 @@ const slugify = (name: string) =>
     .replace(/(^-|-$)/g, "");
 
 const STORAGE_KEY = "swb-oct26-mentor";
+const DONE_KEY = "swb-oct26-kickstart-done";
 
 const RoomSection = ({
   room,
@@ -95,37 +96,63 @@ const ROOM2_INDEPENDENT = [14, 13, 12, 11, 10, 9, 8];
 const OverviewSection = ({
   room,
   independent,
+  done,
+  onToggle,
 }: {
   room: 1 | 2;
   independent: number[];
+  done: string[];
+  onToggle: (key: string) => void;
 }) => (
   <section aria-label={`Room ${room} overview`}>
     <h3 className="mb-4 text-xl font-bold uppercase">Room {room}</h3>
     <div className="grid gap-4">
-      {[0, 1, 2, 3, 4, 5, 6].map((r) => (
-        <article
-          key={r}
-          className="rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 text-card-foreground shadow-[var(--shadow-brutalist)]"
-        >
-          <p className="text-sm font-semibold text-muted-foreground">Round {r + 1}</p>
-          <ul className="mt-2 grid gap-1.5">
-            {PAIRS.map((p) => {
-              const tables = room === 1 ? p.room1 : p.room2;
-              return (
-                <li key={p.id} className="flex items-baseline gap-2 text-sm sm:text-base">
-                  <span className="shrink-0 font-bold text-secondary">Group {p.id}</span>
-                  <span className="shrink-0 text-muted-foreground">·</span>
-                  <span className="shrink-0 font-semibold">Table {tables[r]}</span>
-                  <span className="min-w-0 truncate font-medium">{TABLES[tables[r]]}</span>
-                </li>
-              );
-            })}
-          </ul>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Working independently: Table {independent[r]} · {TABLES[independent[r]]}
-          </p>
-        </article>
-      ))}
+      {[0, 1, 2, 3, 4, 5, 6].map((r) => {
+        const key = `r${room}-${r + 1}`;
+        const isDone = done.includes(key);
+        return (
+          <article
+            key={r}
+            className={`rounded-2xl border-2 border-[hsl(var(--brutalist-border))] p-4 text-card-foreground shadow-[var(--shadow-brutalist)] ${
+              isDone ? "bg-muted" : "bg-card"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-sm font-semibold text-muted-foreground">Round {r + 1}</p>
+              <button
+                type="button"
+                onClick={() => onToggle(key)}
+                aria-pressed={isDone}
+                aria-label={isDone ? `Mark round ${r + 1} not done` : `Mark round ${r + 1} done`}
+                className={`flex items-center gap-1.5 rounded-xl border-2 border-[hsl(var(--brutalist-border))] px-2.5 py-1 text-xs font-bold uppercase transition-colors ${
+                  isDone
+                    ? "bg-secondary text-secondary-foreground"
+                    : "bg-background text-muted-foreground"
+                }`}
+              >
+                <Check className="h-3.5 w-3.5" strokeWidth={3} aria-hidden="true" />
+                {isDone ? "Done" : "Tick"}
+              </button>
+            </div>
+            <ul className={`mt-2 grid gap-1.5 ${isDone ? "opacity-60" : ""}`}>
+              {PAIRS.map((p) => {
+                const tables = room === 1 ? p.room1 : p.room2;
+                return (
+                  <li key={p.id} className="flex items-baseline gap-2 text-sm sm:text-base">
+                    <span className="shrink-0 font-bold text-secondary">Group {p.id}</span>
+                    <span className="shrink-0 text-muted-foreground">·</span>
+                    <span className="shrink-0 font-semibold">Table {tables[r]}</span>
+                    <span className="min-w-0 truncate font-medium">{TABLES[tables[r]]}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            <p className={`mt-2 text-xs text-muted-foreground ${isDone ? "opacity-60" : ""}`}>
+              Working independently: Table {independent[r]} · {TABLES[independent[r]]}
+            </p>
+          </article>
+        );
+      })}
     </div>
   </section>
 );
@@ -157,6 +184,14 @@ const GroupsOverview = () => (
 const SwbOct26Mentorship = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selected, setSelected] = useState<string | null>(null);
+  const [done, setDone] = useState<string[]>(() => {
+    try {
+      const raw = window.localStorage.getItem(DONE_KEY);
+      return raw ? (JSON.parse(raw) as string[]) : [];
+    } catch {
+      return [];
+    }
+  });
 
   // Initial selection: URL param wins, then localStorage.
   useEffect(() => {
@@ -187,6 +222,14 @@ const SwbOct26Mentorship = () => {
       window.localStorage.removeItem(STORAGE_KEY);
       setSearchParams({}, { replace: true });
     }
+  };
+
+  const toggleDone = (key: string) => {
+    setDone((prev) => {
+      const next = prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key];
+      window.localStorage.setItem(DONE_KEY, JSON.stringify(next));
+      return next;
+    });
   };
 
   const pair = useMemo(() => PAIRS.find((p) => p.mentors.includes(selected ?? "")), [selected]);
@@ -260,14 +303,14 @@ const SwbOct26Mentorship = () => {
         {selected === "kickstart" && (
           <div className="grid gap-8">
             <GroupsOverview />
-            <OverviewSection room={1} independent={ROOM1_INDEPENDENT} />
+            <OverviewSection room={1} independent={ROOM1_INDEPENDENT} done={done} onToggle={toggleDone} />
             <div
               role="separator"
               className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
             >
               10-minute break · Move to Room 2
             </div>
-            <OverviewSection room={2} independent={ROOM2_INDEPENDENT} />
+            <OverviewSection room={2} independent={ROOM2_INDEPENDENT} done={done} onToggle={toggleDone} />
           </div>
         )}
 
