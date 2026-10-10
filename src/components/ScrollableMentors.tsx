@@ -13,6 +13,7 @@ import constantinPestrea from "@/assets/mentors/constantin-daniel-pestrea.jpg.as
 import stelianaMoraru from "@/assets/mentors/steliana-moraru.jpg.asset.json";
 import adinaSaniuta from "@/assets/mentors/adina-saniuta.jpg.asset.json";
 import ancaPopan from "@/assets/mentors/anca-popan.jpg.asset.json";
+import cristiDragan from "@/assets/mentors/cristi-dragan.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 
 type Mentor = {
@@ -111,6 +112,14 @@ const mentors: Mentor[] = [
     company: "Lexters",
     image: ancaPopan.url,
     linkedin: "https://www.linkedin.com/in/anca-popan/",
+    objectPosition: "center top",
+  },
+  {
+    name: "Cristi Dragan",
+    role: "Growth Marketing Manager",
+    company: "Weekend",
+    image: cristiDragan.url,
+    linkedin: "https://www.linkedin.com/in/cristi-dragan",
     objectPosition: "center top",
   },
 ];
