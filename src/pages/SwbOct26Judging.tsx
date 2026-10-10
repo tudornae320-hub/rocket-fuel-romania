@@ -125,15 +125,15 @@ const SwbOct26Judging = () => {
     }
   };
 
-  const box = "rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-5 shadow-[var(--shadow-brutalist)]";
+  const box = "rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 shadow-[var(--shadow-brutalist)] sm:p-5";
 
   return (
     <main className="bg-background pb-20 pt-32 sm:pt-36">
-      <div className="container mx-auto max-w-3xl px-5 sm:px-8">
-        <header className="mb-8">
-          <p className="mb-3 font-semibold text-secondary">Startup Weekend Bucharest</p>
-          <h1 className="text-4xl font-bold uppercase leading-tight sm:text-5xl">Judging</h1>
-          <p className="mt-3 text-lg text-muted-foreground">Score each startup from 1 to 10 on the three criteria.</p>
+      <div className="container mx-auto max-w-3xl px-4 sm:px-8">
+        <header className="mb-5 sm:mb-8">
+          <p className="mb-2 font-semibold text-secondary">Startup Weekend Bucharest</p>
+          <h1 className="text-3xl font-bold uppercase leading-tight sm:text-5xl">Judging</h1>
+          <p className="mt-2 text-base text-muted-foreground sm:mt-3 sm:text-lg">Score each startup from 1 to 10 on the three criteria.</p>
         </header>
 
         <section className={`mb-8 ${box}`}>
@@ -211,16 +211,16 @@ const SwbOct26Judging = () => {
 
             <article className={box}>
               <p className="text-sm font-semibold text-muted-foreground">Startup {idx + 1} of {STARTUPS.length}</p>
-              <p className="mt-1 text-3xl font-bold leading-tight">{startup.name}</p>
+              <p className="mt-1 text-2xl font-bold leading-tight sm:text-3xl">{startup.name}</p>
 
-              <div className="mt-6 grid gap-6">
+              <div className="mt-4 grid gap-4 sm:mt-6 sm:gap-6">
                 {CRITERIA.map((c) => (
                   <div key={c.key}>
-                    <p className="mb-2 flex justify-between text-lg font-bold">
+                    <p className="mb-1.5 flex justify-between text-base font-bold sm:mb-2 sm:text-lg">
                       <span>{c.label}</span>
                       <span className="text-secondary">{current[c.key] ?? "–"}</span>
                     </p>
-                    <div className="grid grid-cols-5 gap-2 sm:grid-cols-10">
+                    <div className="grid grid-cols-10 gap-1 sm:gap-2">
                       {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => {
                         const on = current[c.key] === n;
                         return (
@@ -230,7 +230,7 @@ const SwbOct26Judging = () => {
                             onClick={() => update({ [c.key]: n })}
                             aria-pressed={on}
                             aria-label={`${c.label} ${n}`}
-                            className={`h-12 rounded-xl border-2 border-[hsl(var(--brutalist-border))] text-lg font-bold ${
+                            className={`h-10 rounded-lg border-2 border-[hsl(var(--brutalist-border))] text-sm font-bold sm:h-12 sm:rounded-xl sm:text-lg ${
                               on ? "bg-secondary text-secondary-foreground" : "bg-background"
                             }`}
                           >
