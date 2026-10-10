@@ -89,6 +89,47 @@ const RoomSection = ({
   </section>
 );
 
+const ROOM1_INDEPENDENT = [7, 6, 5, 4, 3, 2, 1];
+const ROOM2_INDEPENDENT = [14, 13, 12, 11, 10, 9, 8];
+
+const OverviewSection = ({
+  room,
+  independent,
+}: {
+  room: 1 | 2;
+  independent: number[];
+}) => (
+  <section aria-label={`Room ${room} overview`}>
+    <h3 className="mb-4 text-xl font-bold uppercase">Room {room}</h3>
+    <div className="grid gap-4">
+      {[0, 1, 2, 3, 4, 5, 6].map((r) => (
+        <article
+          key={r}
+          className="rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 text-card-foreground shadow-[var(--shadow-brutalist)]"
+        >
+          <p className="text-sm font-semibold text-muted-foreground">Round {r + 1}</p>
+          <ul className="mt-2 grid gap-1.5">
+            {PAIRS.map((p) => {
+              const tables = room === 1 ? p.room1 : p.room2;
+              return (
+                <li key={p.id} className="flex items-baseline gap-2 text-sm sm:text-base">
+                  <span className="shrink-0 font-bold text-secondary">Group {p.id}</span>
+                  <span className="shrink-0 text-muted-foreground">·</span>
+                  <span className="shrink-0 font-semibold">Table {tables[r]}</span>
+                  <span className="min-w-0 truncate font-medium">{TABLES[tables[r]]}</span>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Working independently: Table {independent[r]} · {TABLES[independent[r]]}
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+);
+
 const SwbOct26Mentorship = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selected, setSelected] = useState<string | null>(null);
