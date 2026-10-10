@@ -128,7 +128,7 @@ const SwbOct26Judging = () => {
   const box = "rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 shadow-[var(--shadow-brutalist)] sm:p-5";
 
   return (
-    <main className="bg-background pb-20 pt-32 sm:pt-36">
+    <main className="bg-background pb-10 pt-32 sm:pt-36">
       <div className="container mx-auto max-w-3xl px-4 sm:px-8">
         <header className="mb-5 sm:mb-8">
           <p className="mb-2 font-semibold text-secondary">Startup Weekend Bucharest</p>
