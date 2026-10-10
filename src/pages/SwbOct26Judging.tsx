@@ -133,7 +133,6 @@ const SwbOct26Judging = () => {
         <header className="mb-5 sm:mb-8">
           <p className="mb-2 font-semibold text-secondary">Startup Weekend Bucharest</p>
           <h1 className="text-3xl font-bold uppercase leading-tight sm:text-5xl">Judging</h1>
-          <p className="mt-2 text-base text-muted-foreground sm:mt-3 sm:text-lg">Score each startup from 1 to 10 on the three criteria.</p>
         </header>
 
         <section className={`mb-8 ${box}`}>
