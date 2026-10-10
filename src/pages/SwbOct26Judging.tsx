@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TABLES, INACTIVE_TABLES } from "@/data/swbOct26";
 
 // Paste the Google Apps Script web app URL here.
@@ -218,36 +218,13 @@ const SwbOct26Judging = () => {
               {status && <p className="mt-3 text-sm font-semibold text-muted-foreground">{status}</p>}
             </article>
 
-            <section className="mt-8">
-              <h3 className="mb-2 text-sm font-bold uppercase">All startups</h3>
-              <ul className="grid gap-1.5 sm:grid-cols-2">
-                {STARTUPS.map((s, i) => {
-                  const done = isComplete(scores[s.table]);
-                  return (
-                    <li key={s.table}>
-                      <button
-                        type="button"
-                        onClick={() => setIdx(i)}
-                        className={`flex w-full items-center gap-2 rounded-lg border-2 border-[hsl(var(--brutalist-border))] px-3 py-2 text-left text-sm font-semibold ${
-                          i === idx ? "bg-muted" : "bg-card"
-                        }`}
-                      >
-                        <span className="w-6 shrink-0 text-secondary">{s.table}</span>
-                        <span className="min-w-0 flex-1 truncate">{s.name}</span>
-                        {done && <Check className="h-4 w-4 shrink-0 text-secondary" strokeWidth={3} />}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-              <button
-                type="button"
-                onClick={resendAll}
-                className="mt-4 text-sm font-semibold text-secondary underline underline-offset-4"
-              >
-                Resend all my scores
-              </button>
-            </section>
+            <button
+              type="button"
+              onClick={resendAll}
+              className="mt-6 text-sm font-semibold text-secondary underline underline-offset-4"
+            >
+              Resend all my scores
+            </button>
           </>
         )}
       </div>
