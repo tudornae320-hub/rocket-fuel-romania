@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -26,7 +26,9 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   useSmoothScroll();
-  
+  const { pathname } = useLocation();
+  const hideFooter = pathname.toLowerCase().startsWith("/swb-oct26/judging");
+
   return (
     <>
       <ScrollToTop />
@@ -48,7 +50,7 @@ const AppContent = () => {
         <Route path="/swb-oct26/judging" element={<SwbOct26Judging />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   );
 };
