@@ -183,6 +183,14 @@ const GroupsOverview = () => (
 const SwbOct26Mentorship = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selected, setSelected] = useState<string | null>(null);
+  const [done, setDone] = useState<string[]>(() => {
+    try {
+      const raw = window.localStorage.getItem(DONE_KEY);
+      return raw ? (JSON.parse(raw) as string[]) : [];
+    } catch {
+      return [];
+    }
+  });
 
   // Initial selection: URL param wins, then localStorage.
   useEffect(() => {
@@ -198,14 +206,7 @@ const SwbOct26Mentorship = () => {
         return;
       }
     }
-  const [done, setDone] = useState<string[]>(() => {
-    try {
-      const raw = window.localStorage.getItem(DONE_KEY);
-      return raw ? (JSON.parse(raw) as string[]) : [];
-    } catch {
-      return [];
-    }
-  });
+    const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored === "kickstart") setSelected("kickstart");
     else if (stored && MENTORS.includes(stored)) setSelected(stored);
     // eslint-disable-next-line react-hooks/exhaustive-deps
