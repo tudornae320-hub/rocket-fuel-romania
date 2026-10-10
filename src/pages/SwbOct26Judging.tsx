@@ -4,7 +4,7 @@ import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { TABLES, INACTIVE_TABLES } from "@/data/swbOct26";
 
 // Paste the Google Apps Script web app URL here.
-const SCRIPT_URL = "";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLs2Ld7lik9IAtHatY16FZc41JBnPc481s6eGt9UXE9r-y1ItijZ6iOkGfjh6Ld-VD/exec";
 
 const JUDGES = ["Bogdan Deac", "Raluca Epureanu", "Lucian Popovici"];
 const CRITERIA = [
