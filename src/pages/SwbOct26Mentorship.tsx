@@ -208,8 +208,6 @@ const SwbOct26Mentorship = () => {
           <p className="mt-4 whitespace-pre-line text-lg text-muted-foreground">{"Start in Room 1, then move to Room 2 after a 10-minute break.\n\nMeetings last 12 minutes, with 1 minute to change tables. Startups stay seated.\n\nFollow your route below."}</p>
         </header>
 
-        <GroupsOverview />
-
         <section aria-label="Select your name" className="mb-10 rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-5 shadow-[var(--shadow-brutalist)] sm:p-6">
           <label htmlFor="mentor-select" className="mb-2 block text-lg font-bold">
             Select your name
