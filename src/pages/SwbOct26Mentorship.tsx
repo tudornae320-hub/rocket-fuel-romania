@@ -198,7 +198,14 @@ const SwbOct26Mentorship = () => {
         return;
       }
     }
-    const stored = window.localStorage.getItem(STORAGE_KEY);
+  const [done, setDone] = useState<string[]>(() => {
+    try {
+      const raw = window.localStorage.getItem(DONE_KEY);
+      return raw ? (JSON.parse(raw) as string[]) : [];
+    } catch {
+      return [];
+    }
+  });
     if (stored === "kickstart") setSelected("kickstart");
     else if (stored && MENTORS.includes(stored)) setSelected(stored);
     // eslint-disable-next-line react-hooks/exhaustive-deps
