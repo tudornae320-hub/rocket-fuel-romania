@@ -30,8 +30,8 @@ const PAIRS: Pair[] = [
   { id: "A", mentors: ["Andrei-Fredy Craciun", "Adina Saniuta"], room1: [1, 7, 6, 5, 4, 3, 2], room2: [8, 14, 13, 12, 11, 10, 9] },
   { id: "B", mentors: ["Antonio Hus", "David Webster"], room1: [2, 1, 7, 6, 5, 4, 3], room2: [9, 8, 14, 13, 12, 11, 10] },
   { id: "C", mentors: ["Bogdan Deac", "Steliana Moraru"], room1: [3, 2, 1, 7, 6, 5, 4], room2: [10, 9, 8, 14, 13, 12, 11] },
-  { id: "D", mentors: ["Cosmin Posteuca", "Cristian-George Farauanu"], room1: [4, 3, 2, 1, 7, 6, 5], room2: [11, 10, 9, 8, 14, 13, 12] },
-  { id: "E", mentors: ["Ionuț Radu Munteanu", "Constantin-Daniel Pestrea"], room1: [5, 4, 3, 2, 1, 7, 6], room2: [12, 11, 10, 9, 8, 14, 13] },
+  { id: "D", mentors: ["Cosmin Posteuca", "George Farauanu"], room1: [4, 3, 2, 1, 7, 6, 5], room2: [11, 10, 9, 8, 14, 13, 12] },
+  { id: "E", mentors: ["Ionuț Radu Munteanu", "ConstantinPestrea"], room1: [5, 4, 3, 2, 1, 7, 6], room2: [12, 11, 10, 9, 8, 14, 13] },
   { id: "F", mentors: ["Anca Popan"], room1: [6, 5, 4, 3, 2, 1, 7], room2: [13, 12, 11, 10, 9, 8, 14] },
 ];
 
