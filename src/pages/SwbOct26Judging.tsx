@@ -55,6 +55,8 @@ const SwbOct26Judging = () => {
   const [scores, setScores] = useState<Record<number, Score>>({});
   const [idx, setIdx] = useState(0);
   const [status, setStatus] = useState<string>("");
+  const [view, setView] = useState<"score" | "review">("score");
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const fromUrl = params.get("judge");
@@ -77,6 +79,8 @@ const SwbOct26Judging = () => {
         setScores({});
       }
       setIdx(0);
+      setView("score");
+      setSubmitted(window.localStorage.getItem(scoresKey(j) + "-submitted") === "1");
     } else {
       window.localStorage.removeItem(JUDGE_KEY);
       setParams({}, { replace: true });
@@ -96,22 +100,29 @@ const SwbOct26Judging = () => {
     });
   };
 
-  const saveNext = async () => {
+  const saveNext = () => {
     if (!judge || !isComplete(current)) return;
-    setStatus("Sending…");
-    const ok = await send(judge, startup.table, current);
-    setStatus(ok ? `Saved ${startup.name} ✓` : `Saved on this phone (sheet not connected)`);
+    setStatus("");
     if (idx < STARTUPS.length - 1) setIdx(idx + 1);
+    else setView("review");
   };
 
-  const resendAll = async () => {
-    if (!judge) return;
-    setStatus("Resending…");
+  const allDone = doneCount === STARTUPS.length;
+
+  const submitFinal = async () => {
+    if (!judge || !allDone) return;
+    setStatus("Submitting…");
     let n = 0;
     for (const s of STARTUPS) {
-      if (isComplete(scores[s.table]) && (await send(judge, s.table, scores[s.table]))) n++;
+      if (await send(judge, s.table, scores[s.table])) n++;
     }
-    setStatus(`Resent ${n} scores`);
+    if (n === STARTUPS.length) {
+      window.localStorage.setItem(scoresKey(judge) + "-submitted", "1");
+      setSubmitted(true);
+      setStatus("Final scores submitted ✓ Thank you!");
+    } else {
+      setStatus(`Only ${n} of ${STARTUPS.length} sent — check your connection and try again.`);
+    }
   };
 
   const box = "rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-5 shadow-[var(--shadow-brutalist)]";
@@ -138,7 +149,61 @@ const SwbOct26Judging = () => {
           </select>
         </section>
 
-        {judge && startup && (
+        {judge && view === "review" && (
+          <section className={box}>
+            <h2 className="text-2xl font-bold uppercase">Review your scores</h2>
+            <p className="mt-1 text-sm text-muted-foreground">Tap a startup to change its scores.</p>
+            <ul className="mt-5 grid gap-2">
+              {STARTUPS.map((s, i) => {
+                const sc = scores[s.table];
+                const ok = isComplete(sc);
+                const total = ok ? CRITERIA.reduce((a, c) => a + (sc![c.key] as number), 0) : null;
+                return (
+                  <li key={s.table}>
+                    <button
+                      type="button"
+                      onClick={() => { setIdx(i); setView("score"); setStatus(""); }}
+                      className="flex w-full items-center justify-between gap-3 rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-left"
+                    >
+                      <span className="min-w-0">
+                        <span className="block font-bold">{s.name}</span>
+                        <span className="block text-sm text-muted-foreground">
+                          {ok ? CRITERIA.map((c) => `${c.label.split(" ")[0]} ${sc![c.key]}`).join(" · ") : "Not scored yet"}
+                        </span>
+                      </span>
+                      <span className={`shrink-0 text-xl font-bold ${ok ? "text-secondary" : "text-destructive"}`}>
+                        {ok ? total : "!"}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+            <button
+              type="button"
+              onClick={submitFinal}
+              disabled={!allDone}
+              className="mt-6 w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-primary px-4 py-3 text-lg font-bold uppercase text-primary-foreground shadow-[var(--shadow-brutalist)] disabled:opacity-40"
+            >
+              {submitted ? "Submit again" : "Submit final scores"}
+            </button>
+            {!allDone && (
+              <p className="mt-3 text-sm font-semibold text-muted-foreground">
+                Score all {STARTUPS.length} startups to submit ({doneCount} done).
+              </p>
+            )}
+            {status && <p className="mt-3 text-sm font-semibold text-secondary">{status}</p>}
+            <button
+              type="button"
+              onClick={() => { setView("score"); setStatus(""); }}
+              className="mt-4 text-sm font-semibold text-secondary underline underline-offset-4"
+            >
+              Back to scoring
+            </button>
+          </section>
+        )}
+
+        {judge && startup && view === "score" && (
           <>
             <p className="mb-3 text-sm font-bold uppercase text-muted-foreground">
               {doneCount} / {STARTUPS.length} scored
@@ -201,7 +266,7 @@ const SwbOct26Judging = () => {
                   disabled={!isComplete(current)}
                   className="flex-1 rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-primary px-4 py-3 text-lg font-bold uppercase text-primary-foreground shadow-[var(--shadow-brutalist)] disabled:opacity-40"
                 >
-                  Save &amp; next
+                  {idx === STARTUPS.length - 1 ? "Save & review" : "Save & next"}
                 </button>
                 <button
                   type="button"
@@ -218,10 +283,10 @@ const SwbOct26Judging = () => {
 
             <button
               type="button"
-              onClick={resendAll}
-              className="mt-6 text-sm font-semibold text-secondary underline underline-offset-4"
+              onClick={() => { setView("review"); setStatus(""); }}
+              className="mt-6 w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-base font-bold uppercase"
             >
-              Resend all my scores
+              Review all scores &amp; submit
             </button>
           </>
         )}
