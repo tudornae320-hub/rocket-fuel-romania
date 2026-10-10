@@ -268,6 +268,7 @@ const SwbOct26Mentorship = () => {
 
         {selected === "kickstart" && (
           <div className="grid gap-8">
+            <GroupsOverview />
             <OverviewSection room={1} independent={ROOM1_INDEPENDENT} />
             <div
               role="separator"
