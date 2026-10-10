@@ -17,23 +17,22 @@ const TABLES: Record<number, string> = {
   12: "Doomate",
 };
 
-type Slot = number | null; // null = rest round
+const roomOf = (table: number) => (table <= 7 ? 1 : 2);
 
 interface Pair {
   id: string;
   mentors: string[];
-  room1: Slot[];
-  room2: Slot[];
+  wave1: number[];
+  wave2: number[];
 }
 
-const R = null;
 const PAIRS: Pair[] = [
-  { id: "A", mentors: ["Andrei-Fredy Craciun", "Adina Saniuta"], room1: [1, 7, 6, 5, 4, 3, 2], room2: [8, R, 12, 11, 10, 9] },
-  { id: "B", mentors: ["Antonio Hus", "David Webster"], room1: [2, 1, 7, 6, 5, 4, 3], room2: [9, 8, R, 12, 11, 10] },
-  { id: "C", mentors: ["Bogdan Deac", "Steliana Moraru"], room1: [3, 2, 1, 7, 6, 5, 4], room2: [10, 9, 8, R, 12, 11] },
-  { id: "D", mentors: ["Cosmin Posteuca", "Cristian-George Farauanu"], room1: [4, 3, 2, 1, 7, 6, 5], room2: [11, 10, 9, 8, R, 12] },
-  { id: "E", mentors: ["Ionuț Radu Munteanu", "Constantin-Daniel Pestrea"], room1: [5, 4, 3, 2, 1, 7, 6], room2: [12, 11, 10, 9, 8, R] },
-  { id: "F", mentors: ["Anca Popan"], room1: [6, 5, 4, 3, 2, 1, 7], room2: [R, 12, 11, 10, 9, 8] },
+  { id: "A", mentors: ["Andrei-Fredy Craciun", "Adina Saniuta"], wave1: [1, 6, 5, 4, 3, 2], wave2: [7, 12, 11, 10, 9, 8] },
+  { id: "B", mentors: ["Antonio Hus", "David Webster"], wave1: [2, 1, 6, 5, 4, 3], wave2: [8, 7, 12, 11, 10, 9] },
+  { id: "C", mentors: ["Bogdan Deac", "Steliana Moraru"], wave1: [3, 2, 1, 6, 5, 4], wave2: [9, 8, 7, 12, 11, 10] },
+  { id: "D", mentors: ["Cosmin Posteuca", "Cristian-George Farauanu"], wave1: [4, 3, 2, 1, 6, 5], wave2: [10, 9, 8, 7, 12, 11] },
+  { id: "E", mentors: ["Ionuț Radu Munteanu", "Constantin-Daniel Pestrea"], wave1: [5, 4, 3, 2, 1, 6], wave2: [11, 10, 9, 8, 7, 12] },
+  { id: "F", mentors: ["Anca Popan"], wave1: [6, 5, 4, 3, 2, 1], wave2: [12, 11, 10, 9, 8, 7] },
 ];
 
 const MENTORS = PAIRS.flatMap((p) => p.mentors).sort((a, b) => a.localeCompare(b));
@@ -48,32 +47,38 @@ const slugify = (name: string) =>
 
 const STORAGE_KEY = "swb-oct26-mentor";
 
-const RoomSection = ({ title, tables }: { title: string; tables: Slot[] }) => (
+const WaveSection = ({ title, subtitle, tables, wave }: { title: string; subtitle: string; tables: number[]; wave: 1 | 2 }) => (
   <section aria-label={title}>
-    <h3 className="mb-4 text-xl font-bold uppercase">{title}</h3>
+    <h3 className="text-xl font-bold uppercase">{title}</h3>
+    <p className="mb-4 text-sm text-muted-foreground">{subtitle}</p>
     <div className="flex flex-col">
-      {tables.map((table, i) => (
-        <Fragment key={i}>
-          <article
-            className={`rounded-2xl border-2 border-[hsl(var(--brutalist-border))] p-4 text-card-foreground shadow-[var(--shadow-brutalist)] ${table === null ? "border-dashed bg-muted" : "bg-card"}`}
-          >
-            <p className="text-sm font-semibold text-muted-foreground">Round {i + 1}</p>
-            {table === null ? (
-              <p className="mt-1 text-2xl font-bold uppercase text-muted-foreground">Rest round</p>
-            ) : (
-              <>
-                <p className="mt-1 text-2xl font-bold uppercase text-secondary">Table {table}</p>
-                <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
-              </>
+      {tables.map((table, i) => {
+        const room = roomOf(table);
+        const highlightRoom = wave === 2 && room === 1;
+        return (
+          <Fragment key={i}>
+            <article className="rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 text-card-foreground shadow-[var(--shadow-brutalist)]">
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-sm font-semibold text-muted-foreground">Round {i + 1}</p>
+                {highlightRoom ? (
+                  <span className="rounded-full border-2 border-[hsl(var(--brutalist-border))] bg-primary px-3 py-1 text-sm font-bold uppercase text-primary-foreground">
+                    Room 1 · go back!
+                  </span>
+                ) : (
+                  <span className="text-sm font-semibold uppercase text-muted-foreground">Room {room}</span>
+                )}
+              </div>
+              <p className="mt-1 text-4xl font-bold uppercase text-secondary">Table {table}</p>
+              <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
+            </article>
+            {i < tables.length - 1 && (
+              <div className="flex justify-center py-1" aria-hidden="true">
+                <ArrowDown className="h-7 w-7 text-secondary" strokeWidth={2.5} />
+              </div>
             )}
-          </article>
-          {i < tables.length - 1 && (
-            <div className="flex justify-center py-1" aria-hidden="true">
-              <ArrowDown className="h-7 w-7 text-secondary" strokeWidth={2.5} />
-            </div>
-          )}
-        </Fragment>
-      ))}
+          </Fragment>
+        );
+      })}
     </div>
   </section>
 );
@@ -118,8 +123,12 @@ const SwbOct26Mentorship = () => {
           <p className="mb-4 font-semibold text-secondary">Startup Weekend Bucharest</p>
           <h1 className="text-4xl font-bold uppercase leading-tight sm:text-5xl">Mentor Schedule</h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Startups stay at their tables. Mentors start in Room 1, then move to Room 2 after the
-            break. Meetings last 12 minutes, with 1 minute to move between rounds.
+            Startups stay at their tables. Mentors move between meetings. Each wave has six rounds,
+            with a 10-minute break between waves.
+          </p>
+          <p className="mt-3 text-lg text-muted-foreground">
+            Wave 1 takes place in Room 1. Wave 2 takes place mainly in Room 2, with logiplay at
+            Table 7 remaining in Room 1.
           </p>
         </header>
 
@@ -171,14 +180,14 @@ const SwbOct26Mentorship = () => {
 
         {selected && pair && (
           <div className="grid gap-8">
-            <RoomSection title="Room 1" tables={pair.room1} />
+            <WaveSection title="Wave 1" subtitle="All in Room 1" tables={pair.wave1} wave={1} />
             <div
               role="separator"
               className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
             >
-              10-minute break · Move to Room 2
+              10-minute mentor break
             </div>
-            <RoomSection title="Room 2" tables={pair.room2} />
+            <WaveSection title="Wave 2" subtitle="Room 2 — except logiplay, Table 7, in Room 1" tables={pair.wave2} wave={2} />
           </div>
         )}
       </div>
