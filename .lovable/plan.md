@@ -1,48 +1,28 @@
-# Placeholder & broken-link cleanup — findings first
+# Judging area for Sunday finals
 
-Here is everything I found. Nothing is changed yet — confirm each group and I'll apply it.
+## What judges see (unlisted page: /swb-oct26/judging)
+- Mobile-friendly, same brutalist style as the mentor schedule, no menu link.
+- Step 1: pick your name from a dropdown with the 3 jurors (Bogdan Deac, Raluca Epureanu, Lucian Popovici). The choice is remembered on that phone, and links like ?judge=bogdan-deac work too.
+- Step 2: one startup at a time, in table order. Each startup card has:
+  - startup name and table number
+  - 3 rows with buttons 1–10: Validation, Execution & Design, Business Model
+  - an optional short note field
+  - "Save & next" button, plus Previous / Next to move between startups
+- A small progress line ("5 / 14 scored") and a list showing which startups are done, so judges can jump back and change a score. Re-saving overwrites that judge's previous score.
 
-## 1. Fake contact details (Contact page, /contact)
-- Email shown: `hello@swromania.ro` (real one is `hi@startupweekendbucharest.com`)
-- Phone shown: `+40 123 456 789` (real one is `+40 750 728 423`)
-- Locations shown: "București • Cluj-Napoca • Iași • Timișoara" (Iasi/Timisoara are not current cities)
-- The message form does nothing when submitted (no destination)
-- Social buttons are letters "F", "IG", "in" with no links
+## What you see (unlisted page: /swb-oct26/judging/results)
+- Opened with a passcode only you know.
+- Table of every startup: each judge's 3 scores, each judge's total, and the overall total/average, ranked.
+- "Download Excel" button: one sheet with all raw scores (judge, startup, 3 criteria, total, note, time), one sheet with the ranking.
+- Turn startups on/off here (for teams that don't show up tomorrow). Hidden startups disappear from the judges' list.
 
-Options: fix with real details and link the form to email, or remove the page entirely.
+## Saving the answers
+- Scores are saved online with Lovable Cloud, so all 3 judges' answers land in one place instantly and survive refreshes or phone switches.
+- No logins for judges (to keep it fast on the day). The results page and the on/off switches are protected by your passcode, checked on the server.
 
-## 2. Dead footer links (every page)
-Four links point nowhere (`#`):
-- "Host in Your City"
-- "How It Works"
-- "Privacy Policy"
-- "Terms of Service"
-
-Options: point them somewhere real, or remove them.
-
-## 3. Outdated demo pages not linked in the menu
-- **/cities** — only Cluj, dated "14-16 Noiembrie 2024", fake video link `example.com`, and an "Înscrie-te acum" button with no destination.
-- **/mentors** — invented people with roles like "CEO @ TechStartup", "CTO @ InnovateLab", plus a button with no destination.
-- **/partners** — a "become a partner" button with no destination.
-
-Options: delete these pages, or rewrite them with real content.
-
-## 4. Photo galleries showing "Photo 1, Photo 2..." text
-On the past-edition pages, expanding a card reveals 12 grey squares labelled "Photo 1" … "Photo 12" instead of real images.
-
-Options: remove those grey galleries, or supply real photos.
-
-## 5. "TBC" placeholders (intentional?)
-- Homepage location reads "TBC"
-- Saturday agenda 10:30-11:30 reads "Workshop TBC"
-
-These were deliberate. I'd leave them unless you say otherwise.
-
-## How I'd proceed (my recommendation)
-1. Fix the Contact page with real email, phone and cities; make the form send to your inbox; link the social buttons to your real profiles.
-2. Footer: point "Host in Your City" and "How It Works" to the right places, remove Privacy/Terms until pages exist.
-3. Delete /cities and /mentors; fix the Partners button to email you.
-4. Remove the placeholder photo grids.
-5. Leave the two TBC items.
-
-Tell me which groups to apply, and for group 1 and 2 where the links should go.
+## Technical details
+- Enable Lovable Cloud.
+- Tables: `judging_startups` (table_no, name, active), `judging_scores` (judge_slug, startup_id, validation, execution, business_model 1–10 check constraints, note, updated_at; unique judge+startup for upsert). Seed 14 startups from the mentorship TABLES map.
+- RLS: anon may read active startups and insert/update scores (upsert by judge+startup); reading all scores, toggling startups and exporting go through an edge function that checks a `JUDGING_ADMIN_PASSCODE` secret.
+- Excel generated in the browser with SheetJS (`xlsx`) from data returned by the admin edge function.
+- New pages `SwbOct26Judging.tsx` and `SwbOct26JudgingResults.tsx`, routes in App.tsx, no nav entries. Record route rule in AGENTS.md.
