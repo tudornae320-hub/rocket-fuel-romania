@@ -130,6 +130,37 @@ const OverviewSection = ({
   </section>
 );
 
+const GroupsOverview = () => (
+  <section aria-label="Mentor groups" className="mb-10">
+    <h2 className="mb-4 text-xl font-bold uppercase">Mentor Groups</h2>
+    <div className="grid gap-3 sm:grid-cols-2">
+      {PAIRS.map((p) => (
+        <article
+          key={p.id}
+          className="rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 text-card-foreground shadow-[var(--shadow-brutalist)]"
+        >
+          <div className="flex items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary text-lg font-bold text-secondary-foreground">
+              {p.id}
+            </span>
+            <span className="text-sm font-bold uppercase text-muted-foreground">Group {p.id}</span>
+          </div>
+          <ul className="mt-3 grid gap-1">
+            {p.mentors.map((m) => (
+              <li key={m} className="break-words text-lg font-semibold leading-snug">
+                {m}
+              </li>
+            ))}
+            {p.mentors.length === 1 && (
+              <li className="text-sm font-medium text-muted-foreground">Individual mentor</li>
+            )}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+);
+
 const SwbOct26Mentorship = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selected, setSelected] = useState<string | null>(null);
