@@ -18,6 +18,7 @@ import PastEditionDetail from "./pages/PastEditionDetail";
 import April26 from "./pages/April26";
 import SwbOct26 from "./pages/SwbOct26";
 import SwbOct26Mentorship from "./pages/SwbOct26Mentorship";
+import SwbOct26Judging from "./pages/SwbOct26Judging";
 import NotFound from "./pages/NotFound";
 import { useSmoothScroll } from "./hooks/use-smooth-scroll";
 
@@ -44,6 +45,7 @@ const AppContent = () => {
         <Route path="/april26" element={<April26 />} />
         <Route path="/swb-oct26" element={<SwbOct26 />} />
         <Route path="/swb-oct26/mentorship" element={<SwbOct26Mentorship />} />
+        <Route path="/swb-oct26/judging" element={<SwbOct26Judging />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

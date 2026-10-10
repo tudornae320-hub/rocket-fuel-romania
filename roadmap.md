@@ -5,4 +5,4 @@
 
 # October startup page
 - [x] Create the unlisted /swb-oct26 page with all uploaded startup names and pitches.
-- [x] Verify readable cards and no horizontal overflow on mobile and desktop.
+- [x] Verify readable cards and no horizontal overflow on mobile and desktop.- [x] Judging page /swb-oct26/judging (waiting on Google Sheet script link)
