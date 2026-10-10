@@ -233,7 +233,20 @@ const SwbOct26Mentorship = () => {
           )}
         </section>
 
-        {selected && pair && (
+        {selected === "kickstart" && (
+          <div className="grid gap-8">
+            <OverviewSection room={1} independent={ROOM1_INDEPENDENT} />
+            <div
+              role="separator"
+              className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
+            >
+              10-minute break · Move to Room 2
+            </div>
+            <OverviewSection room={2} independent={ROOM2_INDEPENDENT} />
+          </div>
+        )}
+
+        {selected && selected !== "kickstart" && pair && (
           <div className="grid gap-8">
             <RoomSection room={1} tables={pair.room1} group={pair.id} />
             <div
