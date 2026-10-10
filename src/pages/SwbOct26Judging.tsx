@@ -246,11 +246,11 @@ const SwbOct26Judging = () => {
                   onChange={(e) => update({ note: e.target.value })}
                   placeholder="Note (optional)"
                   rows={2}
-                  className="w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-base"
+                  className="w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-3 py-2.5 text-sm sm:px-4 sm:py-3 sm:text-base"
                 />
               </div>
 
-              <div className="mt-6 flex items-center gap-2">
+              <div className="mt-4 flex items-center gap-2 sm:mt-6">
                 <button
                   type="button"
                   onClick={() => setIdx(Math.max(0, idx - 1))}
@@ -264,7 +264,7 @@ const SwbOct26Judging = () => {
                   type="button"
                   onClick={saveNext}
                   disabled={!isComplete(current)}
-                  className="flex-1 rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-primary px-4 py-3 text-lg font-bold uppercase text-primary-foreground shadow-[var(--shadow-brutalist)] disabled:opacity-40"
+                  className="flex-1 rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-primary px-4 py-2.5 text-base font-bold uppercase text-primary-foreground shadow-[var(--shadow-brutalist)] disabled:opacity-40 sm:py-3 sm:text-lg"
                 >
                   {idx === STARTUPS.length - 1 ? "Save & review" : "Save & next"}
                 </button>
@@ -284,7 +284,7 @@ const SwbOct26Judging = () => {
             <button
               type="button"
               onClick={() => { setView("review"); setStatus(""); }}
-              className="mt-6 w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-base font-bold uppercase"
+              className="mt-4 w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-2.5 text-sm font-bold uppercase sm:mt-6 sm:py-3 sm:text-base"
             >
               Review all scores &amp; submit
             </button>
