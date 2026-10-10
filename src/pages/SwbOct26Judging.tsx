@@ -131,7 +131,6 @@ const SwbOct26Judging = () => {
     <main className="bg-background pb-10 pt-32 sm:pt-36">
       <div className="container mx-auto max-w-3xl px-4 sm:px-8">
         <header className="mb-5 sm:mb-8">
-          <p className="mb-2 font-semibold text-secondary">Startup Weekend Bucharest</p>
           <h1 className="text-3xl font-bold uppercase leading-tight sm:text-5xl">Judging</h1>
         </header>
 
