@@ -188,6 +188,7 @@ const SwbOct26Mentorship = () => {
             className="w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-base font-medium"
           >
             <option value="">Select your name</option>
+            <option value="kickstart">Kickstart</option>
             {MENTORS.map((m) => (
               <option key={m} value={m}>
                 {m} · Group {groupOf(m)}
@@ -198,26 +199,30 @@ const SwbOct26Mentorship = () => {
           {selected && (
             <div className="mt-5">
               <p className="flex flex-wrap items-center gap-3 text-2xl font-bold">
-                {selected}
-                <span className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary px-3 py-1 text-sm uppercase text-secondary-foreground">
-                  Group {pair?.id}
-                </span>
-              </p>
-              <p className="mt-2 flex items-center gap-2 text-lg">
-                {partner ? (
-                  <>
-                    <Users className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-                    <span>
-                      Your partner: <span className="font-bold">{partner}</span>
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <User className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-                    <span>You mentor individually</span>
-                  </>
+                {selected === "kickstart" ? "Kickstart" : selected}
+                {selected !== "kickstart" && (
+                  <span className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary px-3 py-1 text-sm uppercase text-secondary-foreground">
+                    Group {pair?.id}
+                  </span>
                 )}
               </p>
+              {selected !== "kickstart" && (
+                <p className="mt-2 flex items-center gap-2 text-lg">
+                  {partner ? (
+                    <>
+                      <Users className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+                      <span>
+                        Your partner: <span className="font-bold">{partner}</span>
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <User className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+                      <span>You mentor individually</span>
+                    </>
+                  )}
+                </p>
+              )}
               <button
                 onClick={() => selectMentor(null)}
                 className="mt-3 text-sm font-semibold text-secondary underline underline-offset-4"
