@@ -34,6 +34,10 @@ const startups = [
   {
     "name": "CLNR",
     "pitch": "My startup, CLNR, is developing a suite of cleaning robots to help municipalities keep the sidewalks clean from buds (cigarette butts), flyers and dog poops, using extensible arms to work silently, unlike noisy vacuum cleaners and odour detection to escalate to human teams when the shit hits the fan.\n\nUnlike our Chinese competitors, we keep our data servers in Romania and DON'T send traffic to the Chinese Communist Party or USA's Algorithm Companies."
+  },
+  {
+    "name": "Devino Hacker",
+    "pitch": "My startup, Devino Hacker, is developing a gamified way to learn cybersecurity for both beginners and intermediate learners.\n\nThe problem we are solving is the need to understand digital security principles from a young age (target audience is 14-20+ and their parents, also schools, NGOs, and even bootcamps, teambuildings for cybersecurity firms), both to protect ourselves and to kick-start a future career.\n\nOur key innovation revolves around the combination of digital and physical learning products. On the digital side, we have a platform with courses, eBooks, materials, and simulations, whilst the hardware part consists of reusable cases that simulate real-world incidents (e.g., an attack on a nuclear power plant, defusing a bomb, or breaking into a bank safe).\n\nAll of this is designed to showcase and teach important cybersecurity principles, both for defense and red teaming (cryptography, binary exploitation, web security, phishing methods, social engineering, and reverse engineering).\n\nOur competition mainly consists of board games that are not really focused on cybersecurity, but rather on criminalistics and detective games.\n\nAlso, none of them combine both digital and hardware components while being specifically designed for the Romanian market. Initially, it will be a national product, with the possibility of expanding internationally."
   }
 ];
 
