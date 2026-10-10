@@ -145,7 +145,7 @@ const GroupsOverview = () => (
           <p className="min-w-0 break-words text-sm font-semibold leading-snug">
             {p.mentors.join(" · ")}
             {p.mentors.length === 1 && (
-              <span className="ml-1 font-medium text-muted-foreground">· Individual mentor</span>
+              <span className="font-medium text-muted-foreground">{" · Individual mentor"}</span>
             )}
           </p>
         </article>
