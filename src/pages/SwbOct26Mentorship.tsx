@@ -131,30 +131,23 @@ const OverviewSection = ({
 );
 
 const GroupsOverview = () => (
-  <section aria-label="Mentor groups" className="mb-8">
-    <h2 className="mb-3 text-base font-bold uppercase">Mentor Groups</h2>
-    <div className="grid gap-2 sm:grid-cols-2">
+  <section aria-label="Mentor groups" className="mb-6">
+    <h2 className="mb-2 text-sm font-bold uppercase">Mentor Groups</h2>
+    <div className="grid gap-1.5 sm:grid-cols-2">
       {PAIRS.map((p) => (
         <article
           key={p.id}
-          className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-3 text-card-foreground shadow-[var(--shadow-brutalist)]"
+          className="flex items-start gap-2 rounded-lg border-2 border-[hsl(var(--brutalist-border))] bg-card px-2.5 py-1.5 text-card-foreground shadow-[var(--shadow-brutalist)]"
         >
-          <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border-2 border-[hsl(var(--brutalist-border))] bg-secondary text-xs font-bold text-secondary-foreground">
-              {p.id}
-            </span>
-            <span className="text-xs font-bold uppercase text-muted-foreground">Group {p.id}</span>
-          </div>
-          <ul className="mt-2 grid gap-0.5">
-            {p.mentors.map((m) => (
-              <li key={m} className="break-words text-sm font-semibold leading-snug">
-                {m}
-              </li>
-            ))}
+          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 border-[hsl(var(--brutalist-border))] bg-secondary text-[11px] font-bold text-secondary-foreground">
+            {p.id}
+          </span>
+          <p className="min-w-0 break-words text-sm font-semibold leading-snug">
+            {p.mentors.join(" · ")}
             {p.mentors.length === 1 && (
-              <li className="text-xs font-medium text-muted-foreground">Individual mentor</li>
+              <span className="ml-1 font-medium text-muted-foreground">· Individual mentor</span>
             )}
-          </ul>
+          </p>
         </article>
       ))}
     </div>
