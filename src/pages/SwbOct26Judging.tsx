@@ -36,7 +36,6 @@ const send = async (judge: string, table: number, s: Score) => {
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({
         judge,
-        table,
         startup: TABLES[table],
         validation: s.validation,
         execution: s.execution,
@@ -147,8 +146,7 @@ const SwbOct26Judging = () => {
 
             <article className={box}>
               <p className="text-sm font-semibold text-muted-foreground">Startup {idx + 1} of {STARTUPS.length}</p>
-              <h2 className="mt-1 text-2xl font-bold uppercase text-secondary">Table {startup.table}</h2>
-              <p className="text-3xl font-bold leading-tight">{startup.name}</p>
+              <p className="mt-1 text-3xl font-bold leading-tight">{startup.name}</p>
 
               <div className="mt-6 grid gap-6">
                 {CRITERIA.map((c) => (
