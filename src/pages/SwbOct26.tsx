@@ -1,19 +1,19 @@
 const startups = [
   {
     "name": "HAI: Plans With Friends",
-    "pitch": "My startup, HAI, is building a social planning platform that helps young adults turn the intention to meet into real-world plans with their friends through frictionless coordination, personalized recommendations, and local activity discovery. Unlike group chats, calendars, or event-discovery platforms that solve only one part of the problem, HAI combines discovery, decision-making, planning, and participation in one social experience designed around existing friend groups. Our goal is to become the layer between “we should do something” and actually doing it."
+    "pitch": "My startup, HAI, is building a social planning platform that helps young adults turn the intention to meet into real-world plans with their friends through frictionless coordination, personalized recommendations, and local activity discovery.\n\nUnlike group chats, calendars, or event-discovery platforms that solve only one part of the problem, HAI combines discovery, decision-making, planning, and participation in one social experience designed around existing friend groups.\n\nOur goal is to become the layer between “we should do something” and actually doing it."
   },
   {
     "name": "NestRay",
-    "pitch": "My startup, NestRay, is developing a web platform that helps homebuyers, homeowners, and real estate professionals understand how sunlight affects properties in Bucharest and how much electricity solar panels could generate. Using 3D simulations, solar data, and mapping technology, NestRay visualizes natural light inside homes throughout the day and estimates photovoltaic energy production. Unlike traditional real estate platforms, we go beyond location, price, and photos to reveal a property's solar potential before you make a decision."
+    "pitch": "My startup, NestRay, is developing a web platform that helps homebuyers, homeowners, and real estate professionals understand how sunlight affects properties in Bucharest and how much electricity solar panels could generate.\n\nUsing 3D simulations, solar data, and mapping technology, NestRay visualizes natural light inside homes throughout the day and estimates photovoltaic energy production.\n\nUnlike traditional real estate platforms, we go beyond location, price, and photos to reveal a property's solar potential before you make a decision."
   },
   {
     "name": "Doomate",
-    "pitch": "My startup, Doomate, is developing a social app blocker to help people wanting to spend less time doomscrolling stick to their goals with a social accountability step that makes them ask their friends for more time once their daily limit runs out. Unlike traditional app blockers, we move the accountability from the person to trusted people who accept or deny their requests, and unlike direct competitors like Useless, we add Doomy AI who reviews their requests in case they don\"t have people to use the app with."
+    "pitch": "My startup, Doomate, is developing a social app blocker to help people wanting to spend less time doomscrolling stick to their goals with a social accountability step that makes them ask their friends for more time once their daily limit runs out.\n\nUnlike traditional app blockers, we move the accountability from the person to trusted people who accept or deny their requests, and unlike direct competitors like Useless, we add Doomy AI who reviews their requests in case they don\"t have people to use the app with."
   },
   {
     "name": "CityFix",
-    "pitch": "My startup, CityFix, is developing an app that connects citizens and local government to solve urban issues. Powered by an AI module and a no-login platform, CityFix offers an intuitive interface that allows users to report a problem in just 2 seconds, making urban reporting faster and more accessible than platforms like bucuresti.help."
+    "pitch": "My startup, CityFix, is developing an app that connects citizens and local government to solve urban issues.\n\nPowered by an AI module and a no-login platform, CityFix offers an intuitive interface that allows users to report a problem in just 2 seconds, making urban reporting faster and more accessible than platforms like bucuresti.help."
   },
   {
     "name": "Denki Management",
@@ -21,19 +21,19 @@ const startups = [
   },
   {
     "name": "Knowledge as Liquidity",
-    "pitch": "My startup, KaL (Knowledge as Liquidity), is building an AI-powered, decentralized knowledge economy that enables learners worldwide to prove their skills, earn verifiable credentials, and receive rewards for demonstrated understanding. Unlike traditional learning platforms that measure progress through course completion and static quizzes, we use our proprietary Proof of Cognitive Work protocol, combining adaptive AI assessments, psychometric modeling, and blockchain verification to make knowledge measurable, verifiable, and economically valuable."
+    "pitch": "My startup, KaL (Knowledge as Liquidity), is building an AI-powered, decentralized knowledge economy that enables learners worldwide to prove their skills, earn verifiable credentials, and receive rewards for demonstrated understanding.\n\nUnlike traditional learning platforms that measure progress through course completion and static quizzes, we use our proprietary Proof of Cognitive Work protocol, combining adaptive AI assessments, psychometric modeling, and blockchain verification to make knowledge measurable, verifiable, and economically valuable."
   },
   {
     "name": "AirSpot",
-    "pitch": "My startup, AirSpot, is developing an app meant to help comercial drone users command their operation in one place, this cutting costs using our interested functions to generate and request authorizations and such. Unlike free or paid alternative, you can manage your entire operation within our app."
+    "pitch": "My startup, AirSpot, is developing an app meant to help comercial drone users command their operation in one place, this cutting costs using our interested functions to generate and request authorizations and such.\n\nUnlike free or paid alternative, you can manage your entire operation within our app."
   },
   {
     "name": "3onsai",
-    "pitch": "he wellness market is overwhelming. Consumers struggle to identify trustworthy products, understand how to use them, and find reliable guidance.\n3ONSAI is a curated wellness ecosystem that brings together quality products, trusted professionals, education, and real-life experiences in one platform.\nWith an integrated AI Guide, we make wellness easier to discover, understand, and integrate into everyday life.\nUnlike traditional marketplaces, we don't just sell products. We connect knowledge with quality, transforming wellness shopping into an informed, guided experience.\nOur vision is to become the trusted destination for holistic wellness, connecting mind, body, and spirit through one seamless online and offline ecosystem.\n3ONSAI isn't just about what you buy. It's about understanding what you buy, why it matters, and how to make it part of your life."
+    "pitch": "he wellness market is overwhelming. Consumers struggle to identify trustworthy products, understand how to use them, and find reliable guidance.\n\n3ONSAI is a curated wellness ecosystem that brings together quality products, trusted professionals, education, and real-life experiences in one platform.\n\nWith an integrated AI Guide, we make wellness easier to discover, understand, and integrate into everyday life.\n\nUnlike traditional marketplaces, we don't just sell products. We connect knowledge with quality, transforming wellness shopping into an informed, guided experience.\n\nOur vision is to become the trusted destination for holistic wellness, connecting mind, body, and spirit through one seamless online and offline ecosystem.\n\n3ONSAI isn't just about what you buy. It's about understanding what you buy, why it matters, and how to make it part of your life."
   },
   {
     "name": "CLNR",
-    "pitch": "My startup, CLNR, is developing a suite of cleaning robots to help municipalities keep the sidewalks clean from buds (cigarette butts), flyers and dog poops, using extensible arms to work silently, unlike noisy vacuum cleaners and odour detection to escalate to human teams when the shit hits the fan. Unlike our Chinese competitors, we keep our data servers in Romania and DON'T send traffic to the Chinese Communist Party or USA's Algorithm Companies."
+    "pitch": "My startup, CLNR, is developing a suite of cleaning robots to help municipalities keep the sidewalks clean from buds (cigarette butts), flyers and dog poops, using extensible arms to work silently, unlike noisy vacuum cleaners and odour detection to escalate to human teams when the shit hits the fan.\n\nUnlike our Chinese competitors, we keep our data servers in Romania and DON'T send traffic to the Chinese Communist Party or USA's Algorithm Companies."
   }
 ];
 
