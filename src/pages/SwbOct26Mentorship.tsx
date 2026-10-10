@@ -37,6 +37,8 @@ const PAIRS: Pair[] = [
 
 const MENTORS = PAIRS.flatMap((p) => p.mentors).sort((a, b) => a.localeCompare(b));
 
+const groupOf = (name: string) => PAIRS.find((p) => p.mentors.includes(name))?.id ?? "";
+
 const slugify = (name: string) =>
   name
     .toLowerCase()
@@ -47,9 +49,22 @@ const slugify = (name: string) =>
 
 const STORAGE_KEY = "swb-oct26-mentor";
 
-const RoomSection = ({ room, tables }: { room: 1 | 2; tables: number[] }) => (
+const RoomSection = ({
+  room,
+  tables,
+  group,
+}: {
+  room: 1 | 2;
+  tables: number[];
+  group: string;
+}) => (
   <section aria-label={`Room ${room}`}>
-    <h3 className="mb-4 text-xl font-bold uppercase">Room {room}</h3>
+    <h3 className="mb-4 flex flex-wrap items-center justify-between gap-2 text-xl font-bold uppercase">
+      <span>Room {room}</span>
+      <span className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary px-3 py-1 text-sm font-bold uppercase text-secondary-foreground">
+        Group {group}
+      </span>
+    </h3>
     <div className="flex flex-col">
       {tables.map((table, i) => {
         return (
@@ -129,14 +144,19 @@ const SwbOct26Mentorship = () => {
             <option value="">Select your name</option>
             {MENTORS.map((m) => (
               <option key={m} value={m}>
-                {m}
+                {m} · Group {groupOf(m)}
               </option>
             ))}
           </select>
 
           {selected && (
             <div className="mt-5">
-              <p className="text-2xl font-bold">{selected}</p>
+              <p className="flex flex-wrap items-center gap-3 text-2xl font-bold">
+                {selected}
+                <span className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary px-3 py-1 text-sm uppercase text-secondary-foreground">
+                  Group {pair?.id}
+                </span>
+              </p>
               <p className="mt-2 flex items-center gap-2 text-lg">
                 {partner ? (
                   <>
@@ -164,14 +184,14 @@ const SwbOct26Mentorship = () => {
 
         {selected && pair && (
           <div className="grid gap-8">
-            <RoomSection room={1} tables={pair.room1} />
+            <RoomSection room={1} tables={pair.room1} group={pair.id} />
             <div
               role="separator"
               className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
             >
               10-minute break · Move to Room 2
             </div>
-            <RoomSection room={2} tables={pair.room2} />
+            <RoomSection room={2} tables={pair.room2} group={pair.id} />
           </div>
         )}
       </div>
