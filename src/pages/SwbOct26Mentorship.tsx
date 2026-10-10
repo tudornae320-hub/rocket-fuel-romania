@@ -3,34 +3,37 @@ import { useSearchParams } from "react-router-dom";
 import { Users, User } from "lucide-react";
 
 const TABLES: Record<number, string> = {
-  1: "HAI: Plans With Friends",
-  2: "NestRay",
-  3: "Doomate",
-  4: "CityFix",
-  5: "Denki Management",
-  6: "Knowledge as Liquidity",
-  7: "AirSpot",
-  8: "3onsai",
+  1: "AirSpot",
+  2: "3onsai",
+  3: "Denki Management",
+  4: "Knowledge as Liquidity",
+  5: "HAI: Plans With Friends",
+  6: "CityFix",
+  7: "logiplay",
+  8: "Artimedi",
   9: "CLNR",
-  10: "Devino Hacker",
-  11: "Artimedi",
-  12: "StartupX",
+  10: "NestRay",
+  11: "Devino Hacker",
+  12: "Doomate",
 };
+
+type Slot = number | null; // null = rest round
 
 interface Pair {
   id: string;
   mentors: string[];
-  wave1: number[];
-  wave2: number[];
+  room1: Slot[];
+  room2: Slot[];
 }
 
+const R = null;
 const PAIRS: Pair[] = [
-  { id: "A", mentors: ["Andrei-Fredy Craciun", "Adina Saniuta"], wave1: [1, 6, 5, 4, 3, 2], wave2: [7, 12, 11, 10, 9, 8] },
-  { id: "B", mentors: ["Antonio Hus", "David Webster"], wave1: [2, 1, 6, 5, 4, 3], wave2: [8, 7, 12, 11, 10, 9] },
-  { id: "C", mentors: ["Bogdan Deac", "Steliana Moraru"], wave1: [3, 2, 1, 6, 5, 4], wave2: [9, 8, 7, 12, 11, 10] },
-  { id: "D", mentors: ["Cosmin Posteuca", "Cristian-George Farauanu"], wave1: [4, 3, 2, 1, 6, 5], wave2: [10, 9, 8, 7, 12, 11] },
-  { id: "E", mentors: ["Ionuț Radu Munteanu", "Constantin-Daniel Pestrea"], wave1: [5, 4, 3, 2, 1, 6], wave2: [11, 10, 9, 8, 7, 12] },
-  { id: "F", mentors: ["Anca Popan"], wave1: [6, 5, 4, 3, 2, 1], wave2: [12, 11, 10, 9, 8, 7] },
+  { id: "A", mentors: ["Andrei-Fredy Craciun", "Adina Saniuta"], room1: [1, 7, 6, 5, 4, 3, 2], room2: [8, R, 12, 11, 10, 9] },
+  { id: "B", mentors: ["Antonio Hus", "David Webster"], room1: [2, 1, 7, 6, 5, 4, 3], room2: [9, 8, R, 12, 11, 10] },
+  { id: "C", mentors: ["Bogdan Deac", "Steliana Moraru"], room1: [3, 2, 1, 7, 6, 5, 4], room2: [10, 9, 8, R, 12, 11] },
+  { id: "D", mentors: ["Cosmin Posteuca", "Cristian-George Farauanu"], room1: [4, 3, 2, 1, 7, 6, 5], room2: [11, 10, 9, 8, R, 12] },
+  { id: "E", mentors: ["Ionuț Radu Munteanu", "Constantin-Daniel Pestrea"], room1: [5, 4, 3, 2, 1, 7, 6], room2: [12, 11, 10, 9, 8, R] },
+  { id: "F", mentors: ["Anca Popan"], room1: [6, 5, 4, 3, 2, 1, 7], room2: [R, 12, 11, 10, 9, 8] },
 ];
 
 const MENTORS = PAIRS.flatMap((p) => p.mentors).sort((a, b) => a.localeCompare(b));
@@ -45,18 +48,24 @@ const slugify = (name: string) =>
 
 const STORAGE_KEY = "swb-oct26-mentor";
 
-const WaveSection = ({ title, tables }: { title: string; tables: number[] }) => (
+const RoomSection = ({ title, tables }: { title: string; tables: Slot[] }) => (
   <section aria-label={title}>
     <h3 className="mb-4 text-xl font-bold uppercase">{title}</h3>
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
       {tables.map((table, i) => (
         <article
           key={i}
-          className="rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 text-card-foreground shadow-[var(--shadow-brutalist)]"
+          className={`rounded-2xl border-2 border-[hsl(var(--brutalist-border))] p-4 text-card-foreground shadow-[var(--shadow-brutalist)] ${table === null ? "border-dashed bg-muted" : "bg-card"}`}
         >
           <p className="text-sm font-semibold text-muted-foreground">Round {i + 1}</p>
-          <p className="mt-1 text-2xl font-bold uppercase text-secondary">Table {table}</p>
-          <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
+          {table === null ? (
+            <p className="mt-1 text-2xl font-bold uppercase text-muted-foreground">Rest round</p>
+          ) : (
+            <>
+              <p className="mt-1 text-2xl font-bold uppercase text-secondary">Table {table}</p>
+              <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
+            </>
+          )}
         </article>
       ))}
     </div>
@@ -103,8 +112,8 @@ const SwbOct26Mentorship = () => {
           <p className="mb-4 font-semibold text-secondary">Startup Weekend Bucharest</p>
           <h1 className="text-4xl font-bold uppercase leading-tight sm:text-5xl">Mentor Schedule</h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Startups stay at their tables. Mentors move between rounds. Each meeting lasts 12
-            minutes, with 2 minutes to move. There is a 10-minute break between waves.
+            Startups stay at their tables. Mentors start in Room 1, then move to Room 2 after the
+            break. Meetings last 12 minutes, with 1 minute to move between rounds.
           </p>
         </header>
 
@@ -156,14 +165,14 @@ const SwbOct26Mentorship = () => {
 
         {selected && pair && (
           <div className="grid gap-8">
-            <WaveSection title="Wave 1" tables={pair.wave1} />
+            <RoomSection title="Room 1" tables={pair.room1} />
             <div
               role="separator"
               className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
             >
-              10-minute mentor break
+              10-minute break · Move to Room 2
             </div>
-            <WaveSection title="Wave 2" tables={pair.wave2} />
+            <RoomSection title="Room 2" tables={pair.room2} />
           </div>
         )}
       </div>
