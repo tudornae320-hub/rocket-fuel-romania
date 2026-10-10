@@ -48,6 +48,7 @@ const slugify = (name: string) =>
     .replace(/(^-|-$)/g, "");
 
 const STORAGE_KEY = "swb-oct26-mentor";
+const DONE_KEY = "swb-oct26-kickstart-done";
 
 const RoomSection = ({
   room,
