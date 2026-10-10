@@ -89,6 +89,47 @@ const RoomSection = ({
   </section>
 );
 
+const ROOM1_INDEPENDENT = [7, 6, 5, 4, 3, 2, 1];
+const ROOM2_INDEPENDENT = [14, 13, 12, 11, 10, 9, 8];
+
+const OverviewSection = ({
+  room,
+  independent,
+}: {
+  room: 1 | 2;
+  independent: number[];
+}) => (
+  <section aria-label={`Room ${room} overview`}>
+    <h3 className="mb-4 text-xl font-bold uppercase">Room {room}</h3>
+    <div className="grid gap-4">
+      {[0, 1, 2, 3, 4, 5, 6].map((r) => (
+        <article
+          key={r}
+          className="rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-4 text-card-foreground shadow-[var(--shadow-brutalist)]"
+        >
+          <p className="text-sm font-semibold text-muted-foreground">Round {r + 1}</p>
+          <ul className="mt-2 grid gap-1.5">
+            {PAIRS.map((p) => {
+              const tables = room === 1 ? p.room1 : p.room2;
+              return (
+                <li key={p.id} className="flex items-baseline gap-2 text-sm sm:text-base">
+                  <span className="shrink-0 font-bold text-secondary">Group {p.id}</span>
+                  <span className="shrink-0 text-muted-foreground">·</span>
+                  <span className="shrink-0 font-semibold">Table {tables[r]}</span>
+                  <span className="min-w-0 truncate font-medium">{TABLES[tables[r]]}</span>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Working independently: Table {independent[r]} · {TABLES[independent[r]]}
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+);
+
 const SwbOct26Mentorship = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selected, setSelected] = useState<string | null>(null);
@@ -96,6 +137,10 @@ const SwbOct26Mentorship = () => {
   // Initial selection: URL param wins, then localStorage.
   useEffect(() => {
     const fromUrl = searchParams.get("mentor");
+    if (fromUrl === "kickstart") {
+      setSelected("kickstart");
+      return;
+    }
     if (fromUrl) {
       const match = MENTORS.find((m) => slugify(m) === fromUrl);
       if (match) {
@@ -104,7 +149,8 @@ const SwbOct26Mentorship = () => {
       }
     }
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored && MENTORS.includes(stored)) setSelected(stored);
+    if (stored === "kickstart") setSelected("kickstart");
+    else if (stored && MENTORS.includes(stored)) setSelected(stored);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -142,6 +188,7 @@ const SwbOct26Mentorship = () => {
             className="w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-base font-medium"
           >
             <option value="">Select your name</option>
+            <option value="kickstart">Kickstart</option>
             {MENTORS.map((m) => (
               <option key={m} value={m}>
                 {m} · Group {groupOf(m)}
@@ -152,26 +199,30 @@ const SwbOct26Mentorship = () => {
           {selected && (
             <div className="mt-5">
               <p className="flex flex-wrap items-center gap-3 text-2xl font-bold">
-                {selected}
-                <span className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary px-3 py-1 text-sm uppercase text-secondary-foreground">
-                  Group {pair?.id}
-                </span>
-              </p>
-              <p className="mt-2 flex items-center gap-2 text-lg">
-                {partner ? (
-                  <>
-                    <Users className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-                    <span>
-                      Your partner: <span className="font-bold">{partner}</span>
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <User className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
-                    <span>You mentor individually</span>
-                  </>
+                {selected === "kickstart" ? "Kickstart" : selected}
+                {selected !== "kickstart" && (
+                  <span className="rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-secondary px-3 py-1 text-sm uppercase text-secondary-foreground">
+                    Group {pair?.id}
+                  </span>
                 )}
               </p>
+              {selected !== "kickstart" && (
+                <p className="mt-2 flex items-center gap-2 text-lg">
+                  {partner ? (
+                    <>
+                      <Users className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+                      <span>
+                        Your partner: <span className="font-bold">{partner}</span>
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <User className="h-5 w-5 shrink-0 text-secondary" aria-hidden="true" />
+                      <span>You mentor individually</span>
+                    </>
+                  )}
+                </p>
+              )}
               <button
                 onClick={() => selectMentor(null)}
                 className="mt-3 text-sm font-semibold text-secondary underline underline-offset-4"
@@ -182,7 +233,20 @@ const SwbOct26Mentorship = () => {
           )}
         </section>
 
-        {selected && pair && (
+        {selected === "kickstart" && (
+          <div className="grid gap-8">
+            <OverviewSection room={1} independent={ROOM1_INDEPENDENT} />
+            <div
+              role="separator"
+              className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
+            >
+              10-minute break · Move to Room 2
+            </div>
+            <OverviewSection room={2} independent={ROOM2_INDEPENDENT} />
+          </div>
+        )}
+
+        {selected && selected !== "kickstart" && pair && (
           <div className="grid gap-8">
             <RoomSection room={1} tables={pair.room1} group={pair.id} />
             <div
