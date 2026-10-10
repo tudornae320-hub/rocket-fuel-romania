@@ -224,6 +224,14 @@ const SwbOct26Mentorship = () => {
     }
   };
 
+  const toggleDone = (key: string) => {
+    setDone((prev) => {
+      const next = prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key];
+      window.localStorage.setItem(DONE_KEY, JSON.stringify(next));
+      return next;
+    });
+  };
+
   const pair = useMemo(() => PAIRS.find((p) => p.mentors.includes(selected ?? "")), [selected]);
   const partner = pair?.mentors.find((m) => m !== selected) ?? null;
 
