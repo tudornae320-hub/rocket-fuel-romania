@@ -2,22 +2,7 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ArrowDown, Check, Users, User } from "lucide-react";
 
-const TABLES: Record<number, string> = {
-  1: "AirSpot",
-  2: "3onsai",
-  3: "Denki Management",
-  4: "Knowledge as Liquidity",
-  5: "HAI: Plans With Friends",
-  6: "CityFix",
-  7: "logiplay",
-  8: "Artimedi",
-  9: "CLNR",
-  10: "NestRay",
-  11: "Devino Hacker",
-  12: "Doomate",
-  13: "Temelia",
-  14: "RentSharing",
-};
+import { TABLES } from "@/data/swbOct26";
 
 interface Pair {
   id: string;
