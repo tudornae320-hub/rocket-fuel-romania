@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import PastEditionDetail from "./pages/PastEditionDetail";
 import April26 from "./pages/April26";
+import SwbOct26 from "./pages/SwbOct26";
 import NotFound from "./pages/NotFound";
 import { useSmoothScroll } from "./hooks/use-smooth-scroll";
 
@@ -40,6 +41,7 @@ const AppContent = () => {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/April26" element={<April26 />} />
         <Route path="/april26" element={<April26 />} />
+        <Route path="/swb-oct26" element={<SwbOct26 />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
