@@ -137,6 +137,10 @@ const SwbOct26Mentorship = () => {
   // Initial selection: URL param wins, then localStorage.
   useEffect(() => {
     const fromUrl = searchParams.get("mentor");
+    if (fromUrl === "kickstart") {
+      setSelected("kickstart");
+      return;
+    }
     if (fromUrl) {
       const match = MENTORS.find((m) => slugify(m) === fromUrl);
       if (match) {
@@ -145,7 +149,8 @@ const SwbOct26Mentorship = () => {
       }
     }
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored && MENTORS.includes(stored)) setSelected(stored);
+    if (stored === "kickstart") setSelected("kickstart");
+    else if (stored && MENTORS.includes(stored)) setSelected(stored);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
