@@ -303,14 +303,14 @@ const SwbOct26Mentorship = () => {
         {selected === "kickstart" && (
           <div className="grid gap-8">
             <GroupsOverview />
-            <OverviewSection room={1} independent={ROOM1_INDEPENDENT} />
+            <OverviewSection room={1} independent={ROOM1_INDEPENDENT} done={done} onToggle={toggleDone} />
             <div
               role="separator"
               className="rounded-2xl border-2 border-dashed border-[hsl(var(--brutalist-border))] bg-muted p-4 text-center text-lg font-bold uppercase"
             >
               10-minute break · Move to Room 2
             </div>
-            <OverviewSection room={2} independent={ROOM2_INDEPENDENT} />
+            <OverviewSection room={2} independent={ROOM2_INDEPENDENT} done={done} onToggle={toggleDone} />
           </div>
         )}
 
