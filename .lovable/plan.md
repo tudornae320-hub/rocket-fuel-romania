@@ -1,28 +1,34 @@
-# Judging area for Sunday finals
+# Judging area for Sunday finals (Google Sheet, no Cloud)
 
 ## What judges see (unlisted page: /swb-oct26/judging)
-- Mobile-friendly, same brutalist style as the mentor schedule, no menu link.
-- Step 1: pick your name from a dropdown with the 3 jurors (Bogdan Deac, Raluca Epureanu, Lucian Popovici). The choice is remembered on that phone, and links like ?judge=bogdan-deac work too.
-- Step 2: one startup at a time, in table order. Each startup card has:
+- Mobile-friendly, same style as the mentor schedule, no menu link.
+- Step 1: pick your name (Bogdan Deac, Raluca Epureanu, Lucian Popovici). The phone remembers the choice, and links like ?judge=bogdan-deac work too.
+- Step 2: one startup at a time, in table order (14 startups from the mentor schedule):
   - startup name and table number
-  - 3 rows with buttons 1–10: Validation, Execution & Design, Business Model
-  - an optional short note field
-  - "Save & next" button, plus Previous / Next to move between startups
-- A small progress line ("5 / 14 scored") and a list showing which startups are done, so judges can jump back and change a score. Re-saving overwrites that judge's previous score.
+  - 3 rows of 1–10 buttons: Validation, Execution & Design, Business Model
+  - optional short note
+  - "Save & next", plus Previous / Next
+- A progress line ("5 / 14 scored") and a list of startups with a tick on the ones already scored, so judges can go back and change a score.
+- Each judge's scores are also kept on their phone, so nothing is lost if the signal drops. A "Resend all" button sends everything again.
 
-## What you see (unlisted page: /swb-oct26/judging/results)
-- Opened with a passcode only you know.
-- Table of every startup: each judge's 3 scores, each judge's total, and the overall total/average, ranked.
-- "Download Excel" button: one sheet with all raw scores (judge, startup, 3 criteria, total, note, time), one sheet with the ranking.
-- Turn startups on/off here (for teams that don't show up tomorrow). Hidden startups disappear from the judges' list.
+## Where the answers go
+- Every save adds a row to your Google Sheet: time, judge, table, startup, Validation, Execution & Design, Business Model, total, note.
+- If a judge changes a score, a new row is added. A second tab, "Latest", automatically shows only each judge's most recent score per startup, plus totals and a ranking.
+- To get Excel: in Google Sheets, File → Download → Microsoft Excel.
 
-## Saving the answers
-- Scores are saved online with Lovable Cloud, so all 3 judges' answers land in one place instantly and survive refreshes or phone switches.
-- No logins for judges (to keep it fast on the day). The results page and the on/off switches are protected by your passcode, checked on the server.
+## Fewer startups tomorrow
+- Startups that don't show up can be removed from the judges' list with a quick message to me before the pitches start. They come out of the list in a single change.
+
+## One-time setup (about 5 minutes, I'll give you exact steps)
+1. Create a new Google Sheet.
+2. Extensions → Apps Script, paste the short script I give you, click Deploy → Web app (Execute as: Me, Access: Anyone).
+3. Paste the web app link back here in chat. I add it to the page.
+
+## Limits to know
+- Anyone with the page link could send scores, so share the link only with the 3 judges. The page isn't in any menu.
 
 ## Technical details
-- Enable Lovable Cloud.
-- Tables: `judging_startups` (table_no, name, active), `judging_scores` (judge_slug, startup_id, validation, execution, business_model 1–10 check constraints, note, updated_at; unique judge+startup for upsert). Seed 14 startups from the mentorship TABLES map.
-- RLS: anon may read active startups and insert/update scores (upsert by judge+startup); reading all scores, toggling startups and exporting go through an edge function that checks a `JUDGING_ADMIN_PASSCODE` secret.
-- Excel generated in the browser with SheetJS (`xlsx`) from data returned by the admin edge function.
-- New pages `SwbOct26Judging.tsx` and `SwbOct26JudgingResults.tsx`, routes in App.tsx, no nav entries. Record route rule in AGENTS.md.
+- New page `src/pages/SwbOct26Judging.tsx`, route `/swb-oct26/judging` in App.tsx, no nav entry. Startup list is reused from the mentorship TABLES data (moved to a shared `src/data/swbOct26.ts`), with an `active` flag.
+- Submission: `fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON })` (text/plain to avoid a CORS preflight). Apps Script `doPost` appends to the "Responses" sheet. The "Latest" tab is built with formulas the script sets up on first run.
+- Local copy in localStorage per judge (`swb-oct26-judge`, `swb-oct26-scores-{judge}`) for progress ticks and resend.
+- Record the route rule in AGENTS.md.
