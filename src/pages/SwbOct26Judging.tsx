@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TABLES, INACTIVE_TABLES } from "@/data/swbOct26";
 
 // Paste the Google Apps Script web app URL here.
