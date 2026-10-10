@@ -112,14 +112,7 @@ const SwbOct26Mentorship = () => {
         <header className="mb-10">
           <p className="mb-4 font-semibold text-secondary">Startup Weekend Bucharest</p>
           <h1 className="text-4xl font-bold uppercase leading-tight sm:text-5xl">Mentor Schedule</h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Startups stay at their tables. Mentors complete Room 1 first, then move to Room 2 after a
-            10-minute break. Meetings last 12 minutes, with 1 minute to move between rounds.
-          </p>
-          <p className="mt-3 text-lg text-muted-foreground">
-            Room 1 has seven startups and six mentor groups. Each startup has one round to continue
-            working independently. Mentors have a meeting every round.
-          </p>
+          <p className="mt-4 whitespace-pre-line text-lg text-muted-foreground">{"Start in Room 1, then move to Room 2 after a 10-minute break.\n\nMeetings last 12 minutes, with 1 minute to change tables. Startups stay seated.\n\nFollow your route below."}</p>
         </header>
 
         <section aria-label="Select your name" className="mb-10 rounded-2xl border-2 border-[hsl(var(--brutalist-border))] bg-card p-5 shadow-[var(--shadow-brutalist)] sm:p-6">
