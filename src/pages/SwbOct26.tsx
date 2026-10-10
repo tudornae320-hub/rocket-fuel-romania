@@ -37,6 +37,13 @@ const startups = [
   }
 ];
 
+// Splits a pitch at the end of its first sentence so it can be emphasised.
+const splitFirstSentence = (text: string) => {
+  const cut = text.search(/\.(?=\s|$)/);
+  if (cut === -1) return { first: text, rest: "" };
+  return { first: text.slice(0, cut + 1), rest: text.slice(cut + 1) };
+};
+
 const SwbOct26 = () => (
   <main className="bg-background pb-20 pt-32 sm:pt-36">
     <div className="container mx-auto max-w-5xl px-5 sm:px-8">
@@ -52,7 +59,17 @@ const SwbOct26 = () => (
               <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-bold text-secondary-foreground">{String(index + 1).padStart(2, "0")}</span>
               <h2 id={`startup-${index}`} className="min-w-0 break-words text-2xl font-bold leading-tight sm:text-3xl">{startup.name}</h2>
             </div>
-            <p className="whitespace-pre-line break-words text-base leading-relaxed sm:text-lg">{startup.pitch}</p>
+            <p className="whitespace-pre-line break-words text-base leading-relaxed sm:text-lg">
+              {(() => {
+                const { first, rest } = splitFirstSentence(startup.pitch);
+                return (
+                  <>
+                    <span className="font-bold">{first}</span>
+                    {rest}
+                  </>
+                );
+              })()}
+            </p>
           </article>
         ))}
       </section>
