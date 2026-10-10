@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Users, User } from "lucide-react";
+import { ArrowDown, Users, User } from "lucide-react";
 
 const TABLES: Record<number, string> = {
   1: "AirSpot",
@@ -51,22 +51,28 @@ const STORAGE_KEY = "swb-oct26-mentor";
 const RoomSection = ({ title, tables }: { title: string; tables: Slot[] }) => (
   <section aria-label={title}>
     <h3 className="mb-4 text-xl font-bold uppercase">{title}</h3>
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+    <div className="flex flex-col">
       {tables.map((table, i) => (
-        <article
-          key={i}
-          className={`rounded-2xl border-2 border-[hsl(var(--brutalist-border))] p-4 text-card-foreground shadow-[var(--shadow-brutalist)] ${table === null ? "border-dashed bg-muted" : "bg-card"}`}
-        >
-          <p className="text-sm font-semibold text-muted-foreground">Round {i + 1}</p>
-          {table === null ? (
-            <p className="mt-1 text-2xl font-bold uppercase text-muted-foreground">Rest round</p>
-          ) : (
-            <>
-              <p className="mt-1 text-2xl font-bold uppercase text-secondary">Table {table}</p>
-              <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
-            </>
+        <Fragment key={i}>
+          <article
+            className={`rounded-2xl border-2 border-[hsl(var(--brutalist-border))] p-4 text-card-foreground shadow-[var(--shadow-brutalist)] ${table === null ? "border-dashed bg-muted" : "bg-card"}`}
+          >
+            <p className="text-sm font-semibold text-muted-foreground">Round {i + 1}</p>
+            {table === null ? (
+              <p className="mt-1 text-2xl font-bold uppercase text-muted-foreground">Rest round</p>
+            ) : (
+              <>
+                <p className="mt-1 text-2xl font-bold uppercase text-secondary">Table {table}</p>
+                <p className="mt-1 break-words text-base font-medium leading-snug">{TABLES[table]}</p>
+              </>
+            )}
+          </article>
+          {i < tables.length - 1 && (
+            <div className="flex justify-center py-1" aria-hidden="true">
+              <ArrowDown className="h-7 w-7 text-secondary" strokeWidth={2.5} />
+            </div>
           )}
-        </article>
+        </Fragment>
       ))}
     </div>
   </section>
