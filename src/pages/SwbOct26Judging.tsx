@@ -21,8 +21,8 @@ const STARTUPS = PITCH_ORDER.filter((name) => !INACTIVE_PITCHES.includes(name));
 const slugify = (n: string) =>
   n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-const JUDGE_KEY = "swb-oct26-judge";
-const scoresKey = (j: string) => `swb-oct26-scores-${slugify(j)}`;
+const JUDGE_KEY = "swb-oct26-judge-v2";
+const scoresKey = (j: string) => `swb-oct26-scores-v2-${slugify(j)}`;
 
 const isComplete = (s?: Score) => !!s && CRITERIA.every((c) => typeof s[c.key] === "number");
 
@@ -173,20 +173,24 @@ const SwbOct26Judging = () => {
                 );
               })}
             </ul>
-            <button
-              type="button"
-              onClick={submitFinal}
-              disabled={!allDone}
-              className="mt-6 w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-primary px-4 py-3 text-lg font-bold uppercase text-primary-foreground shadow-[var(--shadow-brutalist)] disabled:opacity-40"
-            >
-              {submitted ? "Submit again" : "Submit final scores"}
-            </button>
-            {!allDone && (
+            {submitted ? (
+              <p className="mt-6 text-center text-lg font-bold text-secondary">Final scores submitted ✓ Thank you!</p>
+            ) : (
+              <button
+                type="button"
+                onClick={submitFinal}
+                disabled={!allDone}
+                className="mt-6 w-full rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-primary px-4 py-3 text-lg font-bold uppercase text-primary-foreground shadow-[var(--shadow-brutalist)] disabled:opacity-40"
+              >
+                Submit final scores
+              </button>
+            )}
+            {!allDone && !submitted && (
               <p className="mt-3 text-sm font-semibold text-muted-foreground">
                 Score all {STARTUPS.length} startups to submit ({doneCount} done).
               </p>
             )}
-            {status && <p className="mt-3 text-sm font-semibold text-secondary">{status}</p>}
+            {!submitted && status && <p className="mt-3 text-sm font-semibold text-secondary">{status}</p>}
             <button
               type="button"
               onClick={() => { setView("score"); setStatus(""); }}
