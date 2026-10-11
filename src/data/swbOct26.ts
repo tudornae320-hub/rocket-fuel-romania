@@ -33,8 +33,8 @@ export const PITCH_ORDER: string[] = [
   "Denki Management",
   "Doomate",
   "Artimedi",
-  "CLNR",
-  "RentSharing",
+  "CNLR",
+  "Rentsharing",
 ];
 
 // Drop a startup from judging without touching the pitch order above.
