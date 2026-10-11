@@ -21,8 +21,8 @@ const STARTUPS = PITCH_ORDER.filter((name) => !INACTIVE_PITCHES.includes(name));
 const slugify = (n: string) =>
   n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-const JUDGE_KEY = "swb-oct26-judge";
-const scoresKey = (j: string) => `swb-oct26-scores-${slugify(j)}`;
+const JUDGE_KEY = "swb-oct26-judge-v2";
+const scoresKey = (j: string) => `swb-oct26-scores-v2-${slugify(j)}`;
 
 const isComplete = (s?: Score) => !!s && CRITERIA.every((c) => typeof s[c.key] === "number");
 
