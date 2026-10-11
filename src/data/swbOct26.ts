@@ -1,3 +1,4 @@
+// Physical table assignment used by the mentorship schedule (Room 1 = 1-7, Room 2 = 8-14).
 export const TABLES: Record<number, string> = {
   1: "AirSpot",
   2: "3onsai",
@@ -17,3 +18,24 @@ export const TABLES: Record<number, string> = {
 
 // Tables not pitching in the finals (remove from judging list).
 export const INACTIVE_TABLES: number[] = [];
+
+// Finals pitch order, Sunday 11 October 2026 — drives the judging page.
+export const PITCH_ORDER: string[] = [
+  "HAI: Plans With Friends",
+  "AirSpot",
+  "EduQuest",
+  "Temelia",
+  "Devino Hacker",
+  "logiplay",
+  "3ONSAI",
+  "CityFix",
+  "BookMap",
+  "Denki Management",
+  "Doomate",
+  "Artimedi",
+  "CLNR",
+  "RentSharing",
+];
+
+// Drop a startup from judging without touching the pitch order above.
+export const INACTIVE_PITCHES: string[] = [];

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { TABLES, INACTIVE_TABLES } from "@/data/swbOct26";
+import { PITCH_ORDER, INACTIVE_PITCHES } from "@/data/swbOct26";
 
 // Paste the Google Apps Script web app URL here.
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLs2Ld7lik9IAtHatY16FZc41JBnPc481s6eGt9UXE9r-y1ItijZ6iOkGfjh6Ld-VD/exec";
@@ -15,9 +15,8 @@ const CRITERIA = [
 type CritKey = (typeof CRITERIA)[number]["key"];
 type Score = Partial<Record<CritKey, number>> & { note?: string };
 
-const STARTUPS = Object.entries(TABLES)
-  .map(([t, name]) => ({ table: Number(t), name }))
-  .filter((s) => !INACTIVE_TABLES.includes(s.table));
+// Startups in pitch order; scores are stored under the startup name.
+const STARTUPS = PITCH_ORDER.filter((name) => !INACTIVE_PITCHES.includes(name));
 
 const slugify = (n: string) =>
   n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -27,7 +26,7 @@ const scoresKey = (j: string) => `swb-oct26-scores-${slugify(j)}`;
 
 const isComplete = (s?: Score) => !!s && CRITERIA.every((c) => typeof s[c.key] === "number");
 
-const send = async (judge: string, table: number, s: Score) => {
+const send = async (judge: string, startup: string, s: Score) => {
   if (!SCRIPT_URL) return false;
   try {
     await fetch(SCRIPT_URL, {
@@ -36,7 +35,7 @@ const send = async (judge: string, table: number, s: Score) => {
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({
         judge,
-        startup: TABLES[table],
+        startup,
         validation: s.validation,
         execution: s.execution,
         business: s.business,
@@ -52,7 +51,7 @@ const send = async (judge: string, table: number, s: Score) => {
 const SwbOct26Judging = () => {
   const [params, setParams] = useSearchParams();
   const [judge, setJudge] = useState<string | null>(null);
-  const [scores, setScores] = useState<Record<number, Score>>({});
+  const [scores, setScores] = useState<Record<string, Score>>({});
   const [idx, setIdx] = useState(0);
   const [status, setStatus] = useState<string>("");
   const [view, setView] = useState<"score" | "review">("score");
@@ -88,13 +87,13 @@ const SwbOct26Judging = () => {
   };
 
   const startup = STARTUPS[idx];
-  const current = scores[startup?.table] ?? {};
-  const doneCount = useMemo(() => STARTUPS.filter((s) => isComplete(scores[s.table])).length, [scores]);
+  const current = (startup && scores[startup]) || {};
+  const doneCount = useMemo(() => STARTUPS.filter((n) => isComplete(scores[n])).length, [scores]);
 
   const update = (patch: Score) => {
-    if (!judge) return;
+    if (!judge || !startup) return;
     setScores((prev) => {
-      const next = { ...prev, [startup.table]: { ...prev[startup.table], ...patch } };
+      const next = { ...prev, [startup]: { ...prev[startup], ...patch } };
       window.localStorage.setItem(scoresKey(judge), JSON.stringify(next));
       return next;
     });
@@ -113,8 +112,8 @@ const SwbOct26Judging = () => {
     if (!judge || !allDone) return;
     setStatus("Submitting…");
     let n = 0;
-    for (const s of STARTUPS) {
-      if (await send(judge, s.table, scores[s.table])) n++;
+    for (const name of STARTUPS) {
+      if (await send(judge, name, scores[name])) n++;
     }
     if (n === STARTUPS.length) {
       window.localStorage.setItem(scoresKey(judge) + "-submitted", "1");
@@ -149,19 +148,19 @@ const SwbOct26Judging = () => {
             <h2 className="text-2xl font-bold uppercase">Review your scores</h2>
             <p className="mt-1 text-sm text-muted-foreground">Tap a startup to change its scores.</p>
             <ul className="mt-5 grid gap-2">
-              {STARTUPS.map((s, i) => {
-                const sc = scores[s.table];
+              {STARTUPS.map((name, i) => {
+                const sc = scores[name];
                 const ok = isComplete(sc);
                 const total = ok ? CRITERIA.reduce((a, c) => a + (sc![c.key] as number), 0) : null;
                 return (
-                  <li key={s.table}>
+                  <li key={name}>
                     <button
                       type="button"
                       onClick={() => { setIdx(i); setView("score"); setStatus(""); }}
                       className="flex w-full items-center justify-between gap-3 rounded-xl border-2 border-[hsl(var(--brutalist-border))] bg-background px-4 py-3 text-left"
                     >
                       <span className="min-w-0">
-                        <span className="block font-bold">{s.name}</span>
+                        <span className="block font-bold">{name}</span>
                         <span className="block text-sm text-muted-foreground">
                           {ok ? CRITERIA.map((c) => `${c.label.split(" ")[0]} ${sc![c.key]}`).join(" · ") : "Not scored yet"}
                         </span>
@@ -206,7 +205,7 @@ const SwbOct26Judging = () => {
 
             <article className={box}>
               <p className="text-sm font-semibold text-muted-foreground">Startup {idx + 1} of {STARTUPS.length}</p>
-              <p className="mt-1 text-2xl font-bold leading-tight sm:text-3xl">{startup.name}</p>
+              <p className="mt-1 text-2xl font-bold leading-tight sm:text-3xl">{startup}</p>
 
               <div className="mt-4 grid gap-4 sm:mt-6 sm:gap-6">
                 {CRITERIA.map((c) => (
