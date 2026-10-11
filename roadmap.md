@@ -9,4 +9,4 @@
 
 # Finals pitch order
 - [x] Judge startups in the announced pitch order (PITCH_ORDER in src/data/swbOct26.ts); scores keyed by startup name.
-- [ ] Roster page /swb-oct26 still lists Knowledge as Liquidity and NestRay and lacks EduQuest and BookMap — needs the user's pitches before swapping.
+- [x] Roster page /swb-oct26 dropped from the finals — judging names and order come only from PITCH_ORDER.
