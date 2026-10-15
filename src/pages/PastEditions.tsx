@@ -386,7 +386,7 @@ const PastEditions = () => {
 
   const handleButtonClick = () => {
     createConfetti();
-    window.open("https://buy.stripe.com/cNi8wP3Rr2tdbv19aH1gs08", "_blank");
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLSfgp52bNGqRBC__XaCOCYJ38JdZxlFmkwfeqNcythMO1EoYAQ/viewform", "_blank");
     if (isMobile) {
       setEmojiProgress(1);
       setTimeout(() => setEmojiProgress(0), 750);
@@ -877,11 +877,10 @@ const PastEditions = () => {
             <button
               ref={ticketButtonRef}
               type="button"
-              disabled
-              aria-disabled="true"
-              className="rounded-2xl border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-3 shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] text-[hsl(var(--sold-out-foreground))] font-semibold cursor-not-allowed select-none relative z-10"
+              onClick={handleButtonClick}
+              className="rounded-2xl border-2 border-[#000000] bg-primary text-primary-foreground px-6 py-3 shadow-[4px_4px_0px_0px_#000000] font-semibold hover:-translate-y-0.5 transition-transform active:scale-95 relative z-10"
             >
-              Sold out
+              Get notified for 2027 events
             </button>
             
             {/* Confetti particles */}
