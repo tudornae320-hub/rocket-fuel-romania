@@ -72,12 +72,14 @@ export const Navigation = () => {
             >
               Past Editions
             </Link>
-            <span
-              aria-disabled="true"
-              className="inline-flex items-center justify-center rounded-full border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-2.5 font-semibold text-[hsl(var(--sold-out-foreground))] shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] cursor-not-allowed select-none"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfgp52bNGqRBC__XaCOCYJ38JdZxlFmkwfeqNcythMO1EoYAQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border-2 border-[#000000] bg-primary text-primary-foreground px-6 py-2.5 font-semibold shadow-[4px_4px_0px_0px_#000000] hover:-translate-y-0.5 transition-transform"
             >
-              Sold out
-            </span>
+              Get notified for 2027 events
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -124,12 +126,14 @@ export const Navigation = () => {
               >
                 Past Editions
               </Link>
-              <span
-                aria-disabled="true"
-                className="flex w-full items-center justify-center rounded-full border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 py-2.5 font-semibold text-[hsl(var(--sold-out-foreground))] shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] cursor-not-allowed select-none"
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfgp52bNGqRBC__XaCOCYJ38JdZxlFmkwfeqNcythMO1EoYAQ/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center rounded-full border-2 border-[#000000] bg-primary text-primary-foreground px-6 py-2.5 font-semibold shadow-[4px_4px_0px_0px_#000000] active:scale-95"
               >
-                Sold out
-              </span>
+                Get notified for 2027 events
+              </a>
             </div>
           </div>
         )}
