@@ -18,7 +18,7 @@ const agendaData = {
     initial: "S",
     events: [
       { time: "09:00 - 09:30", title: "Breakfast", desc: "Start strong with breakfast at the venue" },
-      { time: "11:00 - 12:00", title: "Workshop: How to get your first clients", desc: "With Claudiu Jojatu, Cofounder of Milk & Cookies" },
+      { time: "11:00 - 12:00", title: "Workshop", desc: "" },
       { time: "13:00 - 14:00", title: "Lunch", desc: "Take a well-earned break and recharge" },
       { time: "14:00 - 17:00", title: "Mentoring sessions", desc: "Get feedback and support from mentors one-on-one" },
       { time: "18:00 - 18:30", title: "Pitching Workshop ", desc: "Learn how to craft a clear, convincing pitch and present your idea with Cosmin Pirvu, Startup Program Manager @Veridion" },

@@ -5,7 +5,7 @@ import { RocketFollower } from "@/components/RocketFollower";
 import { ScrollableMentors } from "@/components/ScrollableMentors";
 import { ScrollableSponsors } from "@/components/ScrollableSponsors";
 import { InteractiveJuryGrid } from "@/components/InteractiveJuryGrid";
-import { Lightbulb, MapPin, Calendar, Mic, Users, Hammer, Trophy, Linkedin } from "lucide-react";
+import { Lightbulb, Calendar, Mic, Users, Hammer, Trophy, Linkedin } from "lucide-react";
 import heroBackground from "@/assets/video_hero_2.gif";
 import arrowRight from "@/assets/arrow-right.png";
 import megaphoneSvg from "@/assets/megaphone.svg";
@@ -363,23 +363,17 @@ const Home = () => {
               <p className="text-2xl md:text-3xl text-off-white/80">
                 powered by <span className="font-bold" style={{ color: '#6772E5' }}>Stripe</span>
               </p>
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className="rounded-2xl border-2 border-[hsl(var(--sold-out-border))] bg-[hsl(var(--sold-out))] px-6 shadow-[4px_4px_0px_0px_hsl(var(--sold-out-border))] text-[hsl(var(--sold-out-foreground))] font-semibold py-[12px] my-[30px] cursor-not-allowed select-none"
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfgp52bNGqRBC__XaCOCYJ38JdZxlFmkwfeqNcythMO1EoYAQ/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-[#000000] bg-primary text-primary-foreground px-6 py-[12px] my-[30px] font-semibold shadow-[4px_4px_0px_0px_#000000] hover:-translate-y-0.5 transition-transform"
               >
-                Sold out
-              </button>
+                Get notified for 2027 events
+              </a>
               <div className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-white">
                 <Calendar className="w-6 h-6 text-primary" />
-                <span>9-11 October 2026</span>
-              </div>
-              <div className="flex items-start gap-3 text-off-white/90">
-                <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                <span className="flex flex-col">
-                  <span className="text-lg md:text-xl font-semibold">QADNA</span>
-                </span>
+                <span>Next edition: 2027 · Dates TBA</span>
               </div>
             </div>
           </div>
@@ -713,7 +707,7 @@ const Home = () => {
                   />
                 </svg>
                 <h2 className="relative text-4xl md:text-5xl font-bold leading-tight">
-                  <span className="block">Meet the</span>
+                  <span className="block">Previous</span>
                   <span className="block">Mentors</span>
                 </h2>
               </div>
@@ -730,10 +724,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Jury
+              Previous Jury
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              The minds judging your final pitches on Sunday.
+              The people who judged previous editions' final pitches.
             </p>
           </div>
 
